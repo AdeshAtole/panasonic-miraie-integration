@@ -22,7 +22,15 @@ Use Python 3.11+, pinned dependencies in `pyproject.toml` / `uv.lock`, and the
 existing modules rather than introducing another transport or UI framework.
 Keep JSON-RPC stdout clean; log only safe diagnostics to stderr. Derive controls
 from the selected model. Preserve raw reported values alongside normalized fields.
-Use one availability normalizer for status and every actuation guard.
+Use one availability normalizer for status and every actuation guard. Swing actions
+accept only advertised integer positions; require power on and cleaning off.
+Expose the model-scoped owner-observed vertical mapping in MCP descriptions,
+capabilities and command results: 0 oscillates; 1–5 progress downward; 5 is the
+lowest tested fixed position on one model 140013 unit. For horizontal on that
+unit, 0 oscillates; 2 points observer-left; 1 appeared centered on retest; 3 moved slightly left from 1 (earlier center label withdrawn); 3→4→5 moves right while the observer faces the AC; 5 stays
+fixed and is the rightmost tested position. Always include the observer perspective.
+Keep the relative horizontal order of 2/3, exact angles and other firmware unverified. Never mark a new command physically
+confirmed just because prior observations exist.
 Send a command once; wait at least three seconds before the first readback.
 Keep acceptance, reported matching and physical confirmation distinct. Stop
 coupled commands after unconfirmed results; never queue/replay appliance writes.

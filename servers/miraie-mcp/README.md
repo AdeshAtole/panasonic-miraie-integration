@@ -28,7 +28,7 @@ See [testing.md](testing.md) for reproducible checks and dated evidence.
 | Fan Auto/Quiet/Low/Medium/High | Implemented, schema/mode gated | Synthetic tests; settings are not measured RPM; no live MCP fan test in this round |
 | Eco, including 26°C enable sequence | Implemented, Cool/cleaning gated | Synthetic tests and partial-step reporting; live MCP verification outstanding |
 | Powerful and fixed capacity (0, 40–110 advertised steps) | Implemented, schema/interlock gated | Synthetic mutual-exclusion tests; live MCP verification outstanding |
-| Vertical/horizontal swing | **Inspection only; control unsupported** | `VerticalSwing`/`HorizontalSwing` schemas exposed; `acvs`/`achs` positions 0–5 are not mapped to directions; downward position unverified |
+| Vertical/horizontal swing | Implemented as `vertical_swing` / `horizontal_swing`, numeric positions | Static command builders verified; 0–5 constrained by actual model metadata. Vertical 0/2/3/4/5 cloud readbacks and owner observations recorded: 0 oscillates; increasing 1–5 moves down, 5 is the lowest tested fixed position. Horizontal 0 oscillates, 1 appeared centered on retest, 2 points observer-left, 3 moved slightly left from 1, 3→4→5 moves right facing the AC, and 5 stays fixed; relative order of horizontal 2/3 and exact angles remain unverified |
 | Cleaning / sleep-profile / JetStream actions | **Unsupported** | Known states gate dependent controls; no action tools implemented |
 | Timers and schedules | **Unsupported** | Timer metadata can be inspected; no command or scheduler implemented |
 | Other models, appliance families and partner/parent-routed writes | **Unsupported** | Discovery/schema inspection only; status normalization remains AC-specific |
@@ -94,7 +94,7 @@ It requires an interactive terminal, never accepts a password argument, and list
 | `capabilities` | Safe model capability/attribute schemas, including unimplemented capabilities; unsupported families remain read-only |
 | `reported_status` | One cloud snapshot, observed timestamp, reported versus requested state, fractional room temperature and fan **setting**, never RPM |
 | `daily_energy` | On-demand 1–31 days, Daily kWh strings preserve decimal precision; today can be partial |
-| `control_ac` | One requested action: power, mode, temperature, fan, display, Eco, Powerful or capacity; bounded readback and partial results |
+| `control_ac` | One requested action: power, mode, temperature, fan, display, Eco, Powerful, capacity or either swing axis; bounded readback and partial results |
 
 `device` is an opaque handle from discovery; omitting it uses only an explicitly selected default. Arbitrary IDs and stale selections are rejected. General discovery/model inspection is available; status normalization and energy semantics are AC-specific. Unsupported status shapes fail honestly rather than being relabeled as AC telemetry. Private identifiers, topic strings, registration/UDP secrets and arbitrary raw metadata are not exported. Unknown capability names/attribute schemas remain inspectable.
 
@@ -106,11 +106,56 @@ Writes are restricted to direct MirAIe AC model **140013 / CS-CU-NU18BKY5WX**, w
 - Modes: Auto/Cool/Dry/Fan; no Heat. Temperature uses advertised Celsius bounds/step within 16–30°C; fan choices are Auto/Quiet/Low/Medium/High.
 - Power must be on for settings. Send mode first, wait for a matching readback, then request dependent settings separately. Fan mode has no temperature setting; Dry never sends an extra Low-fan command.
 - Cleaning blocks temperature/fan/Powerful, including Eco's temperature side effect. Eco requires Cool, confirms Eco on, then requests 26°C. Powerful requires Cool and first disables fixed capacity. Nonzero capacity first disables Powerful. Values: 0 (Normal), 40/50/60/70/80/90/100/110.
-- Availability recognizes explicit `online`/`offline`, boolean `true`/`false`, numeric 1/0 and Panasonic's string `"true"`/`"false"`; raw reported values are preserved. Unknown/offline availability blocks writes. Active sleep-profile reset and JetStream cancellation are unsupported and gated; cleaning, swing, schedules/timers, LAN/BLE/MQTT and other appliance writes are not exposed.
+- Availability recognizes explicit `online`/`offline`, boolean `true`/`false`, numeric 1/0 and Panasonic's string `"true"`/`"false"`; raw reported values are preserved. Unknown/offline availability blocks writes. Active sleep-profile reset and JetStream cancellation are unsupported and gated; cleaning, schedules/timers, LAN/BLE/MQTT and other appliance writes are not exposed.
 
 Each mutation is sent **once**, followed by at most three status reads (3/1.2/1.8-second waits, with the first read at least three seconds after each change). Results distinguish server acceptance, matching cloud report, uncertain acceptance, remaining steps and physical confirmation (always false here). A dependent step stops after unconfirmed readback, an error, a changed session or incompatible reported state. No automatic mutation retry or queued replay after reconnect/login occurs. A timeout can mean the command reached Panasonic: inspect status before requesting anything again.
 
-This server has synthetic coverage plus scoped live verification on one model 140013 installation: onboarding, discovery, status, Daily energy, selection/logout, and display/temperature cloud readback. Display-on was also physically confirmed by the owner. See [testing.md](testing.md) for per-operation results and remaining gaps; the [canonical skill](../../skills/panasonic-miraie/SKILL.md) separately records prior protocol evidence. Other controls, token refresh and broader firmware/platform behavior are not established by these tests. Refresh uses the evidenced `tokenRefresh` envelope, supports rotated tokens and retries only a read once after 401/406. The prototype's 406 interpretation and refresh success remain live-unverified. Expired/failed sessions give explicit recovery. Writes never resume across refresh.
+This server has synthetic coverage plus scoped live verification on one model 140013 installation: onboarding, discovery, status, Daily energy, selection/logout, and display/temperature/both-swing-axis cloud readback. Display-on and scoped vertical/horizontal swing behavior were physically observed by the owner. See [testing.md](testing.md) for per-operation results and remaining gaps; the [canonical skill](../../skills/panasonic-miraie/SKILL.md) separately records prior protocol evidence. Other controls, token refresh and broader firmware/platform behavior are not established by these tests. Refresh uses the evidenced `tokenRefresh` envelope, supports rotated tokens and retries only a read once after 401/406. The prototype's 406 interpretation and refresh success remain live-unverified. Expired/failed sessions give explicit recovery. Writes never resume across refresh.
+
+### Swing usage and limits
+
+`control_ac` accepts `vertical_swing` or `horizontal_swing` with an **integer**
+`value` returned under `capabilities.swing.<action>.positions`. For example,
+`{"action":"vertical_swing","value":3}` requests numeric position 3, only when
+advertised by the selected model. Missing/ambiguous/out-of-scope range metadata,
+fractional values, power off, cleaning, offline and unknown availability block
+writes. Neither axis changes power, mode, temperature or the other axis.
+
+These are raw position codes, **not angles**. On one owner-observed model 140013
+unit, the following mapping was established on 2026-10-19:
+
+| Vertical code | Observed behavior |
+|---|---|
+| 0 | Continuous oscillation |
+| 1 | Starting position; absolute angle not verified |
+| 2 | Downward from 1 |
+| 3 | Farther downward from 2 |
+| 4 | Farther downward from 3 |
+| 5 | Farther downward from 4; fixed, lowest tested position |
+
+Agents receive these observations through `capabilities.swing.vertical_swing`,
+the `capabilities` and `control_ac` tool descriptions, and `swing_guidance` in
+swing command results. Metadata is limited to positions advertised by the actual
+model. Horizontal observations use the perspective of an observer **facing the
+AC** (observer left/right):
+
+| Horizontal code | Observed behavior |
+|---|---|
+| 0 | Continuous horizontal oscillation |
+| 1 | Appeared centered / straight ahead on owner retest from 2; exact angle/fixedness not separately established |
+| 2 | Left of center while facing the AC; owner observed |
+| 3 | Moved slightly left from centered 1 on direct comparison; earlier center label withdrawn |
+| 4 | Moved right from 3 |
+| 5 | Moved farther right from 4; fixed, rightmost tested position |
+
+The same MCP descriptions, `capabilities.swing.horizontal_swing` and command-result
+`swing_guidance` expose these observations and the perspective. Other units/firmware,
+exact angles, and the relative ordering of horizontal 2/3 remain unverified. The latest 1→3
+comparison supersedes the earlier center label for 3. Do not infer that all codes 1–5
+progress left-to-right from the tested 3–5 subset. The API still takes integers rather than string aliases. Prior
+observations do not establish physical confirmation of a new command.
+Each write is sent once and uses the same three-second first-read delay and
+bounded readback. See [swing evidence](../../skills/panasonic-miraie/references/swing.md).
 
 ## Storage, security and recovery
 

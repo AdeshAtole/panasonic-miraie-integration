@@ -23,7 +23,7 @@ def create_server(service=None, setup=None):
     service = service or Service(store, API(store))
     setup = setup or Setup(service)
     mcp = MCPServer('openMirAIe', version='0.1.0', log_level='CRITICAL',
-                    instructions='Credentials belong only in the local setup browser or hidden-input CLI. Call session_status first. Appliance writes require an explicit user request.')
+                    instructions='Credentials belong only in the local setup browser or hidden-input CLI. Call session_status first. Appliance writes require an explicit user request. Inspect capabilities for model-specific swing positions and observed meanings. Horizontal left/right is from an observer facing the AC; never infer untested positions.')
     read = ToolAnnotations(readOnlyHint=True, destructiveHint=False, openWorldHint=True)
     local = ToolAnnotations(readOnlyHint=False, destructiveHint=False, openWorldHint=False)
     write = ToolAnnotations(readOnlyHint=False, destructiveHint=True, idempotentHint=False, openWorldHint=True)
@@ -104,13 +104,13 @@ def create_server(service=None, setup=None):
     @mcp.tool(annotations=read)
     @safe
     def capabilities(device: str | None = None):
-        """Inspect model capability schemas and support boundaries; default must be selected explicitly."""
+        """Inspect model capability schemas, support boundaries and model-specific swing position observations. For tested model 140013 vertical swing: 0 oscillates; positions 1 through 5 move progressively downward; 5 is the lowest tested fixed position. For horizontal swing, 0 oscillates, 1 appeared centered on retest, 2 points observer-left, and 3 moved slightly left from 1 while facing the AC; 3 to 4 to 5 moves right while facing the AC, and 5 stays fixed. The earlier center label for 3 is withdrawn. Relative order of 2/3 and exact angles remain unverified. Default must be selected explicitly."""
         return service.profile(service.device(device)).inspect()
 
     @mcp.tool(annotations=read)
     @safe
     def reported_status(device: str | None = None):
-        """Fetch one cloud snapshot. After a change, wait at least 3 seconds before checking reported status. Fractional room temperature is separate from fan setting; no RPM inference."""
+        """Fetch one cloud snapshot. After a change, wait at least 3 seconds before checking reported status. For observed swing-code meanings, call capabilities. Fractional room temperature is separate from fan setting; no RPM inference."""
         return service.status(device)
 
     @mcp.tool(annotations=read)
@@ -121,9 +121,9 @@ def create_server(service=None, setup=None):
 
     @mcp.tool(annotations=write)
     @safe
-    def control_ac(action: Literal['power','mode','temperature','fan','display','eco','powerful','capacity'],
+    def control_ac(action: Literal['power','mode','temperature','fan','display','eco','powerful','capacity','vertical_swing','horizontal_swing'],
                    value: str | int | float, device: str | None = None):
-        """Explicit AC command only. Send once; wait at least 3 seconds after each change before checking reported status. The server waits before its bounded readback; report partial completion and never automatically resend unconfirmed commands. Set mode separately and wait for confirmation before dependent settings."""
+        """Explicit AC command only. Send once; wait at least 3 seconds after each change before checking reported status. The server waits before its bounded readback; report partial completion and never automatically resend unconfirmed commands. Set mode separately and wait for confirmation before dependent settings. Swing actions vertical_swing/horizontal_swing require an integer position advertised by capabilities. On one tested model 140013 unit, vertical 0 oscillates, 1 through 5 move progressively downward, and 5 is the lowest tested fixed position. Check capabilities for scope and allowed positions; horizontal 0 oscillates, 1 appeared centered on retest, 2 points observer-left, and 3 moved slightly left from 1 while facing the AC; 3 to 4 to 5 moves right while facing the AC, and 5 is the rightmost tested fixed position. The earlier center label for 3 is withdrawn. Relative order of 2/3 and exact angles remain unverified. Prior observations are not physical confirmation of this command."""
         return service.control(action, value, device)
 
     @mcp.resource('miraie://onboarding')

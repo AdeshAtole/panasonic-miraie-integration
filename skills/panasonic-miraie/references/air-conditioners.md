@@ -11,6 +11,8 @@ Live-tested model: **CS-CU-NU18BKY5WX**, modelId **140013**. These are public mo
 | ACTemperature | `actmp` | 2 | Celsius numeric string; 16–30, step 1 |
 | PowerfulMode | `acpm` | 3 | `on`, `off` |
 | ACFanSpeed | `acfs` | 4 | `auto`, `quiet`, `low`, `medium`, `high` |
+| VerticalSwing | `acvs` | 5 | Integer range 0–5 on inspected model; static builders plus scoped owner-observed vertical mapping |
+| HorizontalSwing | `achs` | 6 | Integer range 0–5; scoped owner observations: 0 oscillates, 2 points observer-left facing the AC, 1 appeared centered on retest, 3 moved slightly left from 1 (previous center label withdrawn), 3→4→5 observer-right, 5 fixed; relative order of 2/3 and exact angles unverified |
 | DisplayControl | `acdc` | 8 | `on`, `off`; independent of AC power |
 | ECOMode | `acem` | 10 | `on`, `off` |
 | Convertible | `cnv` | 28 | Integers 110/100/90/80/70/60/50/40/0 |
@@ -21,6 +23,9 @@ The index comes from the native registry/deserializer, not the model attribute p
 **Power is `ps`, not `acdc`.** This model's `acdc` capability is display control. Display off/on was live-tested through Room AC 0.3 with cloud readback confirming both states while power, mode, and target remained unchanged; the original display state was restored. Physical LED observation was not separately captured. The initial community-derived prototype got this wrong; the live model and native PowerStatus setter corrected it. Do not copy a generic short-key table without resolving capability semantics.
 
 For example, request Low fan with `{"acfs":"low","ki":4}` or 21°C with `{"actmp":"21.0","ki":2}`, inside the platform control envelope. Verify actual readback. A command builder is not sufficient evidence of physical support in every mode.
+
+For swing command builders, power/cleaning guards and unverified direction labels,
+see [swing evidence](swing.md). MCP vertical swing 0/2/3/4/5 readbacks were live verified on one unit with owner observations; horizontal 0/3/4/5 readbacks were also live verified, with owner confirmation of 0 oscillation and 3→4→5 rightward movement/5 fixed while facing the AC. Relative order of horizontal 2/3 and exact angles remain unverified.
 
 ## UI and command dependencies
 

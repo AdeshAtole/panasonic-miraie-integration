@@ -13,7 +13,11 @@ MODEL = {'modelId':'140013', 'controlCapabilities':[
     {'capability':name, 'attributes':[{'key':key, **({'range':{'min':[{'unit':'celcius','value':16}],
         'max':[{'unit':'celcius','value':30}], 'increment':[{'unit':'celcius','value':1}]}}
         if action == 'temperature' else {'intValues' if action == 'capacity' else 'values':CHOICES[action]})}]}
-    for (action,(name,index)),key in zip(CAPS.items(), ['ps','acmd','actmp','acfs','acdc','acem','acpm','cnv'])]}
+    for (action,(name,index)),key in zip(list(CAPS.items())[:8], ['ps','acmd','actmp','acfs','acdc','acem','acpm','cnv'])]}
+MODEL['controlCapabilities'].extend([
+    {'capability': name, 'attributes': [{'key': key, 'range': {'min':[{'value':0}], 'max':[{'value':5}]}}]}
+    for name, key in [('VerticalSwing','acvs'), ('HorizontalSwing','achs')]
+])
 
 class FakeHTTP:
     def __init__(self):
@@ -21,7 +25,7 @@ class FakeHTTP:
         self.model=copy.deepcopy(MODEL)
         self.devices=[{'deviceId':'synthetic-device', 'deviceName':'Test AC','modelId':'140013','category':'AC'}]
         self.state={'ps':'on','acmd':'cool','actmp':'24','acfs':'auto','acdc':'on','acem':'off',
-                    'acpm':'off','cnv':0,'acec':'off','acsp':'none','onlineStatus':'online','rmtmp':22.61}
+                    'acpm':'off','cnv':0,'acec':'off','acsp':'none','onlineStatus':'online','rmtmp':22.61, 'acvs':1, 'achs':2}
         self.match=True
         self.fail=None
     def request(self, base, path, method='GET', body=None, token=None):

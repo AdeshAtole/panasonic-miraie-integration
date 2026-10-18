@@ -23,7 +23,7 @@ create_server(Service(store, API(store))).run(transport='stdio')
               {'jsonrpc':'2.0','id':3,'method':'tools/call','params':{'name':'session_status','arguments':{}}},
               {'jsonrpc':'2.0','id':4,'method':'tools/call','params':{'name':'discover_devices','arguments':{}}},
               {'jsonrpc':'2.0','id':5,'method':'resources/read','params':{'uri':'miraie://onboarding'}},
-              {'jsonrpc':'2.0','id':6,'method':'tools/call','params':{'name':'control_ac','arguments':{'action':'swing','value':'on'}}}]
+              {'jsonrpc':'2.0','id':6,'method':'tools/call','params':{'name':'control_ac','arguments':{'action':'unsupported_swing','value':'on'}}}]
     process=subprocess.Popen([sys.executable,str(runner)],stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True)
     responses={}
     try:
@@ -46,6 +46,17 @@ create_server(Service(store, API(store))).run(transport='stdio')
     assert tools['control_ac']['annotations']['readOnlyHint'] is False
     for name in ('control_ac', 'reported_status'):
         assert 'wait at least 3 seconds' in tools[name]['description']
+    assert {'vertical_swing', 'horizontal_swing'} <= set(tools['control_ac']['inputSchema']['properties']['action']['enum'])
+    assert 'vertical 0 oscillates' in tools['control_ac']['description']
+    assert '5 is the lowest tested fixed position' in tools['control_ac']['description']
+    assert 'Relative order of 2/3 and exact angles remain unverified' in tools['capabilities']['description']
+    for name in ('capabilities', 'control_ac'):
+        assert '0 oscillates' in tools[name]['description']
+        assert '1 appeared centered on retest' in tools[name]['description']
+        assert '3 moved slightly left from 1' in tools[name]['description']
+        assert '3 is centered/fixed' not in tools[name]['description']
+        assert '2 points observer-left' in tools[name]['description']
+        assert '3 to 4 to 5 moves right while facing the AC' in tools[name]['description']
     assert 'unconfigured' in str(responses[3])
     assert responses[4]['result']['isError']
     assert 'unconfigured' in str(responses[5])

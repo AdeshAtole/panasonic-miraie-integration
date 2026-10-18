@@ -11,11 +11,13 @@ CAPS = {
     'temperature': ('ACTemperature', 2), 'fan': ('ACFanSpeed', 4),
     'display': ('DisplayControl', 8), 'eco': ('ECOMode', 10),
     'powerful': ('PowerfulMode', 3), 'capacity': ('Convertible', 28),
+    'vertical_swing': ('VerticalSwing', 5), 'horizontal_swing': ('HorizontalSwing', 6),
 }
 CHOICES = {'power': ['on', 'off'], 'mode': ['auto', 'cool', 'dry', 'fan'],
            'fan': ['auto', 'quiet', 'low', 'medium', 'high'], 'display': ['on', 'off'],
            'eco': ['on', 'off'], 'powerful': ['on', 'off'],
            'capacity': [0, 40, 50, 60, 70, 80, 90, 100, 110]}
+SWING_ACTIONS = ('vertical_swing', 'horizontal_swing')
 STATUS_KEYS = {'ps', 'acmd', 'actmp', 'acfs', 'acdc', 'acem', 'acpm', 'cnv', 'rmtmp',
                'onlineStatus', 'ts', 'rssi', 'acec', 'acsp', 'acjs', 'achs', 'acvs'}
 
@@ -95,6 +97,10 @@ class Profile:
 
     def validate(self, action, value, mode=None):
         attr = self.attr(action)
+        if action in SWING_ACTIONS:
+            if type(value) is not int or value not in self.swing_positions(action):
+                raise Fault('invalid_request')
+            return value
         if action == 'temperature':
             if isinstance(value, bool) or not isinstance(value, (float, int)) or not math.isfinite(value):
                 raise Fault('invalid_request')
@@ -106,6 +112,48 @@ class Profile:
         if isinstance(value, bool) or value not in CHOICES[action] or value not in choices:
             raise Fault('invalid_request')
         return int(value) if action == 'capacity' else value
+
+    def swing_positions(self, action):
+        """Model-advertised integer positions; no inferred physical direction labels."""
+        attr = self.attr(action)
+        def integer(value):
+            if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value) or int(value) != value:
+                raise Fault('unsupported')
+            return int(value)
+        positions = None
+        if 'range' in attr:
+            ranges = attr['range']
+            if isinstance(ranges, list):
+                if len(ranges) != 1:
+                    raise Fault('unsupported')
+                ranges = ranges[0]
+            if not isinstance(ranges, dict) or 'mode' in ranges:
+                raise Fault('unsupported')
+            def bound(name):
+                entries = ranges.get(name)
+                if not isinstance(entries, list) or len(entries) != 1 or not isinstance(entries[0], dict) or entries[0].get('unit'):
+                    raise Fault('unsupported')
+                return integer(entries[0].get('value'))
+            low, high = bound('min'), bound('max')
+            # The shipped SwingControlViewHolder increments by one when no
+            # explicit integer list is present. Honor an advertised step too.
+            step = bound('increment') if 'increment' in ranges else 1
+            if not 0 <= low <= high <= 5 or step < 1:
+                raise Fault('unsupported')
+            positions = list(range(low, high + 1, step))
+        if 'intValues' in attr:
+            values = attr['intValues']
+            if not isinstance(values, list) or not values or len(values) > 6:
+                raise Fault('unsupported')
+            values = [integer(v) for v in values]
+            if len(set(values)) != len(values) or any(v < 0 or v > 5 for v in values):
+                raise Fault('unsupported')
+            if positions is not None and any(v not in positions for v in values):
+                raise Fault('unsupported')
+            positions = values
+        if positions is None:
+            raise Fault('unsupported')
+        return positions
 
     def bounds(self, mode):
         attr = self.attr('temperature')
@@ -129,6 +177,48 @@ class Profile:
             return result
         raise Fault('unsupported')
 
+    def swing_guidance(self, action):
+        positions = self.swing_positions(action)
+        result = {'positions': positions, 'direction_mapping': 'unverified',
+                  'evidence': 'static_only',
+                  'next_action': 'Use an explicitly requested numeric position; horizontal direction labels remain unverified.'}
+        if action == 'vertical_swing':
+            observed = {
+                0: 'Continuous vertical oscillation, observed by the owner.',
+                1: 'Starting position in the tested sequence; absolute angle unverified.',
+                2: 'Moved downward from position 1, observed by the owner.',
+                3: 'Moved farther downward from position 2, observed by the owner.',
+                4: 'Moved farther downward from position 3, observed by the owner.',
+                5: 'Moved farther downward from position 4 and stayed fixed; lowest tested position.',
+            }
+            result.update({
+                'direction_mapping': 'partially_verified',
+                'evidence': 'live_readback_and_owner_observation',
+                'observed_on': '2026-10-19',
+                'scope': 'One model 140013 unit; other firmware/units and exact angles are unverified. This is prior evidence, not physical confirmation of a new command.',
+                'position_observations': {str(v): observed[v] for v in positions},
+                'next_action': 'On the tested model use 0 for oscillation or 5 for the lowest tested fixed position, only if advertised. Codes 1 through 5 were progressively downward. Verify new commands by readback and owner observation; inspect horizontal observations separately.',
+            })
+        elif action == 'horizontal_swing':
+            observed = {
+                0: 'Continuous horizontal oscillation, observed by the owner.',
+                1: 'Appeared centered / straight ahead on owner retest from position 2; exact angle and fixedness not separately established.',
+                2: 'Owner observed left-facing airflow while facing the AC; relative ordering versus position 3 remains unverified.',
+                3: 'Moved slightly left from owner-observed centered position 1 while facing the AC. Earlier center label is withdrawn; exact angle unverified.',
+                4: 'Moved to the observer right from position 3 while facing the AC.',
+                5: 'Moved farther to the observer right from position 4 while facing the AC and stayed fixed; rightmost tested position.',
+            }
+            result.update({
+                'direction_mapping': 'partially_verified',
+                'evidence': 'live_readback_and_owner_observation',
+                'observed_on': '2026-10-19',
+                'scope': 'One model 140013 unit; observer faces the AC. Other firmware/units and exact angles are unverified. Prior evidence is not physical confirmation of a new command.',
+                'observer_perspective': 'Facing the air conditioner; left/right are the observer left/right.',
+                'position_observations': {str(v): observed[v] for v in positions},
+                'next_action': 'On the tested model use 0 for horizontal oscillation, 1 for owner-observed centered airflow, 2 or 3 for observed left-facing airflow, or 5 for the rightmost tested fixed position, only if advertised. Transitions 3 to 4 and 4 to 5 moved right while facing the AC. The latest 1 to 3 comparison supersedes the earlier center label for 3. Do not infer the relative order of 2 and 3 or the full range ordering.',
+            })
+        return result
+
     def inspect(self):
         # Export schema fields, never arbitrary raw metadata (may contain secrets).
         sections = {}
@@ -143,9 +233,20 @@ class Profile:
                         attrs.append({k: schema_value(v) for k, v in attr.items()
                                       if k in ('key', 'values', 'intValues', 'range')})
                 sections[section].append({'capability': scalar(cap.get('capability')), 'attributes': attrs})
+        swing = {}
+        for action in SWING_ACTIONS:
+            if not self.supported or CAPS[action][0] not in self.attrs:
+                continue
+            try:
+                swing[action] = self.swing_guidance(action)
+            except Fault:
+                swing[action] = {'positions': [], 'direction_mapping': 'unverified',
+                                 'evidence': 'static_only', 'next_action': 'Unsupported swing schema; read-only inspection only.'}
         return {'support': 'limited' if self.supported else 'unsupported',
-                'evidence': 'Model 140013: scoped live display/temperature readbacks; display-on physically confirmed by owner. Other controls are synthetic-tested here; see testing.md for evidence and limits.',
-                'writes': [a for a, (name, _) in CAPS.items() if name in self.attrs] if self.supported else [], 'schema': sections}
+                'evidence': 'Model 140013: live display/temperature/both-swing-axis readbacks; owner observed display-on and scoped swing behavior on one unit. Exact swing angles, the relative horizontal order of 2/3 and other controls remain unverified physically; see testing.md for scope and limits.',
+                'writes': [a for a, (name, _) in CAPS.items() if name in self.attrs
+                           and (a not in SWING_ACTIONS or swing.get(a, {}).get('positions'))] if self.supported else [],
+                'swing': swing, 'schema': sections}
 
 def schema_value(value):
     if isinstance(value, list):
@@ -265,7 +366,7 @@ class Service:
             raise Fault('invalid_request')
         if action not in ('power', 'display') and not same(profile.value(state, 'power'), 'on'):
             raise Fault('invalid_request')
-        if action in ('temperature', 'fan', 'powerful') and state.get('acec') not in ('off', False, 0):
+        if action in ('temperature', 'fan', 'powerful', *SWING_ACTIONS) and state.get('acec') not in ('off', False, 0):
             raise Fault('invalid_request')
         if action == 'temperature' and mode not in ('auto', 'cool', 'dry'):
             raise Fault('invalid_request')
@@ -299,7 +400,7 @@ class Service:
             plan = [(action, target)]
         # Preflight every step before any write, including Eco's temperature side effect.
         for planned_action, _ in plan:
-            if planned_action in ('temperature', 'fan', 'powerful') and state.get('acec') not in ('off', False, 0):
+            if planned_action in ('temperature', 'fan', 'powerful', *SWING_ACTIONS) and state.get('acec') not in ('off', False, 0):
                 raise Fault('invalid_request')
             if planned_action == 'powerful' and mode != 'cool':
                 raise Fault('invalid_request')
@@ -310,7 +411,7 @@ class Service:
                           or availability(state.get('onlineStatus')) != 'online'
                           or not same(profile.value(state, 'power'), 'on')
                           or profile.value(state, 'mode') != mode
-                          or (step_action in ('temperature', 'fan', 'powerful') and state.get('acec') not in ('off', False, 0))):
+                          or (step_action in ('temperature', 'fan', 'powerful', *SWING_ACTIONS) and state.get('acec') not in ('off', False, 0))):
                 break
             key = profile.attr(step_action)['key']
             step = {'action':step_action, 'requested':step_value, 'accepted':False,
@@ -334,5 +435,8 @@ class Service:
                 step['acceptance_unknown'] = not step['accepted'] and exc.code == 'offline'
                 break
         complete = len(steps) == len(plan) and all(s['reported_matching'] for s in steps)
-        return {'complete':complete, 'steps':steps, 'pending_steps':len(plan)-len(steps),
-                'physical_confirmation':False, 'next_action': 'Read reported_status before any new command; commands are never retried automatically.'}
+        result = {'complete':complete, 'steps':steps, 'pending_steps':len(plan)-len(steps),
+                  'physical_confirmation':False, 'next_action': 'Read reported_status before any new command; commands are never retried automatically.'}
+        if action in SWING_ACTIONS:
+            result['swing_guidance'] = profile.swing_guidance(action)
+        return result

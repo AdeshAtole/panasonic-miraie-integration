@@ -57,6 +57,7 @@ async def test_every_registered_tool_and_onboarding_resource(service):
 @pytest.mark.parametrize('action,value', [
     ('power','off'), ('mode','dry'), ('temperature',26), ('fan','high'),
     ('display','off'), ('eco','on'), ('powerful','on'), ('capacity',80),
+    ('vertical_swing',5), ('horizontal_swing',0),
 ])
 async def test_all_control_actions_through_sdk(service, action, value):
     server = create_server(service)
@@ -72,3 +73,33 @@ async def test_tool_errors_are_safe_and_do_not_write(service):
     assert (await invoke(server, 'daily_energy', {'days':32}, error=True))['state'] == 'invalid_request'
     assert (await invoke(server, 'control_ac', {'action':'temperature', 'value':31}, error=True))['state'] == 'invalid_request'
     assert not any(path == 'deviceManagement/control' for path, *_ in service.api.http.calls)
+
+
+@pytest.mark.asyncio
+async def test_swing_observations_reach_agents_through_sdk(service):
+    server = create_server(service)
+    capabilities = await invoke(server, 'capabilities')
+    vertical = capabilities['swing']['vertical_swing']
+    assert 'oscillation' in vertical['position_observations']['0']
+    assert 'lowest tested position' in vertical['position_observations']['5']
+    result = await invoke(server, 'control_ac', {'action':'vertical_swing', 'value':0})
+    assert result['swing_guidance'] == vertical
+    assert result['physical_confirmation'] is False
+
+
+@pytest.mark.asyncio
+async def test_horizontal_observations_reach_agents_without_inventing_positions(service):
+    server = create_server(service)
+    capabilities = await invoke(server, 'capabilities')
+    horizontal = capabilities['swing']['horizontal_swing']
+    assert 'Moved slightly left' in horizontal['position_observations']['3']
+    assert 'Earlier center label is withdrawn' in horizontal['position_observations']['3']
+    assert 'observer right' in horizontal['position_observations']['4']
+    assert 'stayed fixed' in horizontal['position_observations']['5']
+    assert 'oscillation' in horizontal['position_observations']['0']
+    assert 'Facing the air conditioner' in horizontal['observer_perspective']
+    assert 'Appeared centered' in horizontal['position_observations']['1']
+    assert 'relative ordering versus position 3 remains unverified' in horizontal['position_observations']['2']
+    result = await invoke(server, 'control_ac', {'action':'horizontal_swing', 'value':0})
+    assert result['swing_guidance'] == horizontal
+    assert result['physical_confirmation'] is False
