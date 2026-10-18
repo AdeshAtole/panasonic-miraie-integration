@@ -1,8 +1,8 @@
-# Room AC · native macOS
+# openMirAIe · native macOS
 
 Stage: **planned**, not yet buildable.
 
-Create a native Swift/Xcode app here when work starts. The provisional root build adapter expects `RoomAC.xcodeproj`, a committed shared `RoomACMac` scheme and an unsigned macOS development build. Update the registry if the real project uses a workspace or other names.
+Create a native Swift/Xcode app here when work starts. The provisional root build adapter expects `OpenMirAIe.xcodeproj`, a committed shared `OpenMirAIeMac` scheme and an unsigned macOS development build. Update the registry if the real project uses a workspace or other names.
 
 Own native windows/menu-bar UI, widgets/extensions, entitlements, sandbox/network access, Keychain, accessibility and lifecycle here. A future shared Swift package may implement common MirAIe behavior with iOS; platform UI and credential-store adapters remain native.
 

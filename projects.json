@@ -1,10 +1,109 @@
 {
   "schemaVersion": 1,
   "projects": [
-    {"id":"android-poc","path":"prototypes/room-ac-android","status":"prototype","toolchain":"android-poc","build":["{python}","build.py"],"test":["{python}","tests/run.py"],"artifacts":["room-ac.apk"]},
-    {"id":"stay-awake","path":"tools/stay-awake-android","status":"helper","toolchain":"android-poc","build":["{python}","build.py"],"artifacts":["stay-awake.apk"]},
-    {"id":"android","path":"apps/room-ac/android","status":"design","toolchain":"gradle","build":["./gradlew","--no-daemon",":app:assembleDebug"],"test":["./gradlew","--no-daemon",":app:testDebugUnitTest"],"requiredFiles":["gradlew","gradle/wrapper/gradle-wrapper.jar","gradle/wrapper/gradle-wrapper.properties","settings.gradle.kts"],"reason":"Production native Android project is not scaffolded; the current implementation is a separate PoC."},
-    {"id":"ios","path":"apps/room-ac/ios","status":"planned","toolchain":"xcode","build":["xcodebuild","-project","RoomAC.xcodeproj","-scheme","RoomACiOS","-destination","generic/platform=iOS Simulator","-derivedDataPath","build/DerivedData","CODE_SIGNING_ALLOWED=NO","build"],"requiredFiles":["RoomAC.xcodeproj/project.pbxproj","RoomAC.xcodeproj/xcshareddata/xcschemes/RoomACiOS.xcscheme"],"reason":"Native iOS Xcode project and shared scheme will be added when development starts."},
-    {"id":"macos","path":"apps/room-ac/macos","status":"planned","toolchain":"xcode","build":["xcodebuild","-project","RoomAC.xcodeproj","-scheme","RoomACMac","-destination","platform=macOS","-derivedDataPath","build/DerivedData","CODE_SIGNING_ALLOWED=NO","build"],"requiredFiles":["RoomAC.xcodeproj/project.pbxproj","RoomAC.xcodeproj/xcshareddata/xcschemes/RoomACMac.xcscheme"],"reason":"Native macOS Xcode project and shared scheme will be added when development starts."}
+    {
+      "id": "android-poc",
+      "path": "prototypes/room-ac-android",
+      "status": "prototype",
+      "toolchain": "android-poc",
+      "build": [
+        "{python}",
+        "build.py"
+      ],
+      "test": [
+        "{python}",
+        "tests/run.py"
+      ],
+      "artifacts": [
+        "room-ac.apk"
+      ]
+    },
+    {
+      "id": "stay-awake",
+      "path": "tools/stay-awake-android",
+      "status": "helper",
+      "toolchain": "android-poc",
+      "build": [
+        "{python}",
+        "build.py"
+      ],
+      "artifacts": [
+        "stay-awake.apk"
+      ]
+    },
+    {
+      "id": "android",
+      "path": "apps/openmiraie/android",
+      "status": "design",
+      "toolchain": "gradle",
+      "build": [
+        "./gradlew",
+        "--no-daemon",
+        ":app:assembleDebug"
+      ],
+      "test": [
+        "./gradlew",
+        "--no-daemon",
+        ":app:testDebugUnitTest"
+      ],
+      "requiredFiles": [
+        "gradlew",
+        "gradle/wrapper/gradle-wrapper.jar",
+        "gradle/wrapper/gradle-wrapper.properties",
+        "settings.gradle.kts"
+      ],
+      "reason": "Production native Android project is not scaffolded; the current implementation is a separate PoC.",
+      "displayName": "openMirAIe"
+    },
+    {
+      "id": "ios",
+      "path": "apps/openmiraie/ios",
+      "status": "planned",
+      "toolchain": "xcode",
+      "build": [
+        "xcodebuild",
+        "-project",
+        "OpenMirAIe.xcodeproj",
+        "-scheme",
+        "OpenMirAIeIOS",
+        "-destination",
+        "generic/platform=iOS Simulator",
+        "-derivedDataPath",
+        "build/DerivedData",
+        "CODE_SIGNING_ALLOWED=NO",
+        "build"
+      ],
+      "requiredFiles": [
+        "OpenMirAIe.xcodeproj/project.pbxproj",
+        "OpenMirAIe.xcodeproj/xcshareddata/xcschemes/OpenMirAIeIOS.xcscheme"
+      ],
+      "reason": "Native iOS Xcode project and shared scheme will be added when development starts.",
+      "displayName": "openMirAIe"
+    },
+    {
+      "id": "macos",
+      "path": "apps/openmiraie/macos",
+      "status": "planned",
+      "toolchain": "xcode",
+      "build": [
+        "xcodebuild",
+        "-project",
+        "OpenMirAIe.xcodeproj",
+        "-scheme",
+        "OpenMirAIeMac",
+        "-destination",
+        "platform=macOS",
+        "-derivedDataPath",
+        "build/DerivedData",
+        "CODE_SIGNING_ALLOWED=NO",
+        "build"
+      ],
+      "requiredFiles": [
+        "OpenMirAIe.xcodeproj/project.pbxproj",
+        "OpenMirAIe.xcodeproj/xcshareddata/xcschemes/OpenMirAIeMac.xcscheme"
+      ],
+      "reason": "Native macOS Xcode project and shared scheme will be added when development starts.",
+      "displayName": "openMirAIe"
+    }
   ]
 }

@@ -36,4 +36,4 @@ Protocol facts and provenance are included in the public [MirAIe skill](../../sk
 
 This version does not implement continuous MQTT streaming, automatic background recording, active sleep-profile cancellation, timer scheduling, or full visual redesign. Other unobserved firmware/server metrics remain unknown rather than inferred. The home-screen widget refreshes manually and controls the currently selected AC.
 
-This PoC is retained for protocol validation. The new production Android app belongs in `apps/room-ac/android/`; do not implement the design by silently turning this PoC into the production target.
+This PoC is retained for protocol validation. The new production Android app belongs in `apps/openmiraie/android/`; do not implement the design by silently turning this PoC into the production target.

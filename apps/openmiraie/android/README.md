@@ -1,4 +1,4 @@
-# Room AC · native Android
+# openMirAIe · native Android
 
 Stage: **design**, not yet buildable. This is the production app location; the working integration PoC is under `prototypes/room-ac-android/`.
 

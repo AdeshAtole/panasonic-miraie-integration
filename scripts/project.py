@@ -84,7 +84,7 @@ def check():
     skill = ROOT / 'skills/panasonic-miraie'
     if not (skill / 'SKILL.md').read_text().startswith('---\nname: panasonic-miraie\n'):
         raise ValueError('Portable skill metadata is missing')
-    docs = [ROOT / 'README.md', *ROOT.glob('docs/*.md'), *ROOT.glob('apps/**/README.md'), ROOT / 'packages/README.md', ROOT / 'prototypes/README.md', ROOT / 'prototypes/room-ac-android/README.md', ROOT / 'tools/stay-awake-android/README.md', ROOT / 'design/room-ac/README.md', *skill.rglob('*.md')]
+    docs = [ROOT / 'README.md', *ROOT.glob('docs/*.md'), *ROOT.glob('apps/**/README.md'), ROOT / 'packages/README.md', ROOT / 'prototypes/README.md', ROOT / 'prototypes/room-ac-android/README.md', ROOT / 'tools/stay-awake-android/README.md', ROOT / 'design/openmiraie/README.md', *skill.rglob('*.md')]
     for path in docs:
         for ref in re.findall(r'\[[^\]]*\]\(([^)]+)\)', path.read_text()):
             if ref.startswith(('http:', 'https:', '#', 'mailto:', 'app:')):
@@ -94,7 +94,7 @@ def check():
                 raise ValueError('Broken link in ' + str(path.relative_to(ROOT)) + ': ' + ref)
             if path.is_relative_to(skill) and not destination.is_relative_to(skill):
                 raise ValueError('Skill depends on a file outside its portable folder: ' + ref)
-    prototype = ROOT / 'design/room-ac/prototype'
+    prototype = ROOT / 'design/openmiraie/prototype'
     for path in prototype.glob('*.html'):
         for ref in re.findall(r'(?:src|href)="([^"#]+)"', path.read_text()):
             if not ref.startswith(('http:', 'https:', 'data:')) and not (path.parent / ref.split('#')[0]).exists():

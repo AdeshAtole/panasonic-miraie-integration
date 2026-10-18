@@ -1,5 +1,5 @@
 ---
-name: Room AC Playful Android
+name: openMirAIe Playful Android
 colors:
   surface: '#FFFBFF'
   on-surface: '#241B35'
@@ -54,7 +54,7 @@ spacing:
   gutter: 20px
 ---
 
-# Room AC — Playful Android
+# openMirAIe — Playful Android
 
 ## Intent
 

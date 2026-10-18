@@ -1,4 +1,4 @@
-# Room AC design
+# openMirAIe design
 
 | Location | Purpose |
 |---|---|

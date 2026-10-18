@@ -1,4 +1,4 @@
-# Room AC · Complete interaction handoff
+# openMirAIe · Complete interaction handoff
 
 Status: proposed design and simulated prototype, 19 October 2026. This extends the approved playful native Android direction. It does not change the installed app, call MirAIe, save credentials, or authorize publishing. Use `../prototype/index.html` for the clickable prototype, `../prototype/map.html` for the journey map, and `../explorations/stitch-flows/` for supplementary Stitch visual boards. Production target: a new native Android app, followed by native iOS and macOS apps. The current Java/RemoteViews app is a PoC and behavioral reference, not the production codebase. Reuse verified protocol behavior; choose production libraries, persistence and secure storage within each platform project.
 
@@ -6,7 +6,7 @@ Status: proposed design and simulated prototype, 19 October 2026. This extends t
 
 ```mermaid
 flowchart TD
- Start[Open Room AC] --> Session{Saved valid session?}
+ Start[Open openMirAIe] --> Session{Saved valid session?}
  Session -->|No| Login[Sign in]
  Login --> Discover[Discover supported ACs]
  Session -->|Yes| Selected{Selected AC?}
@@ -136,7 +136,7 @@ The web prototype’s sample CSV download stands in for Android’s file picker.
 
 ## 7. Launcher widgets
 
-Settings → Add widget → choose Compact/Wide → Android launcher placement confirmation → widget. Cancel returns without an added widget. If pin request unsupported, explain long-press home screen → Widgets → Room AC. Launcher decides placement and actual cell dimensions; adding from app is not silently guaranteed.
+Settings → Add widget → choose Compact/Wide → Android launcher placement confirmation → widget. Cancel returns without an added widget. If pin request unsupported, explain long-press home screen → Widgets → openMirAIe. Launcher decides placement and actual cell dimensions; adding from app is not silently guaranteed.
 
 Compact: room header/body opens selected controller; read-only target/mode/state/time; explicit On or Off action and Refresh. Wide adds fractional room reading and independent Display On/Off. Display action is new proposed widget work, already supported in main app. Fan-only hides temperature in both.
 

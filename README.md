@@ -1,6 +1,6 @@
 # Panasonic MirAIe integration
 
-A monorepo for an unofficial, portable Panasonic MirAIe integration skill and native apps built around verified protocol behavior. The existing Room AC Android implementation is a **proof of concept**. A new production Android app is being designed; native iOS and macOS apps are planned.
+A monorepo for an unofficial, portable Panasonic MirAIe integration skill and native apps built around verified protocol behavior. The existing Room AC Android implementation is a **proof of concept**. The new **openMirAIe** native Android app is being designed; native iOS and macOS apps are planned.
 
 The protocol snapshot comes from MirAIe India Android 01.4.32 and live testing one AC model, CS-CU-NU18BKY5WX. This project is not affiliated with or endorsed by Panasonic. Other device families are research leads rather than tested integrations.
 
@@ -9,9 +9,9 @@ The protocol snapshot comes from MirAIe India Android 01.4.32 and live testing o
 | Location | Responsibility |
 |---|---|
 | [skills/panasonic-miraie](skills/panasonic-miraie/SKILL.md) | Self-contained, installable integration skill and authoritative protocol/evidence references |
-| [apps/room-ac](apps/room-ac/README.md) | New production native app boundaries: Android, iOS and macOS |
+| [apps/openmiraie](apps/openmiraie/README.md) | New production native app boundaries: Android, iOS and macOS |
 | [prototypes/room-ac-android](prototypes/room-ac-android/README.md) | Working Android PoC retained for protocol and behavioral verification |
-| [design/room-ac](design/room-ac/README.md) | Maintained interaction prototype, user flows, design system and past explorations |
+| [design/openmiraie](design/openmiraie/README.md) | Maintained interaction prototype, user flows, design system and past explorations |
 | [tools/stay-awake-android](tools/stay-awake-android/README.md) | Optional investigation helper using silent local video in PiP |
 | [packages](packages/README.md) | Policy for future shared libraries; none extracted yet |
 | [docs](docs/architecture.md) | Architecture, development and contribution guidance |
@@ -38,7 +38,7 @@ Production target IDs are `android`, `ios` and `macos`. They currently report **
 
 ## Design and implementation
 
-Open the [current clickable prototype](design/room-ac/prototype/index.html), [journey map](design/room-ac/prototype/map.html) and [full interaction handoff](design/room-ac/flows/user-flows.md). The prototype uses synthetic data and performs no real AC requests. Production apps will implement the approved behavior natively; the prototype is not a web runtime to embed in the apps.
+Open the [current clickable prototype](design/openmiraie/prototype/index.html), [journey map](design/openmiraie/prototype/map.html) and [full interaction handoff](design/openmiraie/flows/user-flows.md). The prototype uses synthetic data and performs no real AC requests. Production apps will implement the approved behavior natively; the prototype is not a web runtime to embed in the apps.
 
 The PoC demonstrates capability-driven modes, fan, Eco/Powerful/capacity, independent AC display control, manual widgets, local snapshots and separate CSV exports. It is an integration reference, not the foundation to rename as the finished production app. Existing native protocol logic can inform new implementations after review.
 

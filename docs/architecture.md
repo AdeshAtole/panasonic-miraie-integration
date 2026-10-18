@@ -5,11 +5,11 @@ This is one Git monorepo for MirAIe knowledge, product design and native applica
 ## Boundaries
 
 - `skills/panasonic-miraie/`: self-contained installable skill, authoritative evidence and protocol facts. It must remain useful without any app or private research directory.
-- `apps/room-ac/{android,ios,macos}/`: production platform projects. They own UI, widgets/extensions, storage adapters, credentials, lifecycle, dependencies and platform build configuration.
+- `apps/openmiraie/{android,ios,macos}/`: production platform projects. They own UI, widgets/extensions, storage adapters, credentials, lifecycle, dependencies and platform build configuration.
 - `prototypes/room-ac-android/`: existing working proof of concept. It informs verified behavior but is not relabeled as production.
-- `design/room-ac/`: maintained interaction prototype, user flows and design source. It specifies product behavior; its HTML is not shipped inside native apps.
+- `design/openmiraie/`: maintained interaction prototype, user flows and design source. It specifies product behavior; its HTML is not shipped inside native apps.
 - `packages/`: actual reusable libraries when warranted. Do not force Android and Apple clients onto a common runtime. Share testable behavior/contracts first; native iOS/macOS may share a Swift package later.
-- `tools/stay-awake-android/`: optional investigation helper, not a Room AC product feature.
+- `tools/stay-awake-android/`: optional investigation helper, not an openMirAIe product feature.
 - `tools/android/build.py`: development builder shared only by the legacy PoC/helper. Its Android35/build-tools35 pins never become production defaults accidentally.
 - `scripts/project.py` + `projects.json`: common entry point and explicit target lifecycle, delegating to each project-owned toolchain.
 
@@ -30,3 +30,5 @@ Android production builds use a Gradle wrapper and project-pinned toolchain. App
 `room-ac/` moved to `prototypes/room-ac-android/`; `stay-awake/` to `tools/stay-awake-android/`. Entire directories moved, preserving ignored local APKs, build outputs and development signing files. Maintained designs moved out of `.stitch/`; prior design explorations are preserved. Existing app/phone state is unchanged. Build outputs and keys remain ignored.
 
 `analysis/` remains private and ignored. `sources/` is a synced read-only reference location and is never moved or edited by repository tooling. `.stitch/` contains local tool exchanges and legacy-tab redirects, not canonical product files.
+
+The production product is named **openMirAIe**, with lowercase `openmiraie` directory names. The existing Room AC PoC keeps its name, Android package identity and signing files. Historical design exports may retain the earlier working title.

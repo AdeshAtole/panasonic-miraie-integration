@@ -43,6 +43,6 @@ Android adapter: Gradle wrapper, default debug assemble and local JVM tests. App
 
 ## Design workflow
 
-Open `design/room-ac/prototype/index.html` locally, or the journey map/gallery beside it. No packages or network are needed. The old `.stitch/flow/index.html` redirects locally for existing tabs. Browser automation may restrict local files; source/model checks do not substitute for visual walkthrough or native-device QA.
+Open `design/openmiraie/prototype/index.html` locally, or the journey map/gallery beside it. No packages or network are needed. The old `.stitch/flow/index.html` redirects locally for existing tabs. Browser automation may restrict local files; source/model checks do not substitute for visual walkthrough or native-device QA.
 
-Curated assets and interaction specs belong under `design/room-ac/`. Raw tool exchanges remain in ignored `.stitch/`. Historical exports may have old labels/paths; maintained prototype/spec take precedence.
+Curated assets and interaction specs belong under `design/openmiraie/`. Raw tool exchanges remain in ignored `.stitch/`. Historical exports may have old labels/paths; maintained prototype/spec take precedence.
