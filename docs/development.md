@@ -46,3 +46,7 @@ Android adapter: Gradle wrapper, default debug assemble and local JVM tests. App
 Open `design/openmiraie/prototype/index.html` locally, or the journey map/gallery beside it. No packages or network are needed. The old `.stitch/flow/index.html` redirects locally for existing tabs. Browser automation may restrict local files; source/model checks do not substitute for visual walkthrough or native-device QA.
 
 Curated assets and interaction specs belong under `design/openmiraie/`. Raw tool exchanges remain in ignored `.stitch/`. Historical exports may have old labels/paths; maintained prototype/spec take precedence.
+
+## MCP server
+
+The active `miraie-mcp` target owns its Python 3.11+ environment and locked dependencies. Install explicitly with `uv sync --frozen` inside `servers/miraie-mcp`, then run root `doctor`, `build` and `test` tasks for `miraie-mcp`. Build/test use offline dependency resolution after installation. The root doctor checks the local toolchain; `miraie-mcp doctor` checks local session storage, and the MCP `connection_test` is an explicitly requested read-only cloud check. See the [first-run guide](../servers/miraie-mcp/README.md). No build or test signs in or controls hardware.

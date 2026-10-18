@@ -2,6 +2,12 @@
 
 Only one Panasonic AC model, `CS-CU-NU18BKY5WX` / model `140013`, was exercised against a real account and appliance in this investigation. All other families below are **static declarations in MirAIe Android 01.4.32**. Their presence establishes useful implementation leads, not current account availability, tested commands, sensor accuracy, or a complete integration.
 
+For the tested AC's current vertical/horizontal swing coverage, use
+[swing.md](swing.md). Codes have cloud readback evidence and code-specific owner
+observations; mappings remain limited to one unit, with unknown firmware and exact
+angles. This does not promote other families or all advertised capabilities to
+live-verified support.
+
 ## Families found in the shipped app
 
 Model capability names below are exact registry strings. They are not status/control wire keys, and they do not guarantee that every member of the family advertises them. Fetch each actual model before mapping controls.

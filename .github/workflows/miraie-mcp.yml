@@ -1,0 +1,38 @@
+name: MirAIe MCP
+on:
+  push:
+    paths: ['servers/miraie-mcp/**', 'scripts/project.py', 'projects.json', '.github/workflows/miraie-mcp.yml']
+  pull_request:
+    paths: ['servers/miraie-mcp/**', 'scripts/project.py', 'projects.json', '.github/workflows/miraie-mcp.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  synthetic-tests:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-24.04, macos-14]
+    defaults:
+      run:
+        working-directory: servers/miraie-mcp
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install uv
+        run: python -m pip install uv==0.9.26
+      - name: Install locked dependencies
+        run: uv sync --frozen
+      - name: Install browser for real HTML form tests
+        run: uv run --frozen --no-sync python -m playwright install --with-deps chromium
+      - name: Synthetic protocol, browser setup, session and domain tests
+        env:
+          MIRAIE_BROWSER_TESTS: "1"
+        run: uv run --frozen --offline --no-sync pytest -q
+      - name: Build package offline
+        run: uv build --offline --no-sources
+# No account, keychain interaction, real appliance or signing secret in CI.

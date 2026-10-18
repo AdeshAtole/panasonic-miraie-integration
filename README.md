@@ -13,6 +13,7 @@ The protocol snapshot comes from MirAIe India Android 01.4.32 and live testing o
 | [prototypes/room-ac-android](prototypes/room-ac-android/README.md) | Working Android PoC retained for protocol and behavioral verification |
 | [design/openmiraie](design/openmiraie/README.md) | Maintained interaction prototype, user flows, design system and past explorations |
 | [tools/stay-awake-android](tools/stay-awake-android/README.md) | Optional investigation helper using silent local video in PiP |
+| [servers/miraie-mcp](servers/miraie-mcp/README.md) | Local MCP server with secure account setup, read-only discovery and model-aware AC controls |
 | [packages](packages/README.md) | Policy for future shared libraries; none extracted yet |
 | [docs](docs/architecture.md) | Architecture, development and contribution guidance |
 | [projects.json](projects.json) | Explicit target lifecycle and build/test commands |

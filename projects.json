@@ -104,6 +104,37 @@
       ],
       "reason": "Native macOS Xcode project and shared scheme will be added when development starts.",
       "displayName": "openMirAIe"
+    },
+    {
+      "id": "miraie-mcp",
+      "path": "servers/miraie-mcp",
+      "status": "active",
+      "toolchain": "python-uv",
+      "displayName": "openMirAIe MCP",
+      "build": [
+        "uv",
+        "build",
+        "--offline",
+        "--no-sources"
+      ],
+      "test": [
+        "uv",
+        "run",
+        "--frozen",
+        "--offline",
+        "--no-sync",
+        "pytest",
+        "-q"
+      ],
+      "requiredFiles": [
+        "pyproject.toml",
+        "uv.lock",
+        "src/miraie_mcp/server.py",
+        "tests/test_protocol.py"
+      ],
+      "artifacts": [
+        "dist/openmiraie_mcp-0.1.0-py3-none-any.whl"
+      ]
     }
   ]
 }

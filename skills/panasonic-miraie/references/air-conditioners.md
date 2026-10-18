@@ -11,6 +11,8 @@ Live-tested model: **CS-CU-NU18BKY5WX**, modelId **140013**. These are public mo
 | ACTemperature | `actmp` | 2 | Celsius numeric string; 16–30, step 1 |
 | PowerfulMode | `acpm` | 3 | `on`, `off` |
 | ACFanSpeed | `acfs` | 4 | `auto`, `quiet`, `low`, `medium`, `high` |
+| VerticalSwing | `acvs` | 5 | Integer range 0–5 on inspected model; static builders plus scoped owner-observed vertical mapping |
+| HorizontalSwing | `achs` | 6 | Integer range 0–5; current owner-observed meanings and correction in [swing.md](swing.md) |
 | DisplayControl | `acdc` | 8 | `on`, `off`; independent of AC power |
 | ECOMode | `acem` | 10 | `on`, `off` |
 | Convertible | `cnv` | 28 | Integers 110/100/90/80/70/60/50/40/0 |
@@ -21,6 +23,13 @@ The index comes from the native registry/deserializer, not the model attribute p
 **Power is `ps`, not `acdc`.** This model's `acdc` capability is display control. Display off/on was live-tested through Room AC 0.3 with cloud readback confirming both states while power, mode, and target remained unchanged; the original display state was restored. Physical LED observation was not separately captured. The initial community-derived prototype got this wrong; the live model and native PowerStatus setter corrected it. Do not copy a generic short-key table without resolving capability semantics.
 
 For example, request Low fan with `{"acfs":"low","ki":4}` or 21°C with `{"actmp":"21.0","ki":2}`, inside the platform control envelope. Verify actual readback. A command builder is not sufficient evidence of physical support in every mode.
+
+For swing command builders, guards and current position meanings, use
+[swing.md](swing.md). Both axes' codes 0–5 have cloud readback evidence on one
+unit; physical observations are recorded per code. Horizontal 1 appeared centered,
+2 was left-facing and 3 moved slightly left from 1, withdrawing the earlier
+3=center label. The relative order of 2/3, exact angles and other firmware remain
+unverified. Horizontal left/right is from an observer facing the AC.
 
 ## UI and command dependencies
 
@@ -44,3 +53,8 @@ Daily energy history was returned for seven days and interpreted by the original
 ## Verification achieved
 
 Authenticated sign-in, discovery, model lookup, status reads, temperature changes, all four advertised mode readbacks, Fan-only temperature hiding, Dry fan disabling, Eco 26°C/on/off, Powerful on, capacity 80% disabling Powerful, normal capacity restoration, widget refresh/power-on/readback, and status/energy CSV exports were exercised. 28 local capability/telemetry/CSV checks passed. This is one unit and firmware/account combination; token expiry refresh, active sleep cancellation, all possible enum values and all failure/offline modes remain unverified.
+
+MCP swing verification on 2026-10-19 additionally established cloud readbacks for
+both axes and owner-observed oscillation/relative positioning as recorded in
+[swing.md](swing.md). This extends the operation-level evidence, not whole-model,
+firmware or platform support.

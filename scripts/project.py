@@ -43,6 +43,16 @@ def inspect(entry):
     if entry['toolchain'] == 'android-poc':
         return runpy.run_path(str(ROOT / 'tools/android/build.py'))['prerequisites']()
     problems = [str(Path(entry['path']) / item) for item in entry.get('requiredFiles', []) if not (ROOT / entry['path'] / item).exists()]
+    if entry['toolchain'] == 'python-uv':
+        if not shutil.which('uv'):
+            problems.append('uv (install explicitly, then uv sync --frozen in the server directory)')
+        executable = ROOT / entry['path'] / '.venv' / ('Scripts/python.exe' if os.name == 'nt' else 'bin/python')
+        if not executable.exists():
+            problems.append('Server virtual environment: run uv sync --frozen in ' + entry['path'])
+        else:
+            result = subprocess.run([str(executable), '-c', 'import mcp, httpx, keyring, filelock, platformdirs, pytest'], capture_output=True)
+            if result.returncode:
+                problems.append('Server dependencies: run uv sync --frozen in ' + entry['path'])
     if entry['toolchain'] == 'gradle':
         if not shutil.which('java'):
             problems.append('Java (use the version pinned by the production Gradle project)')
@@ -66,7 +76,7 @@ def check():
             raise ValueError('Invalid project path or missing README: ' + entry['path'])
         if entry['status'] not in ['prototype', 'helper', 'design', 'planned', 'active']:
             raise ValueError('Invalid lifecycle: ' + entry['id'])
-        if entry['toolchain'] not in ['android-poc', 'gradle', 'xcode']:
+        if entry['toolchain'] not in ['android-poc', 'gradle', 'xcode', 'python-uv']:
             raise ValueError('Invalid toolchain: ' + entry['id'])
         for operation in ['build', 'test']:
             if operation in entry and (not isinstance(entry[operation], list) or not all(isinstance(arg, str) for arg in entry[operation])):
@@ -77,6 +87,8 @@ def check():
                     raise ValueError('Missing active project file: ' + str(path / item))
     # Check maintained source only; never read private captures or synced references.
     python_files = [ROOT / 'scripts/project.py', *ROOT.glob('scripts/tests/*.py'), *ROOT.glob('tools/android/*.py'), *ROOT.glob('tools/stay-awake-android/*.py'), *ROOT.glob('prototypes/room-ac-android/*.py'), *ROOT.glob('prototypes/room-ac-android/tests/*.py')]
+    python_files.extend((ROOT / 'servers/miraie-mcp/src').rglob('*.py'))
+    python_files.extend((ROOT / 'servers/miraie-mcp/tests').glob('*.py'))
     for path in python_files:
         ast.parse(path.read_text(), filename=str(path.relative_to(ROOT)))
     for path in (ROOT / 'skills').rglob('*.json'):
@@ -84,7 +96,7 @@ def check():
     skill = ROOT / 'skills/panasonic-miraie'
     if not (skill / 'SKILL.md').read_text().startswith('---\nname: panasonic-miraie\n'):
         raise ValueError('Portable skill metadata is missing')
-    docs = [ROOT / 'README.md', *ROOT.glob('docs/*.md'), *ROOT.glob('apps/**/README.md'), ROOT / 'packages/README.md', ROOT / 'prototypes/README.md', ROOT / 'prototypes/room-ac-android/README.md', ROOT / 'tools/stay-awake-android/README.md', ROOT / 'design/openmiraie/README.md', *skill.rglob('*.md')]
+    docs = [ROOT / 'README.md', *ROOT.glob('docs/*.md'), *ROOT.glob('apps/**/README.md'), *ROOT.glob('servers/*/README.md'), ROOT / 'packages/README.md', ROOT / 'prototypes/README.md', ROOT / 'prototypes/room-ac-android/README.md', ROOT / 'tools/stay-awake-android/README.md', ROOT / 'design/openmiraie/README.md', *skill.rglob('*.md')]
     for path in docs:
         for ref in re.findall(r'\[[^\]]*\]\(([^)]+)\)', path.read_text()):
             if ref.startswith(('http:', 'https:', '#', 'mailto:', 'app:')):

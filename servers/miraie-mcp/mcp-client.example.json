@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "miraie": {
+      "command": "/absolute/path/to/repo/servers/miraie-mcp/.venv/bin/python",
+      "args": ["-m", "miraie_mcp.server"]
+    }
+  }
+}

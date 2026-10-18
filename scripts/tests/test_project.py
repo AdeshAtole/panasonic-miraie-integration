@@ -23,6 +23,17 @@ class ProjectTests(unittest.TestCase):
                     project.operate(project.target(name), 'build')
                 run.assert_not_called()
 
+    def test_mcp_is_active_and_uses_its_own_python_environment(self):
+        entry = project.target('miraie-mcp')
+        self.assertEqual(entry['status'], 'active')
+        self.assertEqual(entry['toolchain'], 'python-uv')
+        self.assertEqual(entry['path'], 'servers/miraie-mcp')
+        self.assertIn('uv.lock', entry['requiredFiles'])
+        for operation in ['build', 'test']:
+            with mock.patch.object(project, 'inspect', return_value=[]), mock.patch.object(project, 'run') as run, mock.patch.object(Path, 'exists', return_value=True):
+                project.operate(entry, operation)
+                run.assert_called_once_with(entry[operation], ROOT / entry['path'])
+
     def test_poc_build_and_tests_delegate_from_project_directory(self):
         entry = project.target('android-poc')
         with mock.patch.object(project, 'inspect', return_value=[]), mock.patch.object(project, 'run') as run, mock.patch.object(Path, 'exists', return_value=True):
