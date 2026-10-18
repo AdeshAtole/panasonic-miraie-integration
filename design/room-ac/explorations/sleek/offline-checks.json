@@ -1,0 +1,29 @@
+[
+  {
+    "screen": "controller-dark",
+    "externalRequests": 0,
+    "externalAssets": 0,
+    "width": 390
+  },
+  {
+    "screen": "controller-light",
+    "externalRequests": 0,
+    "externalAssets": 0,
+    "width": 390
+  },
+  {
+    "state": "temperature draft",
+    "enabled": true
+  },
+  {
+    "state": "mode draft",
+    "applyVisible": true,
+    "temperatureDisabled": true
+  },
+  {
+    "screen": "widgets",
+    "externalRequests": 0,
+    "externalAssets": 0,
+    "width": 390
+  }
+]

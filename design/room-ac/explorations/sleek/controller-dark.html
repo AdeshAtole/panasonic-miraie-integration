@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MainControllerDarkTheme</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style type="text/tailwindcss">
+      @theme inline {
+        --color-background: var(--background);
+        --color-foreground: var(--foreground);
+        --color-primary: var(--primary);
+        --color-primary-foreground: var(--primary-foreground);
+        --color-secondary: var(--secondary);
+        --color-secondary-foreground: var(--secondary-foreground);
+        --color-muted: var(--muted);
+        --color-muted-foreground: var(--muted-foreground);
+        --color-accent: var(--accent);
+        --color-accent-foreground: var(--accent-foreground);
+        --color-destructive: var(--destructive);
+        --color-destructive-foreground: var(--destructive-foreground);
+        --color-card: var(--card);
+        --color-card-foreground: var(--card-foreground);
+        --color-popover: var(--popover);
+        --color-popover-foreground: var(--popover-foreground);
+        --color-border: var(--border);
+        --color-input: var(--input);
+        --color-ring: var(--ring);
+        --color-chart-1: var(--chart-1);
+        --color-chart-2: var(--chart-2);
+        --color-chart-3: var(--chart-3);
+        --color-chart-4: var(--chart-4);
+        --color-chart-5: var(--chart-5);
+
+        --font-sans: var(--font-sans);
+        --font-heading: var(--font-heading, var(--font-sans));
+        --font-serif: var(--font-serif);
+        --font-mono: var(--font-mono);
+      }
+
+      @theme {
+        --radius-xs: calc(var(--radius) - 8px);
+        --radius-sm: calc(var(--radius) - 4px);
+        --radius-md: calc(var(--radius) - 2px);
+        --radius-lg: var(--radius);
+        --radius-xl: calc(var(--radius) + 4px);
+        --radius-2xl: calc(var(--radius) + 8px);
+        --radius-3xl: calc(var(--radius) + 16px);
+        --radius-4xl: calc(var(--radius) + 24px);
+      }
+
+      * {
+        corner-shape: var(--shape, round);
+      }
+
+      .rounded-full,
+      .rounded-none,
+      .rounded-t-full,
+      .rounded-t-none,
+      .rounded-r-full,
+      .rounded-r-none,
+      .rounded-b-full,
+      .rounded-b-none,
+      .rounded-l-full,
+      .rounded-l-none,
+      .rounded-s-full,
+      .rounded-s-none,
+      .rounded-e-full,
+      .rounded-e-none,
+      .rounded-tl-full,
+      .rounded-tl-none,
+      .rounded-tr-full,
+      .rounded-tr-none,
+      .rounded-bl-full,
+      .rounded-bl-none,
+      .rounded-br-full,
+      .rounded-br-none,
+      .rounded-ss-full,
+      .rounded-ss-none,
+      .rounded-se-full,
+      .rounded-se-none,
+      .rounded-es-full,
+      .rounded-es-none,
+      .rounded-ee-full,
+      .rounded-ee-none {
+        corner-shape: round;
+      }
+
+      @utility rounded-* {
+        border-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-t-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-r-* {
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-b-* {
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-l-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-tl-* {
+        border-top-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-tr-* {
+        border-top-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-bl-* {
+        border-bottom-left-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-br-* {
+        border-bottom-right-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-s-* {
+        border-start-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-end-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-e-* {
+        border-start-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+        border-end-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-ss-* {
+        border-start-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-se-* {
+        border-start-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-es-* {
+        border-end-start-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+      @utility rounded-ee-* {
+        border-end-end-radius: calc(
+          --value(--radius-*, [length], [percentage]) * var(--shape-multiplier, 1)
+        );
+      }
+
+      @layer base {
+        * {
+          @apply border-border outline-ring/50;
+        }
+        body {
+          @apply bg-background text-foreground font-sans;
+        }
+      }
+
+      :root {
+        --shape: squircle;
+        --shape-multiplier: 1;
+
+        --background: #0e1214;
+        --foreground: #e8eeec;
+        --primary: #5cc8a6;
+        --primary-foreground: #062119;
+        --secondary: #1f282c;
+        --secondary-foreground: #dce5e2;
+        --muted: #1a2124;
+        --muted-foreground: #9daba6;
+        --accent: #1d3a33;
+        --accent-foreground: #a9ead4;
+        --destructive: #e8786f;
+        --destructive-foreground: #2a0e0b;
+        --card: #161c1f;
+        --card-foreground: #e8eeec;
+        --popover: #1b2326;
+        --popover-foreground: #e8eeec;
+        --border: #2a3539;
+        --input: #192124;
+        --ring: #5cc8a6;
+        --chart-1: #5cc8a6;
+        --chart-2: #8fa7a0;
+        --chart-3: #3e8c77;
+        --chart-4: #c9d6d2;
+        --chart-5: #5f6f6a;
+
+        --font-sans: "Roboto", sans-serif;
+        --font-heading: "Roboto", sans-serif;
+        --font-serif: "Playfair Display", serif;
+        --font-mono: "JetBrains Mono", monospace;
+
+        --radius: 0.875rem;
+      }
+
+      @supports (corner-shape: squircle) {
+        :root {
+          --shape-multiplier: 2.5;
+        }
+      }
+
+      /* Hide scrollbars */
+      *,
+      *::before,
+      *::after {
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+      }
+      *::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <div class="min-h-screen bg-background text-foreground font-sans max-w-[390px] mx-auto pb-24">
+        <header class="flex items-center justify-between px-5 pt-4 pb-3">
+          <div class="flex items-center gap-3">
+            <div class="size-10 rounded-xl bg-accent flex items-center justify-center">
+              <svg
+                class="size-5 text-accent-foreground"
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 24 24"
+              >
+                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5">
+                  <path d="M12 2V18M12 22V18M12 18L15 21M12 18L9 21M15 3L12 6L9 3"></path>
+                  <path
+                    d="M3.34003 7.00042L6.80413 9.00042M6.80413 9.00042L17.1964 15.0004M6.80413 9.00042L5.70605 4.90234M6.80413 9.00042L2.70605 10.0985M17.1964 15.0004L20.6605 17.0004M17.1964 15.0004L21.2945 13.9023M17.1964 15.0004L18.2945 19.0985"
+                  ></path>
+                  <path
+                    d="M20.66 7.00042L17.1959 9.00042M17.1959 9.00042L6.80364 15.0004M17.1959 9.00042L18.294 4.90234M17.1959 9.00042L21.294 10.0985M6.80364 15.0004L3.33954 17.0004M6.80364 15.0004L2.70557 13.9023M6.80364 15.0004L5.70557 19.0985"
+                  ></path>
+                </g>
+              </svg>
+            </div>
+            <div>
+              <p class="text-xs text-muted-foreground font-medium">Room AC</p>
+              <button
+                class="flex items-center gap-1 min-h-12 text-base font-semibold text-foreground"
+                aria-label="Room selector, currently Bedroom"
+              >
+                Bedroom
+                <svg
+                  class="size-4 text-muted-foreground"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="1.5"
+                    d="M19 9L12 15L5 9"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <button
+            class="size-12 rounded-full flex items-center justify-center text-foreground"
+            aria-label="Account and device management"
+          >
+            <svg
+              class="size-5"
+              xmlns="http://www.w3.org/2000/svg"
+              width="1em"
+              height="1em"
+              viewBox="0 0 24 24"
+            >
+              <g fill="currentColor">
+                <path
+                  d="M7 12C7 13.1046 6.10457 14 5 14C3.89543 14 3 13.1046 3 12C3 10.8954 3.89543 10 5 10C6.10457 10 7 10.8954 7 12Z"
+                ></path>
+                <path
+                  d="M14 12C14 13.1046 13.1046 14 12 14C10.8954 14 10 13.1046 10 12C10 10.8954 10.8954 10 12 10C13.1046 10 14 10.8954 14 12Z"
+                ></path>
+                <path
+                  d="M21 12C21 13.1046 20.1046 14 19 14C17.8954 14 17 13.1046 17 12C17 10.8954 17.8954 10 19 10C20.1046 10 21 10.8954 21 12Z"
+                ></path>
+              </g>
+            </svg>
+          </button>
+        </header>
+        <section class="mx-5 bg-card border border-border rounded-2xl p-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="size-2.5 rounded-full bg-primary"></span>
+              <p class="text-sm font-semibold">On · Cool</p>
+            </div>
+            <button
+              class="min-h-12 min-w-12 flex items-center gap-1 px-3 rounded-xl bg-secondary text-secondary-foreground text-sm font-medium"
+              aria-label="Refresh reported state"
+            >
+              <svg
+                class="size-4"
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 24 24"
+              >
+                <g
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="1.5"
+                >
+                  <path
+                    d="M3.67981 13L3.67981 11.3333C3.67981 6.73096 7.4402 3 12.0789 3C15.1178 3 17.7799 4.60136 19.2545 7M2 11.3333L3.67981 13L5.35962 11.3333"
+                  ></path>
+                  <path
+                    d="M20.3139 11V12.6667C20.3139 17.269 16.5391 21 11.8827 21C8.83213 21 6.15995 19.3986 4.67969 17M22.0001 12.6667L20.3139 11L18.6277 12.6667"
+                  ></path>
+                </g>
+              </svg>
+              Refresh
+            </button>
+          </div>
+          <p class="text-sm text-muted-foreground mt-1">Read 10:24 · last reported by AC cloud</p>
+        </section>
+        <section class="mx-5 mt-4 bg-card border border-border rounded-2xl p-5">
+          <div class="flex items-start justify-between">
+            <div>
+              <p class="text-xs font-medium uppercase tracking-wide text-muted-foreground">
+                Target
+              </p>
+              <div class="flex items-start mt-1">
+                <span class="text-7xl font-light tabular-nums leading-none">23</span
+                ><span class="text-3xl font-light mt-1">°C</span>
+              </div>
+              <p class="text-sm text-muted-foreground mt-2 tabular-nums">Room 24.18°C</p>
+            </div>
+            <div class="flex flex-col gap-2">
+              <button
+                class="size-12 rounded-xl bg-secondary text-secondary-foreground flex items-center justify-center border border-border"
+                aria-label="Decrease target by 1 degree"
+              >
+                <svg
+                  class="size-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 24 24"
+                >
+                  <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <path d="M15 12H9"></path>
+                  </g>
+                </svg></button
+              ><button
+                class="size-12 rounded-xl bg-secondary text-secondary-foreground flex items-center justify-center border border-border"
+                aria-label="Increase target by 1 degree"
+              >
+                <svg
+                  class="size-5"
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="1em"
+                  height="1em"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M11 13H6q-.425 0-.712-.288T5 12t.288-.712T6 11h5V6q0-.425.288-.712T12 5t.713.288T13 6v5h5q.425 0 .713.288T19 12t-.288.713T18 13h-5v5q0 .425-.288.713T12 19t-.712-.288T11 18z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div class="mt-4 flex items-center justify-between gap-3">
+            <p class="text-xs text-muted-foreground">Draft changes apply only when you set them.</p>
+            <button
+              disabled
+              class="min-h-12 px-4 rounded-xl bg-primary text-primary-foreground text-sm font-semibold opacity-50"
+            >
+              Set 23°C
+            </button>
+          </div>
+        </section>
+        <section
+          class="mx-5 mt-4 bg-card border border-border rounded-2xl p-4 flex items-center justify-between"
+        >
+          <div class="flex items-center gap-3">
+            <div class="size-10 rounded-xl bg-secondary flex items-center justify-center">
+              <svg
+                class="size-5 text-primary"
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 24 24"
+              >
+                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5">
+                  <path d="M12 2V6"></path>
+                  <path
+                    d="M8.5 3.70605C5.26806 5.07157 3 8.27099 3 12.0001C3 16.9707 7.02944 21.0001 12 21.0001C16.9706 21.0001 21 16.9707 21 12.0001C21 8.27099 18.7319 5.07157 15.5 3.70605"
+                  ></path>
+                </g>
+              </svg>
+            </div>
+            <div>
+              <p class="text-sm font-semibold">AC power</p>
+              <p class="text-xs text-muted-foreground">Reported on</p>
+            </div>
+          </div>
+          <button
+            class="min-h-12 px-4 rounded-xl border border-border bg-secondary text-secondary-foreground text-sm font-semibold"
+          >
+            Turn off
+          </button>
+        </section>
+        <section class="mx-5 mt-4">
+          <p class="text-xs font-medium uppercase tracking-wide text-muted-foreground px-1 mb-2">
+            Mode
+          </p>
+          <div class="grid grid-cols-4 gap-2">
+            <button
+              class="min-h-12 rounded-xl border border-border bg-secondary text-secondary-foreground text-sm font-medium"
+            >
+              Auto</button
+            ><button
+              class="min-h-12 rounded-xl border border-primary bg-accent text-accent-foreground text-sm font-semibold"
+              aria-pressed
+            >
+              Cool</button
+            ><button
+              class="min-h-12 rounded-xl border border-border bg-secondary text-secondary-foreground text-sm font-medium"
+            >
+              Dry</button
+            ><button
+              class="min-h-12 rounded-xl border border-border bg-secondary text-secondary-foreground text-sm font-medium"
+            >
+              Fan
+            </button>
+          </div>
+        </section>
+        <section class="mx-5 mt-4 bg-card border border-border rounded-2xl divide-y divide-border">
+          <button class="w-full min-h-12 flex items-center justify-between px-4 py-3 text-left">
+            <div>
+              <p class="text-sm font-semibold">Fan</p>
+              <p class="text-xs text-muted-foreground">
+                Auto · reported setting, not measured speed
+              </p>
+            </div>
+            <svg
+              class="size-5 text-muted-foreground"
+              xmlns="http://www.w3.org/2000/svg"
+              width="1em"
+              height="1em"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M9 5L15 12L9 19"
+              ></path>
+            </svg>
+          </button>
+          <div class="flex items-center justify-between px-4 py-3 min-h-12">
+            <div class="flex items-center gap-3">
+              <svg
+                class="size-5 text-primary"
+                xmlns="http://www.w3.org/2000/svg"
+                width="1em"
+                height="1em"
+                viewBox="0 0 24 24"
+              >
+                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5">
+                  <path
+                    d="M14.5 19.5H9.5M14.5 19.5C14.5 18.7865 14.5 18.4297 14.5381 18.193C14.6609 17.4296 14.6824 17.3815 15.1692 16.7807C15.3201 16.5945 15.8805 16.0927 17.0012 15.0892C18.5349 13.7159 19.5 11.7206 19.5 9.5C19.5 5.35786 16.1421 2 12 2C7.85786 2 4.5 5.35786 4.5 9.5C4.5 11.7206 5.4651 13.7159 6.99876 15.0892C8.11945 16.0927 8.67987 16.5945 8.83082 16.7807C9.31762 17.3815 9.3391 17.4296 9.46192 18.193C9.5 18.4297 9.5 18.7865 9.5 19.5M14.5 19.5C14.5 20.4346 14.5 20.9019 14.299 21.25C14.1674 21.478 13.978 21.6674 13.75 21.799C13.4019 22 12.9346 22 12 22C11.0654 22 10.5981 22 10.25 21.799C10.022 21.6674 9.83261 21.478 9.70096 21.25C9.5 20.9019 9.5 20.4346 9.5 19.5"
+                  ></path>
+                  <path d="M12 17V15"></path>
+                  <path
+                    d="M13.7324 14C13.3866 14.5978 12.7403 15 12 15C11.2597 15 10.6134 14.5978 10.2676 14"
+                  ></path>
+                </g>
+              </svg>
+              <div>
+                <p class="text-sm font-semibold">AC display</p>
+                <p class="text-xs text-muted-foreground">On · independent of AC power</p>
+              </div>
+            </div>
+            <button
+              class="min-h-12 px-3 rounded-xl bg-secondary text-secondary-foreground text-sm font-medium"
+            >
+              Turn display off
+            </button>
+          </div>
+          <button class="w-full min-h-12 flex items-center justify-between px-4 py-3 text-left">
+            <div>
+              <p class="text-sm font-semibold">Eco · Powerful · Capacity</p>
+              <p class="text-xs text-muted-foreground">Cool-only options and fixed capacity</p>
+            </div>
+            <svg
+              class="size-5 text-muted-foreground"
+              xmlns="http://www.w3.org/2000/svg"
+              width="1em"
+              height="1em"
+              viewBox="0 0 24 24"
+            >
+              <path
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                d="M9 5L15 12L9 19"
+              ></path>
+            </svg>
+          </button>
+        </section>
+      </div>
+      <nav
+        class="fixed bottom-0 left-0 right-0 max-w-[390px] mx-auto bg-card border-t border-border flex pb-4 pt-2"
+      >
+        <button
+          class="flex-1 min-h-12 flex flex-col items-center justify-center gap-1 text-primary text-xs font-semibold"
+          aria-current="page"
+        >
+          <svg
+            class="size-5"
+            xmlns="http://www.w3.org/2000/svg"
+            width="1em"
+            height="1em"
+            viewBox="0 0 24 24"
+          >
+            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5">
+              <path
+                d="M9.5 14C11.1569 14 12.5 15.3431 12.5 17C12.5 18.6568 11.1569 20 9.5 20C7.84315 20 6.5 18.6568 6.5 17C6.5 15.3431 7.84315 14 9.5 14Z"
+              ></path>
+              <path
+                d="M14.5 3.99998C12.8431 3.99998 11.5 5.34312 11.5 6.99998C11.5 8.65683 12.8431 9.99998 14.5 9.99998C16.1569 9.99998 17.5 8.65683 17.5 6.99998C17.5 5.34312 16.1569 3.99998 14.5 3.99998Z"
+              ></path>
+              <path d="M15 16.9585L22 16.9585"></path>
+              <path d="M9 6.9585L2 6.9585"></path>
+              <path d="M2 16.9585L4 16.9585"></path>
+              <path d="M22 6.9585L20 6.9585"></path>
+            </g>
+          </svg>
+          Controls</button
+        ><button
+          class="flex-1 min-h-12 flex flex-col items-center justify-center gap-1 text-muted-foreground text-xs font-medium"
+        >
+          <svg
+            class="size-5"
+            xmlns="http://www.w3.org/2000/svg"
+            width="1em"
+            height="1em"
+            viewBox="0 0 24 24"
+          >
+            <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5">
+              <path stroke-linejoin="round" d="M3 22H21"></path>
+              <path
+                d="M3 11C3 10.0572 3 9.58579 3.29289 9.29289C3.58579 9 4.05719 9 5 9C5.94281 9 6.41421 9 6.70711 9.29289C7 9.58579 7 10.0572 7 11V17C7 17.9428 7 18.4142 6.70711 18.7071C6.41421 19 5.94281 19 5 19C4.05719 19 3.58579 19 3.29289 18.7071C3 18.4142 3 17.9428 3 17V11Z"
+              ></path>
+              <path
+                d="M10 7C10 6.05719 10 5.58579 10.2929 5.29289C10.5858 5 11.0572 5 12 5C12.9428 5 13.4142 5 13.7071 5.29289C14 5.58579 14 6.05719 14 7V17C14 17.9428 14 18.4142 13.7071 18.7071C13.4142 19 12.9428 19 12 19C11.0572 19 10.5858 19 10.2929 18.7071C10 18.4142 10 17.9428 10 17V7Z"
+              ></path>
+              <path
+                d="M17 4C17 3.05719 17 2.58579 17.2929 2.29289C17.5858 2 18.0572 2 19 2C19.9428 2 20.4142 2 20.7071 2.29289C21 2.58579 21 3.05719 21 4V17C21 17.9428 21 18.4142 20.7071 18.7071C20.4142 19 19.9428 19 19 19C18.0572 19 17.5858 19 17.2929 18.7071C17 18.4142 17 17.9428 17 17V4Z"
+              ></path>
+            </g>
+          </svg>
+          Readings
+        </button>
+      </nav>
+    </div>
+  </body>
+</html>

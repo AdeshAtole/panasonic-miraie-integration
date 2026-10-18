@@ -1,0 +1,473 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Room AC Readings — corrected local Stitch proposal</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Roboto Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-container": "#342A00",
+            "on-tertiary-fixed-variant": "#594400",
+            "on-tertiary-container": "#410002",
+            "on-primary": "#FFFFFF",
+            "background": "#fdf7ff",
+            "primary": "#4f378a",
+            "surface-tint": "#6750a4",
+            "on-primary-fixed-variant": "#4f378a",
+            "surface-container-low": "#F7F0FF",
+            "surface-container-highest": "#e6e0e9",
+            "primary-container": "#6750a4",
+            "secondary-fixed": "#ffe081",
+            "inverse-primary": "#cfbcff",
+            "on-surface": "#1d1b20",
+            "surface-variant": "#e6e0e9",
+            "on-primary-container": "#e0d2ff",
+            "surface-dark": "#1C1724",
+            "tertiary": "#A43E35",
+            "secondary-container": "#FFE8A3",
+            "primary-fixed-dim": "#cfbcff",
+            "primary-dark": "#D0BCFF",
+            "outline-variant": "#cbc4d2",
+            "on-surface-dark": "#E8E0EF",
+            "error": "#BA1A1A",
+            "tertiary-fixed-dim": "#e7c365",
+            "surface": "#FFFBFF",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary": "#ffffff",
+            "surface-bright": "#fdf7ff",
+            "on-secondary-fixed": "#231b00",
+            "on-tertiary-fixed": "#241a00",
+            "primary-fixed": "#e9ddff",
+            "tertiary-fixed": "#ffdf93",
+            "secondary-fixed-dim": "#e2c466",
+            "on-primary-fixed": "#22005d",
+            "on-tertiary": "#ffffff",
+            "on-error-container": "#93000a",
+            "surface-container": "#f2ecf4",
+            "on-error": "#ffffff",
+            "inverse-surface": "#322f35",
+            "outline": "#7a7582",
+            "inverse-on-surface": "#f5eff7",
+            "tertiary-container": "#c9a74d",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#564500",
+            "secondary": "#725c01",
+            "surface-container-high": "#ece6ee",
+            "on-surface-variant": "#494551",
+            "on-background": "#1d1b20",
+            "surface-dim": "#ded8e0"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "32px",
+            "gutter": "20px",
+            "space-md": "16px",
+            "space-xs": "4px",
+            "margin": "24px",
+            "space-sm": "8px",
+            "space-lg": "24px"
+          },
+          "fontFamily": {
+            "label": ["Roboto", "sans-serif"],
+            "headline-md": ["Roboto", "sans-serif"],
+            "display-lg": ["Roboto", "sans-serif"],
+            "body-base": ["Roboto", "sans-serif"]
+          },
+          "fontSize": {
+            "label": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+            "display-lg": ["88px", { "lineHeight": "96px", "fontWeight": "700" }],
+            "body-base": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-fill {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  <style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}[type='text'],input:where(:not([type])),[type='email'],[type='url'],[type='password'],[type='number'],[type='date'],[type='datetime-local'],[type='month'],[type='search'],[type='tel'],[type='time'],[type='week'],[multiple],textarea,select{-webkit-appearance:none;appearance:none;background-color:#fff;border-color:#6b7280;border-width:1px;border-radius:0px;padding-top:0.5rem;padding-right:0.75rem;padding-bottom:0.5rem;padding-left:0.75rem;font-size:1rem;line-height:1.5rem;--tw-shadow:0 0 #0000;}[type='text']:focus, input:where(:not([type])):focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus{outline:2px solid transparent;outline-offset:2px;--tw-ring-inset:var(--tw-empty,/*!*/ /*!*/);--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:#2563eb;--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);border-color:#2563eb}input::placeholder,textarea::placeholder{color:#6b7280;opacity:1}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-date-and-time-value{min-height:1.5em;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit,::-webkit-datetime-edit-year-field,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute-field,::-webkit-datetime-edit-second-field,::-webkit-datetime-edit-millisecond-field,::-webkit-datetime-edit-meridiem-field{padding-top:0;padding-bottom:0}select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");background-position:right 0.5rem center;background-repeat:no-repeat;background-size:1.5em 1.5em;padding-right:2.5rem;print-color-adjust:exact}[multiple],[size]:where(select:not([size="1"])){background-image:initial;background-position:initial;background-repeat:unset;background-size:initial;padding-right:0.75rem;print-color-adjust:unset}[type='checkbox'],[type='radio']{-webkit-appearance:none;appearance:none;padding:0;print-color-adjust:exact;display:inline-block;vertical-align:middle;background-origin:border-box;-webkit-user-select:none;user-select:none;flex-shrink:0;height:1rem;width:1rem;color:#2563eb;background-color:#fff;border-color:#6b7280;border-width:1px;--tw-shadow:0 0 #0000}[type='checkbox']{border-radius:0px}[type='radio']{border-radius:100%}[type='checkbox']:focus,[type='radio']:focus{outline:2px solid transparent;outline-offset:2px;--tw-ring-inset:var(--tw-empty,/*!*/ /*!*/);--tw-ring-offset-width:2px;--tw-ring-offset-color:#fff;--tw-ring-color:#2563eb;--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}[type='checkbox']:checked,[type='radio']:checked{border-color:transparent;background-color:currentColor;background-size:100% 100%;background-position:center;background-repeat:no-repeat}[type='checkbox']:checked{background-image:url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");}@media (forced-colors: active) {[type='checkbox']:checked{-webkit-appearance:auto;appearance:auto}}[type='radio']:checked{background-image:url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");}@media (forced-colors: active) {[type='radio']:checked{-webkit-appearance:auto;appearance:auto}}[type='checkbox']:checked:hover,[type='checkbox']:checked:focus,[type='radio']:checked:hover,[type='radio']:checked:focus{border-color:transparent;background-color:currentColor}[type='checkbox']:indeterminate{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 8h8'/%3e%3c/svg%3e");border-color:transparent;background-color:currentColor;background-size:100% 100%;background-position:center;background-repeat:no-repeat;}@media (forced-colors: active) {[type='checkbox']:indeterminate{-webkit-appearance:auto;appearance:auto}}[type='checkbox']:indeterminate:hover,[type='checkbox']:indeterminate:focus{border-color:transparent;background-color:currentColor}[type='file']{background:unset;border-color:inherit;border-width:0;border-radius:0;padding:0;font-size:unset;line-height:inherit}[type='file']:focus{outline:1px solid ButtonText;outline:1px auto -webkit-focus-ring-color}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.relative{position:relative}.bottom-0{bottom:0px}.bottom-1{bottom:0.25rem}.left-0{left:0px}.right-0{right:0px}.top-0{top:0px}.z-40{z-index:40}.z-50{z-index:50}.mx-auto{margin-left:auto;margin-right:auto}.my-1{margin-top:0.25rem;margin-bottom:0.25rem}.mr-0\.5{margin-right:0.125rem}.mt-0\.5{margin-top:0.125rem}.block{display:block}.flex{display:flex}.grid{display:grid}.h-1{height:0.25rem}.h-10{height:2.5rem}.h-2{height:0.5rem}.h-full{height:100%}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-14{width:3.5rem}.w-16{width:4rem}.w-2{width:0.5rem}.w-20{width:5rem}.w-24{width:6rem}.w-32{width:8rem}.w-full{width:100%}.max-w-\[412px\]{max-width:412px}.flex-1{flex:1 1 0%}.cursor-pointer{cursor:pointer}.select-none{-webkit-user-select:none;user-select:none}.list-none{list-style-type:none}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-center{align-items:center}.items-baseline{align-items:baseline}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.justify-around{justify-content:space-around}.gap-2\.5{gap:0.625rem}.space-x-0\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.125rem * var(--tw-space-x-reverse));margin-left:calc(0.125rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-1 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.25rem * var(--tw-space-x-reverse));margin-left:calc(0.25rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-1\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.375rem * var(--tw-space-x-reverse));margin-left:calc(0.375rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-2\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.625rem * var(--tw-space-x-reverse));margin-left:calc(0.625rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-3 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.75rem * var(--tw-space-x-reverse));margin-left:calc(0.75rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.space-y-1\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.375rem * var(--tw-space-y-reverse))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-2\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.625rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.625rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-3\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.875rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.875rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.truncate{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:2rem}.rounded-xl{border-radius:3rem}.border{border-width:1px}.border-t{border-top-width:1px}.border-outline{--tw-border-opacity:1;border-color:rgb(122 117 130 / var(--tw-border-opacity, 1))}.border-outline-variant{--tw-border-opacity:1;border-color:rgb(203 196 210 / var(--tw-border-opacity, 1))}.border-outline-variant\/20{border-color:rgb(203 196 210 / 0.2)}.border-outline-variant\/30{border-color:rgb(203 196 210 / 0.3)}.border-outline-variant\/40{border-color:rgb(203 196 210 / 0.4)}.bg-background{--tw-bg-opacity:1;background-color:rgb(253 247 255 / var(--tw-bg-opacity, 1))}.bg-on-surface\/40{background-color:rgb(29 27 32 / 0.4)}.bg-primary{--tw-bg-opacity:1;background-color:rgb(79 55 138 / var(--tw-bg-opacity, 1))}.bg-primary-container{--tw-bg-opacity:1;background-color:rgb(103 80 164 / var(--tw-bg-opacity, 1))}.bg-primary-fixed{--tw-bg-opacity:1;background-color:rgb(233 221 255 / var(--tw-bg-opacity, 1))}.bg-secondary{--tw-bg-opacity:1;background-color:rgb(114 92 1 / var(--tw-bg-opacity, 1))}.bg-secondary-container{--tw-bg-opacity:1;background-color:rgb(255 232 163 / var(--tw-bg-opacity, 1))}.bg-secondary-fixed{--tw-bg-opacity:1;background-color:rgb(255 224 129 / var(--tw-bg-opacity, 1))}.bg-surface{--tw-bg-opacity:1;background-color:rgb(255 251 255 / var(--tw-bg-opacity, 1))}.bg-surface-container{--tw-bg-opacity:1;background-color:rgb(242 236 244 / var(--tw-bg-opacity, 1))}.bg-surface-container-high{--tw-bg-opacity:1;background-color:rgb(236 230 238 / var(--tw-bg-opacity, 1))}.bg-surface-container-low{--tw-bg-opacity:1;background-color:rgb(247 240 255 / var(--tw-bg-opacity, 1))}.bg-surface-container-lowest{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-surface\/50{background-color:rgb(255 251 255 / 0.5)}.p-2\.5{padding:0.625rem}.p-3{padding:0.75rem}.p-3\.5{padding:0.875rem}.p-space-md{padding:16px}.px-1\.5{padding-left:0.375rem;padding-right:0.375rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-space-lg{padding-left:24px;padding-right:24px}.px-space-md{padding-left:16px;padding-right:16px}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-space-sm{padding-top:8px;padding-bottom:8px}.py-space-xs{padding-top:4px;padding-bottom:4px}.pb-1{padding-bottom:0.25rem}.pb-28{padding-bottom:7rem}.pt-0{padding-top:0px}.pt-1{padding-top:0.25rem}.pt-2{padding-top:0.5rem}.text-center{text-align:center}.text-right{text-align:right}.font-body-base{font-family:Roboto, sans-serif}.font-headline-md{font-family:Roboto, sans-serif}.font-label{font-family:Roboto, sans-serif}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-2xl{font-size:1.5rem;line-height:2rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[14px\]{font-size:14px}.text-\[16px\]{font-size:16px}.text-\[18px\]{font-size:18px}.text-\[20px\]{font-size:20px}.text-base{font-size:1rem;line-height:1.5rem}.text-body-base{font-size:16px;line-height:24px;font-weight:400}.text-headline-md{font-size:32px;line-height:40px;font-weight:700}.text-label{font-size:14px;line-height:20px;font-weight:600}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-normal{font-weight:400}.font-semibold{font-weight:600}.leading-none{line-height:1}.leading-tight{line-height:1.25}.tracking-tight{letter-spacing:-0.025em}.text-on-primary{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-on-primary-fixed{--tw-text-opacity:1;color:rgb(34 0 93 / var(--tw-text-opacity, 1))}.text-on-secondary-container{--tw-text-opacity:1;color:rgb(52 42 0 / var(--tw-text-opacity, 1))}.text-on-secondary-fixed{--tw-text-opacity:1;color:rgb(35 27 0 / var(--tw-text-opacity, 1))}.text-on-surface{--tw-text-opacity:1;color:rgb(29 27 32 / var(--tw-text-opacity, 1))}.text-on-surface-variant{--tw-text-opacity:1;color:rgb(73 69 81 / var(--tw-text-opacity, 1))}.text-outline{--tw-text-opacity:1;color:rgb(122 117 130 / var(--tw-text-opacity, 1))}.text-primary{--tw-text-opacity:1;color:rgb(79 55 138 / var(--tw-text-opacity, 1))}.text-secondary{--tw-text-opacity:1;color:rgb(114 92 1 / var(--tw-text-opacity, 1))}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.shadow-\[0_1px_2px_rgba\(0\2c 0\2c 0\2c 0\.03\)\]{--tw-shadow:0 1px 2px rgba(0,0,0,0.03);--tw-shadow-colored:0 1px 2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-xl{--tw-shadow:0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-150{transition-duration:150ms}.duration-200{transition-duration:200ms}.hover\:bg-surface-container-high:hover{--tw-bg-opacity:1;background-color:rgb(236 230 238 / var(--tw-bg-opacity, 1))}.hover\:bg-surface-container-low:hover{--tw-bg-opacity:1;background-color:rgb(247 240 255 / var(--tw-bg-opacity, 1))}.hover\:opacity-90:hover{opacity:0.9}.hover\:opacity-95:hover{opacity:0.95}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group[open] .group-open\:rotate-180{--tw-rotate:180deg;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.dark\:bg-secondary:is(.dark *){--tw-bg-opacity:1;background-color:rgb(114 92 1 / var(--tw-bg-opacity, 1))}.dark\:bg-surface-dark:is(.dark *){--tw-bg-opacity:1;background-color:rgb(28 23 36 / var(--tw-bg-opacity, 1))}.dark\:text-on-secondary:is(.dark *){--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.dark\:text-on-surface-dark:is(.dark *){--tw-text-opacity:1;color:rgb(232 224 239 / var(--tw-text-opacity, 1))}.dark\:text-outline-variant:is(.dark *){--tw-text-opacity:1;color:rgb(203 196 210 / var(--tw-text-opacity, 1))}.dark\:text-primary-dark:is(.dark *){--tw-text-opacity:1;color:rgb(208 188 255 / var(--tw-text-opacity, 1))}.dark\:hover\:bg-surface-dim:hover:is(.dark *){--tw-bg-opacity:1;background-color:rgb(222 216 224 / var(--tw-bg-opacity, 1))}.dark\:hover\:bg-surface-variant:hover:is(.dark *){--tw-bg-opacity:1;background-color:rgb(230 224 233 / var(--tw-bg-opacity, 1))}</style></head>
+<body class="bg-background text-on-surface antialiased flex justify-center min-h-screen">
+<!-- Android Mobile Screen Canvas (390px simulated frame) -->
+<div class="w-full max-w-[412px] bg-background min-h-screen flex flex-col relative pb-28 shadow-xl">
+<!-- Android System Status Bar (Material 3 style) -->
+<header class="w-full h-10 px-space-md pt-2 flex items-center justify-between text-on-surface select-none z-50">
+<span class="font-label text-label font-bold text-on-surface">10:24</span>
+<div class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[18px]">wifi</span>
+<span class="material-symbols-outlined text-[18px]">signal_cellular_alt</span>
+<div class="flex items-center space-x-0.5">
+<span class="font-label text-label text-xs font-semibold mr-0.5">92%</span>
+<span class="material-symbols-outlined text-[20px] material-symbols-fill text-primary">battery_full</span>
+</div>
+</div>
+</header>
+<!-- TopAppBar from JSON -->
+<section class="docked full-width top-0 bg-surface-container dark:bg-surface-dark flex justify-between items-center w-full px-space-md py-space-sm z-40 transition-colors">
+<div class="flex items-center space-x-3">
+<button aria-label="Room selection" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-high dark:hover:bg-surface-dim transition-colors active:scale-95 duration-150 text-on-surface" type="button">
+<span class="material-symbols-outlined">meeting_room</span>
+</button>
+<div>
+<div class="flex items-center space-x-1 cursor-pointer">
+<h1 class="font-headline-md text-headline-md text-on-surface dark:text-on-surface-dark font-bold leading-none tracking-tight">Bedroom AC</h1>
+<span class="material-symbols-outlined text-on-surface-variant text-lg">arrow_drop_down</span>
+</div>
+<span class="font-label text-label text-xs text-primary font-medium">Readings &amp; Diagnostics</span>
+</div>
+</div>
+<div class="flex items-center space-x-1">
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-high dark:hover:bg-surface-dim transition-colors active:scale-95 duration-150 text-primary dark:text-primary-dark" id="refresh-button" type="button">
+<span class="material-symbols-outlined" id="refresh-icon">refresh</span>
+</button>
+</div>
+</section>
+<!-- On-Demand Snapshot Notice / Sub-banner -->
+<div class="px-space-md pt-2 pb-1">
+<div class="bg-surface-container-low rounded-xl px-space-md py-2 flex items-center justify-between border border-outline-variant/30">
+<div class="flex items-center space-x-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label text-label text-xs text-on-surface-variant font-medium">Updated 10:24</span>
+</div>
+<span class="font-label text-label text-xs text-on-surface-variant font-normal">Last refreshed reading</span>
+</div>
+</div>
+<!-- Main Content Container -->
+<main class="flex-1 px-space-md space-y-4 pt-2">
+<!-- SECTION 1: Current Readings Card -->
+<section class="bg-surface-container-low rounded-3xl p-space-md space-y-3 border border-outline-variant/40">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-xl">sensors</span>
+<h2 class="font-label text-label text-base font-bold text-on-surface">Current Readings</h2>
+</div>
+<span class="font-label text-label text-xs px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed">Last refreshed</span>
+</div>
+<!-- Metric Grid -->
+<div class="grid grid-cols-2 gap-2.5">
+<!-- Room Temp -->
+<div class="bg-surface rounded-2xl p-3 flex flex-col justify-between border border-outline-variant/20 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
+<span class="font-label text-label text-xs text-on-surface-variant">Room Temp</span>
+<div class="my-1 flex items-baseline space-x-1">
+<span class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight">24.18</span>
+<span class="font-body-base text-body-base text-on-surface-variant font-medium">°C</span>
+</div>
+<div class="flex items-center space-x-1 text-primary">
+<span class="material-symbols-outlined text-[14px]">thermostat</span>
+<span class="font-label text-label text-xs font-medium">Room sensor</span>
+</div>
+</div>
+<!-- Target Temp -->
+<div class="bg-surface rounded-2xl p-3 flex flex-col justify-between border border-outline-variant/20 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
+<span class="font-label text-label text-xs text-on-surface-variant">Target Temp</span>
+<div class="my-1 flex items-baseline space-x-1">
+<span class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight">23</span>
+<span class="font-body-base text-body-base text-on-surface-variant font-medium">°C</span>
+</div>
+<div class="flex items-center space-x-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">adjust</span>
+<span class="font-label text-label text-xs font-medium">Current setpoint</span>
+</div>
+</div>
+<!-- Fan Setting -->
+<div class="bg-surface rounded-2xl p-3 flex flex-col justify-between border border-outline-variant/20 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
+<span class="font-label text-label text-xs text-on-surface-variant">Fan</span>
+<div class="my-1">
+<span class="font-headline-md text-2xl font-bold text-on-surface">Auto</span>
+</div>
+<div class="flex items-center space-x-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">tune</span>
+<span class="font-label text-label text-xs font-medium">Current setting</span>
+</div>
+</div>
+<!-- Connection RSSI -->
+<div class="bg-surface rounded-2xl p-3 flex flex-col justify-between border border-outline-variant/20 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
+<span class="font-label text-label text-xs text-on-surface-variant">Wi-Fi Connection</span>
+<div class="my-1 flex items-baseline space-x-1.5">
+<span class="font-headline-md text-xl font-bold text-on-surface">−55</span>
+<span class="font-label text-label text-xs text-on-surface-variant font-medium">dBm</span>
+</div>
+<div class="flex items-center space-x-1 text-primary">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+<span class="font-label text-label text-xs font-medium text-secondary">Connected</span>
+</div>
+</div>
+</div>
+<!-- Health Banner (Errors / Warnings) -->
+<div class="bg-surface rounded-xl p-2.5 flex items-center justify-between border border-outline-variant/30">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-base material-symbols-fill">verified</span>
+<span class="font-label text-label text-xs text-on-surface font-medium">System Health</span>
+</div>
+<span class="font-label text-label text-xs text-on-surface-variant">Errors: None · Warnings: None</span>
+</div>
+</section>
+<!-- SECTION 2: Daily Energy Section -->
+<section class="bg-surface-container rounded-3xl p-space-md space-y-3.5 border border-outline-variant/30">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-secondary text-xl">bolt</span>
+<div>
+<h2 class="font-label text-label text-base font-bold text-on-surface">Daily Energy</h2>
+<p class="font-label text-label text-xs text-on-surface-variant font-normal">Last 7 days reported by unit</p>
+</div>
+</div>
+<span class="font-label text-label text-xs px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-semibold">On demand</span>
+</div>
+<!-- Daily kWh Discrete Row List (No fabricated continuous line graphs) -->
+<div class="space-y-1.5 bg-surface rounded-2xl p-2.5 border border-outline-variant/20">
+<!-- Today -->
+<div class="flex items-center justify-between py-1.5 px-2 rounded-xl bg-surface-container-low">
+<div class="flex items-center space-x-2">
+<span class="font-label text-label text-xs font-bold text-on-surface w-20">Today (Mon)</span>
+<span class="font-label text-label text-[11px] px-1.5 py-0.2 rounded-full bg-secondary-fixed text-on-secondary-fixed font-semibold">Partial</span>
+</div>
+<div class="flex items-center space-x-1.5">
+<div class="w-16 h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 44%"></div>
+</div>
+<span class="font-label text-label text-xs font-bold text-on-surface text-right w-14">4.1 kWh</span>
+</div>
+</div>
+<!-- Yesterday -->
+<div class="flex items-center justify-between py-1 px-2 rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="font-label text-label text-xs font-medium text-on-surface w-24">Yesterday (Sun)</span>
+<div class="flex items-center space-x-1.5">
+<div class="w-16 h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 88%"></div>
+</div>
+<span class="font-label text-label text-xs font-semibold text-on-surface text-right w-14">8.6 kWh</span>
+</div>
+</div>
+<!-- Mon -->
+<div class="flex items-center justify-between py-1 px-2 rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="font-label text-label text-xs font-medium text-on-surface w-24">Sat</span>
+<div class="flex items-center space-x-1.5">
+<div class="w-16 h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 82%"></div>
+</div>
+<span class="font-label text-label text-xs font-semibold text-on-surface text-right w-14">7.9 kWh</span>
+</div>
+</div>
+<!-- Sun -->
+<div class="flex items-center justify-between py-1 px-2 rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="font-label text-label text-xs font-medium text-on-surface w-24">Fri</span>
+<div class="flex items-center space-x-1.5">
+<div class="w-16 h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 95%"></div>
+</div>
+<span class="font-label text-label text-xs font-semibold text-on-surface text-right w-14">9.2 kWh</span>
+</div>
+</div>
+<!-- Sat -->
+<div class="flex items-center justify-between py-1 px-2 rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="font-label text-label text-xs font-medium text-on-surface w-24">Thu</span>
+<div class="flex items-center space-x-1.5">
+<div class="w-16 h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 90%"></div>
+</div>
+<span class="font-label text-label text-xs font-semibold text-on-surface text-right w-14">8.8 kWh</span>
+</div>
+</div>
+<!-- Fri -->
+<div class="flex items-center justify-between py-1 px-2 rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="font-label text-label text-xs font-medium text-on-surface w-24">Wed</span>
+<div class="flex items-center space-x-1.5">
+<div class="w-16 h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 76%"></div>
+</div>
+<span class="font-label text-label text-xs font-semibold text-on-surface text-right w-14">7.4 kWh</span>
+</div>
+</div>
+<!-- Thu -->
+<div class="flex items-center justify-between py-1 px-2 rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="font-label text-label text-xs font-medium text-on-surface w-24">Tue</span>
+<div class="flex items-center space-x-1.5">
+<div class="w-16 h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 70%"></div>
+</div>
+<span class="font-label text-label text-xs font-semibold text-on-surface text-right w-14">6.9 kWh</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center space-x-2 pt-1">
+<button class="flex-1 py-2 px-3 rounded-full border border-outline text-primary font-label text-label text-xs font-semibold flex items-center justify-center space-x-1.5 hover:bg-surface-container-high active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]">history</span>
+<span>Reload energy</span>
+</button>
+<button class="flex-1 py-2 px-3 rounded-full bg-secondary-container text-on-secondary-container font-label text-label text-xs font-semibold flex items-center justify-center space-x-1.5 hover:opacity-90 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Export energy CSV</span>
+</button>
+</div>
+<p class="font-label text-label text-[11px] text-on-surface-variant text-center leading-tight">
+          Loaded when you ask. No background polling.
+        </p>
+</section>
+<!-- SECTION 3: Saved Snapshots & SAF Preview -->
+<section class="bg-surface-container-low rounded-3xl p-space-md space-y-3 border border-outline-variant/40">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-xl">folder_zip</span>
+<h2 class="font-label text-label text-base font-bold text-on-surface">Saved Snapshots</h2>
+</div>
+<span class="font-label text-label text-xs px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary font-semibold">42 snapshots</span>
+</div>
+<p class="font-body-base text-body-base text-xs text-on-surface-variant">
+          Saved when you refresh or change settings. Snapshots and daily energy are logged separately.
+        </p>
+<!-- Android Storage Access Framework (SAF) Inset Card Preview -->
+<div class="bg-surface rounded-2xl p-3 border border-outline-variant/40 space-y-2">
+<div class="flex items-center justify-between text-xs font-semibold text-on-surface-variant">
+<div class="flex items-center space-x-1.5 text-primary">
+<span class="material-symbols-outlined text-[16px]">folder_open</span>
+<span>Android System File Picker</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">Storage Access Framework</span>
+</div>
+<div class="bg-surface-container-high rounded-xl p-2.5 flex items-center justify-between">
+<div class="flex items-center space-x-2 truncate">
+<span class="material-symbols-outlined text-secondary text-lg">description</span>
+<div class="truncate">
+<span class="block font-label text-label text-xs font-bold text-on-surface truncate">room-ac-readings-20261019-102400.csv</span>
+<span class="block font-label text-label text-[11px] text-on-surface-variant">Destination: Downloads/</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-base">check_circle</span>
+</div>
+<p class="font-label text-label text-[11px] text-on-surface-variant">
+            Opens native file picker to choose destination folder. No broad storage permissions needed.
+          </p>
+</div>
+<button class="w-full py-2.5 rounded-full bg-primary text-on-primary font-label text-label text-xs font-semibold flex items-center justify-center space-x-2 shadow-sm hover:opacity-95 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">table_view</span>
+<span>Export readings CSV</span>
+</button>
+</section>
+<!-- SECTION 4: Details & Diagnostics Accordions -->
+<section class="space-y-2.5">
+<!-- Accordion 1: Raw Fields -->
+<details class="group bg-surface-container rounded-2xl border border-outline-variant/30 overflow-hidden">
+<summary class="flex items-center justify-between p-3.5 cursor-pointer list-none select-none hover:bg-surface-container-high transition-colors">
+<div class="flex items-center space-x-2.5">
+<span class="material-symbols-outlined text-primary text-lg">code</span>
+<span class="font-label text-label text-xs font-bold text-on-surface">All Reported Fields (Raw)</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-base transition-transform duration-200 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-3.5 pt-0 border-t border-outline-variant/20 bg-surface/50">
+<div class="bg-surface-container-lowest rounded-xl p-3 font-mono text-[11px] text-on-surface-variant space-y-1">
+<div class="flex justify-between"><span class="text-primary font-semibold">rmtmp:</span><span>24.18</span></div>
+<div class="flex justify-between"><span class="text-primary font-semibold">actmp:</span><span>23</span></div>
+<div class="flex justify-between"><span class="text-primary font-semibold">acfs:</span><span>"auto"</span></div>
+<div class="flex justify-between"><span class="text-primary font-semibold">ps:</span><span>"on"</span></div>
+<div class="flex justify-between"><span class="text-primary font-semibold">acdc:</span><span>"on"</span></div>
+<div class="flex justify-between"><span class="text-primary font-semibold">rssi:</span><span>-55</span></div>
+<div class="flex justify-between"><span class="text-primary font-semibold">errors:</span><span>""</span></div>
+</div>
+</div>
+</details>
+<!-- Accordion 2: Device Details & Capabilities -->
+<details class="group bg-surface-container rounded-2xl border border-outline-variant/30 overflow-hidden">
+<summary class="flex items-center justify-between p-3.5 cursor-pointer list-none select-none hover:bg-surface-container-high transition-colors">
+<div class="flex items-center space-x-2.5">
+<span class="material-symbols-outlined text-primary text-lg">info</span>
+<span class="font-label text-label text-xs font-bold text-on-surface">Device Details &amp; Capabilities</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-base transition-transform duration-200 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-3.5 pt-0 border-t border-outline-variant/20 bg-surface/50 space-y-2">
+<div class="bg-surface-container-lowest rounded-xl p-3 text-xs space-y-1.5 text-on-surface">
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Model:</span>
+<span class="font-semibold">Synthetic AC model</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Protocol:</span>
+<span class="font-semibold">Panasonic HTTPS</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Interface:</span>
+<span class="font-semibold">MirAIe cloud API</span>
+</div>
+</div>
+<div class="flex items-center space-x-2 pt-1">
+<button class="flex-1 py-1.5 px-2 rounded-full border border-outline-variant text-on-surface font-label text-label text-[11px] font-semibold text-center hover:bg-surface-container-high active:scale-95 transition-all" type="button">
+                Refresh capabilities
+              </button>
+<button class="flex-1 py-1.5 px-2 rounded-full border border-outline-variant text-on-surface font-label text-label text-[11px] font-semibold text-center hover:bg-surface-container-high active:scale-95 transition-all" type="button">
+                Collect diagnostics
+              </button>
+</div>
+<p class="font-label text-label text-[10px] text-outline text-center">
+              Diagnostic viewer only. Not a firmware updater or repair utility.
+            </p>
+</div>
+</details>
+</section>
+</main>
+<!-- Bottom Navigation Bar from JSON (Readings is ACTIVE) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-space-md py-space-sm bg-surface-container-low dark:bg-surface-dark transition-colors">
+<!-- Destination 1: Controller (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-space-lg py-space-xs hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors active:scale-95 duration-150 rounded-full" href="#">
+<span class="material-symbols-outlined text-2xl">thermostat</span>
+<span class="font-label text-label text-xs mt-0.5">Controller</span>
+</a>
+<!-- Destination 2: Readings (Active) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-space-lg py-space-xs active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-2xl material-symbols-fill">query_stats</span>
+<span class="font-label text-label text-xs mt-0.5 font-bold">Readings</span>
+</a>
+</nav>
+<!-- Android Gesture Navigation Bar Pill -->
+<div class="fixed bottom-1 left-0 right-0 mx-auto w-32 h-1 bg-on-surface/40 rounded-full pointer-events-none z-50"></div>
+</div>
+<script>
+    // Micro-interaction: Refresh button spin simulation
+    const refreshBtn = document.getElementById('refresh-button');
+    const refreshIcon = document.getElementById('refresh-icon');
+
+    if (refreshBtn && refreshIcon) {
+      refreshBtn.addEventListener('click', () => {
+        refreshIcon.classList.add('animate-spin');
+        setTimeout(() => {
+          refreshIcon.classList.remove('animate-spin');
+        }, 800);
+      });
+    }
+  </script>
+</body></html>

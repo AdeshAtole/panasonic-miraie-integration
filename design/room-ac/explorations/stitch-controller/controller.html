@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Room AC - Bedroom</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-container": "#6750a4",
+            "surface-container-highest": "#e6e0e9",
+            "tertiary": "#A43E35",
+            "secondary-container": "#FFE8A3",
+            "surface-variant": "#e6e0e9",
+            "on-secondary": "#ffffff",
+            "on-surface-dark": "#E8E0EF",
+            "on-secondary-fixed": "#231b00",
+            "surface-container-low": "#f8f2fa",
+            "on-tertiary-fixed": "#241a00",
+            "on-primary-container": "#21005D",
+            "error-container": "#ffdad6",
+            "on-tertiary-container": "#503d00",
+            "tertiary-container": "#FFDAD4",
+            "secondary-fixed-dim": "#e2c466",
+            "surface-dark": "#1C1724",
+            "on-surface": "#241B35",
+            "surface": "#FFFBFF",
+            "error": "#BA1A1A",
+            "primary-dark": "#D0BCFF",
+            "tertiary-fixed-dim": "#e7c365",
+            "surface-dim": "#ded8e0",
+            "surface-tint": "#6750a4",
+            "on-primary": "#FFFFFF",
+            "surface-container-high": "#ece6ee",
+            "primary": "#4f378a",
+            "outline-variant": "#cbc4d2",
+            "on-primary-fixed": "#22005d",
+            "outline": "#7a7582",
+            "surface-bright": "#fdf7ff",
+            "on-error": "#ffffff",
+            "on-secondary-fixed-variant": "#564500",
+            "surface-container": "#f2ecf4",
+            "secondary-fixed": "#ffe081",
+            "background": "#fdf7ff",
+            "on-surface-variant": "#494551",
+            "inverse-surface": "#322f35",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed": "#ffdf93",
+            "primary-fixed-dim": "#cfbcff",
+            "on-tertiary-fixed-variant": "#594400",
+            "on-secondary-container": "#342A00",
+            "primary-fixed": "#e9ddff",
+            "on-error-container": "#93000a",
+            "inverse-on-surface": "#f5eff7",
+            "on-primary-fixed-variant": "#4f378a",
+            "inverse-primary": "#cfbcff",
+            "on-background": "#1d1b20",
+            "secondary": "#725c01"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "24px",
+            "gutter": "20px",
+            "space-xs": "4px",
+            "space-xl": "32px",
+            "space-md": "16px",
+            "space-sm": "8px",
+            "margin": "24px"
+          },
+          "fontFamily": {
+            "headline-md": ["Roboto", "sans-serif"],
+            "label": ["Roboto", "sans-serif"],
+            "body-base": ["Roboto", "sans-serif"],
+            "display-lg": ["Roboto", "sans-serif"]
+          },
+          "fontSize": {
+            "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "body-base": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "display-lg": ["88px", { "lineHeight": "96px", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-fill {
+      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Touch ripple simulation */
+    .touch-target {
+      min-width: 48px;
+      min-height: 48px;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body-base text-body-base antialiased flex justify-center items-start min-h-screen selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Mobile Frame Container (Native Android ~390-412dp) -->
+<main class="w-full max-w-[412px] bg-surface min-h-screen relative flex flex-col pb-28 select-none">
+<!-- 1. Android System Status Bar -->
+<header class="w-full px-space-md pt-2 pb-1 flex justify-between items-center text-on-surface text-xs font-semibold tracking-tight z-40 bg-surface">
+<div class="flex items-center space-x-1">
+<span class="font-label text-label font-bold text-on-surface">10:24</span>
+</div>
+<div class="flex items-center space-x-2 text-on-surface">
+<span class="material-symbols-outlined text-[16px]">wifi</span>
+<span class="material-symbols-outlined text-[16px]">signal_cellular_4_bar</span>
+<div class="flex items-center space-x-0.5">
+<span class="font-label text-[11px] font-bold">92%</span>
+<span class="material-symbols-outlined text-[18px] material-symbols-fill">battery_charging_90</span>
+</div>
+</div>
+</header>
+<!-- 2. Shared TopAppBar (Immutable Blueprint Applied) -->
+<nav class="flex justify-between items-center w-full px-space-md py-space-sm max-w-screen-sm mx-auto bg-surface">
+<div class="flex items-center space-x-2">
+<button aria-label="Room selector" class="touch-target p-2 rounded-full hover:bg-surface-container-high active:scale-95 transition-all text-on-surface flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-[24px]">meeting_room</span>
+</button>
+<div class="flex flex-col">
+<button class="flex items-center space-x-1 active:scale-95 transition-transform text-left" type="button">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Bedroom</span>
+<span class="material-symbols-outlined text-primary text-[20px]">arrow_drop_down</span>
+</button>
+</div>
+</div>
+<div class="flex items-center space-x-1">
+<button aria-label="Sync with device" class="touch-target p-2 rounded-full hover:bg-surface-container-high active:scale-95 transition-all text-primary flex items-center justify-center" id="sync-button" type="button">
+<span class="material-symbols-outlined text-[24px]" id="sync-icon">sync</span>
+</button>
+<button aria-label="Device settings" class="touch-target p-2 rounded-full hover:bg-surface-container-high active:scale-95 transition-all text-on-surface-variant flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-[24px]">more_vert</span>
+</button>
+</div>
+</nav>
+<!-- Sync Sub-line / Metadata Banner -->
+<div class="px-space-md pb-space-sm flex justify-between items-center text-on-surface-variant">
+<div class="flex items-center space-x-1.5">
+<span class="w-2 h-2 rounded-full bg-[#1b803a] animate-pulse inline-block"></span>
+<span class="font-label text-[12px] text-on-surface-variant tracking-normal">Panasonic Inverter · Connected</span>
+</div>
+<button class="flex items-center space-x-1 bg-surface-container px-space-sm py-1 rounded-full text-primary hover:bg-surface-container-high active:scale-95 transition-all" onclick="triggerRefresh()" type="button">
+<span class="material-symbols-outlined text-[14px]">update</span>
+<span class="font-label text-[11px] font-bold text-primary">Updated 10:24</span>
+</button>
+</div>
+<!-- Content Body Grid / Bento Section -->
+<section class="px-space-md space-y-4 mt-1">
+<!-- 3. Hero Thermostat Focal Area (Asymmetric Bento Composition) -->
+<div class="bg-surface-container rounded-lg p-5 flex flex-col relative overflow-hidden">
+<!-- Playful Background Radial Watermark / Tonal Accents -->
+<div class="absolute -right-12 -top-12 w-48 h-48 bg-secondary-container/40 rounded-full blur-2xl pointer-events-none"></div>
+<div class="absolute -left-10 -bottom-10 w-44 h-44 bg-primary-fixed/50 rounded-full blur-2xl pointer-events-none"></div>
+<!-- Upper Status Row inside Hero -->
+<div class="flex items-center justify-between z-10">
+<div class="flex items-center space-x-2 bg-secondary-container text-on-secondary-container px-3 py-1.5 rounded-full shadow-none">
+<span class="material-symbols-outlined text-[18px] material-symbols-fill text-[#855300]">ac_unit</span>
+<span class="font-label text-label font-bold text-on-secondary-container">On · Cool</span>
+</div>
+<div class="flex items-center space-x-1 bg-surface-container-lowest/80 backdrop-blur-sm px-3 py-1.5 rounded-full text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px] text-primary">device_thermostat</span>
+<span class="font-label text-[13px] font-semibold text-on-surface">Room 24.18°C</span>
+</div>
+</div>
+<!-- Target Label & Expressive Number Stepper -->
+<div class="my-4 flex flex-col items-center justify-center text-center z-10">
+<span class="font-label text-label text-on-surface-variant tracking-wider uppercase">Target</span>
+<div class="flex items-center justify-between w-full max-w-[320px] px-2 py-1">
+<!-- Stepper Decrement -->
+<button aria-label="Decrease target temperature" class="touch-target w-14 h-14 rounded-full bg-surface-container-lowest text-primary flex items-center justify-center hover:bg-surface-variant active:scale-90 transition-all shadow-sm" onclick="adjustTemp(-1)" type="button">
+<span class="material-symbols-outlined text-[32px] font-bold">remove</span>
+</button>
+<!-- Temperature Big Display -->
+<div class="flex items-baseline justify-center select-none mx-2">
+<span class="font-display-lg text-display-lg text-on-surface tracking-tight font-black" id="target-temp">23</span>
+<span class="font-headline-md text-headline-md text-primary font-bold -ml-1">°C</span>
+</div>
+<!-- Stepper Increment -->
+<button aria-label="Increase target temperature" class="touch-target w-14 h-14 rounded-full bg-surface-container-lowest text-primary flex items-center justify-center hover:bg-surface-variant active:scale-90 transition-all shadow-sm" onclick="adjustTemp(1)" type="button">
+<span class="material-symbols-outlined text-[32px] font-bold">add</span>
+</button>
+</div>
+</div>
+<!-- Draft Action Affordance / Confirmation Bar -->
+<div class="flex flex-col items-center justify-center pt-1 z-10">
+<div class="flex items-center space-x-2 bg-surface-container-low px-4 py-1.5 rounded-full text-outline transition-all" id="confirmed-pill">
+<span class="material-symbols-outlined text-[16px] text-[#1b803a] material-symbols-fill" id="confirmed-icon">check_circle</span>
+<span class="font-label text-[13px] font-semibold text-on-surface-variant" id="confirmed-text">Confirmed · Auto sync active</span>
+</div>
+<p class="font-label text-[11px] text-outline mt-1.5 text-center">Set action syncs automatically on dial adjustment</p>
+</div>
+</div>
+<!-- 4. Two Adjacent Quick Controls (Equal Width Bento Cards) -->
+<div class="grid grid-cols-2 gap-3">
+<!-- AC Power Switch Card -->
+<div class="bg-surface-container-low rounded-lg p-4 flex flex-col justify-between h-36 relative overflow-hidden transition-colors">
+<div class="flex items-start justify-between">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[22px] material-symbols-fill">power_settings_new</span>
+</div>
+<!-- Material 3 Native Android Switch (Active) -->
+<button aria-checked="true" class="touch-target w-13 h-7 bg-primary rounded-full relative flex items-center p-1 cursor-pointer transition-colors focus:outline-none" onclick="toggleSwitch(this)" role="switch" type="button">
+<div class="w-5 h-5 bg-on-primary rounded-full translate-x-5 transition-transform flex items-center justify-center">
+<span class="material-symbols-outlined text-[12px] text-primary font-black">check</span>
+</div>
+</button>
+</div>
+<div>
+<div class="flex items-center space-x-1.5">
+<span class="font-label text-label font-bold text-on-surface">AC Power</span>
+</div>
+<p class="font-label text-[12px] text-on-surface-variant font-medium mt-0.5">Device active</p>
+</div>
+</div>
+<!-- AC Display Switch Card -->
+<div class="bg-surface-container-low rounded-lg p-4 flex flex-col justify-between h-36 relative overflow-hidden transition-colors">
+<div class="flex items-start justify-between">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[22px]">lightbulb</span>
+</div>
+<!-- Material 3 Native Switch (Active) -->
+<button aria-checked="true" class="touch-target w-13 h-7 bg-primary rounded-full relative flex items-center p-1 cursor-pointer transition-colors focus:outline-none" onclick="toggleSwitch(this)" role="switch" type="button">
+<div class="w-5 h-5 bg-on-primary rounded-full translate-x-5 transition-transform flex items-center justify-center">
+<span class="material-symbols-outlined text-[12px] text-primary font-black">check</span>
+</div>
+</button>
+</div>
+<div>
+<div class="flex items-center space-x-1.5">
+<span class="font-label text-label font-bold text-on-surface">AC Display</span>
+</div>
+<p class="font-label text-[12px] text-on-surface-variant font-medium mt-0.5">Front panel LED</p>
+</div>
+</div>
+</div>
+<!-- 5. Operating Mode Selector -->
+<div class="bg-surface-container-low rounded-lg p-4 space-y-3">
+<div class="flex justify-between items-center">
+<span class="font-label text-label font-bold text-on-surface">Operating Mode</span>
+<span class="font-label text-[12px] text-primary font-semibold">Panasonic nanoe™X</span>
+</div>
+<!-- Segmented Control Row: Exactly Auto, Cool, Dry, Fan -->
+<div class="grid grid-cols-4 gap-1.5 bg-surface-container p-1 rounded-full" role="tablist">
+<!-- Auto -->
+<button aria-selected="false" class="mode-chip touch-target py-2 rounded-full font-label text-[13px] text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-all" onclick="selectMode(this, 'Auto')" role="tab" type="button">
+<span>Auto</span>
+</button>
+<!-- Cool (Active State) -->
+<button aria-selected="true" class="mode-chip touch-target py-2 bg-primary-container text-on-primary-container rounded-full font-label text-[13px] font-bold flex items-center justify-center space-x-1 transition-all shadow-none" onclick="selectMode(this, 'Cool')" role="tab" type="button">
+<span class="material-symbols-outlined text-[16px] material-symbols-fill">check</span>
+<span>Cool</span>
+</button>
+<!-- Dry -->
+<button aria-selected="false" class="mode-chip touch-target py-2 rounded-full font-label text-[13px] text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-all" onclick="selectMode(this, 'Dry')" role="tab" type="button">
+<span>Dry</span>
+</button>
+<!-- Fan -->
+<button aria-selected="false" class="mode-chip touch-target py-2 rounded-full font-label text-[13px] text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-all" onclick="selectMode(this, 'Fan')" role="tab" type="button">
+<span>Fan</span>
+</button>
+</div>
+<!-- Draft Notice / Apply Affordance -->
+<div class="flex items-center justify-center space-x-1.5 bg-surface-container/70 py-1.5 px-3 rounded-full text-center">
+<span class="material-symbols-outlined text-[14px] text-primary">info</span>
+<span class="font-label text-[11px] text-on-surface-variant" id="mode-status-text">Mode active · Tap another mode to draft &amp; apply</span>
+</div>
+</div>
+<!-- 6. Secondary Controls: Fan Speed & More Controls -->
+<div class="grid grid-cols-2 gap-3">
+<!-- Fan Speed Card -->
+<button class="touch-target bg-surface-container-low hover:bg-surface-container rounded-lg p-4 flex flex-col justify-between text-left active:scale-[0.98] transition-all group" type="button">
+<div class="flex items-center justify-between w-full">
+<div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-fixed">
+<span class="material-symbols-outlined text-[20px]">mode_fan</span>
+</div>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">chevron_right</span>
+</div>
+<div class="mt-3">
+<span class="font-label text-label font-bold text-on-surface block">Fan Speed</span>
+<div class="flex items-center space-x-1 mt-0.5">
+<span class="font-label text-[12px] text-primary font-semibold">Auto</span>
+<span class="text-outline-variant text-[10px]">•</span>
+<span class="font-label text-[11px] text-on-surface-variant">Quiet flow</span>
+</div>
+</div>
+</button>
+<!-- More Controls Card -->
+<button class="touch-target bg-surface-container-low hover:bg-surface-container rounded-lg p-4 flex flex-col justify-between text-left active:scale-[0.98] transition-all group" type="button">
+<div class="flex items-center justify-between w-full">
+<div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-fixed">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</div>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">chevron_right</span>
+</div>
+<div class="mt-3">
+<span class="font-label text-label font-bold text-on-surface block">More Controls</span>
+<div class="flex items-center space-x-1 mt-0.5 overflow-hidden text-ellipsis whitespace-nowrap">
+<span class="font-label text-[11px] bg-secondary-container text-on-secondary-container px-1.5 py-0.5 rounded font-medium">Eco</span>
+<span class="font-label text-[11px] text-on-surface-variant">Powerful · Swing</span>
+</div>
+</div>
+</button>
+</div>
+</section>
+<!-- 7. Shared Bottom Navigation Bar (Mandatory Shell Blueprint) -->
+<!-- Rule execution: "Controller" is exact active page -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-space-md py-space-sm pb-space-lg bg-surface-container-low dark:bg-surface-dark transition-colors">
+<!-- Destination 1: Controller (Active State from style_active_navigation) -->
+<button aria-label="Controller tab" class="flex flex-col items-center justify-center bg-secondary-container dark:bg-primary-container text-on-secondary-container dark:text-on-primary-container rounded-full px-space-md py-space-xs touch-target active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[24px] material-symbols-fill">thermostat</span>
+<span class="font-label text-label">Controller</span>
+</button>
+<!-- Destination 2: Readings (Inactive State from style_inactive_navigation) -->
+<button aria-label="Readings tab" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-dark px-space-md py-space-xs touch-target hover:bg-surface-container dark:hover:bg-surface-container active:scale-95 transition-all duration-150 rounded-full" type="button">
+<span class="material-symbols-outlined text-[24px]">query_stats</span>
+<span class="font-label text-label">Readings</span>
+</button>
+</nav>
+<!-- Native Android 3-button or Gesture Navigation Bar Pill -->
+<div class="fixed bottom-1 left-0 w-full flex justify-center items-center pointer-events-none z-50">
+<div class="w-32 h-1 bg-on-surface/30 rounded-full"></div>
+</div>
+</main>
+<!-- Interactive Logic for Native Android Feel -->
+<script>
+    let currentTemp = 23;
+    let isAdjusted = false;
+
+    function adjustTemp(delta) {
+      currentTemp = Math.min(30, Math.max(16, currentTemp + delta));
+      document.getElementById('target-temp').innerText = currentTemp;
+
+      const confirmedIcon = document.getElementById('confirmed-icon');
+      const confirmedText = document.getElementById('confirmed-text');
+      const confirmedPill = document.getElementById('confirmed-pill');
+
+      confirmedIcon.innerText = "pending";
+      confirmedIcon.classList.remove('text-[#1b803a]');
+      confirmedIcon.classList.add('text-primary');
+      confirmedText.innerText = "Set " + currentTemp + "°C · Applying...";
+      confirmedPill.classList.add('bg-secondary-container', 'text-on-secondary-container');
+      confirmedPill.classList.remove('bg-surface-container-low');
+
+      setTimeout(() => {
+        confirmedIcon.innerText = "check_circle";
+        confirmedIcon.classList.add('text-[#1b803a]');
+        confirmedIcon.classList.remove('text-primary');
+        confirmedText.innerText = "Confirmed · " + currentTemp + "°C active";
+        confirmedPill.classList.remove('bg-secondary-container', 'text-on-secondary-container');
+        confirmedPill.classList.add('bg-surface-container-low');
+      }, 700);
+    }
+
+    function toggleSwitch(btn) {
+      const isChecked = btn.getAttribute('aria-checked') === 'true';
+      const newState = !isChecked;
+      btn.setAttribute('aria-checked', String(newState));
+      const thumb = btn.firstElementChild;
+      const checkIcon = thumb.querySelector('span');
+
+      if (newState) {
+        btn.classList.remove('bg-surface-variant');
+        btn.classList.add('bg-primary');
+        thumb.classList.remove('translate-x-0');
+        thumb.classList.add('translate-x-5');
+        checkIcon.classList.remove('hidden');
+      } else {
+        btn.classList.remove('bg-primary');
+        btn.classList.add('bg-surface-variant');
+        thumb.classList.remove('translate-x-5');
+        thumb.classList.add('translate-x-0');
+        checkIcon.classList.add('hidden');
+      }
+    }
+
+    function selectMode(btn, modeName) {
+      const chips = document.querySelectorAll('.mode-chip');
+      chips.forEach(c => {
+        c.setAttribute('aria-selected', 'false');
+        c.className = "mode-chip touch-target py-2 rounded-full font-label text-[13px] text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-all";
+        c.innerHTML = `<span>${c.innerText.trim().replace('check', '')}</span>`;
+      });
+
+      btn.setAttribute('aria-selected', 'true');
+      btn.className = "mode-chip touch-target py-2 bg-primary-container text-on-primary-container rounded-full font-label text-[13px] font-bold flex items-center justify-center space-x-1 transition-all";
+      btn.innerHTML = `<span class="material-symbols-outlined text-[16px] material-symbols-fill">check</span><span>${modeName}</span>`;
+
+      const statusText = document.getElementById('mode-status-text');
+      statusText.innerText = `Mode set to ${modeName} · Panasonic inverter ready`;
+    }
+
+    function triggerRefresh() {
+      const icon = document.getElementById('sync-icon');
+      icon.classList.add('animate-spin');
+      setTimeout(() => {
+        icon.classList.remove('animate-spin');
+      }, 900);
+    }
+  </script>
+</body></html>

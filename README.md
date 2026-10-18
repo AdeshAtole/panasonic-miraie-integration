@@ -1,48 +1,49 @@
 # Panasonic MirAIe integration
 
-An unofficial, capability-driven MirAIe integration reference, reusable agent skill, and lightweight native Android app. Based on reverse engineering MirAIe India Android 01.4.32 and live testing one Panasonic AC model, CS-CU-NU18BKY5WX.
+A monorepo for an unofficial, portable Panasonic MirAIe integration skill and native apps built around verified protocol behavior. The existing Room AC Android implementation is a **proof of concept**. A new production Android app is being designed; native iOS and macOS apps are planned.
 
-## What is included
+The protocol snapshot comes from MirAIe India Android 01.4.32 and live testing one AC model, CS-CU-NU18BKY5WX. This project is not affiliated with or endorsed by Panasonic. Other device families are research leads rather than tested integrations.
 
-| Folder | Purpose |
+## Repository map
+
+| Location | Responsibility |
 |---|---|
-| [skills/panasonic-miraie](skills/panasonic-miraie/SKILL.md) | Portable agent skill: authentication, discovery, model capabilities, control, telemetry, MQTT findings, and device-family coverage |
-| [room-ac](room-ac/README.md) | Native Android AC app with capability-driven modes, fan settings, Eco/Powerful/capacity, AC display toggle, home-screen widget, local snapshots, and CSV exports |
-| [stay-awake](stay-awake/README.md) | Optional Android helper using a silent local looping video in picture-in-picture |
+| [skills/panasonic-miraie](skills/panasonic-miraie/SKILL.md) | Self-contained, installable integration skill and authoritative protocol/evidence references |
+| [apps/room-ac](apps/room-ac/README.md) | New production native app boundaries: Android, iOS and macOS |
+| [prototypes/room-ac-android](prototypes/room-ac-android/README.md) | Working Android PoC retained for protocol and behavioral verification |
+| [design/room-ac](design/room-ac/README.md) | Maintained interaction prototype, user flows, design system and past explorations |
+| [tools/stay-awake-android](tools/stay-awake-android/README.md) | Optional investigation helper using silent local video in PiP |
+| [packages](packages/README.md) | Policy for future shared libraries; none extracted yet |
+| [docs](docs/architecture.md) | Architecture, development and contribution guidance |
+| [projects.json](projects.json) | Explicit target lifecycle and build/test commands |
 
-The skill includes 209 static API declarations, 231 capability-registry records, and 359 serialized field schemas. It separates **live verified**, **static only**, **inferred**, and **unknown** behavior. Other appliance families are documented as extension leads, not end-to-end tested drivers. This project is not affiliated with or endorsed by Panasonic.
+The skill includes 209 static API declarations, 231 capability-registry records and 359 serialized field schemas. It distinguishes **live verified**, **static only**, **inferred** and **unknown** behavior. Keep `skills/panasonic-miraie/` intact when installing it; the skill does not depend on this repo's apps, private investigation files or build tools.
 
-## Use the skill
+## Start here
 
-Open [SKILL.md](skills/panasonic-miraie/SKILL.md) directly with an agent, or copy the entire `skills/panasonic-miraie` directory into the agent's supported skills directory. For Codex, the usual location is `~/.codex/skills/panasonic-miraie`. Keep its `references` and `agents` directories together. The skill has no runtime dependency on Android, REA, this phone, or private investigation files.
-
-Start with shared authentication/discovery and inspect the selected device's actual model. Do not reuse AC wire keys, capability indexes or transport assumptions for arbitrary appliances. See [device coverage](skills/panasonic-miraie/references/device-coverage.md) for what representative hardware or a cooperating owner must validate.
-
-## Build the Android apps
-
-The current build helpers target a macOS development environment with Python 3, Homebrew OpenJDK at `/opt/homebrew/opt/openjdk`, and Android SDK platform/build-tools 35.0.0 under `~/Library/Android/sdk`. Other environments need those paths adapted in the build helpers. No Gradle or third-party runtime libraries are bundled.
-
-```sh
-python3 room-ac/build.py
-python3 stay-awake/build.py
-```
-
-The helpers generate local development signing keys under each app's ignored `build/` directory and output `room-ac/room-ac.apk` and `stay-awake/stay-awake.apk`. Keep a signing key locally if you need to update an existing installation. Generated keys use the conventional development password; they are not production signing credentials. APKs and signing keys are excluded from this repository.
-
-Install the chosen APK on your own Android device using your normal development workflow. Room AC signs in directly to Panasonic; enter credentials in the app. The app requires internet access and a compatible MirAIe account. Tokens are encrypted with Android Keystore and passwords are not saved.
-
-## Validation
-
-The focused JVM tests use the existing Android JSON test dependency `com.vaadin.external.google:android-json:0.0.20131108.vaadin1`. The runner currently expects its JAR in the conventional `~/.m2/repository` location, the Android platform JAR, and classes generated by building Room AC first.
+Run from the repository root with Python 3.10+:
 
 ```sh
-python3 room-ac/tests/run.py
+python3 scripts/project.py list
+python3 scripts/project.py check
+python3 scripts/project.py doctor android-poc
+python3 scripts/project.py build android-poc
+python3 scripts/project.py test android-poc
+python3 scripts/project.py build stay-awake
 ```
 
-The current suite contains 28 passing checks covering model interpretation, units, missing telemetry and CSV output. Live checks exercised the four advertised AC modes, adaptive controls, Eco, Powerful, capacity selection, widget operation, and status/energy exports. Token expiry refresh and other appliance families remain unverified. Read the [evidence and extension guide](skills/panasonic-miraie/references/evidence-and-extension.md) before making broader support claims.
+`check` needs Node.js 22+ for prototype checks, but no Android SDK, Xcode, account or phone. PoC/helper builds need a JDK and Android SDK; see [development setup](docs/development.md). Build commands never install on a phone, log in, download dependencies implicitly or deploy.
 
-## Data and repository scope
+Production target IDs are `android`, `ios` and `macos`. They currently report **not buildable yet**, with the appropriate project setup instructions. They never fall back to building the PoC. Platform build configuration is owned by the eventual Gradle/Xcode projects, not inherited from PoC pins.
 
-Private captures, account/device identifiers, sensor-history exports, synced project references, proprietary APKs, bulk decompiled source, local credentials and signing material are excluded. The public catalogs contain extracted field/declaration metadata, not account responses or secrets. The application client identifier is public app metadata, not a user credential.
+## Design and implementation
 
-This is an unofficial protocol snapshot. Model support and server behavior can change. Preserve actual reported state, verify commands by readback, and validate new models before claiming support.
+Open the [current clickable prototype](design/room-ac/prototype/index.html), [journey map](design/room-ac/prototype/map.html) and [full interaction handoff](design/room-ac/flows/user-flows.md). The prototype uses synthetic data and performs no real AC requests. Production apps will implement the approved behavior natively; the prototype is not a web runtime to embed in the apps.
+
+The PoC demonstrates capability-driven modes, fan, Eco/Powerful/capacity, independent AC display control, manual widgets, local snapshots and separate CSV exports. It is an integration reference, not the foundation to rename as the finished production app. Existing native protocol logic can inform new implementations after review.
+
+## Validation and publication
+
+The CI workflow checks repository structure, the portable skill, documentation links, prototype behavior and build orchestration. Native app CI is activated when real native projects exist. Local PoC tests and live device verification are distinct from CI; see [development](docs/development.md) and [evidence/extension guidance](skills/panasonic-miraie/references/evidence-and-extension.md).
+
+Private captures, account/device identifiers, sensor-history exports, synced references, APKs, credentials and signing material stay excluded. `analysis/`, `sources/` and `.stitch/` are local working/reference areas, not public source. Sanitized skill catalogs contain protocol declarations, not account responses. Preserve actual reported state and verify each new model before claiming support.

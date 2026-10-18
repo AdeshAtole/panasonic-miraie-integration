@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Room AC Widgets - Review Board</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed-dim": "#e7c365",
+            "on-tertiary-container": "#410002",
+            "surface-container-lowest": "#ffffff",
+            "inverse-surface": "#322f35",
+            "secondary-fixed": "#ffe081",
+            "on-surface": "#1d1b20",
+            "on-surface-variant": "#494551",
+            "on-secondary-fixed-variant": "#564500",
+            "inverse-primary": "#cfbcff",
+            "error": "#BA1A1A",
+            "surface": "#FFFBFF",
+            "outline-variant": "#D7CBE2",
+            "primary-fixed-dim": "#cfbcff",
+            "on-tertiary-fixed-variant": "#594400",
+            "surface-dim": "#ded8e0",
+            "surface-variant": "#e6e0e9",
+            "on-background": "#1d1b20",
+            "on-secondary-fixed": "#231b00",
+            "inverse-on-surface": "#f5eff7",
+            "on-error-container": "#93000a",
+            "on-tertiary-fixed": "#241a00",
+            "surface-bright": "#fdf7ff",
+            "background": "#fdf7ff",
+            "primary": "#4f378a",
+            "on-secondary-container": "#342A00",
+            "surface-dark": "#1C1724",
+            "primary-fixed": "#e9ddff",
+            "tertiary-fixed": "#ffdf93",
+            "secondary": "#725c01",
+            "surface-tint": "#6750a4",
+            "on-secondary": "#ffffff",
+            "secondary-container": "#fcdd7d",
+            "primary-container": "#EADDFF",
+            "tertiary-container": "#FFDAD4",
+            "on-primary-fixed-variant": "#4f378a",
+            "on-primary-container": "#22005d",
+            "error-container": "#ffdad6",
+            "on-primary": "#FFFFFF",
+            "primary-dark": "#D0BCFF",
+            "on-primary-fixed": "#22005d",
+            "on-surface-dark": "#E8E0EF",
+            "surface-container-high": "#ece6ee",
+            "tertiary": "#A43E35",
+            "on-tertiary": "#ffffff",
+            "secondary-fixed-dim": "#e2c466",
+            "surface-container": "#f2ecf4",
+            "outline": "#7a7582",
+            "on-error": "#ffffff",
+            "surface-container-low": "#F7F0FF",
+            "surface-container-highest": "#e6e0e9"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "16px",
+            "space-lg": "24px",
+            "space-xs": "4px",
+            "space-xl": "32px",
+            "margin": "24px",
+            "gutter": "20px",
+            "space-sm": "8px"
+          },
+          "fontFamily": {
+            "label": ["Roboto"],
+            "headline-md": ["Roboto"],
+            "display-lg": ["Roboto"],
+            "body-base": ["Roboto"]
+          },
+          "fontSize": {
+            "label": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+            "display-lg": ["88px", { "lineHeight": "96px", "fontWeight": "700" }],
+            "body-base": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen font-body-base text-body-base antialiased selection:bg-primary-container selection:text-on-primary-container pb-space-xl">
+<!-- Android System Status Bar Emulation -->
+<header class="w-full bg-surface text-on-surface select-none">
+<div class="max-w-4xl mx-auto px-space-md py-space-xs flex justify-between items-center text-xs tracking-wide font-medium">
+<span>10:24</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]" data-icon="wifi">wifi</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="signal_cellular_alt">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="battery_full">battery_full</span>
+</div>
+</div>
+</header>
+<!-- Review Board Header -->
+<section class="max-w-4xl mx-auto px-space-md pt-space-lg pb-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-sm border-b border-outline-variant/50 pb-space-md">
+<div>
+<div class="inline-flex items-center gap-space-xs px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary-container font-label text-xs mb-space-xs">
+<span class="material-symbols-outlined text-[14px]" data-icon="widgets">widgets</span>
+<span>Design proposals · Bedroom AC</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">Room AC Widgets</h1>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-container font-label text-xs text-on-surface-variant">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary"></span>
+          RemoteViews Review
+        </span>
+</div>
+</div>
+</section>
+<!-- Main Canvas / Specimen Area -->
+<main class="max-w-4xl mx-auto px-space-md grid grid-cols-1 md:grid-cols-12 gap-space-lg">
+<!-- Specimen 1: 2x2 Compact Widget Column -->
+<section class="md:col-span-5 flex flex-col gap-space-md">
+<!-- Section Tag / Dimension Note -->
+<div class="flex items-center justify-between">
+<span class="font-label text-label text-primary font-bold tracking-wide">Specimen 01</span>
+<span class="font-label text-xs text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-full">2×2 Compact (~170×170dp)</span>
+</div>
+<!-- Widget Mockup Exterior Wrapper (Android Launcher Canvas Emulation) -->
+<div class="p-space-md rounded-[2.5rem] bg-surface-container-lowest border border-outline-variant/60 shadow-sm flex flex-col items-center">
+<!-- ACTUAL 2x2 WIDGET CARD FACE -->
+<article class="w-full aspect-square max-w-[240px] bg-surface-container-low rounded-[2rem] p-space-md flex flex-col justify-between select-none relative overflow-hidden transition-all duration-200 hover:shadow-md cursor-pointer border border-outline-variant/40" title="Tap to open Bedroom Controller">
+<!-- Top Row: Room & Sync time -->
+<div class="flex items-center justify-between w-full">
+<div class="flex items-center gap-1 text-on-surface font-semibold text-sm">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="meeting_room">meeting_room</span>
+<span>Bedroom</span>
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant/70" data-icon="north_east">north_east</span>
+</div>
+<span class="text-[11px] font-medium text-on-surface-variant">10:24</span>
+</div>
+<!-- Middle State: State Badge & Big Telemetry -->
+<div class="flex flex-col items-center my-auto py-1">
+<div class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label text-xs font-semibold mb-1">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+<span>On · Cool</span>
+</div>
+<div class="flex items-baseline justify-center">
+<span class="text-5xl font-black tracking-tighter text-on-surface">23°</span>
+<span class="text-xl font-bold text-on-surface-variant">C</span>
+</div>
+<span class="text-[11px] font-medium uppercase tracking-wider text-on-surface-variant">Target</span>
+</div>
+<!-- Bottom RemoteViews Quick Actions: Strict 48dp Minimum Touch Targets -->
+<div class="flex items-center justify-between gap-space-sm pt-space-xs border-t border-outline-variant/30">
+<!-- Off Toggle Action: 48dp pill -->
+<button aria-label="Turn Off Bedroom AC" class="h-12 flex-1 rounded-full bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all flex items-center justify-center gap-1.5 px-3 text-on-surface font-label text-xs font-bold text-error" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="power_settings_new">power_settings_new</span>
+<span>Off</span>
+</button>
+<!-- Refresh Action: 48dp circle button -->
+<button aria-label="Refresh AC status" class="h-12 w-12 rounded-full bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all flex items-center justify-center text-primary" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="sync">sync</span>
+</button>
+</div>
+</article>
+</div>
+<!-- Outside Annotation Specs -->
+<div class="bg-surface-container-low rounded-2xl p-space-sm border border-outline-variant/40 flex flex-col gap-1.5 text-xs text-on-surface-variant">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary shrink-0 mt-0.5" data-icon="touch_app">touch_app</span>
+<p><strong class="text-on-surface font-medium">Card body launch intent:</strong> Tapping widget canvas launches full <span class="text-primary font-semibold">Bedroom Controller</span>. Target temperature is read-only here.</p>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary shrink-0 mt-0.5" data-icon="ads_click">ads_click</span>
+<p><strong class="text-on-surface font-medium">Touch targets:</strong> Both bottom toggles (Off &amp; Sync) maintain strict 48×48dp hitboxes per Android M3 guidelines.</p>
+</div>
+</div>
+</section>
+<!-- Specimen 2: 4x2 Wide Widget Column -->
+<section class="md:col-span-7 flex flex-col gap-space-md">
+<!-- Section Tag / Dimension Note -->
+<div class="flex items-center justify-between">
+<span class="font-label text-label text-primary font-bold tracking-wide">Specimen 02</span>
+<span class="font-label text-xs text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-full">4×2 Wide (~320×160dp)</span>
+</div>
+<!-- Widget Mockup Exterior Wrapper -->
+<div class="p-space-md rounded-[2.5rem] bg-surface-container-lowest border border-outline-variant/60 shadow-sm flex flex-col items-center">
+<!-- ACTUAL 4x2 WIDGET CARD FACE -->
+<article class="w-full max-w-[420px] bg-surface-container-low rounded-[2rem] p-space-md flex flex-col justify-between select-none relative overflow-hidden transition-all duration-200 hover:shadow-md cursor-pointer border border-outline-variant/40" title="Tap to open Bedroom Controller">
+<!-- Header Row -->
+<div class="flex items-center justify-between w-full mb-2">
+<div class="flex items-center gap-1.5 text-on-surface font-bold text-sm">
+<span class="material-symbols-outlined text-[20px] text-primary" data-icon="meeting_room">meeting_room</span>
+<span>Bedroom AC</span>
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant/70" data-icon="open_in_new">open_in_new</span>
+</div>
+<div class="flex items-center gap-1 text-[11px] font-medium text-on-surface-variant">
+<span>Updated 10:24</span>
+</div>
+</div>
+<!-- Main Body: Split Dual Telemetry & Action Cluster -->
+<div class="grid grid-cols-12 gap-space-sm items-center py-1">
+<!-- Left Side: Target & Room Ambient Sensors -->
+<div class="col-span-7 flex flex-col justify-center">
+<div class="inline-flex items-center gap-1 w-fit px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label text-xs font-semibold mb-1">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>On · Cool</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="text-4xl sm:text-5xl font-black text-on-surface tracking-tighter">23°C</span>
+<span class="text-xs font-medium text-on-surface-variant uppercase tracking-wider">Target</span>
+</div>
+<!-- Secondary Subordinate Room Actual Telemetry -->
+<div class="flex items-center gap-1 mt-0.5 text-xs text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="thermostat">thermostat</span>
+<span>Room actual: <strong class="text-on-surface font-semibold">24.18°C</strong></span>
+</div>
+</div>
+<!-- Right Side: 48dp RemoteViews Action Column -->
+<div class="col-span-5 flex flex-col gap-2">
+<!-- Power Toggle Button (48dp height) -->
+<button aria-label="Turn off AC" class="h-12 w-full rounded-full bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all flex items-center justify-start px-3.5 gap-2 text-on-surface" type="button">
+<span class="material-symbols-outlined text-[18px] text-error" data-icon="power_settings_new">power_settings_new</span>
+<span class="font-label text-xs font-bold">Turn Off</span>
+</button>
+<!-- Quick Toggles Row (Display & Refresh, each 48dp minimum) -->
+<div class="flex items-center gap-2">
+<!-- Proposed Display Toggle -->
+<button aria-label="Toggle AC unit LED display" class="h-12 flex-1 rounded-full bg-primary-container text-on-primary-container hover:bg-primary-container/80 active:scale-95 transition-all flex items-center justify-center gap-1 px-2.5" title="Display On" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="wb_incandescent">wb_incandescent</span>
+<span class="font-label text-xs font-semibold">LED</span>
+</button>
+<!-- Refresh Button -->
+<button aria-label="Sync AC status" class="h-12 w-12 rounded-full bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all flex items-center justify-center text-primary shrink-0" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="sync">sync</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Outside Annotation Specs for 4x2 -->
+<div class="bg-surface-container-low rounded-2xl p-space-sm border border-outline-variant/40 flex flex-col gap-2 text-xs text-on-surface-variant">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary font-bold shrink-0 mt-0.5" data-icon="new_releases">new_releases</span>
+<p><strong class="text-on-surface font-medium">Proposed Display Action:</strong> Adds independent unit LED toggle directly to widget without needing full app navigation.</p>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary shrink-0 mt-0.5" data-icon="analytics">analytics</span>
+<p><strong class="text-on-surface font-medium">Dual Telemetry Layout:</strong> Gives immediate at-a-glance status of both desired target temperature and real-time room thermometer reading.</p>
+</div>
+</div>
+</section>
+<!-- Section 3: Technical Implementation & Behavior Notes -->
+<section class="md:col-span-12 mt-space-sm">
+<div class="bg-surface-container rounded-3xl p-space-lg border border-outline-variant/40">
+<div class="flex items-center gap-2 mb-space-sm">
+<span class="material-symbols-outlined text-primary text-[24px]" data-icon="developer_board">developer_board</span>
+<h2 class="font-label text-base font-bold text-on-surface">RemoteViews &amp; Interaction Specifications</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md text-xs">
+<!-- Note 1 -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl border border-outline-variant/30 flex flex-col gap-1.5">
+<div class="flex items-center gap-1.5 font-bold text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="cached">cached</span>
+<span>Manual Refresh Semantics</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed">
+              No continuous background polling to conserve battery. Tap-to-refresh fires on-demand query. Readback verifies reported state before updating UI.
+            </p>
+</div>
+<!-- Note 2 -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl border border-outline-variant/30 flex flex-col gap-1.5">
+<div class="flex items-center gap-1.5 font-bold text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="hourglass_top">hourglass_top</span>
+<span>Pending State Behavior</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed">
+              "Updating..." temporarily replaces timestamp while command is transit. Last-known verified telemetry remains visible until confirmation returns.
+            </p>
+</div>
+<!-- Note 3 -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl border border-outline-variant/30 flex flex-col gap-1.5">
+<div class="flex items-center gap-1.5 font-bold text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-error" data-icon="report_problem">report_problem</span>
+<span>Failure Handling</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed">
+              Preserves previous verified state and shows retry/refresh affordance rather than optimistic false switches that desync physical AC hardware.
+            </p>
+</div>
+<!-- Note 4 -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl border border-outline-variant/30 flex flex-col gap-1.5">
+<div class="flex items-center gap-1.5 font-bold text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="tune">tune</span>
+<span>App vs Widget Boundaries</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed">
+              Temperature steppers (+/-), fan speeds, vertical swing angles, and diagnostics remain exclusively in the full Controller application.
+            </p>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-outline-variant/30 flex items-center justify-between text-xs text-on-surface-variant">
+<span class="font-medium">Design System: Playful Android Material 3 (M3 Expressive)</span>
+<span class="font-mono text-[11px] bg-surface-container-high px-2 py-0.5 rounded-full">v2.4-proposal-review</span>
+</div>
+</div>
+</section>
+</main>
+</body></html>

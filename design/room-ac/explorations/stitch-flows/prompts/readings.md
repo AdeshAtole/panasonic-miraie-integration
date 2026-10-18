@@ -1,0 +1,17 @@
+Design the secondary Readings screen for Room AC, matching the existing controller and the approved project design system. This screen helps a person understand the most recently refreshed AC readings, load daily energy history on demand and export saved data. Use ordinary product copy and synthetic sample values only.
+
+**PLATFORM:** Mobile, native Android-first. Portrait content, system insets, familiar top app bar and existing two-destination Controller/Readings navigation. Scroll naturally when needed; avoid a web dashboard. The project design system supplies all visual styling.
+
+**PAGE STRUCTURE:**
+1. **Header:** Readings title, Bedroom selector, Updated10:24 and a labeled Refresh action. A small Last refreshed note clearly distinguishes observation time from a continuous sensor stream.
+2. **Current readings:** Room24.18°C, target23°C, fanAuto, connected status and Wi-Fi−55dBm. Fan is a setting, not measuredRPM. Errors: None reported; warnings: None reported. Do not add humidity, compressor frequency, fanRPM or instantaneous watts.
+3. **Daily energy section:** Show the loaded last7days as a short readable daily list in kWh, with synthetic values, no continuous line chart. Today is explicitly Partial. Clearly label On demand and have Reload energy + Export energy CSV actions. A compact empty-state inset or callout can show the initial Load recent energy action and Energy not loaded yet; it must not imply automatic polling. Today plus previous6days is the supported range, not a new arbitrary month picker.
+4. **Saved readings section:**42 saved snapshots (synthetic). Short copy: Saved when you refresh or change settings. Export readings CSV is a separate action from energy export. Do not imply continuous background recording. Keep snapshots and daily energy visibly separate.
+5. **Details/advanced entry:** All reported fields and Device details routes use progressive disclosure. A small secondary panel or inset can show example fields Room temperature24.18, FanAuto, PowerOn and DisplayOn with raw keys available in the advanced detail view. Never include real device IDs or credentials. Device details includes Refresh capabilities and an existing diagnostic export/inspection path; it is not a firmware updater or repair tool.
+6. **Android export handoff:** Make clear the CSV action opens Android's Save file picker so the user can choose a destination. If an inset illustrates the picker, use a generic Downloads destination and a synthetic filename. No broad storage permission prompt or sharing to another person is required.
+7. **Footer/navigation:** Existing Controller/Readings destinations with Readings selected and system gesture area. Avoid an account/settings tab that does not exist.
+
+**STATE AND COPY RULES:**
+Unknown readings say Not reported, never0. Offline preserves last-known readings and time; refresh failure is retryable. Export success is shown only after the save completes. Energy and readings export have separate files. There is no background logger, no live sensor feed and no fabricated full-history trend. All examples are synthetic; do not make a mock counter look like a live-updating feed. Use concise user-facing copy, with technical explanations in details/help.
+
+Produce one polished Readings design with compact secondary insets only where they clarify export/empty state. Do not redesign the controller or add unrelated appliance functions.

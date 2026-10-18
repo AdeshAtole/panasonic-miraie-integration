@@ -1,0 +1,57 @@
+{
+  "projectId": "16031458568887977513",
+  "projectUrl": "https://stitch.withgoogle.com/projects/16031458568887977513",
+  "designSystem": "assets/64d81fe863ee49ee9985ac1c09bd4b98",
+  "generationCalls": 3,
+  "screens": [
+    {
+      "id": "b9e87e25d1314d5cb416d0ea33588c2c",
+      "name": "projects/16031458568887977513/screens/b9e87e25d1314d5cb416d0ea33588c2c",
+      "title": "Room AC Readings",
+      "originalHtml": "readings.html",
+      "originalScreenshot": "readings.png",
+      "reviewHtml": "readings-corrected.html",
+      "reviewScreenshot": "readings-corrected.png",
+      "fullHeightReview": "readings-corrected-full.png",
+      "crops": [],
+      "insights": "readings-insights.json"
+    },
+    {
+      "id": "2ee1922a70e9498baba0a029ca372820",
+      "name": "projects/16031458568887977513/screens/2ee1922a70e9498baba0a029ca372820",
+      "title": "Room AC Secondary Control Sheets",
+      "originalHtml": "secondary-controls.html",
+      "originalScreenshot": "secondary-controls.png",
+      "reviewHtml": "secondary-controls-corrected.html",
+      "reviewScreenshot": "secondary-controls-corrected.png",
+      "fullHeightReview": "secondary-controls-corrected-full.png",
+      "crops": [
+        "fan-sheet.png",
+        "more-controls-sheet.png",
+        "capacity-sheet.png",
+        "capacity-sheet-selected.png",
+        "eco-confirmation.png",
+        "command-feedback.png"
+      ],
+      "insights": "secondary-controls-insights.json"
+    },
+    {
+      "id": "4003eb58db264a4baeec256c1314dc24",
+      "name": "projects/16031458568887977513/screens/4003eb58db264a4baeec256c1314dc24",
+      "title": "Room AC Mobile User-Flow Review Board",
+      "originalHtml": "auth-and-states.html",
+      "originalScreenshot": "auth-and-states.png",
+      "reviewHtml": "auth-and-states-corrected.html",
+      "reviewScreenshot": "auth-and-states-corrected.png",
+      "fullHeightReview": "auth-and-states-corrected-full.png",
+      "crops": [
+        "sign-in.png",
+        "device-picker.png",
+        "mode-state-board.png",
+        "feedback-state-board.png",
+        "management-sheet.png"
+      ],
+      "insights": "auth-and-states-insights.json"
+    }
+  ]
+}

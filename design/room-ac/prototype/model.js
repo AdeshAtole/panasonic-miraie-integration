@@ -1,0 +1,9 @@
+(function(root){
+ const modes=['Auto','Cool','Dry','Fan'], fans=['Auto','Quiet','Low','Medium','High'];
+ function initial(){return {signed:true,device:'Bedroom',screen:'controller',power:true,display:true,mode:'Cool',target:23,fan:'Auto',eco:false,powerful:false,capacity:0,room:24.18,updated:'10:24',snapshots:18,energy:false,busy:false,notice:'',severity:'info',draftTarget:23,draftMode:'Cool',cleaning:false,missing:false,capabilities:true,deviceOnline:true,devices:['Bedroom','Living room'],dark:false};}
+ function dirty(s){return s.draftTarget!==s.target||s.draftMode!==s.mode;}
+ function allowed(s,kind){if(s.busy)return false;if(kind==='refresh')return true;if(!s.deviceOnline)return false;if(kind==='display')return s.display!==null;if(kind==='power')return true;if(!s.capabilities||!s.power)return false;if(kind==='mode')return true;if(s.draftMode!==s.mode)return false;if(kind==='temperature')return s.mode!=='Fan'&&!s.cleaning;if(kind==='fan')return s.mode!=='Dry'&&!s.cleaning;if(kind==='eco')return s.mode==='Cool';if(kind==='powerful')return s.mode==='Cool'&&!s.cleaning;return true;}
+ function resetDraft(s){s.draftTarget=s.target;s.draftMode=s.mode;}
+ function apply(s,kind,value){if(kind==='power'){s.power=value;resetDraft(s);}if(kind==='display')s.display=value;if(kind==='temperature'){s.target=value;s.draftTarget=value;}if(kind==='mode'){s.mode=value;resetDraft(s);}if(kind==='fan')s.fan=value;if(kind==='eco'){s.eco=value;if(value)s.target=26;resetDraft(s);}if(kind==='powerful'){s.powerful=value;if(value)s.capacity=0;}if(kind==='capacity'){s.capacity=value;if(value!==0)s.powerful=false;}if(kind==='refresh')s.deviceOnline=true;s.updated='10:25';s.snapshots=Math.min(5000,s.snapshots+1);}
+ const api={initial,dirty,allowed,resetDraft,apply,modes,fans};root.RoomFlow=api;if(typeof module!=='undefined')module.exports=api;
+})(typeof window==='undefined'?globalThis:window);

@@ -18,3 +18,24 @@
 __pycache__/
 *.pyc
 .DS_Store
+
+# Local design-tool working state (curated design source lives under design/)
+/.stitch/
+
+# Native platform caches and local configuration
+**/.gradle/
+**/.kotlin/
+**/local.properties
+**/.build/
+**/DerivedData/
+**/xcuserdata/
+*.xcuserstate
+*.mobileprovision
+*.provisionprofile
+*.ipa
+*.aab
+*.p8
+*.pfx
+*.cer
+*.dSYM/
+*.xcarchive/

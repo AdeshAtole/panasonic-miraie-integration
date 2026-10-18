@@ -1,0 +1,14 @@
+[
+  {
+    "text": "I have created the cohesive mobile review board for Room AC's secondary control sheets, matching the **Room AC Playful Android** design system (M3 Expressive tokens, rounded containers, and strict 48dp touch targets).\n\n### Included Review Specimens:\n\n1. **Fan Speed Sheet (Specimen 01)**:\n   - Native bottom sheet with drag handle, close affordance, and single-choice list (`Auto`, `Quiet`, `Low`, `Medium`, `High`).\n   - Clear distinction between reported active setting (`Auto`) and pending draft (`High`), with explicit **\"Set fan speed\"** and **Cancel** actions (leaving reported Auto unchanged on cancel).\n   - Non-interactive board annotation noting the absence of telemetry RPM and explaining that *Dry* mode and unit cleaning manage/disable fan controls.\n\n2. **More Controls Sheet in Cool Mode (Specimen 02)**:\n   - Contains explicit labeled controls for **Eco** (`Off`), **Powerful** (`Off`), and **Capacity limit** (`Normal`).\n   - Labeled state and action buttons rather than ambiguous checkmarks.\n   - External note documenting the operational boundaries: requires AC power On, available in Cool mode only, and unavailable during cleaning.\n\n3. **Capacity Limit Sheet (Specimen 03)**:\n   - Single-choice sheet containing `Normal` (standard inverter modulation, no fixed cap) and the discrete values `40%`, `50%`, `60%`, `70%`, `80%`, `90%`, `100%`, `110%` (strictly no invented 55%).\n   - Displays `80%` selected as a draft with explicit **\"Set capacity\"** and **Cancel** actions.\n   - In-sheet confirmation note reminding that selecting a cap turns Powerful off and represents an inverter capacity setting rather than an exact measured efficiency percentage.\n\n4. **Eco Confirmation Dialog (Specimen 04)**:\n   - Material 3 alert dialog: *\"Turn Eco on? It also sets the target to 26\u00b0C.\"* with distinct **Confirm** and **Cancel** buttons, preventing silent setpoint overrides before user confirmation.\n\n5. **Command Feedback States (Specimen 05)**:\n   - Isolated, dedicated state rows for:\n     - **5A (In-Transit / Applying...)**: Displays spinner and explicit reassurance that the previous reported state remains active while in transit.\n     - **5B (Unconfirmed Readback)**: Replaces misleading optimistic success checkmarks with an honest *\"Not confirmed yet\"* state and an on-demand **Refresh** action.\n   - Comprehensive behavior contract & verification notes positioned cleanly outside the sheet specimens."
+  },
+  {
+    "suggestion": "Would you like a matching dark mode review board for these secondary sheets?"
+  },
+  {
+    "suggestion": "Should we add an expanded specimen for disabled sheet states when AC Power is Off?"
+  },
+  {
+    "suggestion": "Would you like to refine the transition between More Controls and the nested Capacity picker?"
+  }
+]

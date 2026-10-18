@@ -1,0 +1,518 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Room AC secondary controls — reviewed local Stitch proposal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            surface: '#FFFBFF',
+            'on-surface': '#241B35',
+            'surface-dim': '#ded8e0',
+            'surface-bright': '#fdf7ff',
+            'surface-container-lowest': '#ffffff',
+            'surface-container-low': '#F7F0FF',
+            'surface-container': '#F0E7FA',
+            'surface-container-high': '#E8DEF8',
+            'surface-container-highest': '#E2D5F0',
+            'outline-variant': '#D7CBE2',
+            primary: '#6750A4',
+            'on-primary': '#FFFFFF',
+            'primary-container': '#EADDFF',
+            'on-primary-container': '#21005D',
+            secondary: '#715B00',
+            'on-secondary': '#FFFFFF',
+            'secondary-container': '#FFE8A3',
+            'on-secondary-container': '#342A00',
+            tertiary: '#A43E35',
+            'on-tertiary': '#FFFFFF',
+            'tertiary-container': '#FFDAD4',
+            'on-tertiary-container': '#410002',
+            error: '#BA1A1A',
+            'on-error': '#FFFFFF',
+          },
+          fontFamily: {
+            sans: ['Roboto', 'sans-serif'],
+          },
+          borderRadius: {
+            '4xl': '28px',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-1 {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+      background-color: #F8F5FB;
+      color: #241B35;
+      font-family: 'Roboto', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Roboto, sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.mx-auto{margin-left:auto;margin-right:auto}.my-2{margin-top:0.5rem;margin-bottom:0.5rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ml-1\.5{margin-left:0.375rem}.ml-2{margin-left:0.5rem}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-2{margin-top:0.5rem}.mt-2\.5{margin-top:0.625rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.flex{display:flex}.inline-flex{display:inline-flex}.h-1{height:0.25rem}.h-10{height:2.5rem}.h-2\.5{height:0.625rem}.h-5{height:1.25rem}.h-9{height:2.25rem}.max-h-\[220px\]{max-height:220px}.min-h-\[48px\]{min-height:48px}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-2\.5{width:0.625rem}.w-5{width:1.25rem}.w-9{width:2.25rem}.min-w-\[48px\]{min-width:48px}.max-w-\[420px\]{max-width:420px}.flex-1{flex:1 1 0%}@keyframes spin{to{transform:rotate(360deg)}}.animate-spin{animation:spin 1s linear infinite}.cursor-pointer{cursor:pointer}.list-inside{list-style-position:inside}.list-disc{list-style-type:disc}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-end{justify-content:flex-end}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-2\.5{gap:0.625rem}.gap-3{gap:0.75rem}.space-y-0\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.125rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.125rem * var(--tw-space-y-reverse))}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.space-y-1\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.375rem * var(--tw-space-y-reverse))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.overflow-y-auto{overflow-y:auto}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-4xl{border-radius:28px}.rounded-full{border-radius:9999px}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-amber-200{--tw-border-opacity:1;border-color:rgb(253 230 138 / var(--tw-border-opacity, 1))}.border-outline-variant{--tw-border-opacity:1;border-color:rgb(215 203 226 / var(--tw-border-opacity, 1))}.border-outline-variant\/30{border-color:rgb(215 203 226 / 0.3)}.border-outline-variant\/40{border-color:rgb(215 203 226 / 0.4)}.border-outline-variant\/50{border-color:rgb(215 203 226 / 0.5)}.border-outline-variant\/60{border-color:rgb(215 203 226 / 0.6)}.border-primary{--tw-border-opacity:1;border-color:rgb(103 80 164 / var(--tw-border-opacity, 1))}.border-primary\/30{border-color:rgb(103 80 164 / 0.3)}.border-transparent{border-color:transparent}.border-t-transparent{border-top-color:transparent}.bg-\[\#241B35\]\/20{background-color:rgb(36 27 53 / 0.2)}.bg-\[\#E8DEF8\]{--tw-bg-opacity:1;background-color:rgb(232 222 248 / var(--tw-bg-opacity, 1))}.bg-\[\#EADDFF\]{--tw-bg-opacity:1;background-color:rgb(234 221 255 / var(--tw-bg-opacity, 1))}.bg-amber-50{--tw-bg-opacity:1;background-color:rgb(255 251 235 / var(--tw-bg-opacity, 1))}.bg-primary{--tw-bg-opacity:1;background-color:rgb(103 80 164 / var(--tw-bg-opacity, 1))}.bg-primary-container{--tw-bg-opacity:1;background-color:rgb(234 221 255 / var(--tw-bg-opacity, 1))}.bg-primary-container\/60{background-color:rgb(234 221 255 / 0.6)}.bg-primary-container\/70{background-color:rgb(234 221 255 / 0.7)}.bg-primary\/10{background-color:rgb(103 80 164 / 0.1)}.bg-secondary-container{--tw-bg-opacity:1;background-color:rgb(255 232 163 / var(--tw-bg-opacity, 1))}.bg-slate-200\/80{background-color:rgb(226 232 240 / 0.8)}.bg-surface-container{--tw-bg-opacity:1;background-color:rgb(240 231 250 / var(--tw-bg-opacity, 1))}.bg-surface-container-high{--tw-bg-opacity:1;background-color:rgb(232 222 248 / var(--tw-bg-opacity, 1))}.bg-surface-container-low{--tw-bg-opacity:1;background-color:rgb(247 240 255 / var(--tw-bg-opacity, 1))}.bg-surface-container-lowest{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-surface-container\/40{background-color:rgb(240 231 250 / 0.4)}.bg-surface-container\/60{background-color:rgb(240 231 250 / 0.6)}.bg-tertiary-container{--tw-bg-opacity:1;background-color:rgb(255 218 212 / var(--tw-bg-opacity, 1))}.bg-transparent{background-color:transparent}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-white\/70{background-color:rgb(255 255 255 / 0.7)}.p-2\.5{padding:0.625rem}.p-3{padding:0.75rem}.p-3\.5{padding:0.875rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.px-1{padding-left:0.25rem;padding-right:0.25rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.px-6{padding-left:1.5rem;padding-right:1.5rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-20{padding-bottom:5rem}.pb-3{padding-bottom:0.75rem}.pr-1{padding-right:0.25rem}.pt-2{padding-top:0.5rem}.pt-3{padding-top:0.75rem}.text-2xl{font-size:1.5rem;line-height:2rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[15px\]{font-size:15px}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.leading-snug{line-height:1.375}.leading-tight{line-height:1.25}.tracking-tight{letter-spacing:-0.025em}.tracking-wider{letter-spacing:0.05em}.text-\[\#21005D\]{--tw-text-opacity:1;color:rgb(33 0 93 / var(--tw-text-opacity, 1))}.text-\[\#241B35\]{--tw-text-opacity:1;color:rgb(36 27 53 / var(--tw-text-opacity, 1))}.text-\[\#241B35\]\/40{color:rgb(36 27 53 / 0.4)}.text-\[\#241B35\]\/50{color:rgb(36 27 53 / 0.5)}.text-\[\#241B35\]\/60{color:rgb(36 27 53 / 0.6)}.text-\[\#241B35\]\/70{color:rgb(36 27 53 / 0.7)}.text-\[\#241B35\]\/80{color:rgb(36 27 53 / 0.8)}.text-amber-700{--tw-text-opacity:1;color:rgb(180 83 9 / var(--tw-text-opacity, 1))}.text-amber-900{--tw-text-opacity:1;color:rgb(120 53 15 / var(--tw-text-opacity, 1))}.text-emerald-700{--tw-text-opacity:1;color:rgb(4 120 87 / var(--tw-text-opacity, 1))}.text-on-primary-container{--tw-text-opacity:1;color:rgb(33 0 93 / var(--tw-text-opacity, 1))}.text-on-primary-container\/80{color:rgb(33 0 93 / 0.8)}.text-on-primary-container\/90{color:rgb(33 0 93 / 0.9)}.text-on-secondary-container{--tw-text-opacity:1;color:rgb(52 42 0 / var(--tw-text-opacity, 1))}.text-on-tertiary-container{--tw-text-opacity:1;color:rgb(65 0 2 / var(--tw-text-opacity, 1))}.text-primary{--tw-text-opacity:1;color:rgb(103 80 164 / var(--tw-text-opacity, 1))}.text-slate-600{--tw-text-opacity:1;color:rgb(71 85 105 / var(--tw-text-opacity, 1))}.text-tertiary{--tw-text-opacity:1;color:rgb(164 62 53 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.shadow-md{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-shadow{transition-property:box-shadow;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-150{transition-duration:150ms}.hover\:bg-\[\#FFE082\]:hover{--tw-bg-opacity:1;background-color:rgb(255 224 130 / var(--tw-bg-opacity, 1))}.hover\:bg-\[\#ffe082\]:hover{--tw-bg-opacity:1;background-color:rgb(255 224 130 / var(--tw-bg-opacity, 1))}.hover\:bg-outline-variant:hover{--tw-bg-opacity:1;background-color:rgb(215 203 226 / var(--tw-bg-opacity, 1))}.hover\:bg-primary\/90:hover{background-color:rgb(103 80 164 / 0.9)}.hover\:bg-surface-container:hover{--tw-bg-opacity:1;background-color:rgb(240 231 250 / var(--tw-bg-opacity, 1))}.hover\:bg-surface-container\/30:hover{background-color:rgb(240 231 250 / 0.3)}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@media (min-width: 640px){.sm\:max-w-\[440px\]{max-width:440px}}</style></head>
+<body class="min-h-screen p-4 pb-20 max-w-[420px] mx-auto sm:max-w-[440px]">
+
+  <!-- Top System Bar Sim -->
+  <header class="flex justify-between items-center text-xs font-semibold px-2 py-1 mb-4 text-[#241B35]/70">
+    <span>10:24</span>
+    <div class="flex items-center gap-1.5 text-[11px]">
+      <span class="material-symbols-outlined text-[15px]">wifi</span>
+      <span class="material-symbols-outlined text-[15px]">signal_cellular_alt</span>
+      <span>92%</span>
+    </div>
+  </header>
+
+  <!-- Board Title Banner -->
+  <div class="mb-6 px-1">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EADDFF] text-[#21005D] text-xs font-semibold mb-2">
+      <span class="material-symbols-outlined text-sm">tune</span>
+      <span>Specimen Review Board · M3 Native</span>
+    </div>
+    <h1 class="text-2xl font-bold tracking-tight text-[#241B35]">Secondary Control Sheets</h1>
+    <p class="text-xs text-[#241B35]/70 mt-1 leading-relaxed">
+      Bottom sheets and dialogs triggered from Controller. Strict draft-and-commit semantics, mutually exclusive capacity rules, and asynchronous readback status.
+    </p>
+  </div>
+
+  <!-- SECTION 1: FAN SPEED SHEET -->
+  <section class="mb-8">
+    <div class="flex items-center justify-between mb-2 px-1">
+      <span class="text-xs font-bold uppercase tracking-wider text-primary">Specimen 01</span>
+      <span class="text-[11px] font-medium bg-[#E8DEF8] text-[#21005D] px-2 py-0.5 rounded-full">Modal Bottom Sheet</span>
+    </div>
+
+    <!-- Sheet Wrapper Simulating Bottom Sheet on Canvas -->
+    <div class="bg-surface-container-low rounded-4xl p-5 shadow-sm border border-outline-variant/40">
+      <!-- Sheet Drag Handle -->
+      <div class="w-10 h-1 bg-[#241B35]/20 rounded-full mx-auto mb-4"></div>
+
+      <!-- Header -->
+      <div class="flex items-center justify-between pb-3 border-b border-outline-variant/30">
+        <div class="flex items-center gap-2">
+          <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+            <span class="material-symbols-outlined text-lg">mode_fan</span>
+          </div>
+          <div>
+            <h2 class="text-lg font-bold text-[#241B35]">Fan speed</h2>
+            <p class="text-xs text-[#241B35]/60">Reported setting: <span class="font-semibold text-[#241B35]">Auto</span></p>
+          </div>
+        </div>
+        <button class="w-10 h-10 min-w-[48px] min-h-[48px] rounded-full flex items-center justify-center text-[#241B35]/70 hover:bg-surface-container transition-colors" aria-label="Close">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <!-- Single Choice List -->
+      <div class="py-3 space-y-1.5">
+        <!-- Auto (Current active) -->
+        <label class="flex items-center justify-between p-3 rounded-2xl bg-surface-container/40 border border-transparent cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center">
+              <span class="w-2.5 h-2.5 rounded-full bg-transparent"></span>
+            </span>
+            <div class="leading-tight">
+              <span class="text-sm font-medium text-[#241B35]">Auto</span>
+              <span class="ml-2 text-[11px] font-semibold text-primary bg-primary-container px-2 py-0.5 rounded-full">Current</span>
+            </div>
+          </div>
+          <span class="material-symbols-outlined text-sm text-[#241B35]/40">auto_mode</span>
+        </label>
+
+        <!-- Quiet -->
+        <label class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"></span>
+            <span class="text-sm font-medium text-[#241B35]">Quiet</span>
+          </div>
+          <span class="material-symbols-outlined text-sm text-[#241B35]/40">volume_mute</span>
+        </label>
+
+        <!-- Low -->
+        <label class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"></span>
+            <span class="text-sm font-medium text-[#241B35]">Low</span>
+          </div>
+          <span class="material-symbols-outlined text-sm text-[#241B35]/40">speed</span>
+        </label>
+
+        <!-- Medium -->
+        <label class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"></span>
+            <span class="text-sm font-medium text-[#241B35]">Medium</span>
+          </div>
+          <span class="material-symbols-outlined text-sm text-[#241B35]/40">speed</span>
+        </label>
+
+        <!-- High (Pending Draft Selection) -->
+        <label class="flex items-center justify-between p-3 rounded-2xl bg-primary-container/60 border border-primary/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center">
+              <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+            </span>
+            <div class="leading-tight">
+              <span class="text-sm font-bold text-on-primary-container">High</span>
+              <span class="ml-2 text-[11px] font-semibold text-on-primary-container/80 bg-white/70 px-2 py-0.5 rounded-full">Draft selection</span>
+            </div>
+          </div>
+          <span class="material-symbols-outlined text-sm text-primary">air</span>
+        </label>
+      </div>
+
+      <!-- Action Footer -->
+      <div class="pt-3 flex items-center justify-end gap-2 border-t border-outline-variant/30">
+        <button class="min-h-[48px] px-5 rounded-full text-xs font-semibold text-primary hover:bg-surface-container transition-colors">
+          Cancel
+        </button>
+        <button class="min-h-[48px] px-6 rounded-full text-xs font-semibold bg-primary text-white hover:bg-primary/90 transition-shadow shadow-sm active:scale-95 duration-150">
+          Set fan speed
+        </button>
+      </div>
+    </div>
+
+    <!-- External Board Annotation for Fan Restrictions -->
+    <div class="mt-3 p-3 rounded-2xl bg-surface-container border border-outline-variant/60 text-xs space-y-1.5">
+      <div class="flex items-center gap-1.5 font-bold text-[#241B35]">
+        <span class="material-symbols-outlined text-amber-700 text-sm">info</span>
+        <span>Behavior &amp; Restrictions (Non-Interactive Note)</span>
+      </div>
+      <p class="text-[#241B35]/80 leading-relaxed">
+        • <strong>Draft commit:</strong> Tapping <em>High</em> drafts selection; physical fan speed remains <em>Auto</em> until <em>Set fan speed</em> is tapped. <em>Cancel</em> leaves actual Auto unchanged.<br>
+        • <strong>No RPM:</strong> Shows only advertised fan settings (no telemetry RPM).<br>
+        • <strong>Mode constraints:</strong> <em>Dry mode</em> manages fan speed automatically and disables manual selection. Unit cleaning also disables fan controls.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION 2: MORE CONTROLS SHEET (IN COOL MODE) -->
+  <section class="mb-8">
+    <div class="flex items-center justify-between mb-2 px-1">
+      <span class="text-xs font-bold uppercase tracking-wider text-primary">Specimen 02</span>
+      <span class="text-[11px] font-medium bg-[#E8DEF8] text-[#21005D] px-2 py-0.5 rounded-full">Operating Sheet (Cool)</span>
+    </div>
+
+    <div class="bg-surface-container-low rounded-4xl p-5 shadow-sm border border-outline-variant/40">
+      <div class="w-10 h-1 bg-[#241B35]/20 rounded-full mx-auto mb-4"></div>
+
+      <div class="flex items-center justify-between pb-3 border-b border-outline-variant/30">
+        <div class="flex items-center gap-2">
+          <div class="w-9 h-9 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+            <span class="material-symbols-outlined text-lg">tune</span>
+          </div>
+          <div>
+            <h2 class="text-lg font-bold text-[#241B35]">More controls</h2>
+            <p class="text-xs text-[#241B35]/60">AC Power: <span class="text-emerald-700 font-semibold">On</span> · Mode: <span class="font-semibold text-[#241B35]">Cool</span></p>
+          </div>
+        </div>
+        <button class="w-10 h-10 min-w-[48px] min-h-[48px] rounded-full flex items-center justify-center text-[#241B35]/70 hover:bg-surface-container" aria-label="Close">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <!-- Control Entries -->
+      <div class="py-4 space-y-3">
+        <!-- Eco Entry -->
+        <div class="p-3.5 rounded-2xl bg-surface-container/60 border border-outline-variant/30 flex items-center justify-between gap-3 min-h-[48px]">
+          <div class="space-y-0.5 flex-1">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-bold text-[#241B35]">Eco</span>
+              <span class="text-[11px] font-semibold text-slate-600 bg-slate-200/80 px-2 py-0.2 rounded-full">Off</span>
+            </div>
+            <p class="text-[11px] text-[#241B35]/70">Enabling sets target to 26°C and requires confirmation</p>
+          </div>
+          <button class="min-h-[48px] px-4 rounded-full bg-secondary-container text-on-secondary-container text-xs font-semibold hover:bg-[#ffe082] active:scale-95 transition-all">
+            Turn On
+          </button>
+        </div>
+
+        <!-- Powerful Entry -->
+        <div class="p-3.5 rounded-2xl bg-surface-container/60 border border-outline-variant/30 flex items-center justify-between gap-3 min-h-[48px]">
+          <div class="space-y-0.5 flex-1">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-bold text-[#241B35]">Powerful</span>
+              <span class="text-[11px] font-semibold text-slate-600 bg-slate-200/80 px-2 py-0.2 rounded-full">Off</span>
+            </div>
+            <p class="text-[11px] text-[#241B35]/70">Enabling turns a fixed capacity setting off</p>
+          </div>
+          <button class="min-h-[48px] px-4 rounded-full bg-surface-container-high text-[#241B35] text-xs font-semibold hover:bg-outline-variant active:scale-95 transition-all">
+            Turn On
+          </button>
+        </div>
+
+        <!-- Capacity Entry (Normal) -->
+        <div class="p-3.5 rounded-2xl bg-surface-container/60 border border-outline-variant/30 flex items-center justify-between gap-3 min-h-[48px]">
+          <div class="space-y-0.5 flex-1">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-bold text-[#241B35]">Capacity setting</span>
+              <span class="text-[11px] font-semibold text-primary bg-primary-container px-2 py-0.2 rounded-full">Normal</span>
+            </div>
+            <p class="text-[11px] text-[#241B35]/70">No fixed capacity setting</p>
+          </div>
+          <button class="min-h-[48px] px-4 rounded-full bg-surface-container-high text-[#241B35] text-xs font-semibold flex items-center gap-1 hover:bg-outline-variant">
+            <span>Change</span>
+            <span class="material-symbols-outlined text-sm">chevron_right</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Sheet Footer -->
+      <div class="pt-2 flex justify-end">
+        <button class="min-h-[48px] px-5 rounded-full text-xs font-semibold text-primary hover:bg-surface-container">
+          Done
+        </button>
+      </div>
+    </div>
+
+    <!-- External Annotation -->
+    <div class="mt-3 p-3 rounded-2xl bg-surface-container border border-outline-variant/60 text-xs space-y-1">
+      <div class="flex items-center gap-1.5 font-bold text-[#241B35]">
+        <span class="material-symbols-outlined text-sm text-primary">rule</span>
+        <span>Operational Boundaries</span>
+      </div>
+      <p class="text-[#241B35]/80 leading-relaxed">
+        • Requires <strong>AC Power On</strong> (controls disabled when unit is off).<br>
+        • Eco &amp; Powerful are available in <strong>Cool mode only</strong> (disabled in Auto, Dry, Fan).<br>
+        • Powerful is unavailable during unit cleaning cycles.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION 3: CAPACITY SINGLE-CHOICE SHEET -->
+  <section class="mb-8">
+    <div class="flex items-center justify-between mb-2 px-1">
+      <span class="text-xs font-bold uppercase tracking-wider text-primary">Specimen 03</span>
+      <span class="text-[11px] font-medium bg-[#E8DEF8] text-[#21005D] px-2 py-0.5 rounded-full">Single-Choice Sheet</span>
+    </div>
+
+    <div class="bg-surface-container-low rounded-4xl p-5 shadow-sm border border-outline-variant/40">
+      <div class="w-10 h-1 bg-[#241B35]/20 rounded-full mx-auto mb-4"></div>
+
+      <div class="flex items-center justify-between pb-3 border-b border-outline-variant/30">
+        <div>
+          <h2 class="text-lg font-bold text-[#241B35]">Capacity setting</h2>
+          <p class="text-xs text-[#241B35]/60">Select capacity setting · Current: <span class="font-semibold">Normal</span></p>
+        </div>
+        <button class="w-10 h-10 min-w-[48px] min-h-[48px] rounded-full flex items-center justify-center text-[#241B35]/70 hover:bg-surface-container">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <!-- Capacity Grid / List: Normal, 40%, 50%, 60%, 70%, 80% (Draft), 90%, 100%, 110% -->
+      <div class="py-3 max-h-[220px] overflow-y-auto space-y-1.5 pr-1">
+        <!-- Normal -->
+        <label class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"></span>
+            <div>
+              <span class="text-sm font-semibold text-[#241B35]">Normal</span>
+              <span class="text-xs text-[#241B35]/50 ml-1.5">(No fixed capacity)</span>
+            </div>
+          </div>
+          <span class="text-xs text-primary font-medium">Active</span>
+        </label>
+
+        <!-- 40% -->
+        <label class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"></span>
+            <span class="text-sm font-medium text-[#241B35]">40%</span>
+          </div>
+        </label>
+
+        <!-- 50% -->
+        <label class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"></span>
+            <span class="text-sm font-medium text-[#241B35]">50%</span>
+          </div>
+        </label>
+
+        <!-- 60% -->
+        <label class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"></span>
+            <span class="text-sm font-medium text-[#241B35]">60%</span>
+          </div>
+        </label>
+
+        <!-- 70% -->
+        <label class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"></span>
+            <span class="text-sm font-medium text-[#241B35]">70%</span>
+          </div>
+        </label>
+
+        <!-- 80% (Selected Draft) -->
+        <label class="flex items-center justify-between p-3 rounded-2xl bg-primary-container/70 border border-primary/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center">
+              <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+            </span>
+            <span class="text-sm font-bold text-on-primary-container">80%</span>
+          </div>
+          <span class="text-[11px] font-semibold text-on-primary-container/90 bg-white/70 px-2 py-0.5 rounded-full">Draft selection</span>
+        </label>
+
+        <!-- 90% -->
+        <label class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"></span>
+            <span class="text-sm font-medium text-[#241B35]">90%</span>
+          </div>
+        </label>
+
+        <!-- 100% -->
+        <label class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"></span>
+            <span class="text-sm font-medium text-[#241B35]">100%</span>
+          </div>
+        </label>
+
+        <!-- 110% -->
+        <label class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"></span>
+            <span class="text-sm font-medium text-[#241B35]">110%</span>
+          </div>
+        </label>
+      </div>
+
+      <!-- In-Sheet Mutual Exclusion Warning -->
+      <div class="p-2.5 my-2 rounded-xl bg-amber-50 border border-amber-200 text-[11px] text-amber-900 flex items-start gap-2">
+        <span class="material-symbols-outlined text-sm text-amber-700 mt-0.5">info</span>
+        <span>This turns Powerful off when it is currently on. It is a capacity setting, not an exact measured energy-saving percentage.</span>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="pt-2 flex items-center justify-end gap-2 border-t border-outline-variant/30">
+        <button class="min-h-[48px] px-5 rounded-full text-xs font-semibold text-primary hover:bg-surface-container">
+          Cancel
+        </button>
+        <button class="min-h-[48px] px-6 rounded-full text-xs font-semibold bg-primary text-white hover:bg-primary/90 shadow-sm active:scale-95 duration-150">
+          Set capacity
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: ECO CONFIRMATION SPECIMEN (ALERT DIALOG) -->
+  <section class="mb-8">
+    <div class="flex items-center justify-between mb-2 px-1">
+      <span class="text-xs font-bold uppercase tracking-wider text-primary">Specimen 04</span>
+      <span class="text-[11px] font-medium bg-[#E8DEF8] text-[#21005D] px-2 py-0.5 rounded-full">Modal Alert Dialog</span>
+    </div>
+
+    <!-- Dialog Card Backdrop & Box -->
+    <div class="bg-surface-container-lowest rounded-4xl p-6 shadow-md border border-outline-variant/50">
+      <div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center mb-3">
+        <span class="material-symbols-outlined text-xl">eco</span>
+      </div>
+
+      <h3 class="text-lg font-bold text-[#241B35] leading-snug">Turn Eco on?</h3>
+      <p class="text-xs text-[#241B35]/70 mt-2 leading-relaxed">
+        It also sets the target to <strong>26°C</strong>. Target temperature is not changed until you confirm.
+      </p>
+
+      <div class="mt-6 flex items-center justify-end gap-2">
+        <button class="min-h-[48px] px-5 rounded-full text-xs font-semibold text-primary hover:bg-surface-container transition-colors">
+          Cancel
+        </button>
+        <button class="min-h-[48px] px-6 rounded-full text-xs font-semibold bg-secondary-container text-on-secondary-container hover:bg-[#FFE082] transition-colors active:scale-95">
+          Confirm
+        </button>
+      </div>
+    </div>
+
+    <!-- External Annotation -->
+    <div class="mt-2.5 px-3 py-2 text-[11px] text-[#241B35]/70 bg-surface-container/60 rounded-xl">
+      <strong>No silent side effects:</strong> Explicitly alerts user to the bundled setpoint override prior to dispatching command.
+    </div>
+  </section>
+
+  <!-- SECTION 5: COMMAND FEEDBACK STATES (APPLYING VS NOT CONFIRMED) -->
+  <section class="mb-4">
+    <div class="flex items-center justify-between mb-2 px-1">
+      <span class="text-xs font-bold uppercase tracking-wider text-primary">Specimen 05</span>
+      <span class="text-[11px] font-medium bg-[#E8DEF8] text-[#21005D] px-2 py-0.5 rounded-full">Feedback Semantics</span>
+    </div>
+
+    <div class="space-y-4">
+      <!-- Example A: Applying in progress -->
+      <div class="bg-surface-container-low rounded-3xl p-4 border border-outline-variant/40">
+        <div class="flex items-center justify-between text-xs mb-2">
+          <span class="font-bold text-[#241B35]">5A. In-Transit Command State</span>
+          <span class="text-[10px] bg-primary/10 text-primary font-semibold px-2 py-0.5 rounded-full">Transient</span>
+        </div>
+
+        <div class="p-3 rounded-2xl bg-white border border-outline-variant/40 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <!-- Spinner Animation -->
+            <div class="w-5 h-5 rounded-full border-2 border-primary border-t-transparent animate-spin"></div>
+            <div>
+              <div class="text-xs font-bold text-[#241B35]">Applying…</div>
+              <div class="text-[11px] text-[#241B35]/60">Previous reported state retained: <span class="font-semibold">Auto</span></div>
+            </div>
+          </div>
+          <span class="text-[11px] font-medium text-primary">Request sent</span>
+        </div>
+      </div>
+
+      <!-- Example B: Not Confirmed Yet (Separate Specimen) -->
+      <div class="bg-surface-container-low rounded-3xl p-4 border border-outline-variant/40">
+        <div class="flex items-center justify-between text-xs mb-2">
+          <span class="font-bold text-[#241B35]">5B. Unconfirmed Readback State</span>
+          <span class="text-[10px] bg-tertiary-container text-on-tertiary-container font-semibold px-2 py-0.5 rounded-full">Retry Flow</span>
+        </div>
+
+        <div class="p-3 rounded-2xl bg-white border border-outline-variant/40 flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <span class="material-symbols-outlined text-tertiary text-lg">sync_problem</span>
+            <div>
+              <div class="text-xs font-bold text-[#241B35]">Not confirmed yet</div>
+              <div class="text-[11px] text-[#241B35]/60">Hardware reported state did not match</div>
+            </div>
+          </div>
+          <!-- Explicit Refresh action, no fake checkmark -->
+          <button class="min-h-[48px] px-3.5 rounded-full bg-surface-container-high text-[#241B35] text-xs font-semibold flex items-center gap-1 hover:bg-outline-variant active:scale-95">
+            <span class="material-symbols-outlined text-sm">refresh</span>
+            <span>Refresh</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Board Architecture Summary Note -->
+    <div class="mt-4 p-3.5 rounded-2xl bg-surface-container border border-outline-variant text-xs space-y-2">
+      <div class="flex items-center gap-1.5 font-bold text-[#241B35]">
+        <span class="material-symbols-outlined text-sm">checklist</span>
+        <span>Behavior Contract &amp; Verification Checklist</span>
+      </div>
+      <ul class="text-[#241B35]/80 space-y-1 list-disc list-inside leading-relaxed text-[11px]">
+        <li><strong>Draft vs Physical:</strong> Steppers and options select a draft state; no hardware command dispatches until the explicit <em>Set</em> action is committed.</li>
+        <li><strong>Mutual Exclusivity:</strong> Selecting a fixed capacity automatically enforces Powerful: Off; conversely, turning Powerful On turns fixed capacity off.</li>
+        <li><strong>Eco Coupling:</strong> Eco confirmation guarantees the user is notified of the 26°C target temperature override before transmission.</li>
+        <li><strong>Async Readback:</strong> Applying is shown while awaiting response; readback mismatch surfaces "Not confirmed yet" with Refresh instead of optimistic false checkmarks.</li>
+      </ul>
+    </div>
+  </section>
+
+
+
+</body></html>

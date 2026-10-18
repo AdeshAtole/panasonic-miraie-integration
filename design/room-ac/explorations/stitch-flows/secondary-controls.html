@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Room AC Secondary Control Sheets</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            surface: '#FFFBFF',
+            'on-surface': '#241B35',
+            'surface-dim': '#ded8e0',
+            'surface-bright': '#fdf7ff',
+            'surface-container-lowest': '#ffffff',
+            'surface-container-low': '#F7F0FF',
+            'surface-container': '#F0E7FA',
+            'surface-container-high': '#E8DEF8',
+            'surface-container-highest': '#E2D5F0',
+            'outline-variant': '#D7CBE2',
+            primary: '#6750A4',
+            'on-primary': '#FFFFFF',
+            'primary-container': '#EADDFF',
+            'on-primary-container': '#21005D',
+            secondary: '#715B00',
+            'on-secondary': '#FFFFFF',
+            'secondary-container': '#FFE8A3',
+            'on-secondary-container': '#342A00',
+            tertiary: '#A43E35',
+            'on-tertiary': '#FFFFFF',
+            'tertiary-container': '#FFDAD4',
+            'on-tertiary-container': '#410002',
+            error: '#BA1A1A',
+            'on-error': '#FFFFFF',
+          },
+          fontFamily: {
+            sans: ['Roboto', 'sans-serif'],
+          },
+          borderRadius: {
+            '4xl': '28px',
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-outlined.fill-1 {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+      background-color: #F8F5FB;
+      color: #241B35;
+      font-family: 'Roboto', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+  </style>
+</head>
+<body class="min-h-screen p-4 pb-20 max-w-[420px] mx-auto sm:max-w-[440px]">
+
+  <!-- Top System Bar Sim -->
+  <header class="flex justify-between items-center text-xs font-semibold px-2 py-1 mb-4 text-[#241B35]/70">
+    <span>10:24</span>
+    <div class="flex items-center gap-1.5 text-[11px]">
+      <span class="material-symbols-outlined text-[15px]">wifi</span>
+      <span class="material-symbols-outlined text-[15px]">signal_cellular_alt</span>
+      <span>92%</span>
+    </div>
+  </header>
+
+  <!-- Board Title Banner -->
+  <div class="mb-6 px-1">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#EADDFF] text-[#21005D] text-xs font-semibold mb-2">
+      <span class="material-symbols-outlined text-sm">tune</span>
+      <span>Specimen Review Board · M3 Native</span>
+    </div>
+    <h1 class="text-2xl font-bold tracking-tight text-[#241B35]">Secondary Control Sheets</h1>
+    <p class="text-xs text-[#241B35]/70 mt-1 leading-relaxed">
+      Bottom sheets and dialogs triggered from Controller. Strict draft-and-commit semantics, mutually exclusive capacity rules, and asynchronous readback status.
+    </p>
+  </div>
+
+  <!-- SECTION 1: FAN SPEED SHEET -->
+  <section class="mb-8">
+    <div class="flex items-center justify-between mb-2 px-1">
+      <span class="text-xs font-bold uppercase tracking-wider text-primary">Specimen 01</span>
+      <span class="text-[11px] font-medium bg-[#E8DEF8] text-[#21005D] px-2 py-0.5 rounded-full">Modal Bottom Sheet</span>
+    </div>
+
+    <!-- Sheet Wrapper Simulating Bottom Sheet on Canvas -->
+    <div class="bg-surface-container-low rounded-4xl p-5 shadow-sm border border-outline-variant/40">
+      <!-- Sheet Drag Handle -->
+      <div class="w-10 h-1 bg-[#241B35]/20 rounded-full mx-auto mb-4"></div>
+
+      <!-- Header -->
+      <div class="flex items-center justify-between pb-3 border-b border-outline-variant/30">
+        <div class="flex items-center gap-2">
+          <div class="w-9 h-9 rounded-full bg-primary/10 flex items-center justify-center text-primary">
+            <span class="material-symbols-outlined text-lg">mode_fan</span>
+          </div>
+          <div>
+            <h2 class="text-lg font-bold text-[#241B35]">Fan speed</h2>
+            <p class="text-xs text-[#241B35]/60">Reported setting: <span class="font-semibold text-[#241B35]">Auto</span></p>
+          </div>
+        </div>
+        <button class="w-10 h-10 min-w-[48px] min-h-[48px] rounded-full flex items-center justify-center text-[#241B35]/70 hover:bg-surface-container transition-colors" aria-label="Close">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <!-- Single Choice List -->
+      <div class="py-3 space-y-1.5">
+        <!-- Auto (Current active) -->
+        <label class="flex items-center justify-between p-3 rounded-2xl bg-surface-container/40 border border-transparent cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center">
+              <span class="w-2.5 h-2.5 rounded-full bg-transparent"></span>
+            </span>
+            <div class="leading-tight">
+              <span class="text-sm font-medium text-[#241B35]">Auto</span>
+              <span class="ml-2 text-[11px] font-semibold text-primary bg-primary-container px-2 py-0.5 rounded-full">Current</span>
+            </div>
+          </div>
+          <span class="material-symbols-outlined text-sm text-[#241B35]/40">auto_mode</span>
+        </label>
+
+        <!-- Quiet -->
+        <label class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"></span>
+            <span class="text-sm font-medium text-[#241B35]">Quiet</span>
+          </div>
+          <span class="material-symbols-outlined text-sm text-[#241B35]/40">volume_mute</span>
+        </label>
+
+        <!-- Low -->
+        <label class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"></span>
+            <span class="text-sm font-medium text-[#241B35]">Low</span>
+          </div>
+          <span class="material-symbols-outlined text-sm text-[#241B35]/40">speed</span>
+        </label>
+
+        <!-- Medium -->
+        <label class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"></span>
+            <span class="text-sm font-medium text-[#241B35]">Medium</span>
+          </div>
+          <span class="material-symbols-outlined text-sm text-[#241B35]/40">speed</span>
+        </label>
+
+        <!-- High (Pending Draft Selection) -->
+        <label class="flex items-center justify-between p-3 rounded-2xl bg-primary-container/60 border border-primary/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center">
+              <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+            </span>
+            <div class="leading-tight">
+              <span class="text-sm font-bold text-on-primary-container">High</span>
+              <span class="ml-2 text-[11px] font-semibold text-on-primary-container/80 bg-white/70 px-2 py-0.5 rounded-full">Draft selection</span>
+            </div>
+          </div>
+          <span class="material-symbols-outlined text-sm text-primary">air</span>
+        </label>
+      </div>
+
+      <!-- Action Footer -->
+      <div class="pt-3 flex items-center justify-end gap-2 border-t border-outline-variant/30">
+        <button class="min-h-[48px] px-5 rounded-full text-xs font-semibold text-primary hover:bg-surface-container transition-colors">
+          Cancel
+        </button>
+        <button class="min-h-[48px] px-6 rounded-full text-xs font-semibold bg-primary text-white hover:bg-primary/90 transition-shadow shadow-sm active:scale-95 duration-150">
+          Set fan speed
+        </button>
+      </div>
+    </div>
+
+    <!-- External Board Annotation for Fan Restrictions -->
+    <div class="mt-3 p-3 rounded-2xl bg-surface-container border border-outline-variant/60 text-xs space-y-1.5">
+      <div class="flex items-center gap-1.5 font-bold text-[#241B35]">
+        <span class="material-symbols-outlined text-amber-700 text-sm">info</span>
+        <span>Behavior & Restrictions (Non-Interactive Note)</span>
+      </div>
+      <p class="text-[#241B35]/80 leading-relaxed">
+        • <strong>Draft commit:</strong> Tapping <em>High</em> drafts selection; physical fan speed remains <em>Auto</em> until <em>Set fan speed</em> is tapped. <em>Cancel</em> leaves actual Auto unchanged.<br>
+        • <strong>No RPM:</strong> Shows only certified qualitative steps (no telemetry RPM).<br>
+        • <strong>Mode constraints:</strong> <em>Dry mode</em> manages fan speed automatically and disables manual selection. Unit cleaning also disables fan controls.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION 2: MORE CONTROLS SHEET (IN COOL MODE) -->
+  <section class="mb-8">
+    <div class="flex items-center justify-between mb-2 px-1">
+      <span class="text-xs font-bold uppercase tracking-wider text-primary">Specimen 02</span>
+      <span class="text-[11px] font-medium bg-[#E8DEF8] text-[#21005D] px-2 py-0.5 rounded-full">Operating Sheet (Cool)</span>
+    </div>
+
+    <div class="bg-surface-container-low rounded-4xl p-5 shadow-sm border border-outline-variant/40">
+      <div class="w-10 h-1 bg-[#241B35]/20 rounded-full mx-auto mb-4"></div>
+
+      <div class="flex items-center justify-between pb-3 border-b border-outline-variant/30">
+        <div class="flex items-center gap-2">
+          <div class="w-9 h-9 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+            <span class="material-symbols-outlined text-lg">tune</span>
+          </div>
+          <div>
+            <h2 class="text-lg font-bold text-[#241B35]">More controls</h2>
+            <p class="text-xs text-[#241B35]/60">AC Power: <span class="text-emerald-700 font-semibold">On</span> · Mode: <span class="font-semibold text-[#241B35]">Cool</span></p>
+          </div>
+        </div>
+        <button class="w-10 h-10 min-w-[48px] min-h-[48px] rounded-full flex items-center justify-center text-[#241B35]/70 hover:bg-surface-container" aria-label="Close">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <!-- Control Entries -->
+      <div class="py-4 space-y-3">
+        <!-- Eco Entry -->
+        <div class="p-3.5 rounded-2xl bg-surface-container/60 border border-outline-variant/30 flex items-center justify-between gap-3 min-h-[48px]">
+          <div class="space-y-0.5 flex-1">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-bold text-[#241B35]">Eco</span>
+              <span class="text-[11px] font-semibold text-slate-600 bg-slate-200/80 px-2 py-0.2 rounded-full">Off</span>
+            </div>
+            <p class="text-[11px] text-[#241B35]/70">Enabling sets target to 26°C and requires confirmation</p>
+          </div>
+          <button class="min-h-[48px] px-4 rounded-full bg-secondary-container text-on-secondary-container text-xs font-semibold hover:bg-[#ffe082] active:scale-95 transition-all">
+            Turn On
+          </button>
+        </div>
+
+        <!-- Powerful Entry -->
+        <div class="p-3.5 rounded-2xl bg-surface-container/60 border border-outline-variant/30 flex items-center justify-between gap-3 min-h-[48px]">
+          <div class="space-y-0.5 flex-1">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-bold text-[#241B35]">Powerful</span>
+              <span class="text-[11px] font-semibold text-slate-600 bg-slate-200/80 px-2 py-0.2 rounded-full">Off</span>
+            </div>
+            <p class="text-[11px] text-[#241B35]/70">Maximum output. Enabling disables fixed capacity limits</p>
+          </div>
+          <button class="min-h-[48px] px-4 rounded-full bg-surface-container-high text-[#241B35] text-xs font-semibold hover:bg-outline-variant active:scale-95 transition-all">
+            Turn On
+          </button>
+        </div>
+
+        <!-- Capacity Entry (Normal) -->
+        <div class="p-3.5 rounded-2xl bg-surface-container/60 border border-outline-variant/30 flex items-center justify-between gap-3 min-h-[48px]">
+          <div class="space-y-0.5 flex-1">
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-bold text-[#241B35]">Capacity limit</span>
+              <span class="text-[11px] font-semibold text-primary bg-primary-container px-2 py-0.2 rounded-full">Normal</span>
+            </div>
+            <p class="text-[11px] text-[#241B35]/70">No cap active (standard inverter modulation)</p>
+          </div>
+          <button class="min-h-[48px] px-4 rounded-full bg-surface-container-high text-[#241B35] text-xs font-semibold flex items-center gap-1 hover:bg-outline-variant">
+            <span>Change</span>
+            <span class="material-symbols-outlined text-sm">chevron_right</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Sheet Footer -->
+      <div class="pt-2 flex justify-end">
+        <button class="min-h-[48px] px-5 rounded-full text-xs font-semibold text-primary hover:bg-surface-container">
+          Done
+        </button>
+      </div>
+    </div>
+
+    <!-- External Annotation -->
+    <div class="mt-3 p-3 rounded-2xl bg-surface-container border border-outline-variant/60 text-xs space-y-1">
+      <div class="flex items-center gap-1.5 font-bold text-[#241B35]">
+        <span class="material-symbols-outlined text-sm text-primary">rule</span>
+        <span>Operational Boundaries</span>
+      </div>
+      <p class="text-[#241B35]/80 leading-relaxed">
+        • Requires <strong>AC Power On</strong> (controls disabled when unit is off).<br>
+        • Eco & Powerful are available in <strong>Cool mode only</strong> (disabled in Auto, Dry, Fan).<br>
+        • Powerful is unavailable during unit cleaning cycles.
+      </p>
+    </div>
+  </section>
+
+  <!-- SECTION 3: CAPACITY SINGLE-CHOICE SHEET -->
+  <section class="mb-8">
+    <div class="flex items-center justify-between mb-2 px-1">
+      <span class="text-xs font-bold uppercase tracking-wider text-primary">Specimen 03</span>
+      <span class="text-[11px] font-medium bg-[#E8DEF8] text-[#21005D] px-2 py-0.5 rounded-full">Single-Choice Sheet</span>
+    </div>
+
+    <div class="bg-surface-container-low rounded-4xl p-5 shadow-sm border border-outline-variant/40">
+      <div class="w-10 h-1 bg-[#241B35]/20 rounded-full mx-auto mb-4"></div>
+
+      <div class="flex items-center justify-between pb-3 border-b border-outline-variant/30">
+        <div>
+          <h2 class="text-lg font-bold text-[#241B35]">Capacity limit</h2>
+          <p class="text-xs text-[#241B35]/60">Select inverter output cap · Current: <span class="font-semibold">Normal</span></p>
+        </div>
+        <button class="w-10 h-10 min-w-[48px] min-h-[48px] rounded-full flex items-center justify-center text-[#241B35]/70 hover:bg-surface-container">
+          <span class="material-symbols-outlined">close</span>
+        </button>
+      </div>
+
+      <!-- Capacity Grid / List: Normal, 40%, 50%, 60%, 70%, 80% (Draft), 90%, 100%, 110% -->
+      <div class="py-3 max-h-[220px] overflow-y-auto space-y-1.5 pr-1">
+        <!-- Normal -->
+        <label class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"></span>
+            <div>
+              <span class="text-sm font-semibold text-[#241B35]">Normal</span>
+              <span class="text-xs text-[#241B35]/50 ml-1.5">(No fixed capacity)</span>
+            </div>
+          </div>
+          <span class="text-xs text-primary font-medium">Active</span>
+        </label>
+
+        <!-- 40% -->
+        <label class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"></span>
+            <span class="text-sm font-medium text-[#241B35]">40%</span>
+          </div>
+        </label>
+
+        <!-- 50% -->
+        <label class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"></span>
+            <span class="text-sm font-medium text-[#241B35]">50%</span>
+          </div>
+        </label>
+
+        <!-- 60% -->
+        <label class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"></span>
+            <span class="text-sm font-medium text-[#241B35]">60%</span>
+          </div>
+        </label>
+
+        <!-- 70% -->
+        <label class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"></span>
+            <span class="text-sm font-medium text-[#241B35]">70%</span>
+          </div>
+        </label>
+
+        <!-- 80% (Selected Draft) -->
+        <label class="flex items-center justify-between p-3 rounded-2xl bg-primary-container/70 border border-primary/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-primary flex items-center justify-center">
+              <span class="w-2.5 h-2.5 rounded-full bg-primary"></span>
+            </span>
+            <span class="text-sm font-bold text-on-primary-container">80%</span>
+          </div>
+          <span class="text-[11px] font-semibold text-on-primary-container/90 bg-white/70 px-2 py-0.5 rounded-full">Draft selection</span>
+        </label>
+
+        <!-- 90% -->
+        <label class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"></span>
+            <span class="text-sm font-medium text-[#241B35]">90%</span>
+          </div>
+        </label>
+
+        <!-- 100% -->
+        <label class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"></span>
+            <span class="text-sm font-medium text-[#241B35]">100%</span>
+          </div>
+        </label>
+
+        <!-- 110% -->
+        <label class="flex items-center justify-between p-3 rounded-2xl hover:bg-surface-container/30 cursor-pointer min-h-[48px]">
+          <div class="flex items-center gap-3">
+            <span class="w-5 h-5 rounded-full border-2 border-outline-variant flex items-center justify-center"></span>
+            <span class="text-sm font-medium text-[#241B35]">110%</span>
+          </div>
+        </label>
+      </div>
+
+      <!-- In-Sheet Mutual Exclusion Warning -->
+      <div class="p-2.5 my-2 rounded-xl bg-amber-50 border border-amber-200 text-[11px] text-amber-900 flex items-start gap-2">
+        <span class="material-symbols-outlined text-sm text-amber-700 mt-0.5">info</span>
+        <span>This turns Powerful off when it is currently on. It is a capacity setting, not an exact measured energy-saving percentage.</span>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="pt-2 flex items-center justify-end gap-2 border-t border-outline-variant/30">
+        <button class="min-h-[48px] px-5 rounded-full text-xs font-semibold text-primary hover:bg-surface-container">
+          Cancel
+        </button>
+        <button class="min-h-[48px] px-6 rounded-full text-xs font-semibold bg-primary text-white hover:bg-primary/90 shadow-sm active:scale-95 duration-150">
+          Set capacity
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 4: ECO CONFIRMATION SPECIMEN (ALERT DIALOG) -->
+  <section class="mb-8">
+    <div class="flex items-center justify-between mb-2 px-1">
+      <span class="text-xs font-bold uppercase tracking-wider text-primary">Specimen 04</span>
+      <span class="text-[11px] font-medium bg-[#E8DEF8] text-[#21005D] px-2 py-0.5 rounded-full">Modal Alert Dialog</span>
+    </div>
+
+    <!-- Dialog Card Backdrop & Box -->
+    <div class="bg-surface-container-lowest rounded-4xl p-6 shadow-md border border-outline-variant/50">
+      <div class="w-10 h-10 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center mb-3">
+        <span class="material-symbols-outlined text-xl">eco</span>
+      </div>
+
+      <h3 class="text-lg font-bold text-[#241B35] leading-snug">Turn Eco on?</h3>
+      <p class="text-xs text-[#241B35]/70 mt-2 leading-relaxed">
+        It also sets the target to <strong>26°C</strong>. Target temperature is not changed until you confirm.
+      </p>
+
+      <div class="mt-6 flex items-center justify-end gap-2">
+        <button class="min-h-[48px] px-5 rounded-full text-xs font-semibold text-primary hover:bg-surface-container transition-colors">
+          Cancel
+        </button>
+        <button class="min-h-[48px] px-6 rounded-full text-xs font-semibold bg-secondary-container text-on-secondary-container hover:bg-[#FFE082] transition-colors active:scale-95">
+          Confirm
+        </button>
+      </div>
+    </div>
+
+    <!-- External Annotation -->
+    <div class="mt-2.5 px-3 py-2 text-[11px] text-[#241B35]/70 bg-surface-container/60 rounded-xl">
+      <strong>No silent side effects:</strong> Explicitly alerts user to the bundled setpoint override prior to dispatching command.
+    </div>
+  </section>
+
+  <!-- SECTION 5: COMMAND FEEDBACK STATES (APPLYING VS NOT CONFIRMED) -->
+  <section class="mb-4">
+    <div class="flex items-center justify-between mb-2 px-1">
+      <span class="text-xs font-bold uppercase tracking-wider text-primary">Specimen 05</span>
+      <span class="text-[11px] font-medium bg-[#E8DEF8] text-[#21005D] px-2 py-0.5 rounded-full">Feedback Semantics</span>
+    </div>
+
+    <div class="space-y-4">
+      <!-- Example A: Applying in progress -->
+      <div class="bg-surface-container-low rounded-3xl p-4 border border-outline-variant/40">
+        <div class="flex items-center justify-between text-xs mb-2">
+          <span class="font-bold text-[#241B35]">5A. In-Transit Command State</span>
+          <span class="text-[10px] bg-primary/10 text-primary font-semibold px-2 py-0.5 rounded-full">Transient</span>
+        </div>
+
+        <div class="p-3 rounded-2xl bg-white border border-outline-variant/40 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <!-- Spinner Animation -->
+            <div class="w-5 h-5 rounded-full border-2 border-primary border-t-transparent animate-spin"></div>
+            <div>
+              <div class="text-xs font-bold text-[#241B35]">Applying…</div>
+              <div class="text-[11px] text-[#241B35]/60">Previous reported state retained: <span class="font-semibold">Auto</span></div>
+            </div>
+          </div>
+          <span class="text-[11px] font-medium text-primary">Request sent</span>
+        </div>
+      </div>
+
+      <!-- Example B: Not Confirmed Yet (Separate Specimen) -->
+      <div class="bg-surface-container-low rounded-3xl p-4 border border-outline-variant/40">
+        <div class="flex items-center justify-between text-xs mb-2">
+          <span class="font-bold text-[#241B35]">5B. Unconfirmed Readback State</span>
+          <span class="text-[10px] bg-tertiary-container text-on-tertiary-container font-semibold px-2 py-0.5 rounded-full">Retry Flow</span>
+        </div>
+
+        <div class="p-3 rounded-2xl bg-white border border-outline-variant/40 flex items-center justify-between">
+          <div class="flex items-center gap-2.5">
+            <span class="material-symbols-outlined text-tertiary text-lg">sync_problem</span>
+            <div>
+              <div class="text-xs font-bold text-[#241B35]">Not confirmed yet</div>
+              <div class="text-[11px] text-[#241B35]/60">Hardware reported state did not match</div>
+            </div>
+          </div>
+          <!-- Explicit Refresh action, no fake checkmark -->
+          <button class="min-h-[48px] px-3.5 rounded-full bg-surface-container-high text-[#241B35] text-xs font-semibold flex items-center gap-1 hover:bg-outline-variant active:scale-95">
+            <span class="material-symbols-outlined text-sm">refresh</span>
+            <span>Refresh</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Board Architecture Summary Note -->
+    <div class="mt-4 p-3.5 rounded-2xl bg-surface-container border border-outline-variant text-xs space-y-2">
+      <div class="flex items-center gap-1.5 font-bold text-[#241B35]">
+        <span class="material-symbols-outlined text-sm">checklist</span>
+        <span>Behavior Contract & Verification Checklist</span>
+      </div>
+      <ul class="text-[#241B35]/80 space-y-1 list-disc list-inside leading-relaxed text-[11px]">
+        <li><strong>Draft vs Physical:</strong> Steppers and options select a draft state; no hardware command dispatches until the explicit <em>Set</em> action is committed.</li>
+        <li><strong>Mutual Exclusivity:</strong> Selecting a capacity cap automatically enforces Powerful: Off; conversely, turning Powerful On revokes fixed capacity.</li>
+        <li><strong>Eco Coupling:</strong> Eco confirmation guarantees the user is notified of the 26°C target temperature override before transmission.</li>
+        <li><strong>Async Readback:</strong> Applying is shown while awaiting response; readback mismatch surfaces "Not confirmed yet" with Refresh instead of optimistic false checkmarks.</li>
+      </ul>
+    </div>
+  </section>
+
+</body>
+</html>

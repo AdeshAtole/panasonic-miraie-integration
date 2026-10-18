@@ -1,0 +1,14 @@
+[
+  {
+    "text": "I have designed and added the **Room AC Readings** screen (Room AC Readings), matching the approved Material 3 Expressive design system, native Android conventions, and your explicit non-polling data model.\n\n### Key Architecture & Design Choices:\n\n1. **Header & Disambiguated Observation Time**:\n   - Features standard native Android Top App Bar with room selector (`Bedroom AC \u25be`), manual **Refresh** action, and an explicit timestamp banner (`Updated 10:24 \u00b7 Snapshot on demand \u00b7 No polling`), reinforcing that readings reflect point-in-time queries rather than a battery-draining continuous sensor stream.\n\n2. **Current Telemetry & System Health**:\n   - Displays real-time point-in-time telemetry: **Room Temp (24.18\u00b0C)** from room sensor, **Target Temp (23\u00b0C)** setpoint, **Fan Auto** (clarified as a *Setting*, not measured RPM), and **Wi-Fi (\u221255 dBm)** connection status.\n   - Includes system health status confirming `Errors: None \u00b7 Warnings: None`. Excludes fabricated metrics like humidity, compressor frequency, or instantaneous wattage.\n\n3. **On-Demand Daily Energy (Last 7 Days)**:\n   - Formatted as a clean, highly legible tabular bar breakdown without continuous line-chart deception.\n   - Explicitly marks **Today (Wed) as Partial (4.1 kWh)** alongside the previous 6 days.\n   - Provides discrete on-demand actions: **Reload energy** and **Export energy CSV**, accompanied by helper copy emphasizing that daily energy is read from unit flash on demand.\n\n4. **Saved Snapshots & Native Android File Picker Handoff**:\n   - Highlights the synthetic **42 saved snapshots** with clear context: *\"Saved when you refresh or change settings. Snapshots and daily energy are logged separately.\"*\n   - Includes an **Export readings CSV** action paired with an Android Storage Access Framework (SAF) system picker preview (`room_ac_readings_20241024.csv \u2192 Destination: Downloads/`), illustrating that files are saved directly via the native system picker without requesting broad device storage permissions.\n\n5. **Progressive Disclosure for Diagnostics**:\n   - Features expandable sections for **All Reported Fields (Raw)** (exposing raw key-value diagnostics like `room_temp`, `fan_mode`, `power`, `display`) and **Device Details & Capabilities** for diagnostic export without presenting firmware repair tools or exposing private credentials.\n\n6. **Navigation & Platform Alignment**:\n   - Perfectly mirrors the Controller screen's bottom navigation bar, with **Readings** styled in its active Material 3 tonal pill container and Android system gesture inset."
+  },
+  {
+    "suggestion": "View the expanded raw diagnostics accordion state"
+  },
+  {
+    "suggestion": "Review the empty state for when daily energy is not yet loaded"
+  },
+  {
+    "suggestion": "Inspect the dark mode theme variation for both screens"
+  }
+]

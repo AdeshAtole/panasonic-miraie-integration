@@ -1,0 +1,327 @@
+<!DOCTYPE html><html class="h-full" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Room AC widgets — locally corrected Stitch proposal</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-fixed-dim": "#e7c365",
+            "on-tertiary-container": "#410002",
+            "surface-container-lowest": "#ffffff",
+            "inverse-surface": "#322f35",
+            "secondary-fixed": "#ffe081",
+            "on-surface": "#1d1b20",
+            "on-surface-variant": "#494551",
+            "on-secondary-fixed-variant": "#564500",
+            "inverse-primary": "#cfbcff",
+            "error": "#BA1A1A",
+            "surface": "#FFFBFF",
+            "outline-variant": "#D7CBE2",
+            "primary-fixed-dim": "#cfbcff",
+            "on-tertiary-fixed-variant": "#594400",
+            "surface-dim": "#ded8e0",
+            "surface-variant": "#e6e0e9",
+            "on-background": "#1d1b20",
+            "on-secondary-fixed": "#231b00",
+            "inverse-on-surface": "#f5eff7",
+            "on-error-container": "#93000a",
+            "on-tertiary-fixed": "#241a00",
+            "surface-bright": "#fdf7ff",
+            "background": "#fdf7ff",
+            "primary": "#4f378a",
+            "on-secondary-container": "#342A00",
+            "surface-dark": "#1C1724",
+            "primary-fixed": "#e9ddff",
+            "tertiary-fixed": "#ffdf93",
+            "secondary": "#725c01",
+            "surface-tint": "#6750a4",
+            "on-secondary": "#ffffff",
+            "secondary-container": "#fcdd7d",
+            "primary-container": "#EADDFF",
+            "tertiary-container": "#FFDAD4",
+            "on-primary-fixed-variant": "#4f378a",
+            "on-primary-container": "#22005d",
+            "error-container": "#ffdad6",
+            "on-primary": "#FFFFFF",
+            "primary-dark": "#D0BCFF",
+            "on-primary-fixed": "#22005d",
+            "on-surface-dark": "#E8E0EF",
+            "surface-container-high": "#ece6ee",
+            "tertiary": "#A43E35",
+            "on-tertiary": "#ffffff",
+            "secondary-fixed-dim": "#e2c466",
+            "surface-container": "#f2ecf4",
+            "outline": "#7a7582",
+            "on-error": "#ffffff",
+            "surface-container-low": "#F7F0FF",
+            "surface-container-highest": "#e6e0e9"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "16px",
+            "space-lg": "24px",
+            "space-xs": "4px",
+            "space-xl": "32px",
+            "margin": "24px",
+            "gutter": "20px",
+            "space-sm": "8px"
+          },
+          "fontFamily": {
+            "label": ["Roboto"],
+            "headline-md": ["Roboto"],
+            "display-lg": ["Roboto"],
+            "body-base": ["Roboto"]
+          },
+          "fontSize": {
+            "label": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+            "display-lg": ["88px", { "lineHeight": "96px", "fontWeight": "700" }],
+            "body-base": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  <style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}[type='text'],input:where(:not([type])),[type='email'],[type='url'],[type='password'],[type='number'],[type='date'],[type='datetime-local'],[type='month'],[type='search'],[type='tel'],[type='time'],[type='week'],[multiple],textarea,select{-webkit-appearance:none;appearance:none;background-color:#fff;border-color:#6b7280;border-width:1px;border-radius:0px;padding-top:0.5rem;padding-right:0.75rem;padding-bottom:0.5rem;padding-left:0.75rem;font-size:1rem;line-height:1.5rem;--tw-shadow:0 0 #0000;}[type='text']:focus, input:where(:not([type])):focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus{outline:2px solid transparent;outline-offset:2px;--tw-ring-inset:var(--tw-empty,/*!*/ /*!*/);--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:#2563eb;--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);border-color:#2563eb}input::placeholder,textarea::placeholder{color:#6b7280;opacity:1}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-date-and-time-value{min-height:1.5em;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit,::-webkit-datetime-edit-year-field,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute-field,::-webkit-datetime-edit-second-field,::-webkit-datetime-edit-millisecond-field,::-webkit-datetime-edit-meridiem-field{padding-top:0;padding-bottom:0}select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");background-position:right 0.5rem center;background-repeat:no-repeat;background-size:1.5em 1.5em;padding-right:2.5rem;print-color-adjust:exact}[multiple],[size]:where(select:not([size="1"])){background-image:initial;background-position:initial;background-repeat:unset;background-size:initial;padding-right:0.75rem;print-color-adjust:unset}[type='checkbox'],[type='radio']{-webkit-appearance:none;appearance:none;padding:0;print-color-adjust:exact;display:inline-block;vertical-align:middle;background-origin:border-box;-webkit-user-select:none;user-select:none;flex-shrink:0;height:1rem;width:1rem;color:#2563eb;background-color:#fff;border-color:#6b7280;border-width:1px;--tw-shadow:0 0 #0000}[type='checkbox']{border-radius:0px}[type='radio']{border-radius:100%}[type='checkbox']:focus,[type='radio']:focus{outline:2px solid transparent;outline-offset:2px;--tw-ring-inset:var(--tw-empty,/*!*/ /*!*/);--tw-ring-offset-width:2px;--tw-ring-offset-color:#fff;--tw-ring-color:#2563eb;--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}[type='checkbox']:checked,[type='radio']:checked{border-color:transparent;background-color:currentColor;background-size:100% 100%;background-position:center;background-repeat:no-repeat}[type='checkbox']:checked{background-image:url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");}@media (forced-colors: active) {[type='checkbox']:checked{-webkit-appearance:auto;appearance:auto}}[type='radio']:checked{background-image:url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");}@media (forced-colors: active) {[type='radio']:checked{-webkit-appearance:auto;appearance:auto}}[type='checkbox']:checked:hover,[type='checkbox']:checked:focus,[type='radio']:checked:hover,[type='radio']:checked:focus{border-color:transparent;background-color:currentColor}[type='checkbox']:indeterminate{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 8h8'/%3e%3c/svg%3e");border-color:transparent;background-color:currentColor;background-size:100% 100%;background-position:center;background-repeat:no-repeat;}@media (forced-colors: active) {[type='checkbox']:indeterminate{-webkit-appearance:auto;appearance:auto}}[type='checkbox']:indeterminate:hover,[type='checkbox']:indeterminate:focus{border-color:transparent;background-color:currentColor}[type='file']{background:unset;border-color:inherit;border-width:0;border-radius:0;padding:0;font-size:unset;line-height:inherit}[type='file']:focus{outline:1px solid ButtonText;outline:1px auto -webkit-focus-ring-color}.relative{position:relative}.col-span-5{grid-column:span 5 / span 5}.col-span-7{grid-column:span 7 / span 7}.mx-auto{margin-left:auto;margin-right:auto}.my-auto{margin-top:auto;margin-bottom:auto}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mb-space-sm{margin-bottom:8px}.mb-space-xs{margin-bottom:4px}.mt-0\.5{margin-top:0.125rem}.mt-space-md{margin-top:16px}.mt-space-sm{margin-top:8px}.inline-block{display:inline-block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.aspect-square{aspect-ratio:1 / 1}.h-1\.5{height:0.375rem}.h-12{height:3rem}.h-2{height:0.5rem}.h-full{height:100%}.min-h-screen{min-height:100vh}.w-1\.5{width:0.375rem}.w-12{width:3rem}.w-2{width:0.5rem}.w-fit{width:-moz-fit-content;width:fit-content}.w-full{width:100%}.max-w-4xl{max-width:56rem}.max-w-\[240px\]{max-width:240px}.max-w-\[420px\]{max-width:420px}.flex-1{flex:1 1 0%}.shrink-0{flex-shrink:0}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.cursor-pointer{cursor:pointer}.select-none{-webkit-user-select:none;user-select:none}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-start{align-items:flex-start}.items-center{align-items:center}.items-baseline{align-items:baseline}.justify-start{justify-content:flex-start}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-space-lg{gap:24px}.gap-space-md{gap:16px}.gap-space-sm{gap:8px}.gap-space-xs{gap:4px}.overflow-hidden{overflow:hidden}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-\[2\.5rem\]{border-radius:2.5rem}.rounded-\[2rem\]{border-radius:2rem}.rounded-full{border-radius:9999px}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-outline-variant\/30{border-color:rgb(215 203 226 / 0.3)}.border-outline-variant\/40{border-color:rgb(215 203 226 / 0.4)}.border-outline-variant\/50{border-color:rgb(215 203 226 / 0.5)}.border-outline-variant\/60{border-color:rgb(215 203 226 / 0.6)}.bg-background{--tw-bg-opacity:1;background-color:rgb(253 247 255 / var(--tw-bg-opacity, 1))}.bg-primary-container{--tw-bg-opacity:1;background-color:rgb(234 221 255 / var(--tw-bg-opacity, 1))}.bg-secondary{--tw-bg-opacity:1;background-color:rgb(114 92 1 / var(--tw-bg-opacity, 1))}.bg-secondary-container{--tw-bg-opacity:1;background-color:rgb(252 221 125 / var(--tw-bg-opacity, 1))}.bg-surface{--tw-bg-opacity:1;background-color:rgb(255 251 255 / var(--tw-bg-opacity, 1))}.bg-surface-container{--tw-bg-opacity:1;background-color:rgb(242 236 244 / var(--tw-bg-opacity, 1))}.bg-surface-container-high{--tw-bg-opacity:1;background-color:rgb(236 230 238 / var(--tw-bg-opacity, 1))}.bg-surface-container-low{--tw-bg-opacity:1;background-color:rgb(247 240 255 / var(--tw-bg-opacity, 1))}.bg-surface-container-lowest{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.p-space-lg{padding:24px}.p-space-md{padding:16px}.p-space-sm{padding:8px}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-2\.5{padding-left:0.625rem;padding-right:0.625rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-3\.5{padding-left:0.875rem;padding-right:0.875rem}.px-space-md{padding-left:16px;padding-right:16px}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-space-xs{padding-top:4px;padding-bottom:4px}.pb-space-md{padding-bottom:16px}.pb-space-xl{padding-bottom:32px}.pt-space-lg{padding-top:24px}.pt-space-sm{padding-top:8px}.pt-space-xs{padding-top:4px}.font-body-base{font-family:Roboto}.font-headline-md{font-family:Roboto}.font-label{font-family:Roboto}.font-mono{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-5xl{font-size:3rem;line-height:1}.text-\[11px\]{font-size:11px}.text-\[14px\]{font-size:14px}.text-\[16px\]{font-size:16px}.text-\[18px\]{font-size:18px}.text-\[20px\]{font-size:20px}.text-\[24px\]{font-size:24px}.text-base{font-size:1rem;line-height:1.5rem}.text-body-base{font-size:16px;line-height:24px;font-weight:400}.text-headline-md{font-size:32px;line-height:40px;font-weight:700}.text-label{font-size:14px;line-height:20px;font-weight:600}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-relaxed{line-height:1.625}.tracking-tight{letter-spacing:-0.025em}.tracking-tighter{letter-spacing:-0.05em}.tracking-wide{letter-spacing:0.025em}.tracking-wider{letter-spacing:0.05em}.text-error{--tw-text-opacity:1;color:rgb(186 26 26 / var(--tw-text-opacity, 1))}.text-on-background{--tw-text-opacity:1;color:rgb(29 27 32 / var(--tw-text-opacity, 1))}.text-on-primary-container{--tw-text-opacity:1;color:rgb(34 0 93 / var(--tw-text-opacity, 1))}.text-on-secondary-container{--tw-text-opacity:1;color:rgb(52 42 0 / var(--tw-text-opacity, 1))}.text-on-surface{--tw-text-opacity:1;color:rgb(29 27 32 / var(--tw-text-opacity, 1))}.text-on-surface-variant{--tw-text-opacity:1;color:rgb(73 69 81 / var(--tw-text-opacity, 1))}.text-on-surface-variant\/70{color:rgb(73 69 81 / 0.7)}.text-primary{--tw-text-opacity:1;color:rgb(79 55 138 / var(--tw-text-opacity, 1))}.text-secondary{--tw-text-opacity:1;color:rgb(114 92 1 / var(--tw-text-opacity, 1))}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-200{transition-duration:200ms}.selection\:bg-primary-container *::selection{--tw-bg-opacity:1;background-color:rgb(234 221 255 / var(--tw-bg-opacity, 1))}.selection\:text-on-primary-container *::selection{--tw-text-opacity:1;color:rgb(34 0 93 / var(--tw-text-opacity, 1))}.selection\:bg-primary-container::selection{--tw-bg-opacity:1;background-color:rgb(234 221 255 / var(--tw-bg-opacity, 1))}.selection\:text-on-primary-container::selection{--tw-text-opacity:1;color:rgb(34 0 93 / var(--tw-text-opacity, 1))}.hover\:bg-primary-container\/80:hover{background-color:rgb(234 221 255 / 0.8)}.hover\:bg-surface-container-high:hover{--tw-bg-opacity:1;background-color:rgb(236 230 238 / var(--tw-bg-opacity, 1))}.hover\:shadow-md:hover{--tw-shadow:0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color), 0 2px 4px -2px var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@media (min-width: 640px){.sm\:grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.sm\:text-5xl{font-size:3rem;line-height:1}}@media (min-width: 768px){.md\:col-span-12{grid-column:span 12 / span 12}.md\:col-span-5{grid-column:span 5 / span 5}.md\:col-span-7{grid-column:span 7 / span 7}.md\:grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}}@media (min-width: 1024px){.lg\:grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}}</style><style>*{animation:none!important}</style></head>
+<body class="bg-background text-on-background min-h-screen font-body-base text-body-base antialiased selection:bg-primary-container selection:text-on-primary-container pb-space-xl">
+<!-- Android System Status Bar Emulation -->
+<header class="w-full bg-surface text-on-surface select-none">
+<div class="max-w-4xl mx-auto px-space-md py-space-xs flex justify-between items-center text-xs tracking-wide font-medium">
+<span>10:24</span>
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]" data-icon="wifi">wifi</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="signal_cellular_alt">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[16px]" data-icon="battery_full">battery_full</span>
+</div>
+</div>
+</header>
+<!-- Review Board Header -->
+<section class="max-w-4xl mx-auto px-space-md pt-space-lg pb-space-md">
+<div class="flex flex-wrap items-center justify-between gap-space-sm border-b border-outline-variant/50 pb-space-md">
+<div>
+<div class="inline-flex items-center gap-space-xs px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary-container font-label text-xs mb-space-xs">
+<span class="material-symbols-outlined text-[14px]" data-icon="widgets">widgets</span>
+<span>Design proposals · Bedroom AC</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-on-surface tracking-tight">Room AC Widgets</h1>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-surface-container font-label text-xs text-on-surface-variant">
+<span class="inline-block w-2 h-2 rounded-full bg-secondary"></span>
+          RemoteViews Review
+        </span>
+</div>
+</div>
+</section>
+<!-- Main Canvas / Specimen Area -->
+<main class="max-w-4xl mx-auto px-space-md grid grid-cols-1 md:grid-cols-12 gap-space-lg">
+<!-- Specimen 1: 2x2 Compact Widget Column -->
+<section class="md:col-span-5 flex flex-col gap-space-md">
+<!-- Section Tag / Dimension Note -->
+<div class="flex items-center justify-between">
+<span class="font-label text-label text-primary font-bold tracking-wide">Specimen 01</span>
+<span class="font-label text-xs text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-full">2×2 Compact</span>
+</div>
+<!-- Widget Mockup Exterior Wrapper (Android Launcher Canvas Emulation) -->
+<div class="p-space-md rounded-[2.5rem] bg-surface-container-lowest border border-outline-variant/60 shadow-sm flex flex-col items-center">
+<!-- ACTUAL 2x2 WIDGET CARD FACE -->
+<article class="w-full aspect-square max-w-[240px] bg-surface-container-low rounded-[2rem] p-space-md flex flex-col justify-between select-none relative overflow-hidden transition-all duration-200 hover:shadow-md cursor-pointer border border-outline-variant/40" title="Tap to open Bedroom Controller">
+<!-- Top Row: Room & Sync time -->
+<div class="flex items-center justify-between w-full">
+<div class="flex items-center gap-1 text-on-surface font-semibold text-sm">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="meeting_room">meeting_room</span>
+<span>Bedroom</span>
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant/70" data-icon="north_east">north_east</span>
+</div>
+<span class="text-[11px] font-medium text-on-surface-variant">10:24</span>
+</div>
+<!-- Middle State: State Badge & Big Telemetry -->
+<div class="flex flex-col items-center my-auto py-1">
+<div class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label text-xs font-semibold mb-1">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+<span>On · Cool</span>
+</div>
+<div class="flex items-baseline justify-center">
+<span class="text-5xl font-black tracking-tighter text-on-surface">23°</span>
+<span class="text-xl font-bold text-on-surface-variant">C</span>
+</div>
+<span class="text-[11px] font-medium uppercase tracking-wider text-on-surface-variant">Target</span>
+</div>
+<!-- Bottom RemoteViews Quick Actions: Strict 48dp Minimum Touch Targets -->
+<div class="flex items-center justify-between gap-space-sm pt-space-xs border-t border-outline-variant/30">
+<!-- Off Toggle Action: 48dp pill -->
+<button aria-label="Turn Off Bedroom AC" class="h-12 flex-1 rounded-full bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all flex items-center justify-center gap-1.5 px-3 text-on-surface font-label text-xs font-bold text-error" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="power_settings_new">power_settings_new</span>
+<span>Off</span>
+</button>
+<!-- Refresh Action: 48dp circle button -->
+<button aria-label="Refresh AC status" class="h-12 w-12 rounded-full bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all flex items-center justify-center text-primary" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="sync">sync</span>
+</button>
+</div>
+</article>
+</div>
+<!-- Outside Annotation Specs -->
+<div class="bg-surface-container-low rounded-2xl p-space-sm border border-outline-variant/40 flex flex-col gap-1.5 text-xs text-on-surface-variant">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary shrink-0 mt-0.5" data-icon="touch_app">touch_app</span>
+<p><strong class="text-on-surface font-medium">Card body launch intent:</strong> Tapping widget canvas launches full <span class="text-primary font-semibold">Bedroom Controller</span>. Target temperature is read-only here.</p>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary shrink-0 mt-0.5" data-icon="ads_click">ads_click</span>
+<p><strong class="text-on-surface font-medium">Touch targets:</strong> Both bottom toggles (Off &amp; Sync) maintain strict 48×48dp hitboxes per Android M3 guidelines.</p>
+</div>
+</div>
+</section>
+<!-- Specimen 2: 4x2 Wide Widget Column -->
+<section class="md:col-span-7 flex flex-col gap-space-md">
+<!-- Section Tag / Dimension Note -->
+<div class="flex items-center justify-between">
+<span class="font-label text-label text-primary font-bold tracking-wide">Specimen 02</span>
+<span class="font-label text-xs text-on-surface-variant bg-surface-container-high px-2 py-0.5 rounded-full">4×2 Wide</span>
+</div>
+<!-- Widget Mockup Exterior Wrapper -->
+<div class="p-space-md rounded-[2.5rem] bg-surface-container-lowest border border-outline-variant/60 shadow-sm flex flex-col items-center">
+<!-- ACTUAL 4x2 WIDGET CARD FACE -->
+<article class="w-full max-w-[420px] bg-surface-container-low rounded-[2rem] p-space-md flex flex-col justify-between select-none relative overflow-hidden transition-all duration-200 hover:shadow-md cursor-pointer border border-outline-variant/40" title="Tap to open Bedroom Controller">
+<!-- Header Row -->
+<div class="flex items-center justify-between w-full mb-2">
+<div class="flex items-center gap-1.5 text-on-surface font-bold text-sm">
+<span class="material-symbols-outlined text-[20px] text-primary" data-icon="meeting_room">meeting_room</span>
+<span>Bedroom AC</span>
+<span class="material-symbols-outlined text-[14px] text-on-surface-variant/70" data-icon="open_in_new">open_in_new</span>
+</div>
+<div class="flex items-center gap-1 text-[11px] font-medium text-on-surface-variant">
+<span>Updated 10:24</span>
+</div>
+</div>
+<!-- Main Body: Split Dual Telemetry & Action Cluster -->
+<div class="grid grid-cols-12 gap-space-sm items-center py-1">
+<!-- Left Side: Target & Room Ambient Sensors -->
+<div class="col-span-7 flex flex-col justify-center">
+<div class="inline-flex items-center gap-1 w-fit px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-label text-xs font-semibold mb-1">
+<span class="inline-block w-1.5 h-1.5 rounded-full bg-secondary"></span>
+<span>On · Cool</span>
+</div>
+<div class="flex items-baseline gap-1">
+<span class="text-4xl sm:text-5xl font-black text-on-surface tracking-tighter">23°C</span>
+<span class="text-xs font-medium text-on-surface-variant uppercase tracking-wider">Target</span>
+</div>
+<!-- Secondary Subordinate Room Actual Telemetry -->
+<div class="flex items-center gap-1 mt-0.5 text-xs text-on-surface-variant font-medium">
+<span class="material-symbols-outlined text-[14px] text-primary" data-icon="thermostat">thermostat</span>
+<span>Room: <strong class="text-on-surface font-semibold">24.18°C</strong></span>
+</div>
+</div>
+<!-- Right Side: 48dp RemoteViews Action Column -->
+<div class="col-span-5 flex flex-col gap-2">
+<!-- Power Toggle Button (48dp height) -->
+<button aria-label="Turn off AC" class="h-12 w-full rounded-full bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all flex items-center justify-start px-3.5 gap-2 text-on-surface" type="button">
+<span class="material-symbols-outlined text-[18px] text-error" data-icon="power_settings_new">power_settings_new</span>
+<span class="font-label text-xs font-bold">Turn Off</span>
+</button>
+<!-- Quick Toggles Row (Display & Refresh, each 48dp minimum) -->
+<div class="flex items-center gap-2">
+<!-- Proposed Display Toggle -->
+<button aria-label="AC display On — proposed action" class="h-12 flex-1 rounded-full bg-primary-container text-on-primary-container hover:bg-primary-container/80 active:scale-95 transition-all flex items-center justify-center gap-1 px-2.5" title="Display On" type="button" style="flex-direction: column; gap: 0px; padding: 0px 4px;">
+<span class="material-symbols-outlined text-[18px]" data-icon="wb_incandescent">wb_incandescent</span>
+<span class="font-label text-xs font-semibold" style="white-space: pre-line; font-size: 10px; line-height: 11px;">Display
+On</span>
+</button>
+<!-- Refresh Button -->
+<button aria-label="Sync AC status" class="h-12 w-12 rounded-full bg-surface-container hover:bg-surface-container-high active:scale-95 transition-all flex items-center justify-center text-primary shrink-0" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="sync">sync</span>
+</button>
+</div>
+</div>
+</div>
+</article>
+</div>
+<!-- Outside Annotation Specs for 4x2 -->
+<div class="bg-surface-container-low rounded-2xl p-space-sm border border-outline-variant/40 flex flex-col gap-2 text-xs text-on-surface-variant">
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary font-bold shrink-0 mt-0.5" data-icon="new_releases">new_releases</span>
+<p><strong class="text-on-surface font-medium">Proposed Display Action:</strong> Adds independent unit LED toggle directly to widget without needing full app navigation.</p>
+</div>
+<div class="flex items-start gap-2">
+<span class="material-symbols-outlined text-[16px] text-primary shrink-0 mt-0.5" data-icon="analytics">analytics</span>
+<p><strong class="text-on-surface font-medium">Dual Telemetry Layout:</strong> Gives immediate at-a-glance status of both desired target temperature and last-reported room temperature.</p>
+</div>
+</div>
+</section>
+<!-- Section 3: Technical Implementation & Behavior Notes -->
+<section class="md:col-span-12 mt-space-sm">
+<div class="bg-surface-container rounded-3xl p-space-lg border border-outline-variant/40">
+<div class="flex items-center gap-2 mb-space-sm">
+<span class="material-symbols-outlined text-primary text-[24px]" data-icon="developer_board">developer_board</span>
+<h2 class="font-label text-base font-bold text-on-surface">RemoteViews &amp; Interaction Specifications</h2>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md text-xs">
+<!-- Note 1 -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl border border-outline-variant/30 flex flex-col gap-1.5">
+<div class="flex items-center gap-1.5 font-bold text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="cached">cached</span>
+<span>Manual Refresh Semantics</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed">
+              No continuous background polling to conserve battery. Tap-to-refresh fires on-demand query. Readback verifies reported state before updating UI.
+            </p>
+</div>
+<!-- Note 2 -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl border border-outline-variant/30 flex flex-col gap-1.5">
+<div class="flex items-center gap-1.5 font-bold text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="hourglass_top">hourglass_top</span>
+<span>Pending State Behavior</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed">
+              "Updating..." temporarily replaces timestamp while command is transit. Last-known verified telemetry remains visible until confirmation returns.
+            </p>
+</div>
+<!-- Note 3 -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl border border-outline-variant/30 flex flex-col gap-1.5">
+<div class="flex items-center gap-1.5 font-bold text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-error" data-icon="report_problem">report_problem</span>
+<span>Failure Handling</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed">
+              Preserves previous verified state and shows retry/refresh affordance rather than optimistic false switches that desync physical AC hardware.
+            </p>
+</div>
+<!-- Note 4 -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl border border-outline-variant/30 flex flex-col gap-1.5">
+<div class="flex items-center gap-1.5 font-bold text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-primary" data-icon="tune">tune</span>
+<span>App vs Widget Boundaries</span>
+</div>
+<p class="text-on-surface-variant leading-relaxed">
+              Temperature steppers (+/-), fan speeds, diagnostics remain exclusively in the full Controller application.
+            </p>
+</div>
+</div>
+<div class="mt-space-md pt-space-sm border-t border-outline-variant/30 flex items-center justify-between text-xs text-on-surface-variant">
+<span class="font-medium">Design System: Playful Android Material 3 (M3 Expressive)</span>
+<span class="font-mono text-[11px] bg-surface-container-high px-2 py-0.5 rounded-full">Proposal</span>
+</div>
+</div>
+</section>
+</main>
+</body></html>

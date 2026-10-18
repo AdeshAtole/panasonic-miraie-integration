@@ -1,0 +1,8 @@
+{
+  "projectId": "u5cQfWuWvBW",
+  "source": "codex",
+  "idempotencyKey": "61a173ce-51b2-4a04-bc82-b0040631223e",
+  "runId": "bRbxAJWaCLu",
+  "status": "failed",
+  "statusUrl": "/api/v1/projects/u5cQfWuWvBW/chat/runs/bRbxAJWaCLu"
+}

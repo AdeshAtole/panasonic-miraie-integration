@@ -1,0 +1,226 @@
+<!DOCTYPE html><html class="h-full" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Room AC — Stitch design with locally applied Stitch edits</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-container": "#6750a4",
+            "surface-container-highest": "#e6e0e9",
+            "tertiary": "#A43E35",
+            "secondary-container": "#FFE8A3",
+            "surface-variant": "#e6e0e9",
+            "on-secondary": "#ffffff",
+            "on-surface-dark": "#E8E0EF",
+            "on-secondary-fixed": "#231b00",
+            "surface-container-low": "#f8f2fa",
+            "on-tertiary-fixed": "#241a00",
+            "on-primary-container": "#21005D",
+            "error-container": "#ffdad6",
+            "on-tertiary-container": "#503d00",
+            "tertiary-container": "#FFDAD4",
+            "secondary-fixed-dim": "#e2c466",
+            "surface-dark": "#1C1724",
+            "on-surface": "#241B35",
+            "surface": "#FFFBFF",
+            "error": "#BA1A1A",
+            "primary-dark": "#D0BCFF",
+            "tertiary-fixed-dim": "#e7c365",
+            "surface-dim": "#ded8e0",
+            "surface-tint": "#6750a4",
+            "on-primary": "#FFFFFF",
+            "surface-container-high": "#ece6ee",
+            "primary": "#4f378a",
+            "outline-variant": "#cbc4d2",
+            "on-primary-fixed": "#22005d",
+            "outline": "#7a7582",
+            "surface-bright": "#fdf7ff",
+            "on-error": "#ffffff",
+            "on-secondary-fixed-variant": "#564500",
+            "surface-container": "#f2ecf4",
+            "secondary-fixed": "#ffe081",
+            "background": "#fdf7ff",
+            "on-surface-variant": "#494551",
+            "inverse-surface": "#322f35",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "tertiary-fixed": "#ffdf93",
+            "primary-fixed-dim": "#cfbcff",
+            "on-tertiary-fixed-variant": "#594400",
+            "on-secondary-container": "#342A00",
+            "primary-fixed": "#e9ddff",
+            "on-error-container": "#93000a",
+            "inverse-on-surface": "#f5eff7",
+            "on-primary-fixed-variant": "#4f378a",
+            "inverse-primary": "#cfbcff",
+            "on-background": "#1d1b20",
+            "secondary": "#725c01"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-lg": "24px",
+            "gutter": "20px",
+            "space-xs": "4px",
+            "space-xl": "32px",
+            "space-md": "16px",
+            "space-sm": "8px",
+            "margin": "24px"
+          },
+          "fontFamily": {
+            "headline-md": ["Roboto", "sans-serif"],
+            "label": ["Roboto", "sans-serif"],
+            "body-base": ["Roboto", "sans-serif"],
+            "display-lg": ["Roboto", "sans-serif"]
+          },
+          "fontSize": {
+            "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+            "label": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "body-base": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "display-lg": ["88px", { "lineHeight": "96px", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-fill {
+      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Touch ripple simulation */
+    .touch-target {
+      min-width: 48px;
+      min-height: 48px;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  <style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}[type='text'],input:where(:not([type])),[type='email'],[type='url'],[type='password'],[type='number'],[type='date'],[type='datetime-local'],[type='month'],[type='search'],[type='tel'],[type='time'],[type='week'],[multiple],textarea,select{-webkit-appearance:none;appearance:none;background-color:#fff;border-color:#6b7280;border-width:1px;border-radius:0px;padding-top:0.5rem;padding-right:0.75rem;padding-bottom:0.5rem;padding-left:0.75rem;font-size:1rem;line-height:1.5rem;--tw-shadow:0 0 #0000;}[type='text']:focus, input:where(:not([type])):focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus{outline:2px solid transparent;outline-offset:2px;--tw-ring-inset:var(--tw-empty,/*!*/ /*!*/);--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:#2563eb;--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);border-color:#2563eb}input::placeholder,textarea::placeholder{color:#6b7280;opacity:1}::-webkit-datetime-edit-fields-wrapper{padding:0}::-webkit-date-and-time-value{min-height:1.5em;text-align:inherit}::-webkit-datetime-edit{display:inline-flex}::-webkit-datetime-edit,::-webkit-datetime-edit-year-field,::-webkit-datetime-edit-month-field,::-webkit-datetime-edit-day-field,::-webkit-datetime-edit-hour-field,::-webkit-datetime-edit-minute-field,::-webkit-datetime-edit-second-field,::-webkit-datetime-edit-millisecond-field,::-webkit-datetime-edit-meridiem-field{padding-top:0;padding-bottom:0}select{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");background-position:right 0.5rem center;background-repeat:no-repeat;background-size:1.5em 1.5em;padding-right:2.5rem;print-color-adjust:exact}[multiple],[size]:where(select:not([size="1"])){background-image:initial;background-position:initial;background-repeat:unset;background-size:initial;padding-right:0.75rem;print-color-adjust:unset}[type='checkbox'],[type='radio']{-webkit-appearance:none;appearance:none;padding:0;print-color-adjust:exact;display:inline-block;vertical-align:middle;background-origin:border-box;-webkit-user-select:none;user-select:none;flex-shrink:0;height:1rem;width:1rem;color:#2563eb;background-color:#fff;border-color:#6b7280;border-width:1px;--tw-shadow:0 0 #0000}[type='checkbox']{border-radius:0px}[type='radio']{border-radius:100%}[type='checkbox']:focus,[type='radio']:focus{outline:2px solid transparent;outline-offset:2px;--tw-ring-inset:var(--tw-empty,/*!*/ /*!*/);--tw-ring-offset-width:2px;--tw-ring-offset-color:#fff;--tw-ring-color:#2563eb;--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow)}[type='checkbox']:checked,[type='radio']:checked{border-color:transparent;background-color:currentColor;background-size:100% 100%;background-position:center;background-repeat:no-repeat}[type='checkbox']:checked{background-image:url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");}@media (forced-colors: active) {[type='checkbox']:checked{-webkit-appearance:auto;appearance:auto}}[type='radio']:checked{background-image:url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");}@media (forced-colors: active) {[type='radio']:checked{-webkit-appearance:auto;appearance:auto}}[type='checkbox']:checked:hover,[type='checkbox']:checked:focus,[type='radio']:checked:hover,[type='radio']:checked:focus{border-color:transparent;background-color:currentColor}[type='checkbox']:indeterminate{background-image:url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 8h8'/%3e%3c/svg%3e");border-color:transparent;background-color:currentColor;background-size:100% 100%;background-position:center;background-repeat:no-repeat;}@media (forced-colors: active) {[type='checkbox']:indeterminate{-webkit-appearance:auto;appearance:auto}}[type='checkbox']:indeterminate:hover,[type='checkbox']:indeterminate:focus{border-color:transparent;background-color:currentColor}[type='file']{background:unset;border-color:inherit;border-width:0;border-radius:0;padding:0;font-size:unset;line-height:inherit}[type='file']:focus{outline:1px solid ButtonText;outline:1px auto -webkit-focus-ring-color}.pointer-events-none{pointer-events:none}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.-bottom-10{bottom:-2.5rem}.-left-10{left:-2.5rem}.-right-12{right:-3rem}.-top-12{top:-3rem}.bottom-0{bottom:0px}.bottom-1{bottom:0.25rem}.left-0{left:0px}.z-10{z-index:10}.z-40{z-index:40}.z-50{z-index:50}.mx-2{margin-left:0.5rem;margin-right:0.5rem}.mx-auto{margin-left:auto;margin-right:auto}.my-4{margin-top:1rem;margin-bottom:1rem}.my-3{margin-top:0.75rem;margin-bottom:0.75rem}.-ml-1{margin-left:-0.25rem}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-1\.5{margin-top:0.375rem}.mt-3{margin-top:0.75rem}.block{display:block}.inline-block{display:inline-block}.flex{display:flex}.grid{display:grid}.h-1{height:0.25rem}.h-10{height:2.5rem}.h-14{height:3.5rem}.h-2{height:0.5rem}.h-36{height:9rem}.h-44{height:11rem}.h-48{height:12rem}.h-5{height:1.25rem}.h-7{height:1.75rem}.h-9{height:2.25rem}.h-full{height:100%}.min-h-screen{min-height:100vh}.w-10{width:2.5rem}.w-14{width:3.5rem}.w-2{width:0.5rem}.w-32{width:8rem}.w-44{width:11rem}.w-48{width:12rem}.w-5{width:1.25rem}.w-9{width:2.25rem}.w-full{width:100%}.max-w-\[320px\]{max-width:320px}.max-w-\[412px\]{max-width:412px}.max-w-screen-sm{max-width:640px}.max-w-\[220px\]{max-width:220px}.translate-x-5{--tw-translate-x:1.25rem;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite}.cursor-pointer{cursor:pointer}.cursor-not-allowed{cursor:not-allowed}.select-none{-webkit-user-select:none;user-select:none}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.items-baseline{align-items:baseline}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.justify-around{justify-content:space-around}.gap-1\.5{gap:0.375rem}.gap-3{gap:0.75rem}.space-x-0\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.125rem * var(--tw-space-x-reverse));margin-left:calc(0.125rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-1 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.25rem * var(--tw-space-x-reverse));margin-left:calc(0.25rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-1\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.375rem * var(--tw-space-x-reverse));margin-left:calc(0.375rem * calc(1 - var(--tw-space-x-reverse)))}.space-x-2 > :not([hidden]) ~ :not([hidden]){--tw-space-x-reverse:0;margin-right:calc(0.5rem * var(--tw-space-x-reverse));margin-left:calc(0.5rem * calc(1 - var(--tw-space-x-reverse)))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.text-ellipsis{text-overflow:ellipsis}.whitespace-nowrap{white-space:nowrap}.rounded{border-radius:1rem}.rounded-full{border-radius:9999px}.rounded-lg{border-radius:2rem}.bg-\[\#1b803a\]{--tw-bg-opacity:1;background-color:rgb(27 128 58 / var(--tw-bg-opacity, 1))}.bg-background{--tw-bg-opacity:1;background-color:rgb(253 247 255 / var(--tw-bg-opacity, 1))}.bg-on-primary{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-on-surface\/30{background-color:rgb(36 27 53 / 0.3)}.bg-primary{--tw-bg-opacity:1;background-color:rgb(79 55 138 / var(--tw-bg-opacity, 1))}.bg-primary-container{--tw-bg-opacity:1;background-color:rgb(103 80 164 / var(--tw-bg-opacity, 1))}.bg-primary-fixed\/50{background-color:rgb(233 221 255 / 0.5)}.bg-secondary-container{--tw-bg-opacity:1;background-color:rgb(255 232 163 / var(--tw-bg-opacity, 1))}.bg-secondary-container\/40{background-color:rgb(255 232 163 / 0.4)}.bg-surface{--tw-bg-opacity:1;background-color:rgb(255 251 255 / var(--tw-bg-opacity, 1))}.bg-surface-container{--tw-bg-opacity:1;background-color:rgb(242 236 244 / var(--tw-bg-opacity, 1))}.bg-surface-container-high{--tw-bg-opacity:1;background-color:rgb(236 230 238 / var(--tw-bg-opacity, 1))}.bg-surface-container-low{--tw-bg-opacity:1;background-color:rgb(248 242 250 / var(--tw-bg-opacity, 1))}.bg-surface-container-lowest{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-surface-container-lowest\/80{background-color:rgb(255 255 255 / 0.8)}.bg-surface-container\/70{background-color:rgb(242 236 244 / 0.7)}.p-1{padding:0.25rem}.p-2{padding:0.5rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-3\.5{padding:0.875rem}.px-1\.5{padding-left:0.375rem;padding-right:0.375rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-space-md{padding-left:16px;padding-right:16px}.px-space-sm{padding-left:8px;padding-right:8px}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-space-sm{padding-top:8px;padding-bottom:8px}.py-space-xs{padding-top:4px;padding-bottom:4px}.pb-1{padding-bottom:0.25rem}.pb-28{padding-bottom:7rem}.pb-space-lg{padding-bottom:24px}.pb-space-sm{padding-bottom:8px}.pt-1{padding-top:0.25rem}.pt-2{padding-top:0.5rem}.pt-0\.5{padding-top:0.125rem}.text-left{text-align:left}.text-center{text-align:center}.font-body-base{font-family:Roboto, sans-serif}.font-display-lg{font-family:Roboto, sans-serif}.font-headline-md{font-family:Roboto, sans-serif}.font-label{font-family:Roboto, sans-serif}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[12px\]{font-size:12px}.text-\[13px\]{font-size:13px}.text-\[14px\]{font-size:14px}.text-\[16px\]{font-size:16px}.text-\[18px\]{font-size:18px}.text-\[20px\]{font-size:20px}.text-\[22px\]{font-size:22px}.text-\[24px\]{font-size:24px}.text-\[32px\]{font-size:32px}.text-body-base{font-size:16px;line-height:24px;font-weight:400}.text-display-lg{font-size:88px;line-height:96px;font-weight:700}.text-headline-md{font-size:32px;line-height:40px;font-weight:700}.text-label{font-size:14px;line-height:20px;font-weight:600}.text-xs{font-size:0.75rem;line-height:1rem}.text-\[28px\]{font-size:28px}.font-black{font-weight:900}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.tracking-normal{letter-spacing:0em}.tracking-tight{letter-spacing:-0.025em}.tracking-wider{letter-spacing:0.05em}.text-\[\#1b803a\]{--tw-text-opacity:1;color:rgb(27 128 58 / var(--tw-text-opacity, 1))}.text-\[\#855300\]{--tw-text-opacity:1;color:rgb(133 83 0 / var(--tw-text-opacity, 1))}.text-on-primary-container{--tw-text-opacity:1;color:rgb(33 0 93 / var(--tw-text-opacity, 1))}.text-on-secondary-container{--tw-text-opacity:1;color:rgb(52 42 0 / var(--tw-text-opacity, 1))}.text-on-surface{--tw-text-opacity:1;color:rgb(36 27 53 / var(--tw-text-opacity, 1))}.text-on-surface-variant{--tw-text-opacity:1;color:rgb(73 69 81 / var(--tw-text-opacity, 1))}.text-outline{--tw-text-opacity:1;color:rgb(122 117 130 / var(--tw-text-opacity, 1))}.text-outline-variant{--tw-text-opacity:1;color:rgb(203 196 210 / var(--tw-text-opacity, 1))}.text-primary{--tw-text-opacity:1;color:rgb(79 55 138 / var(--tw-text-opacity, 1))}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.shadow-none{--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.blur-2xl{--tw-blur:blur(40px);filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-sm{--tw-backdrop-blur:blur(4px);-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-colors{transition-property:color, background-color, border-color, fill, stroke, -webkit-text-decoration-color;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, -webkit-text-decoration-color;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.duration-150{transition-duration:150ms}.selection\:bg-secondary-container *::selection{--tw-bg-opacity:1;background-color:rgb(255 232 163 / var(--tw-bg-opacity, 1))}.selection\:text-on-secondary-container *::selection{--tw-text-opacity:1;color:rgb(52 42 0 / var(--tw-text-opacity, 1))}.selection\:bg-secondary-container::selection{--tw-bg-opacity:1;background-color:rgb(255 232 163 / var(--tw-bg-opacity, 1))}.selection\:text-on-secondary-container::selection{--tw-text-opacity:1;color:rgb(52 42 0 / var(--tw-text-opacity, 1))}.hover\:bg-surface-container:hover{--tw-bg-opacity:1;background-color:rgb(242 236 244 / var(--tw-bg-opacity, 1))}.hover\:bg-surface-container-high:hover{--tw-bg-opacity:1;background-color:rgb(236 230 238 / var(--tw-bg-opacity, 1))}.hover\:bg-surface-variant:hover{--tw-bg-opacity:1;background-color:rgb(230 224 233 / var(--tw-bg-opacity, 1))}.hover\:text-on-surface:hover{--tw-text-opacity:1;color:rgb(36 27 53 / var(--tw-text-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.active\:scale-90:active{--tw-scale-x:.9;--tw-scale-y:.9;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.active\:scale-95:active{--tw-scale-x:.95;--tw-scale-y:.95;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.active\:scale-\[0\.98\]:active{--tw-scale-x:0.98;--tw-scale-y:0.98;transform:translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.group:hover .group-hover\:bg-primary-fixed{--tw-bg-opacity:1;background-color:rgb(233 221 255 / var(--tw-bg-opacity, 1))}.dark\:bg-primary-container:is(.dark *){--tw-bg-opacity:1;background-color:rgb(103 80 164 / var(--tw-bg-opacity, 1))}.dark\:bg-surface-dark:is(.dark *){--tw-bg-opacity:1;background-color:rgb(28 23 36 / var(--tw-bg-opacity, 1))}.dark\:text-on-primary-container:is(.dark *){--tw-text-opacity:1;color:rgb(33 0 93 / var(--tw-text-opacity, 1))}.dark\:text-on-surface-dark:is(.dark *){--tw-text-opacity:1;color:rgb(232 224 239 / var(--tw-text-opacity, 1))}.dark\:hover\:bg-surface-container:hover:is(.dark *){--tw-bg-opacity:1;background-color:rgb(242 236 244 / var(--tw-bg-opacity, 1))}</style></head>
+<body class="bg-background text-on-surface font-body-base text-body-base antialiased flex justify-center items-start min-h-screen selection:bg-secondary-container selection:text-on-secondary-container">
+<!-- Mobile Frame Container (Native Android ~390-412dp) -->
+<main class="w-full max-w-[412px] bg-surface min-h-screen relative flex flex-col pb-28 select-none">
+<!-- 1. Android System Status Bar -->
+<header class="w-full px-space-md pt-2 pb-1 flex justify-between items-center text-on-surface text-xs font-semibold tracking-tight z-40 bg-surface">
+<div class="flex items-center space-x-1">
+<span class="font-label text-label font-bold text-on-surface">10:24</span>
+</div>
+<div class="flex items-center space-x-2 text-on-surface">
+<span class="material-symbols-outlined text-[16px]">wifi</span>
+<span class="material-symbols-outlined text-[16px]">signal_cellular_4_bar</span>
+<div class="flex items-center space-x-0.5">
+<span class="font-label text-[11px] font-bold">92%</span>
+<span class="material-symbols-outlined text-[18px] material-symbols-fill">battery_charging_90</span>
+</div>
+</div>
+</header>
+<!-- 2. Shared TopAppBar (Immutable Blueprint Applied) -->
+<nav class="flex justify-between items-center w-full px-space-md py-space-sm max-w-screen-sm mx-auto bg-surface">
+<div class="flex items-center space-x-2">
+<button aria-label="Room selector" class="touch-target p-2 rounded-full hover:bg-surface-container-high active:scale-95 transition-all text-on-surface flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-[24px]">meeting_room</span>
+</button>
+<div class="flex flex-col">
+<button class="flex items-center space-x-1 active:scale-95 transition-transform text-left" type="button">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Bedroom</span>
+<span class="material-symbols-outlined text-primary text-[20px]">arrow_drop_down</span>
+</button>
+</div>
+</div>
+<div class="flex items-center space-x-1">
+<button aria-label="Sync with device" class="touch-target p-2 rounded-full hover:bg-surface-container-high active:scale-95 transition-all text-primary flex items-center justify-center" id="sync-button" type="button">
+<span class="material-symbols-outlined text-[24px]" id="sync-icon">sync</span>
+</button>
+<button aria-label="Device settings" class="touch-target p-2 rounded-full hover:bg-surface-container-high active:scale-95 transition-all text-on-surface-variant flex items-center justify-center" type="button">
+<span class="material-symbols-outlined text-[24px]">more_vert</span>
+</button>
+</div>
+</nav>
+<!-- Sync Sub-line / Metadata Banner -->
+<div class="px-space-md pb-space-sm flex justify-between items-center text-on-surface-variant"><div class="flex items-center space-x-1.5"><span class="font-label text-[12px] text-on-surface-variant tracking-normal font-medium">Connected</span></div><button class="flex items-center space-x-1 bg-surface-container px-space-sm py-1 rounded-full text-primary hover:bg-surface-container-high active:scale-95 transition-all touch-target" type="button"><span class="material-symbols-outlined text-[16px]">refresh</span><span class="font-label text-[11px] font-bold text-primary">Updated 10:24</span></button></div>
+<!-- Content Body Grid / Bento Section -->
+<section class="px-space-md space-y-4 mt-1">
+<!-- 3. Hero Thermostat Focal Area (Asymmetric Bento Composition) -->
+<div class="bg-surface-container-low rounded-lg p-4 flex flex-col relative"><div class="flex items-center justify-between z-10"><div class="flex items-center space-x-1.5 bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full shadow-none"><span class="material-symbols-outlined text-[16px] material-symbols-fill text-[#855300]">ac_unit</span><span class="font-label text-label font-bold text-on-secondary-container">On · Cool</span></div><div class="flex items-center space-x-1 bg-surface-container px-3 py-1 rounded-full text-on-surface-variant"><span class="material-symbols-outlined text-[16px] text-primary">device_thermostat</span><span class="font-label text-[13px] font-semibold text-on-surface">Room 24.18°C</span></div></div><div class="my-3 flex flex-col items-center justify-center text-center z-10"><span class="font-label text-[12px] text-on-surface-variant tracking-wider uppercase font-semibold">Reported Target</span><div class="flex items-center justify-between w-full max-w-[320px] px-2 py-1"><button aria-label="Decrease target temperature" class="touch-target w-13 h-13 rounded-full bg-surface-container-lowest text-primary flex items-center justify-center hover:bg-surface-container-high active:scale-90 transition-all shadow-sm" type="button"><span class="material-symbols-outlined text-[28px] font-bold">remove</span></button><div class="flex items-baseline justify-center select-none mx-2"><span class="font-display-lg text-display-lg text-on-surface tracking-tight font-black" id="target-temp">23</span><span class="font-headline-md text-headline-md text-primary font-bold -ml-1">°C</span></div><button aria-label="Increase target temperature" class="touch-target w-13 h-13 rounded-full bg-surface-container-lowest text-primary flex items-center justify-center hover:bg-surface-container-high active:scale-90 transition-all shadow-sm" type="button"><span class="material-symbols-outlined text-[28px] font-bold">add</span></button></div></div><div class="flex flex-col items-center justify-center pt-0.5 z-10 space-y-1"><button id="set-temp-btn" disabled="" class="touch-target w-full max-w-[220px] py-2 px-4 rounded-full bg-surface-container text-outline font-label text-[13px] font-semibold flex items-center justify-center space-x-1.5 transition-all cursor-not-allowed" type="button"><span class="material-symbols-outlined text-[16px]">done</span><span id="set-temp-text">Set 23°C</span></button><p class="font-label text-[11px] text-outline text-center" id="set-temp-help">Adjust, then tap Set</p></div></div>
+<!-- 4. Two Adjacent Quick Controls (Equal Width Bento Cards) -->
+<div class="grid grid-cols-2 gap-3">
+<!-- AC Power Switch Card -->
+<div class="bg-surface-container-low rounded-lg p-3.5 flex flex-col justify-between h-36 transition-colors"><div class="flex items-start justify-between"><div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container"><span class="material-symbols-outlined text-[22px] material-symbols-fill">power_settings_new</span></div><button aria-checked="true" class="touch-target w-13 h-7 bg-primary rounded-full relative flex items-center p-1 cursor-pointer transition-colors focus:outline-none" role="switch" type="button"><div class="w-5 h-5 bg-on-primary rounded-full translate-x-5 transition-transform flex items-center justify-center"><span class="font-label text-[10px] text-primary font-bold">ON</span></div></button></div><div><div class="flex items-center space-x-1.5"><span class="font-label text-label font-bold text-on-surface">AC Power</span></div><div class="flex items-center space-x-1 mt-0.5"><span class="font-label text-[11px] bg-secondary-container text-on-secondary-container px-1.5 py-0.5 rounded font-bold">On</span><span class="font-label text-[12px] text-on-surface-variant">Active</span></div></div></div>
+<!-- AC Display Switch Card -->
+<div class="bg-surface-container-low rounded-lg p-3.5 flex flex-col justify-between h-36 transition-colors"><div class="flex items-start justify-between"><div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center text-on-surface"><span class="material-symbols-outlined text-[22px]">lightbulb</span></div><button aria-checked="true" class="touch-target w-13 h-7 bg-primary rounded-full relative flex items-center p-1 cursor-pointer transition-colors focus:outline-none" role="switch" type="button"><div class="w-5 h-5 bg-on-primary rounded-full translate-x-5 transition-transform flex items-center justify-center"><span class="font-label text-[10px] text-primary font-bold">ON</span></div></button></div><div><div class="flex items-center space-x-1.5"><span class="font-label text-label font-bold text-on-surface">AC Display</span></div><div class="flex items-center space-x-1 mt-0.5"><span class="font-label text-[11px] bg-secondary-container text-on-secondary-container px-1.5 py-0.5 rounded font-bold">On</span><span class="font-label text-[12px] text-on-surface-variant">Front panel</span></div></div></div>
+</div>
+<!-- 5. Operating Mode Selector -->
+<div class="bg-surface-container-low rounded-lg p-4 space-y-3"><div class="flex justify-between items-center"><span class="font-label text-label font-bold text-on-surface">Operating Mode</span><span class="font-label text-[12px] text-on-surface-variant font-medium">Active: Cool</span></div><div class="grid grid-cols-4 gap-1.5 bg-surface-container p-1 rounded-full" role="tablist"><button aria-selected="false" class="mode-chip touch-target py-2 rounded-full font-label text-[13px] text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-all" role="tab" type="button"><span>Auto</span></button><button aria-selected="true" class="mode-chip touch-target py-2 bg-primary-container text-on-primary-container rounded-full font-label text-[13px] font-bold flex items-center justify-center space-x-1 transition-all shadow-none" role="tab" type="button"><span class="material-symbols-outlined text-[16px] material-symbols-fill">check</span><span>Cool</span></button><button aria-selected="false" class="mode-chip touch-target py-2 rounded-full font-label text-[13px] text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-all" role="tab" type="button"><span>Dry</span></button><button aria-selected="false" class="mode-chip touch-target py-2 rounded-full font-label text-[13px] text-on-surface-variant hover:text-on-surface flex items-center justify-center transition-all" role="tab" type="button"><span>Fan</span></button></div><div class="flex items-center justify-between pt-1"><p class="font-label text-[11px] text-outline" id="mode-status-text">Tap a mode, then tap Apply</p><button id="apply-mode-btn" disabled="" class="touch-target py-1.5 px-4 rounded-full bg-surface-container text-outline font-label text-[12px] font-semibold transition-all cursor-not-allowed" type="button">Apply Mode</button></div></div>
+<!-- 6. Secondary Controls: Fan Speed & More Controls -->
+<div class="grid grid-cols-2 gap-3">
+<!-- Fan Speed Card -->
+<button class="touch-target bg-surface-container-low hover:bg-surface-container rounded-lg p-4 flex flex-col justify-between text-left active:scale-[0.98] transition-all group" type="button">
+<div class="flex items-center justify-between w-full">
+<div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-fixed">
+<span class="material-symbols-outlined text-[20px]">mode_fan</span>
+</div>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">chevron_right</span>
+</div>
+<div class="mt-3">
+<span class="font-label text-label font-bold text-on-surface block">Fan Speed</span>
+<div class="flex items-center space-x-1 mt-0.5"><span class="font-label text-[12px] text-primary font-semibold">Auto</span></div>
+</div>
+</button>
+<!-- More Controls Card -->
+<button class="touch-target bg-surface-container-low hover:bg-surface-container rounded-lg p-4 flex flex-col justify-between text-left active:scale-[0.98] transition-all group" type="button">
+<div class="flex items-center justify-between w-full">
+<div class="w-9 h-9 rounded-full bg-surface-container flex items-center justify-center text-primary group-hover:bg-primary-fixed">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</div>
+<span class="material-symbols-outlined text-[20px] text-on-surface-variant">chevron_right</span>
+</div>
+<div class="mt-3">
+<span class="font-label text-label font-bold text-on-surface block">More Controls</span>
+<div class="flex items-center space-x-1 mt-0.5 overflow-hidden text-ellipsis whitespace-nowrap"><span class="font-label text-[11px] bg-secondary-container text-on-secondary-container px-1.5 py-0.5 rounded font-medium">Eco</span><span class="font-label text-[11px] text-on-surface-variant">Powerful · Capacity</span></div>
+</div>
+</button>
+</div>
+</section>
+<!-- 7. Shared Bottom Navigation Bar (Mandatory Shell Blueprint) -->
+<!-- Rule execution: "Controller" is exact active page -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-space-md py-space-sm pb-space-lg bg-surface-container-low dark:bg-surface-dark transition-colors">
+<!-- Destination 1: Controller (Active State from style_active_navigation) -->
+<button aria-label="Controller tab" class="flex flex-col items-center justify-center bg-secondary-container dark:bg-primary-container text-on-secondary-container dark:text-on-primary-container rounded-full px-space-md py-space-xs touch-target active:scale-95 transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[24px] material-symbols-fill">thermostat</span>
+<span class="font-label text-label">Controller</span>
+</button>
+<!-- Destination 2: Readings (Inactive State from style_inactive_navigation) -->
+<button aria-label="Readings tab" class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-dark px-space-md py-space-xs touch-target hover:bg-surface-container dark:hover:bg-surface-container active:scale-95 transition-all duration-150 rounded-full" type="button">
+<span class="material-symbols-outlined text-[24px]">query_stats</span>
+<span class="font-label text-label">Readings</span>
+</button>
+</nav>
+<!-- Native Android 3-button or Gesture Navigation Bar Pill -->
+<div class="fixed bottom-1 left-0 w-full flex justify-center items-center pointer-events-none z-50">
+<div class="w-32 h-1 bg-on-surface/30 rounded-full"></div>
+</div>
+</main>
+<!-- Interactive Logic for Native Android Feel -->
+
+</body></html>

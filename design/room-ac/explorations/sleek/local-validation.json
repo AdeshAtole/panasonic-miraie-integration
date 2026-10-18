@@ -1,0 +1,41 @@
+[
+  {
+    "slug": "controller-dark",
+    "width": 390,
+    "height": 858,
+    "bodyFont": "Arial, sans-serif",
+    "externalAssets": 0,
+    "rounded": "55px",
+    "bodyText": "Room AC\n\nBedroom\n\nOn · Cool\n\nRefresh\n\nUpdated 10:24\n\nTARGET\n\n23\n°C\n\nRoom 24.18°C\n\nSelect a target, then set.\n\nSet 23°C\n\nAC power\n\nOn\n\nTurn off\n\nMODE\n\nAuto\nCool\nDry\nFan\n\nFan\n\nAuto\n\nAC display\n\nOn\n\nTurn display off\n\nEco · Powerful · Capacity\n\nMore controls\n\nControls\nReadings"
+  },
+  {
+    "slug": "controller-light",
+    "width": 390,
+    "height": 858,
+    "bodyFont": "Arial, sans-serif",
+    "externalAssets": 0,
+    "rounded": "55px",
+    "bodyText": "Room AC\n\nBedroom\n\nOn · Cool\n\nRefresh\n\nUpdated 10:24\n\nTARGET\n\n23\n°C\n\nRoom 24.18°C\n\nSelect a target, then set.\n\nSet 23°C\n\nAC power\n\nOn\n\nTurn off\n\nMODE\n\nAuto\nCool\nDry\nFan\n\nFan\n\nAuto\n\nAC display\n\nOn\n\nTurn display off\n\nEco · Powerful · Capacity\n\nMore controls\n\nControls\nReadings"
+  },
+  {
+    "state": "temperature-draft",
+    "enabled": true,
+    "color": "rgb(255, 255, 255)",
+    "background": "rgb(31, 122, 99)",
+    "opacity": "1"
+  },
+  {
+    "state": "mode-draft",
+    "applyVisible": true,
+    "tempDisabled": true
+  },
+  {
+    "slug": "widgets",
+    "width": 390,
+    "height": 988,
+    "bodyFont": "Arial, sans-serif",
+    "externalAssets": 0,
+    "rounded": "55px",
+    "bodyText": "Room AC · Widgets\n\nHome-screen widgets\n\nProposed layouts. Shipped widget today: On, Off and Refresh only.\n\n2×2 · Compact\n\nTarget read-only\nBedroom\n\n23°C\n\nOn · Cool · 10:24\n\nOff\nOpen room · opens controller (existing behavior)\nPower · existing On/Off action, labeled by state\nRefresh · existing action; creates a snapshot on readback\n\n4×2 · Wide\n\nTap temperature opens app\nBedroom\n\n23°C\n\nRoom 24.18°C\n\nCool · Read 10:24\n\nOff\nDisplay\nRefresh\n\nDisplay on\n\nDisplay · proposed AC display toggle (not shipped)\nStatus line · shows Read time, or Pending / Error in its place\nNo temperature +/− here: changes stay in the app\n\nWidget rules\n\nLast-known values stay visible while refreshing; no automatic refresh is promised.\nNot reported is shown instead of zero. Power, display and refresh targets are at least 48dp.\nLayouts adapt to launcher cell sizes and larger text scaling."
+  }
+]

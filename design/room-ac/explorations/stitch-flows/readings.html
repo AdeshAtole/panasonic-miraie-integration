@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bedroom AC - Readings</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Roboto Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-container": "#342A00",
+            "on-tertiary-fixed-variant": "#594400",
+            "on-tertiary-container": "#410002",
+            "on-primary": "#FFFFFF",
+            "background": "#fdf7ff",
+            "primary": "#4f378a",
+            "surface-tint": "#6750a4",
+            "on-primary-fixed-variant": "#4f378a",
+            "surface-container-low": "#F7F0FF",
+            "surface-container-highest": "#e6e0e9",
+            "primary-container": "#6750a4",
+            "secondary-fixed": "#ffe081",
+            "inverse-primary": "#cfbcff",
+            "on-surface": "#1d1b20",
+            "surface-variant": "#e6e0e9",
+            "on-primary-container": "#e0d2ff",
+            "surface-dark": "#1C1724",
+            "tertiary": "#A43E35",
+            "secondary-container": "#FFE8A3",
+            "primary-fixed-dim": "#cfbcff",
+            "primary-dark": "#D0BCFF",
+            "outline-variant": "#cbc4d2",
+            "on-surface-dark": "#E8E0EF",
+            "error": "#BA1A1A",
+            "tertiary-fixed-dim": "#e7c365",
+            "surface": "#FFFBFF",
+            "surface-container-lowest": "#ffffff",
+            "on-secondary": "#ffffff",
+            "surface-bright": "#fdf7ff",
+            "on-secondary-fixed": "#231b00",
+            "on-tertiary-fixed": "#241a00",
+            "primary-fixed": "#e9ddff",
+            "tertiary-fixed": "#ffdf93",
+            "secondary-fixed-dim": "#e2c466",
+            "on-primary-fixed": "#22005d",
+            "on-tertiary": "#ffffff",
+            "on-error-container": "#93000a",
+            "surface-container": "#f2ecf4",
+            "on-error": "#ffffff",
+            "inverse-surface": "#322f35",
+            "outline": "#7a7582",
+            "inverse-on-surface": "#f5eff7",
+            "tertiary-container": "#c9a74d",
+            "error-container": "#ffdad6",
+            "on-secondary-fixed-variant": "#564500",
+            "secondary": "#725c01",
+            "surface-container-high": "#ece6ee",
+            "on-surface-variant": "#494551",
+            "on-background": "#1d1b20",
+            "surface-dim": "#ded8e0"
+          },
+          "borderRadius": {
+            "DEFAULT": "1rem",
+            "lg": "2rem",
+            "xl": "3rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "32px",
+            "gutter": "20px",
+            "space-md": "16px",
+            "space-xs": "4px",
+            "margin": "24px",
+            "space-sm": "8px",
+            "space-lg": "24px"
+          },
+          "fontFamily": {
+            "label": ["Roboto", "sans-serif"],
+            "headline-md": ["Roboto", "sans-serif"],
+            "display-lg": ["Roboto", "sans-serif"],
+            "body-base": ["Roboto", "sans-serif"]
+          },
+          "fontSize": {
+            "label": ["14px", { "lineHeight": "20px", "fontWeight": "600" }],
+            "headline-md": ["32px", { "lineHeight": "40px", "fontWeight": "700" }],
+            "display-lg": ["88px", { "lineHeight": "96px", "fontWeight": "700" }],
+            "body-base": ["16px", { "lineHeight": "24px", "fontWeight": "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .material-symbols-fill {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    body {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface antialiased flex justify-center min-h-screen">
+<!-- Android Mobile Screen Canvas (390px simulated frame) -->
+<div class="w-full max-w-[412px] bg-background min-h-screen flex flex-col relative pb-28 shadow-xl">
+<!-- Android System Status Bar (Material 3 style) -->
+<header class="w-full h-10 px-space-md pt-2 flex items-center justify-between text-on-surface select-none z-50">
+<span class="font-label text-label font-bold text-on-surface">10:24</span>
+<div class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[18px]">wifi</span>
+<span class="material-symbols-outlined text-[18px]">signal_cellular_alt</span>
+<div class="flex items-center space-x-0.5">
+<span class="font-label text-label text-xs font-semibold mr-0.5">92%</span>
+<span class="material-symbols-outlined text-[20px] material-symbols-fill text-primary">battery_full</span>
+</div>
+</div>
+</header>
+<!-- TopAppBar from JSON -->
+<section class="docked full-width top-0 bg-surface-container dark:bg-surface-dark flex justify-between items-center w-full px-space-md py-space-sm z-40 transition-colors">
+<div class="flex items-center space-x-3">
+<button aria-label="Room selection" class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-high dark:hover:bg-surface-dim transition-colors active:scale-95 duration-150 text-on-surface" type="button">
+<span class="material-symbols-outlined">meeting_room</span>
+</button>
+<div>
+<div class="flex items-center space-x-1 cursor-pointer">
+<h1 class="font-headline-md text-headline-md text-on-surface dark:text-on-surface-dark font-bold leading-none tracking-tight">Bedroom AC</h1>
+<span class="material-symbols-outlined text-on-surface-variant text-lg">arrow_drop_down</span>
+</div>
+<span class="font-label text-label text-xs text-primary font-medium">Readings &amp; Diagnostics</span>
+</div>
+</div>
+<div class="flex items-center space-x-1">
+<button class="w-10 h-10 rounded-full flex items-center justify-center hover:bg-surface-container-high dark:hover:bg-surface-dim transition-colors active:scale-95 duration-150 text-primary dark:text-primary-dark" id="refresh-button" type="button">
+<span class="material-symbols-outlined" id="refresh-icon">refresh</span>
+</button>
+</div>
+</section>
+<!-- On-Demand Snapshot Notice / Sub-banner -->
+<div class="px-space-md pt-2 pb-1">
+<div class="bg-surface-container-low rounded-xl px-space-md py-2 flex items-center justify-between border border-outline-variant/30">
+<div class="flex items-center space-x-2">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+<span class="font-label text-label text-xs text-on-surface-variant font-medium">Updated 10:24</span>
+</div>
+<span class="font-label text-label text-xs text-on-surface-variant font-normal">Snapshot on demand · No polling</span>
+</div>
+</div>
+<!-- Main Content Container -->
+<main class="flex-1 px-space-md space-y-4 pt-2">
+<!-- SECTION 1: Current Readings Card -->
+<section class="bg-surface-container-low rounded-3xl p-space-md space-y-3 border border-outline-variant/40">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-xl">sensors</span>
+<h2 class="font-label text-label text-base font-bold text-on-surface">Current Readings</h2>
+</div>
+<span class="font-label text-label text-xs px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed">Local Flash</span>
+</div>
+<!-- Metric Grid -->
+<div class="grid grid-cols-2 gap-2.5">
+<!-- Room Temp -->
+<div class="bg-surface rounded-2xl p-3 flex flex-col justify-between border border-outline-variant/20 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
+<span class="font-label text-label text-xs text-on-surface-variant">Room Temp</span>
+<div class="my-1 flex items-baseline space-x-1">
+<span class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight">24.18</span>
+<span class="font-body-base text-body-base text-on-surface-variant font-medium">°C</span>
+</div>
+<div class="flex items-center space-x-1 text-primary">
+<span class="material-symbols-outlined text-[14px]">thermostat</span>
+<span class="font-label text-label text-xs font-medium">Room sensor</span>
+</div>
+</div>
+<!-- Target Temp -->
+<div class="bg-surface rounded-2xl p-3 flex flex-col justify-between border border-outline-variant/20 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
+<span class="font-label text-label text-xs text-on-surface-variant">Target Temp</span>
+<div class="my-1 flex items-baseline space-x-1">
+<span class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight">23</span>
+<span class="font-body-base text-body-base text-on-surface-variant font-medium">°C</span>
+</div>
+<div class="flex items-center space-x-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">adjust</span>
+<span class="font-label text-label text-xs font-medium">Current setpoint</span>
+</div>
+</div>
+<!-- Fan Setting -->
+<div class="bg-surface rounded-2xl p-3 flex flex-col justify-between border border-outline-variant/20 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
+<span class="font-label text-label text-xs text-on-surface-variant">Fan</span>
+<div class="my-1">
+<span class="font-headline-md text-2xl font-bold text-on-surface">Auto</span>
+</div>
+<div class="flex items-center space-x-1 text-on-surface-variant">
+<span class="material-symbols-outlined text-[14px]">tune</span>
+<span class="font-label text-label text-xs font-medium">Current setting</span>
+</div>
+</div>
+<!-- Connection RSSI -->
+<div class="bg-surface rounded-2xl p-3 flex flex-col justify-between border border-outline-variant/20 shadow-[0_1px_2px_rgba(0,0,0,0.03)]">
+<span class="font-label text-label text-xs text-on-surface-variant">Wi-Fi Connection</span>
+<div class="my-1 flex items-baseline space-x-1.5">
+<span class="font-headline-md text-xl font-bold text-on-surface">−55</span>
+<span class="font-label text-label text-xs text-on-surface-variant font-medium">dBm</span>
+</div>
+<div class="flex items-center space-x-1 text-primary">
+<span class="w-2 h-2 rounded-full bg-secondary-container"></span>
+<span class="font-label text-label text-xs font-medium text-secondary">Connected</span>
+</div>
+</div>
+</div>
+<!-- Health Banner (Errors / Warnings) -->
+<div class="bg-surface rounded-xl p-2.5 flex items-center justify-between border border-outline-variant/30">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-base material-symbols-fill">verified</span>
+<span class="font-label text-label text-xs text-on-surface font-medium">System Health</span>
+</div>
+<span class="font-label text-label text-xs text-on-surface-variant">Errors: None · Warnings: None</span>
+</div>
+</section>
+<!-- SECTION 2: Daily Energy Section -->
+<section class="bg-surface-container rounded-3xl p-space-md space-y-3.5 border border-outline-variant/30">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-secondary text-xl">bolt</span>
+<div>
+<h2 class="font-label text-label text-base font-bold text-on-surface">Daily Energy</h2>
+<p class="font-label text-label text-xs text-on-surface-variant font-normal">Last 7 days reported by unit</p>
+</div>
+</div>
+<span class="font-label text-label text-xs px-2.5 py-0.5 rounded-full bg-secondary-container text-on-secondary-container font-semibold">On demand</span>
+</div>
+<!-- Daily kWh Discrete Row List (No fabricated continuous line graphs) -->
+<div class="space-y-1.5 bg-surface rounded-2xl p-2.5 border border-outline-variant/20">
+<!-- Today -->
+<div class="flex items-center justify-between py-1.5 px-2 rounded-xl bg-surface-container-low">
+<div class="flex items-center space-x-2">
+<span class="font-label text-label text-xs font-bold text-on-surface w-20">Today (Wed)</span>
+<span class="font-label text-label text-[11px] px-1.5 py-0.2 rounded-full bg-secondary-fixed text-on-secondary-fixed font-semibold">Partial</span>
+</div>
+<div class="flex items-center space-x-1.5">
+<div class="w-16 h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 44%"></div>
+</div>
+<span class="font-label text-label text-xs font-bold text-on-surface text-right w-14">4.1 kWh</span>
+</div>
+</div>
+<!-- Yesterday -->
+<div class="flex items-center justify-between py-1 px-2 rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="font-label text-label text-xs font-medium text-on-surface w-24">Yesterday (Tue)</span>
+<div class="flex items-center space-x-1.5">
+<div class="w-16 h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 88%"></div>
+</div>
+<span class="font-label text-label text-xs font-semibold text-on-surface text-right w-14">8.6 kWh</span>
+</div>
+</div>
+<!-- Mon -->
+<div class="flex items-center justify-between py-1 px-2 rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="font-label text-label text-xs font-medium text-on-surface w-24">Mon</span>
+<div class="flex items-center space-x-1.5">
+<div class="w-16 h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 82%"></div>
+</div>
+<span class="font-label text-label text-xs font-semibold text-on-surface text-right w-14">7.9 kWh</span>
+</div>
+</div>
+<!-- Sun -->
+<div class="flex items-center justify-between py-1 px-2 rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="font-label text-label text-xs font-medium text-on-surface w-24">Sun</span>
+<div class="flex items-center space-x-1.5">
+<div class="w-16 h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 95%"></div>
+</div>
+<span class="font-label text-label text-xs font-semibold text-on-surface text-right w-14">9.2 kWh</span>
+</div>
+</div>
+<!-- Sat -->
+<div class="flex items-center justify-between py-1 px-2 rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="font-label text-label text-xs font-medium text-on-surface w-24">Sat</span>
+<div class="flex items-center space-x-1.5">
+<div class="w-16 h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 90%"></div>
+</div>
+<span class="font-label text-label text-xs font-semibold text-on-surface text-right w-14">8.8 kWh</span>
+</div>
+</div>
+<!-- Fri -->
+<div class="flex items-center justify-between py-1 px-2 rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="font-label text-label text-xs font-medium text-on-surface w-24">Fri</span>
+<div class="flex items-center space-x-1.5">
+<div class="w-16 h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 76%"></div>
+</div>
+<span class="font-label text-label text-xs font-semibold text-on-surface text-right w-14">7.4 kWh</span>
+</div>
+</div>
+<!-- Thu -->
+<div class="flex items-center justify-between py-1 px-2 rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="font-label text-label text-xs font-medium text-on-surface w-24">Thu</span>
+<div class="flex items-center space-x-1.5">
+<div class="w-16 h-2 rounded-full bg-surface-container-high overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 70%"></div>
+</div>
+<span class="font-label text-label text-xs font-semibold text-on-surface text-right w-14">6.9 kWh</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center space-x-2 pt-1">
+<button class="flex-1 py-2 px-3 rounded-full border border-outline text-primary font-label text-label text-xs font-semibold flex items-center justify-center space-x-1.5 hover:bg-surface-container-high active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]">history</span>
+<span>Reload energy</span>
+</button>
+<button class="flex-1 py-2 px-3 rounded-full bg-secondary-container text-on-secondary-container font-label text-label text-xs font-semibold flex items-center justify-center space-x-1.5 hover:opacity-90 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Export energy CSV</span>
+</button>
+</div>
+<p class="font-label text-label text-[11px] text-on-surface-variant text-center leading-tight">
+          Queries unit flash memory on demand. Does not poll continuously in background.
+        </p>
+</section>
+<!-- SECTION 3: Saved Snapshots & SAF Preview -->
+<section class="bg-surface-container-low rounded-3xl p-space-md space-y-3 border border-outline-variant/40">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-primary text-xl">folder_zip</span>
+<h2 class="font-label text-label text-base font-bold text-on-surface">Saved Snapshots</h2>
+</div>
+<span class="font-label text-label text-xs px-2.5 py-0.5 rounded-full bg-primary-container text-on-primary font-semibold">42 snapshots</span>
+</div>
+<p class="font-body-base text-body-base text-xs text-on-surface-variant">
+          Saved when you refresh or change settings. Snapshots and daily energy are logged separately.
+        </p>
+<!-- Android Storage Access Framework (SAF) Inset Card Preview -->
+<div class="bg-surface rounded-2xl p-3 border border-outline-variant/40 space-y-2">
+<div class="flex items-center justify-between text-xs font-semibold text-on-surface-variant">
+<div class="flex items-center space-x-1.5 text-primary">
+<span class="material-symbols-outlined text-[16px]">folder_open</span>
+<span>Android System File Picker</span>
+</div>
+<span class="text-[11px] text-on-surface-variant">Storage Access Framework</span>
+</div>
+<div class="bg-surface-container-high rounded-xl p-2.5 flex items-center justify-between">
+<div class="flex items-center space-x-2 truncate">
+<span class="material-symbols-outlined text-secondary text-lg">description</span>
+<div class="truncate">
+<span class="block font-label text-label text-xs font-bold text-on-surface truncate">room_ac_readings_20241024.csv</span>
+<span class="block font-label text-label text-[11px] text-on-surface-variant">Destination: Downloads/</span>
+</div>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-base">check_circle</span>
+</div>
+<p class="font-label text-label text-[11px] text-on-surface-variant">
+            Opens native file picker to choose destination folder. No broad storage permissions needed.
+          </p>
+</div>
+<button class="w-full py-2.5 rounded-full bg-primary text-on-primary font-label text-label text-xs font-semibold flex items-center justify-center space-x-2 shadow-sm hover:opacity-95 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">table_view</span>
+<span>Export readings CSV</span>
+</button>
+</section>
+<!-- SECTION 4: Details & Diagnostics Accordions -->
+<section class="space-y-2.5">
+<!-- Accordion 1: Raw Fields -->
+<details class="group bg-surface-container rounded-2xl border border-outline-variant/30 overflow-hidden">
+<summary class="flex items-center justify-between p-3.5 cursor-pointer list-none select-none hover:bg-surface-container-high transition-colors">
+<div class="flex items-center space-x-2.5">
+<span class="material-symbols-outlined text-primary text-lg">code</span>
+<span class="font-label text-label text-xs font-bold text-on-surface">All Reported Fields (Raw)</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-base transition-transform duration-200 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-3.5 pt-0 border-t border-outline-variant/20 bg-surface/50">
+<div class="bg-surface-container-lowest rounded-xl p-3 font-mono text-[11px] text-on-surface-variant space-y-1">
+<div class="flex justify-between"><span class="text-primary font-semibold">room_temp:</span><span>24.18</span></div>
+<div class="flex justify-between"><span class="text-primary font-semibold">target_temp:</span><span>23</span></div>
+<div class="flex justify-between"><span class="text-primary font-semibold">fan_mode:</span><span>"auto"</span></div>
+<div class="flex justify-between"><span class="text-primary font-semibold">power:</span><span>"on"</span></div>
+<div class="flex justify-between"><span class="text-primary font-semibold">display:</span><span>"on"</span></div>
+<div class="flex justify-between"><span class="text-primary font-semibold">signal_rssi:</span><span>-55</span></div>
+<div class="flex justify-between"><span class="text-primary font-semibold">fault_code:</span><span>0x00</span></div>
+</div>
+</div>
+</details>
+<!-- Accordion 2: Device Details & Capabilities -->
+<details class="group bg-surface-container rounded-2xl border border-outline-variant/30 overflow-hidden">
+<summary class="flex items-center justify-between p-3.5 cursor-pointer list-none select-none hover:bg-surface-container-high transition-colors">
+<div class="flex items-center space-x-2.5">
+<span class="material-symbols-outlined text-primary text-lg">info</span>
+<span class="font-label text-label text-xs font-bold text-on-surface">Device Details &amp; Capabilities</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant text-base transition-transform duration-200 group-open:rotate-180">expand_more</span>
+</summary>
+<div class="p-3.5 pt-0 border-t border-outline-variant/20 bg-surface/50 space-y-2">
+<div class="bg-surface-container-lowest rounded-xl p-3 text-xs space-y-1.5 text-on-surface">
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Model:</span>
+<span class="font-semibold">Synthetic Room AC Model-E</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Protocol:</span>
+<span class="font-semibold">Read/Write via Local LAN</span>
+</div>
+<div class="flex justify-between">
+<span class="text-on-surface-variant">Interface:</span>
+<span class="font-semibold">Direct Socket Endpoint</span>
+</div>
+</div>
+<div class="flex items-center space-x-2 pt-1">
+<button class="flex-1 py-1.5 px-2 rounded-full border border-outline-variant text-on-surface font-label text-label text-[11px] font-semibold text-center hover:bg-surface-container-high active:scale-95 transition-all" type="button">
+                Inspect capabilities
+              </button>
+<button class="flex-1 py-1.5 px-2 rounded-full border border-outline-variant text-on-surface font-label text-label text-[11px] font-semibold text-center hover:bg-surface-container-high active:scale-95 transition-all" type="button">
+                Export diagnostic log
+              </button>
+</div>
+<p class="font-label text-label text-[10px] text-outline text-center">
+              Diagnostic viewer only. Not a firmware updater or repair utility.
+            </p>
+</div>
+</details>
+</section>
+</main>
+<!-- Bottom Navigation Bar from JSON (Readings is ACTIVE) -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-space-md py-space-sm bg-surface-container-low dark:bg-surface-dark transition-colors">
+<!-- Destination 1: Controller (Inactive) -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant dark:text-outline-variant px-space-lg py-space-xs hover:bg-surface-container-high dark:hover:bg-surface-variant transition-colors active:scale-95 duration-150 rounded-full" href="#">
+<span class="material-symbols-outlined text-2xl">thermostat</span>
+<span class="font-label text-label text-xs mt-0.5">Controller</span>
+</a>
+<!-- Destination 2: Readings (Active) -->
+<a class="flex flex-col items-center justify-center bg-secondary-container dark:bg-secondary text-on-secondary-container dark:text-on-secondary rounded-full px-space-lg py-space-xs active:scale-95 transition-transform duration-150" href="#">
+<span class="material-symbols-outlined text-2xl material-symbols-fill">query_stats</span>
+<span class="font-label text-label text-xs mt-0.5 font-bold">Readings</span>
+</a>
+</nav>
+<!-- Android Gesture Navigation Bar Pill -->
+<div class="fixed bottom-1 left-0 right-0 mx-auto w-32 h-1 bg-on-surface/40 rounded-full pointer-events-none z-50"></div>
+</div>
+<script>
+    // Micro-interaction: Refresh button spin simulation
+    const refreshBtn = document.getElementById('refresh-button');
+    const refreshIcon = document.getElementById('refresh-icon');
+
+    if (refreshBtn && refreshIcon) {
+      refreshBtn.addEventListener('click', () => {
+        refreshIcon.classList.add('animate-spin');
+        setTimeout(() => {
+          refreshIcon.classList.remove('animate-spin');
+        }, 800);
+      });
+    }
+  </script>
+</body></html>

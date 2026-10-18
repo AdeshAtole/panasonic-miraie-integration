@@ -1,0 +1,643 @@
+<!DOCTYPE html><html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room AC — local design preview</title>
+
+
+
+
+
+    <style>/*! tailwindcss v4.3.3 | MIT License | https://tailwindcss.com */
+@layer properties;
+@layer theme, base, components, utilities;
+@layer theme {
+  :root, :host {
+    --font-sans: var(--font-sans);
+    --font-serif: var(--font-serif);
+    --font-mono: var(--font-mono);
+    --spacing: 0.25rem;
+    --text-xs: 0.75rem;
+    --text-xs--line-height: calc(1 / 0.75);
+    --text-sm: 0.875rem;
+    --text-sm--line-height: calc(1.25 / 0.875);
+    --text-base: 1rem;
+    --text-base--line-height: calc(1.5 / 1);
+    --text-2xl: 1.5rem;
+    --text-2xl--line-height: calc(2 / 1.5);
+    --text-3xl: 1.875rem;
+    --text-3xl--line-height: calc(2.25 / 1.875);
+    --font-weight-light: 300;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --radius-xl: calc(var(--radius) + 4px);
+    --radius-2xl: calc(var(--radius) + 8px);
+    --default-font-family: var(--font-sans);
+    --default-mono-font-family: var(--font-mono);
+    --font-heading: var(--font-heading, var(--font-sans));
+  }
+}
+@layer base {
+  *, ::after, ::before, ::backdrop, ::file-selector-button {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0 solid;
+  }
+  html, :host {
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    font-family: var(--default-font-family, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', 'Noto Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji');
+    font-feature-settings: var(--default-font-feature-settings, normal);
+    font-variation-settings: var(--default-font-variation-settings, normal);
+    -webkit-tap-highlight-color: transparent;
+  }
+  hr {
+    height: 0;
+    color: inherit;
+    border-top-width: 1px;
+  }
+  abbr:where([title]) {
+    -webkit-text-decoration: underline dotted;
+    text-decoration: underline dotted;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+    font-weight: inherit;
+  }
+  a {
+    color: inherit;
+    -webkit-text-decoration: inherit;
+    text-decoration: inherit;
+  }
+  b, strong {
+    font-weight: bolder;
+  }
+  code, kbd, samp, pre {
+    font-family: var(--default-mono-font-family, ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace);
+    font-feature-settings: var(--default-mono-font-feature-settings, normal);
+    font-variation-settings: var(--default-mono-font-variation-settings, normal);
+    font-size: 1em;
+  }
+  small {
+    font-size: 80%;
+  }
+  sub, sup {
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    vertical-align: baseline;
+  }
+  sub {
+    bottom: -0.25em;
+  }
+  sup {
+    top: -0.5em;
+  }
+  table {
+    text-indent: 0;
+    border-color: inherit;
+    border-collapse: collapse;
+  }
+  :-moz-focusring:where(:not(iframe)) {
+    outline: auto;
+  }
+  progress {
+    vertical-align: baseline;
+  }
+  summary {
+    display: list-item;
+  }
+  ol, ul, menu {
+    list-style: none;
+  }
+  img, svg, video, canvas, audio, iframe, embed, object {
+    display: block;
+    vertical-align: middle;
+  }
+  img, video {
+    max-width: 100%;
+    height: auto;
+  }
+  button, input, select, optgroup, textarea, ::file-selector-button {
+    font: inherit;
+    font-feature-settings: inherit;
+    font-variation-settings: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    border-radius: 0;
+    background-color: transparent;
+    opacity: 1;
+  }
+  :where(select:is([multiple], [size])) optgroup {
+    font-weight: bolder;
+  }
+  :where(select:is([multiple], [size])) optgroup option {
+    padding-inline-start: 20px;
+  }
+  ::file-selector-button {
+    margin-inline-end: 4px;
+  }
+  ::placeholder {
+    opacity: 1;
+  }
+  @supports (not (-webkit-appearance: -apple-pay-button))  or (contain-intrinsic-size: 1px) {
+    ::placeholder {
+      color: currentcolor;
+      @supports (color: color-mix(in lab, red, red)) {
+        color: color-mix(in oklab, currentcolor 50%, transparent);
+      }
+    }
+  }
+  textarea {
+    resize: vertical;
+  }
+  ::-webkit-search-decoration {
+    -webkit-appearance: none;
+  }
+  ::-webkit-date-and-time-value {
+    min-height: 1lh;
+    text-align: inherit;
+  }
+  ::-webkit-datetime-edit {
+    display: inline-flex;
+  }
+  ::-webkit-datetime-edit-fields-wrapper {
+    padding: 0;
+  }
+  ::-webkit-datetime-edit, ::-webkit-datetime-edit-year-field, ::-webkit-datetime-edit-month-field, ::-webkit-datetime-edit-day-field, ::-webkit-datetime-edit-hour-field, ::-webkit-datetime-edit-minute-field, ::-webkit-datetime-edit-second-field, ::-webkit-datetime-edit-millisecond-field, ::-webkit-datetime-edit-meridiem-field {
+    padding-block: 0;
+  }
+  ::-webkit-calendar-picker-indicator {
+    line-height: 1;
+  }
+  :-moz-ui-invalid {
+    box-shadow: none;
+  }
+  button, input:where([type='button'], [type='reset'], [type='submit']), ::file-selector-button {
+    appearance: button;
+  }
+  ::-webkit-inner-spin-button, ::-webkit-outer-spin-button {
+    height: auto;
+  }
+  [hidden]:where(:not([hidden='until-found'])) {
+    display: none !important;
+  }
+}
+@layer utilities {
+  .mx-5 {
+    margin-inline: calc(var(--spacing) * 5);
+  }
+  .mx-auto {
+    margin-inline: auto;
+  }
+  .mt-1 {
+    margin-top: var(--spacing);
+  }
+  .mt-2 {
+    margin-top: calc(var(--spacing) * 2);
+  }
+  .mt-3 {
+    margin-top: calc(var(--spacing) * 3);
+  }
+  .mt-8 {
+    margin-top: calc(var(--spacing) * 8);
+  }
+  .mb-2 {
+    margin-bottom: calc(var(--spacing) * 2);
+  }
+  .flex {
+    display: flex;
+  }
+  .grid {
+    display: grid;
+  }
+  .size-5 {
+    width: calc(var(--spacing) * 5);
+    height: calc(var(--spacing) * 5);
+  }
+  .size-12 {
+    width: calc(var(--spacing) * 12);
+    height: calc(var(--spacing) * 12);
+  }
+  .h-\[180px\] {
+    height: 180px;
+  }
+  .min-h-12 {
+    min-height: calc(var(--spacing) * 12);
+  }
+  .min-h-screen {
+    min-height: 100vh;
+  }
+  .w-\[180px\] {
+    width: 180px;
+  }
+  .w-full {
+    width: 100%;
+  }
+  .max-w-\[390px\] {
+    max-width: 390px;
+  }
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .flex-col {
+    flex-direction: column;
+  }
+  .items-center {
+    align-items: center;
+  }
+  .items-end {
+    align-items: flex-end;
+  }
+  .items-start {
+    align-items: flex-start;
+  }
+  .justify-between {
+    justify-content: space-between;
+  }
+  .justify-center {
+    justify-content: center;
+  }
+  .gap-1 {
+    gap: var(--spacing);
+  }
+  .gap-2 {
+    gap: calc(var(--spacing) * 2);
+  }
+  .gap-3 {
+    gap: calc(var(--spacing) * 3);
+  }
+  :where(.space-y-1 > :not(:last-child)) {
+    --tw-space-y-reverse: 0;
+    margin-block-start: calc(var(--spacing) * var(--tw-space-y-reverse));
+    margin-block-end: calc(var(--spacing) * calc(1 - var(--tw-space-y-reverse)));
+  }
+  :where(.space-y-2 > :not(:last-child)) {
+    --tw-space-y-reverse: 0;
+    margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));
+    margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
+  }
+  .rounded {
+    border-radius: 0.25rem;
+  }
+  .rounded-2xl {
+    border-radius: var(--radius-2xl);
+    border-radius: calc( var(--radius-2xl) * var(--shape-multiplier, 1) );
+  }
+  .rounded-xl {
+    border-radius: var(--radius-xl);
+    border-radius: calc( var(--radius-xl) * var(--shape-multiplier, 1) );
+  }
+  .border {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+  }
+  .border-border {
+    border-color: var(--border);
+  }
+  .bg-accent {
+    background-color: var(--accent);
+  }
+  .bg-background {
+    background-color: var(--background);
+  }
+  .bg-card {
+    background-color: var(--card);
+  }
+  .bg-primary {
+    background-color: var(--primary);
+  }
+  .bg-secondary {
+    background-color: var(--secondary);
+  }
+  .p-4 {
+    padding: calc(var(--spacing) * 4);
+  }
+  .px-1\.5 {
+    padding-inline: calc(var(--spacing) * 1.5);
+  }
+  .px-5 {
+    padding-inline: calc(var(--spacing) * 5);
+  }
+  .py-0\.5 {
+    padding-block: calc(var(--spacing) * 0.5);
+  }
+  .pt-4 {
+    padding-top: calc(var(--spacing) * 4);
+  }
+  .pb-1 {
+    padding-bottom: var(--spacing);
+  }
+  .pb-3 {
+    padding-bottom: calc(var(--spacing) * 3);
+  }
+  .pb-10 {
+    padding-bottom: calc(var(--spacing) * 10);
+  }
+  .font-heading {
+    font-family: var(--font-heading, var(--font-sans));
+  }
+  .font-sans {
+    font-family: var(--font-sans);
+  }
+  .text-2xl {
+    font-size: var(--text-2xl);
+    line-height: var(--tw-leading, var(--text-2xl--line-height));
+  }
+  .text-3xl {
+    font-size: var(--text-3xl);
+    line-height: var(--tw-leading, var(--text-3xl--line-height));
+  }
+  .text-base {
+    font-size: var(--text-base);
+    line-height: var(--tw-leading, var(--text-base--line-height));
+  }
+  .text-sm {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
+  }
+  .text-xs {
+    font-size: var(--text-xs);
+    line-height: var(--tw-leading, var(--text-xs--line-height));
+  }
+  .text-\[10px\] {
+    font-size: 10px;
+  }
+  .leading-none {
+    --tw-leading: 1;
+    line-height: 1;
+  }
+  .font-light {
+    --tw-font-weight: var(--font-weight-light);
+    font-weight: var(--font-weight-light);
+  }
+  .font-medium {
+    --tw-font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-medium);
+  }
+  .font-semibold {
+    --tw-font-weight: var(--font-weight-semibold);
+    font-weight: var(--font-weight-semibold);
+  }
+  .text-accent-foreground {
+    color: var(--accent-foreground);
+  }
+  .text-foreground {
+    color: var(--foreground);
+  }
+  .text-muted-foreground {
+    color: var(--muted-foreground);
+  }
+  .text-primary-foreground {
+    color: var(--primary-foreground);
+  }
+  .text-secondary-foreground {
+    color: var(--secondary-foreground);
+  }
+  .tabular-nums {
+    --tw-numeric-spacing: tabular-nums;
+    font-variant-numeric: var(--tw-ordinal,) var(--tw-slashed-zero,) var(--tw-numeric-figure,) var(--tw-numeric-spacing,) var(--tw-numeric-fraction,);
+  }
+}
+* {
+  corner-shape: var(--shape, round);
+}
+.rounded-full, .rounded-none, .rounded-t-full, .rounded-t-none, .rounded-r-full, .rounded-r-none, .rounded-b-full, .rounded-b-none, .rounded-l-full, .rounded-l-none, .rounded-s-full, .rounded-s-none, .rounded-e-full, .rounded-e-none, .rounded-tl-full, .rounded-tl-none, .rounded-tr-full, .rounded-tr-none, .rounded-bl-full, .rounded-bl-none, .rounded-br-full, .rounded-br-none, .rounded-ss-full, .rounded-ss-none, .rounded-se-full, .rounded-se-none, .rounded-es-full, .rounded-es-none, .rounded-ee-full, .rounded-ee-none {
+  corner-shape: round;
+}
+@layer base {
+  * {
+    border-color: var(--border);
+    outline-color: var(--ring);
+    @supports (color: color-mix(in lab, red, red)) {
+      outline-color: color-mix(in oklab, var(--ring) 50%, transparent);
+    }
+  }
+  body {
+    background-color: var(--background);
+    font-family: var(--font-sans);
+    color: var(--foreground);
+  }
+}
+:root {
+  --shape: squircle;
+  --shape-multiplier: 1;
+  --background: #0e1214;
+  --foreground: #e8eeec;
+  --primary: #5cc8a6;
+  --primary-foreground: #062119;
+  --secondary: #1f282c;
+  --secondary-foreground: #dce5e2;
+  --muted: #1a2124;
+  --muted-foreground: #9daba6;
+  --accent: #1d3a33;
+  --accent-foreground: #a9ead4;
+  --destructive: #e8786f;
+  --destructive-foreground: #2a0e0b;
+  --card: #161c1f;
+  --card-foreground: #e8eeec;
+  --popover: #1b2326;
+  --popover-foreground: #e8eeec;
+  --border: #2a3539;
+  --input: #192124;
+  --ring: #5cc8a6;
+  --chart-1: #5cc8a6;
+  --chart-2: #8fa7a0;
+  --chart-3: #3e8c77;
+  --chart-4: #c9d6d2;
+  --chart-5: #5f6f6a;
+  --font-sans: "Roboto", sans-serif;
+  --font-heading: "Roboto", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --radius: 0.875rem;
+}
+@supports (corner-shape: squircle) {
+  :root {
+    --shape-multiplier: 2.5;
+  }
+}
+*, *::before, *::after {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+@property --tw-space-y-reverse {
+  syntax: "*";
+  inherits: false;
+  initial-value: 0;
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
+}
+@property --tw-leading {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-font-weight {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-ordinal {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-slashed-zero {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-numeric-figure {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-numeric-spacing {
+  syntax: "*";
+  inherits: false;
+}
+@property --tw-numeric-fraction {
+  syntax: "*";
+  inherits: false;
+}
+@layer properties {
+  @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
+    *, ::before, ::after, ::backdrop {
+      --tw-space-y-reverse: 0;
+      --tw-border-style: solid;
+      --tw-leading: initial;
+      --tw-font-weight: initial;
+      --tw-ordinal: initial;
+      --tw-slashed-zero: initial;
+      --tw-numeric-figure: initial;
+      --tw-numeric-spacing: initial;
+      --tw-numeric-fraction: initial;
+    }
+  }
+}
+</style>
+
+  <style>body{font-family:Arial,sans-serif}button{cursor:pointer}button:disabled{cursor:default}button:focus-visible{outline:3px solid var(--primary);outline-offset:3px}.preview-mode-note{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px;font-size:12px;color:var(--muted-foreground)}.preview-commit{min-height:48px;padding:0 16px;border-radius:14px;background:var(--primary);color:var(--primary-foreground);font-weight:600;white-space:nowrap}.preview-commit:disabled{opacity:.45}.preview-mode-note[hidden]{display:none!important}.widget-label{font-size:12px;font-weight:600}.widget-power{width:76px!important;gap:5px}.mode-picked{background:var(--accent)!important;color:var(--accent-foreground)!important;border-color:var(--primary)!important}</style></head>
+  <body>
+    <div class="min-h-screen bg-background text-foreground font-sans max-w-[390px] mx-auto pb-10">
+      <header class="px-5 pt-4 pb-3">
+        <p class="text-xs text-muted-foreground font-medium">Room AC · Widgets</p>
+        <h1 class="font-heading text-2xl font-semibold mt-1">Home-screen widgets</h1>
+        <p class="text-sm text-muted-foreground mt-1">
+          Proposed layouts. Shipped widget today: On, Off and Refresh only.
+        </p>
+      </header>
+      <section class="mx-5 mt-2">
+        <div class="flex items-center justify-between mb-2">
+          <p class="text-sm font-semibold">2×2 · Compact</p>
+          <span class="text-xs text-muted-foreground">Target read-only</span>
+        </div>
+        <div class="bg-card border border-border rounded-2xl p-4 w-[180px] h-[180px] flex flex-col justify-between">
+          <div class="flex items-center justify-between">
+            <button class="text-sm font-semibold text-foreground min-h-12 flex items-center" aria-label="Open Bedroom in app">
+              Bedroom</button><span class="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-accent text-accent-foreground" style="display: none;">Proposed</span>
+          </div>
+          <div>
+            <p class="text-3xl font-light tabular-nums leading-none">
+              23°<span class="text-base">C</span>
+            </p>
+            <p class="text-xs text-muted-foreground mt-1">On · Cool · 10:24</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button class="size-12 rounded-xl bg-primary text-primary-foreground flex items-center justify-center widget-power" aria-label="Turn AC off" title="Turn AC off">
+              <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5">
+                  <path d="M12 2V6"></path>
+                  <path d="M8.5 3.70605C5.26806 5.07157 3 8.27099 3 12.0001C3 16.9707 7.02944 21.0001 12 21.0001C16.9706 21.0001 21 16.9707 21 12.0001C21 8.27099 18.7319 5.07157 15.5 3.70605"></path>
+                </g>
+              </svg><span class="widget-label">Off</span></button><button class="size-12 rounded-xl bg-secondary text-secondary-foreground flex items-center justify-center border border-border" aria-label="Refresh Bedroom">
+              <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                  <path d="M3.67981 13L3.67981 11.3333C3.67981 6.73096 7.4402 3 12.0789 3C15.1178 3 17.7799 4.60136 19.2545 7M2 11.3333L3.67981 13L5.35962 11.3333"></path>
+                  <path d="M20.3139 11V12.6667C20.3139 17.269 16.5391 21 11.8827 21C8.83213 21 6.15995 19.3986 4.67969 17M22.0001 12.6667L20.3139 11L18.6277 12.6667"></path>
+                </g>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <ul class="text-xs text-muted-foreground mt-3 space-y-1">
+          <li>Open room · opens controller (existing behavior)</li>
+          <li>Power · existing On/Off action, labeled by state</li>
+          <li>Refresh · existing action; creates a snapshot on readback</li>
+        </ul>
+      </section>
+      <section class="mx-5 mt-8">
+        <div class="flex items-center justify-between mb-2">
+          <p class="text-sm font-semibold">4×2 · Wide</p>
+          <span class="text-xs text-muted-foreground">Tap temperature opens app</span>
+        </div>
+        <div class="bg-card border border-border rounded-2xl p-4 w-full flex flex-col gap-3">
+          <div class="flex items-start justify-between">
+            <div>
+              <button class="text-sm font-semibold text-foreground min-h-12 flex items-center" aria-label="Open Bedroom in app">
+                Bedroom
+              </button>
+              <div class="flex items-end gap-3">
+                <p class="text-3xl font-light tabular-nums leading-none">
+                  23°<span class="text-base">C</span>
+                </p>
+                <p class="text-xs text-muted-foreground pb-1 tabular-nums">Room 24.18°C</p>
+              </div>
+              <p class="text-xs text-muted-foreground mt-1">Cool · Read 10:24</p>
+            </div>
+            <span class="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-accent text-accent-foreground" style="display: none;">Proposed</span>
+          </div>
+          <div class="grid grid-cols-3 gap-2">
+            <button class="min-h-12 rounded-xl bg-primary text-primary-foreground flex items-center justify-center gap-1 text-xs font-semibold" aria-label="Turn AC off" title="Turn AC off">
+              <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5">
+                  <path d="M12 2V6"></path>
+                  <path d="M8.5 3.70605C5.26806 5.07157 3 8.27099 3 12.0001C3 16.9707 7.02944 21.0001 12 21.0001C16.9706 21.0001 21 16.9707 21 12.0001C21 8.27099 18.7319 5.07157 15.5 3.70605"></path>
+                </g>
+              </svg>
+              Off</button><button class="min-h-12 rounded-xl bg-secondary text-secondary-foreground border border-border flex items-center justify-center gap-1 text-xs font-semibold" aria-label="Turn display off">
+              <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5">
+                  <path d="M14.5 19.5H9.5M14.5 19.5C14.5 18.7865 14.5 18.4297 14.5381 18.193C14.6609 17.4296 14.6824 17.3815 15.1692 16.7807C15.3201 16.5945 15.8805 16.0927 17.0012 15.0892C18.5349 13.7159 19.5 11.7206 19.5 9.5C19.5 5.35786 16.1421 2 12 2C7.85786 2 4.5 5.35786 4.5 9.5C4.5 11.7206 5.4651 13.7159 6.99876 15.0892C8.11945 16.0927 8.67987 16.5945 8.83082 16.7807C9.31762 17.3815 9.3391 17.4296 9.46192 18.193C9.5 18.4297 9.5 18.7865 9.5 19.5M14.5 19.5C14.5 20.4346 14.5 20.9019 14.299 21.25C14.1674 21.478 13.978 21.6674 13.75 21.799C13.4019 22 12.9346 22 12 22C11.0654 22 10.5981 22 10.25 21.799C10.022 21.6674 9.83261 21.478 9.70096 21.25C9.5 20.9019 9.5 20.4346 9.5 19.5"></path>
+                  <path d="M12 17V15"></path>
+                  <path d="M13.7324 14C13.3866 14.5978 12.7403 15 12 15C11.2597 15 10.6134 14.5978 10.2676 14"></path>
+                </g>
+              </svg>
+              Display</button><button class="min-h-12 rounded-xl bg-secondary text-secondary-foreground border border-border flex items-center justify-center gap-1 text-xs font-semibold" aria-label="Refresh Bedroom">
+              <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 24 24">
+                <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5">
+                  <path d="M3.67981 13L3.67981 11.3333C3.67981 6.73096 7.4402 3 12.0789 3C15.1178 3 17.7799 4.60136 19.2545 7M2 11.3333L3.67981 13L5.35962 11.3333"></path>
+                  <path d="M20.3139 11V12.6667C20.3139 17.269 16.5391 21 11.8827 21C8.83213 21 6.15995 19.3986 4.67969 17M22.0001 12.6667L20.3139 11L18.6277 12.6667"></path>
+                </g>
+              </svg>
+              Refresh
+            </button>
+          </div>
+          <p class="text-xs text-muted-foreground">Display on</p>
+        </div>
+        <ul class="text-xs text-muted-foreground mt-3 space-y-1">
+          <li>Display · proposed AC display toggle (not shipped)</li>
+          <li>Status line · shows Read time, or Pending / Error in its place</li>
+          <li>No temperature +/− here: changes stay in the app</li>
+        </ul>
+      </section>
+      <section class="mx-5 mt-8 bg-card border border-border rounded-2xl p-4">
+        <p class="text-sm font-semibold">Widget rules</p>
+        <ul class="text-xs text-muted-foreground mt-2 space-y-2">
+          <li>
+            Last-known values stay visible while refreshing; no automatic refresh is promised.
+          </li>
+          <li>
+            Not reported is shown instead of zero. Power, display and refresh targets are at least
+            48dp.
+          </li>
+          <li>Layouts adapt to launcher cell sizes and larger text scaling.</li>
+        </ul>
+      </section>
+    </div>
+
+
+</body></html>

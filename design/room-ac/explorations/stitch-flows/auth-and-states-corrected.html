@@ -1,0 +1,533 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Room AC entry and states — corrected local Stitch proposal</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            surface: '#FFFBFF',
+            'on-surface': '#241B35',
+            'surface-container-lowest': '#FFFFFF',
+            'surface-container-low': '#F7F0FF',
+            'surface-container': '#F0E7FA',
+            'surface-container-high': '#EAE0F5',
+            'outline-variant': '#D7CBE2',
+            primary: '#6750A4',
+            'on-primary': '#FFFFFF',
+            'primary-container': '#EADDFF',
+            'on-primary-container': '#21005D',
+            secondary: '#715B00',
+            'on-secondary': '#FFFFFF',
+            'secondary-container': '#FFE8A3',
+            'on-secondary-container': '#342A00',
+            tertiary: '#A43E35',
+            'on-tertiary': '#FFFFFF',
+            'tertiary-container': '#FFDAD4',
+            'on-tertiary-container': '#410002',
+            error: '#BA1A1A',
+            'error-container': '#FFEDEA',
+            'on-error': '#FFFFFF',
+          },
+          fontFamily: {
+            sans: ['Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      vertical-align: middle;
+    }
+    .material-symbols-outlined.fill {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Touch target assurance */
+    .touch-target {
+      min-height: 48px;
+      min-width: 48px;
+    }
+  </style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:Roboto, sans-serif;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.absolute{position:absolute}.relative{position:relative}.left-3\.5{left:0.875rem}.right-3{right:0.75rem}.mx-auto{margin-left:auto;margin-right:auto}.mb-1{margin-bottom:0.25rem}.mb-2{margin-bottom:0.5rem}.mt-0\.5{margin-top:0.125rem}.mt-1{margin-top:0.25rem}.mt-2{margin-top:0.5rem}.block{display:block}.flex{display:flex}.inline-flex{display:inline-flex}.grid{display:grid}.h-1{height:0.25rem}.h-10{height:2.5rem}.h-14{height:3.5rem}.h-4{height:1rem}.h-6{height:1.5rem}.h-8{height:2rem}.w-10{width:2.5rem}.w-14{width:3.5rem}.w-4{width:1rem}.w-6{width:1.5rem}.w-8{width:2rem}.w-full{width:100%}.max-w-md{max-width:28rem}.flex-1{flex:1 1 0%}@keyframes spin{to{transform:rotate(360deg)}}.animate-spin{animation:spin 1s linear infinite}.cursor-pointer{cursor:pointer}.list-inside{list-style-position:inside}.list-disc{list-style-type:disc}.grid-cols-1{grid-template-columns:repeat(1, minmax(0, 1fr))}.grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.items-start{align-items:flex-start}.items-center{align-items:center}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:0.25rem}.gap-1\.5{gap:0.375rem}.gap-2{gap:0.5rem}.gap-2\.5{gap:0.625rem}.gap-3{gap:0.75rem}.space-y-0\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.125rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.125rem * var(--tw-space-y-reverse))}.space-y-1 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.25rem * var(--tw-space-y-reverse))}.space-y-1\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.375rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.375rem * var(--tw-space-y-reverse))}.space-y-10 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2.5rem * var(--tw-space-y-reverse))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-2\.5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.625rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.625rem * var(--tw-space-y-reverse))}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem * var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.rounded{border-radius:0.25rem}.rounded-2xl{border-radius:1rem}.rounded-3xl{border-radius:1.5rem}.rounded-full{border-radius:9999px}.rounded-xl{border-radius:0.75rem}.border{border-width:1px}.border-2{border-width:2px}.border-b{border-bottom-width:1px}.border-t{border-top-width:1px}.border-dashed{border-style:dashed}.border-error\/20{border-color:rgb(186 26 26 / 0.2)}.border-outline-variant{--tw-border-opacity:1;border-color:rgb(215 203 226 / var(--tw-border-opacity, 1))}.border-outline-variant\/30{border-color:rgb(215 203 226 / 0.3)}.border-outline-variant\/40{border-color:rgb(215 203 226 / 0.4)}.border-outline-variant\/50{border-color:rgb(215 203 226 / 0.5)}.border-outline-variant\/60{border-color:rgb(215 203 226 / 0.6)}.border-outline-variant\/70{border-color:rgb(215 203 226 / 0.7)}.border-primary{--tw-border-opacity:1;border-color:rgb(103 80 164 / var(--tw-border-opacity, 1))}.border-primary\/20{border-color:rgb(103 80 164 / 0.2)}.border-secondary\/20{border-color:rgb(113 91 0 / 0.2)}.border-tertiary\/20{border-color:rgb(164 62 53 / 0.2)}.border-t-transparent{border-top-color:transparent}.bg-\[\#F8F5FB\]{--tw-bg-opacity:1;background-color:rgb(248 245 251 / var(--tw-bg-opacity, 1))}.bg-error-container\/60{background-color:rgb(255 237 234 / 0.6)}.bg-outline-variant{--tw-bg-opacity:1;background-color:rgb(215 203 226 / var(--tw-bg-opacity, 1))}.bg-primary{--tw-bg-opacity:1;background-color:rgb(103 80 164 / var(--tw-bg-opacity, 1))}.bg-primary-container{--tw-bg-opacity:1;background-color:rgb(234 221 255 / var(--tw-bg-opacity, 1))}.bg-primary-container\/60{background-color:rgb(234 221 255 / 0.6)}.bg-secondary-container{--tw-bg-opacity:1;background-color:rgb(255 232 163 / var(--tw-bg-opacity, 1))}.bg-secondary-container\/40{background-color:rgb(255 232 163 / 0.4)}.bg-surface{--tw-bg-opacity:1;background-color:rgb(255 251 255 / var(--tw-bg-opacity, 1))}.bg-surface-container{--tw-bg-opacity:1;background-color:rgb(240 231 250 / var(--tw-bg-opacity, 1))}.bg-surface-container-high{--tw-bg-opacity:1;background-color:rgb(234 224 245 / var(--tw-bg-opacity, 1))}.bg-surface-container-low{--tw-bg-opacity:1;background-color:rgb(247 240 255 / var(--tw-bg-opacity, 1))}.bg-surface-container-low\/60{background-color:rgb(247 240 255 / 0.6)}.bg-tertiary-container{--tw-bg-opacity:1;background-color:rgb(255 218 212 / var(--tw-bg-opacity, 1))}.bg-tertiary-container\/40{background-color:rgb(255 218 212 / 0.4)}.p-1{padding:0.25rem}.p-2\.5{padding:0.625rem}.p-3{padding:0.75rem}.p-3\.5{padding:0.875rem}.p-4{padding:1rem}.p-5{padding:1.25rem}.px-1{padding-left:0.25rem;padding-right:0.25rem}.px-1\.5{padding-left:0.375rem;padding-right:0.375rem}.px-2{padding-left:0.5rem;padding-right:0.5rem}.px-3{padding-left:0.75rem;padding-right:0.75rem}.px-4{padding-left:1rem;padding-right:1rem}.py-0\.5{padding-top:0.125rem;padding-bottom:0.125rem}.py-1{padding-top:0.25rem;padding-bottom:0.25rem}.py-1\.5{padding-top:0.375rem;padding-bottom:0.375rem}.py-2{padding-top:0.5rem;padding-bottom:0.5rem}.py-2\.5{padding-top:0.625rem;padding-bottom:0.625rem}.py-3{padding-top:0.75rem;padding-bottom:0.75rem}.py-3\.5{padding-top:0.875rem;padding-bottom:0.875rem}.pb-2{padding-bottom:0.5rem}.pb-24{padding-bottom:6rem}.pb-4{padding-bottom:1rem}.pl-10{padding-left:2.5rem}.pr-11{padding-right:2.75rem}.pr-4{padding-right:1rem}.pt-1{padding-top:0.25rem}.pt-2{padding-top:0.5rem}.pt-6{padding-top:1.5rem}.text-center{text-align:center}.font-sans{font-family:Roboto, sans-serif}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-\[10px\]{font-size:10px}.text-\[11px\]{font-size:11px}.text-\[13px\]{font-size:13px}.text-\[16px\]{font-size:16px}.text-\[9px\]{font-size:9px}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-normal{font-weight:400}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.leading-normal{line-height:1.5}.leading-relaxed{line-height:1.625}.leading-snug{line-height:1.375}.leading-tight{line-height:1.25}.tracking-tight{letter-spacing:-0.025em}.tracking-wide{letter-spacing:0.025em}.tracking-wider{letter-spacing:0.05em}.text-error{--tw-text-opacity:1;color:rgb(186 26 26 / var(--tw-text-opacity, 1))}.text-on-primary{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-on-primary-container{--tw-text-opacity:1;color:rgb(33 0 93 / var(--tw-text-opacity, 1))}.text-on-secondary-container{--tw-text-opacity:1;color:rgb(52 42 0 / var(--tw-text-opacity, 1))}.text-on-secondary-container\/80{color:rgb(52 42 0 / 0.8)}.text-on-surface{--tw-text-opacity:1;color:rgb(36 27 53 / var(--tw-text-opacity, 1))}.text-on-surface\/40{color:rgb(36 27 53 / 0.4)}.text-on-surface\/50{color:rgb(36 27 53 / 0.5)}.text-on-surface\/60{color:rgb(36 27 53 / 0.6)}.text-on-surface\/70{color:rgb(36 27 53 / 0.7)}.text-on-surface\/75{color:rgb(36 27 53 / 0.75)}.text-on-surface\/80{color:rgb(36 27 53 / 0.8)}.text-on-tertiary-container{--tw-text-opacity:1;color:rgb(65 0 2 / var(--tw-text-opacity, 1))}.text-on-tertiary-container\/80{color:rgb(65 0 2 / 0.8)}.text-primary{--tw-text-opacity:1;color:rgb(103 80 164 / var(--tw-text-opacity, 1))}.text-secondary{--tw-text-opacity:1;color:rgb(113 91 0 / var(--tw-text-opacity, 1))}.text-tertiary{--tw-text-opacity:1;color:rgb(164 62 53 / var(--tw-text-opacity, 1))}.antialiased{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}.shadow-sm{--tw-shadow:0 1px 2px 0 rgb(0 0 0 / 0.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow)}.ring-2{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color);box-shadow:var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000)}.ring-primary{--tw-ring-opacity:1;--tw-ring-color:rgb(103 80 164 / var(--tw-ring-opacity, 1))}.transition{transition-property:color, background-color, border-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;transition-property:color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-text-decoration-color, -webkit-backdrop-filter;transition-timing-function:cubic-bezier(0.4, 0, 0.2, 1);transition-duration:150ms}.hover\:bg-outline-variant:hover{--tw-bg-opacity:1;background-color:rgb(215 203 226 / var(--tw-bg-opacity, 1))}.hover\:bg-primary-container:hover{--tw-bg-opacity:1;background-color:rgb(234 221 255 / var(--tw-bg-opacity, 1))}.hover\:bg-surface-container:hover{--tw-bg-opacity:1;background-color:rgb(240 231 250 / var(--tw-bg-opacity, 1))}.hover\:bg-surface-container-high:hover{--tw-bg-opacity:1;background-color:rgb(234 224 245 / var(--tw-bg-opacity, 1))}.hover\:bg-tertiary-container\/60:hover{background-color:rgb(255 218 212 / 0.6)}.hover\:text-on-surface:hover{--tw-text-opacity:1;color:rgb(36 27 53 / var(--tw-text-opacity, 1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}</style></head>
+<body class="bg-[#F8F5FB] text-on-surface font-sans antialiased pb-24">
+
+  <!-- Specimen Review Board Header -->
+  <header class="max-w-md mx-auto pt-6 px-4 pb-4">
+    <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary-container text-on-primary-container text-xs font-semibold tracking-wide">
+      <span class="material-symbols-outlined text-[16px]">account_tree</span>
+      <span>User Flow &amp; State Specimen Board</span>
+    </div>
+    <h1 class="text-2xl font-bold tracking-tight text-on-surface mt-2">Room AC Flow Review</h1>
+    <p class="text-xs text-on-surface/70 mt-1 leading-relaxed">
+      End-to-end mobile user journey, native authentication, discovery, reactive controller states, asynchronous command feedback, and device management.
+    </p>
+  </header>
+
+  <main class="max-w-md mx-auto px-4 space-y-10">
+
+    <!-- FLOW STEP 1: SIGN IN -->
+    <section class="space-y-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center text-xs font-bold">1</span>
+          <h2 class="text-sm font-bold uppercase tracking-wider text-primary">Authentication</h2>
+        </div>
+        <span class="text-xs px-2 py-0.5 rounded bg-surface-container text-on-surface/80 font-medium">Native Entry</span>
+      </div>
+
+      <!-- Phone Specimen: Sign In -->
+      <div class="bg-surface rounded-3xl border border-outline-variant/60 shadow-sm overflow-hidden p-5 space-y-5">
+        <!-- Brand / Identity -->
+        <div class="pt-2 text-center space-y-2">
+          <div class="w-14 h-14 rounded-2xl bg-secondary-container text-on-secondary-container flex items-center justify-center mx-auto shadow-sm">
+            <span class="material-symbols-outlined text-3xl">mode_fan</span>
+          </div>
+          <div>
+            <h3 class="text-xl font-bold text-on-surface">Room AC</h3>
+            <p class="text-xs text-on-surface/75 mt-0.5">Sign in with your MirAIe account</p>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="space-y-3 pt-2">
+          <!-- Mobile / Email field -->
+          <div>
+            <label class="block text-xs font-medium text-on-surface/80 mb-1">Mobile number or email</label>
+            <div class="relative flex items-center">
+              <span class="material-symbols-outlined absolute left-3.5 text-on-surface/50 text-lg">person</span>
+              <input type="text" value="alex@example.com" readonly="" class="w-full pl-10 pr-4 py-3 rounded-2xl bg-surface-container-low border border-outline-variant/70 text-sm font-medium text-on-surface focus:outline-none">
+            </div>
+          </div>
+
+          <!-- Password field -->
+          <div>
+            <div class="flex justify-between items-center mb-1">
+              <label class="block text-xs font-medium text-on-surface/80">Password</label>
+              <span class="text-[11px] text-primary font-medium"></span>
+            </div>
+            <div class="relative flex items-center">
+              <span class="material-symbols-outlined absolute left-3.5 text-on-surface/50 text-lg">lock</span>
+              <input type="password" value="supersecretdemo" readonly="" class="w-full pl-10 pr-11 py-3 rounded-2xl bg-surface-container-low border border-outline-variant/70 text-sm font-medium text-on-surface focus:outline-none">
+              <button class="absolute right-3 touch-target flex items-center justify-center text-on-surface/50 hover:text-on-surface">
+                <span class="material-symbols-outlined text-lg">visibility</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Sign In Action -->
+          <button class="w-full touch-target py-3.5 px-4 rounded-full bg-primary text-on-primary font-bold text-sm tracking-wide shadow-sm active:scale-98 transition flex items-center justify-center gap-2 mt-2">
+            <span>Sign in</span>
+            <span class="material-symbols-outlined text-base">arrow_forward</span>
+          </button>
+        </div>
+
+        <!-- Privacy & Security Notice -->
+        <div class="pt-1 border-t border-outline-variant/40 text-center">
+          <p class="text-[11px] text-on-surface/60 leading-normal">
+            Password is not saved; sign-in goes directly to Panasonic MirAIe cloud.
+          </p>
+        </div>
+
+        <!-- Inline Compact Validation & Error Specimen -->
+        <div class="p-3 rounded-2xl bg-error-container/60 border border-error/20 flex items-start gap-2.5">
+          <span class="material-symbols-outlined text-error text-lg mt-0.5">error</span>
+          <div class="space-y-0.5">
+            <p class="text-xs font-bold text-error">Could not sign in</p>
+            <p class="text-[11px] text-on-surface/80 leading-snug">Check your email or mobile credentials and retry.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Flow note -->
+      <div class="px-2 flex items-center justify-center text-xs text-on-surface/60 gap-1">
+        <span class="material-symbols-outlined text-sm">arrow_downward</span>
+        <span>Credentials verified via direct authentication endpoint</span>
+      </div>
+    </section>
+
+    <!-- FLOW STEP 2: CHOOSE AN AC -->
+    <section class="space-y-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center text-xs font-bold">2</span>
+          <h2 class="text-sm font-bold uppercase tracking-wider text-primary">Device Discovery</h2>
+        </div>
+        <span class="text-xs px-2 py-0.5 rounded bg-surface-container text-on-surface/80 font-medium">Target Picker</span>
+      </div>
+
+      <!-- Phone Specimen: Device Selection -->
+      <div class="bg-surface rounded-3xl border border-outline-variant/60 shadow-sm overflow-hidden p-5 space-y-4">
+        <!-- Header -->
+        <div class="flex items-center justify-between pb-2 border-b border-outline-variant/30">
+          <div>
+            <h3 class="text-lg font-bold text-on-surface">Choose an AC</h3>
+            <p class="text-xs text-on-surface/70">Choose the AC you want to control</p>
+          </div>
+          <button class="text-xs font-bold text-primary px-3 py-1.5 rounded-full bg-primary-container/60 hover:bg-primary-container transition">
+            Sign out
+          </button>
+        </div>
+
+        <!-- Discovered Units -->
+        <div class="space-y-2.5">
+          <!-- Item 1: Active Bedroom AC -->
+          <div class="p-4 rounded-2xl bg-surface-container-low border-2 border-primary flex items-center justify-between relative cursor-pointer">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-primary text-on-primary flex items-center justify-center">
+                <span class="material-symbols-outlined text-xl">bed</span>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <h4 class="text-sm font-bold text-on-surface">Bedroom AC</h4>
+                  <span class="px-1.5 py-0.5 rounded-full bg-primary-container text-on-primary-container text-[10px] font-bold">Active</span>
+                </div>
+                <p class="text-xs text-on-surface/70 mt-0.5">Master Bedroom · Online</p>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-primary text-xl">check_circle</span>
+          </div>
+
+          <!-- Item 2: Living Room AC -->
+          <div class="p-4 rounded-2xl bg-surface-container-low border border-outline-variant/60 flex items-center justify-between cursor-pointer hover:bg-surface-container transition">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-full bg-surface-container-high text-on-surface flex items-center justify-center">
+                <span class="material-symbols-outlined text-xl">weekend</span>
+              </div>
+              <div>
+                <h4 class="text-sm font-bold text-on-surface">Living room AC</h4>
+                <p class="text-xs text-on-surface/70 mt-0.5">Main Hall · Online</p>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-on-surface/40 text-lg">chevron_right</span>
+          </div>
+        </div>
+
+        <!-- Refresh / Discovery Action -->
+        <button class="w-full touch-target py-2.5 px-4 rounded-full bg-surface-container border border-outline-variant/70 text-on-surface font-semibold text-xs tracking-wide flex items-center justify-center gap-1.5 hover:bg-surface-container-high transition">
+          <span class="material-symbols-outlined text-base">sync</span>
+          <span>Find my ACs</span>
+        </button>
+
+        <!-- Empty state fallback card -->
+        <div class="p-3 rounded-2xl bg-surface-container-low/60 border border-dashed border-outline-variant text-center space-y-1">
+          <div class="flex items-center justify-center gap-1.5 text-xs font-semibold text-on-surface/80">
+            <span class="material-symbols-outlined text-sm text-tertiary">search_off</span>
+            <span>Empty Discovery Specimen</span>
+          </div>
+          <p class="text-[11px] text-on-surface/60 leading-tight">
+            "No compatible ACs found." Prompts user to verify network or tap Find my ACs again.
+          </p>
+        </div>
+      </div>
+
+      <!-- Flow note -->
+      <div class="px-2 flex items-center justify-center text-xs text-on-surface/60 gap-1">
+        <span class="material-symbols-outlined text-sm">arrow_downward</span>
+        <span>Selection initializes controller &amp; loads hardware capabilities</span>
+      </div>
+    </section>
+
+    <!-- FLOW STEP 3: CONTROLLER DRAFT & MODE VARIANTS -->
+    <section class="space-y-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center text-xs font-bold">3</span>
+          <h2 class="text-sm font-bold uppercase tracking-wider text-primary">Controller State Handling</h2>
+        </div>
+        <span class="text-xs px-2 py-0.5 rounded bg-surface-container text-on-surface/80 font-medium">Hardware Modes</span>
+      </div>
+
+      <!-- State Card A: Mode Draft & Commit Boundary -->
+      <div class="bg-surface rounded-3xl border border-outline-variant/60 shadow-sm p-5 space-y-4">
+        <div class="flex items-start justify-between">
+          <div>
+            <div class="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-secondary-container text-on-secondary-container text-[11px] font-bold">
+              <span class="material-symbols-outlined text-[13px]">tune</span>
+              <span>Draft State</span>
+            </div>
+            <h3 class="text-base font-bold text-on-surface mt-1">Reported Cool 23°C → Dry Draft</h3>
+          </div>
+          <span class="text-xs font-semibold text-tertiary">Pending Apply</span>
+        </div>
+
+        <!-- Mode selector illustrating draft -->
+        <div class="p-3 rounded-2xl bg-surface-container-low space-y-2">
+          <div class="flex justify-between items-center text-xs">
+            <span class="font-bold text-on-surface">Operating Mode</span>
+            <span class="text-[11px] text-on-surface/60">Reported: <strong class="text-on-surface">Cool</strong></span>
+          </div>
+
+          <!-- Mode Segments -->
+          <div class="grid grid-cols-4 gap-1.5 p-1 bg-surface-container rounded-2xl">
+            <div class="text-center py-2 text-xs font-medium text-on-surface/60 rounded-xl">Auto</div>
+            <div class="text-center py-2 text-xs font-bold text-primary bg-surface-container-low rounded-xl border border-primary/20">Cool <span class="block text-[9px] font-normal text-primary">Active</span></div>
+            <div class="text-center py-2 text-xs font-bold text-on-primary-container bg-primary-container rounded-xl ring-2 ring-primary">Dry <span class="block text-[9px] font-medium text-primary">Draft</span></div>
+            <div class="text-center py-2 text-xs font-medium text-on-surface/60 rounded-xl">Fan</div>
+          </div>
+
+          <!-- Commit button -->
+          <div class="pt-1 flex items-center gap-2">
+            <button class="flex-1 touch-target py-2 px-3 rounded-full bg-primary text-on-primary text-xs font-bold flex items-center justify-center gap-1.5 shadow-sm active:scale-98 transition">
+              <span class="material-symbols-outlined text-base">check</span>
+              <span>Apply Dry</span>
+            </button>
+            <button class="touch-target px-3 py-2 rounded-full bg-surface-container text-on-surface text-xs font-semibold hover:bg-surface-container-high transition">
+              Cancel
+            </button>
+          </div>
+          <p class="text-[11px] text-on-surface/70 text-center">
+            Dependent temperature &amp; fan adjustments remain locked until mode is applied.
+          </p>
+        </div>
+
+        <!-- Three Distinct Mode Edge Cases -->
+        <div class="grid grid-cols-1 gap-2.5 pt-1">
+          <!-- Variant 1: Fan-only Mode -->
+          <div class="p-3 rounded-2xl bg-surface-container-low border border-outline-variant/40 space-y-1.5">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary text-base">air</span>
+                <span class="text-xs font-bold text-on-surface">Fan-Only Active</span>
+              </div>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-surface-container text-on-surface/80">Temp Hidden</span>
+            </div>
+            <p class="text-xs text-on-surface/80">
+              Target temperature controls are hidden. Displays <strong class="text-on-surface">"Circulates air"</strong>. Fan speed selector remains available (Auto/Quiet/Low/Medium/High).
+            </p>
+          </div>
+
+          <!-- Variant 2: Dry Mode -->
+          <div class="p-3 rounded-2xl bg-surface-container-low border border-outline-variant/40 space-y-1.5">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary text-base">water_drop</span>
+                <span class="text-xs font-bold text-on-surface">Dry Mode Active</span>
+              </div>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-surface-container text-on-surface/80">Fan Locked</span>
+            </div>
+            <p class="text-xs text-on-surface/80">
+              Manual fan selection is disabled. In-app status notes <strong class="text-on-surface">"Managed by AC"</strong>. Target temperature range strictly 16–30°C.
+            </p>
+          </div>
+
+          <!-- Variant 3: Power Off & Independent Display -->
+          <div class="p-3 rounded-2xl bg-surface-container-low border border-outline-variant/40 space-y-1.5">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="material-symbols-outlined text-tertiary text-base">power_settings_new</span>
+                <span class="text-xs font-bold text-on-surface">Unit Power Off</span>
+              </div>
+              <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-surface-container text-on-surface/80">Independent LED</span>
+            </div>
+            <p class="text-xs text-on-surface/80">
+              Mode, temperature steppers, and fan controls are disabled. <strong class="text-on-surface">AC Display (LED) toggle remains actionable</strong> if hardware state is known.
+            </p>
+          </div>
+
+          <!-- Variant 4: Unit Cleaning Cycle -->
+          <div class="p-3 rounded-2xl bg-secondary-container/40 border border-secondary/20 space-y-1">
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-secondary text-sm">cleaning_services</span>
+              <span class="text-xs font-bold text-on-secondary-container">Internal Cleaning Cycle (Telemetry)</span>
+            </div>
+            <p class="text-[11px] text-on-secondary-container/80 leading-normal">
+              Temperature and fan adjustments locked by hardware. The app reports status passively without introducing an unsupported cleaning command.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLOW STEP 4: REFRESH & ASYNCHRONOUS FEEDBACK -->
+    <section class="space-y-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center text-xs font-bold">4</span>
+          <h2 class="text-sm font-bold uppercase tracking-wider text-primary">Feedback &amp; Readback Semantics</h2>
+        </div>
+        <span class="text-xs px-2 py-0.5 rounded bg-surface-container text-on-surface/80 font-medium">Async States</span>
+      </div>
+
+      <!-- Feedback Specimens -->
+      <div class="bg-surface rounded-3xl border border-outline-variant/60 shadow-sm p-5 space-y-3">
+        <!-- 4A: In-transit loading -->
+        <div class="p-3.5 rounded-2xl bg-surface-container-low border border-outline-variant/50 space-y-2">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <div class="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin"></div>
+              <span class="text-xs font-bold text-on-surface">In-Transit Command / Manual Refresh</span>
+            </div>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-primary-container text-on-primary-container">Updating…</span>
+          </div>
+          <p class="text-xs text-on-surface/75">
+            Header displays <strong class="text-on-surface">"Updating…"</strong> while retaining the last confirmed telemetry (Cool 23°C). No synthetic values are drafted.
+          </p>
+        </div>
+
+        <!-- 4B: Unconfirmed Readback State -->
+        <div class="p-3.5 rounded-2xl bg-surface-container-low border border-outline-variant/50 space-y-2">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-secondary text-base">sync_problem</span>
+              <span class="text-xs font-bold text-on-surface">Unconfirmed Command State</span>
+            </div>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-secondary-container text-on-secondary-container">Action Needed</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-surface flex items-center justify-between">
+            <div>
+              <p class="text-xs font-bold text-on-surface">Not confirmed yet</p>
+              <p class="text-[11px] text-on-surface/60">Hardware reported state did not confirm 24°C</p>
+            </div>
+            <button class="touch-target px-3 py-1.5 rounded-full bg-secondary-container text-on-secondary-container text-xs font-bold flex items-center gap-1">
+              <span class="material-symbols-outlined text-sm">refresh</span>
+              <span>Refresh</span>
+            </button>
+          </div>
+          <p class="text-[11px] text-on-surface/70">
+            Never implies premature success. Retains explicit Retry/Refresh affordance without desyncing hardware.
+          </p>
+        </div>
+
+        <!-- 4C: Offline / Hardware Unreachable -->
+        <div class="p-3.5 rounded-2xl bg-surface-container-low border border-outline-variant/50 space-y-2">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-1.5">
+              <span class="material-symbols-outlined text-tertiary text-base">cloud_off</span>
+              <span class="text-xs font-bold text-on-surface">Connection / Timeout Fallback</span>
+            </div>
+            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-tertiary-container text-on-tertiary-container">Offline</span>
+          </div>
+          <div class="p-2.5 rounded-xl bg-surface flex items-center justify-between">
+            <div>
+              <p class="text-xs font-bold text-on-surface">Last updated 10:24</p>
+              <p class="text-[11px] text-on-surface/60">Room temp: <strong>—</strong> · Mode: <strong>Cool (last known)</strong></p>
+            </div>
+            <button class="touch-target px-3 py-1.5 rounded-full bg-surface-container-high text-on-surface text-xs font-bold flex items-center gap-1 hover:bg-outline-variant">
+              <span class="material-symbols-outlined text-sm">sync</span>
+              <span>Retry</span>
+            </button>
+          </div>
+          <p class="text-[11px] text-on-surface/70">
+            Missing telemetry renders em dash (—) or "Not reported", never 0°C.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FLOW STEP 5: ACCOUNT & DEVICE MANAGEMENT -->
+    <section class="space-y-3">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2">
+          <span class="w-6 h-6 rounded-full bg-primary text-on-primary flex items-center justify-center text-xs font-bold">5</span>
+          <h2 class="text-sm font-bold uppercase tracking-wider text-primary">Account &amp; Device Modal</h2>
+        </div>
+        <span class="text-xs px-2 py-0.5 rounded bg-surface-container text-on-surface/80 font-medium">Bottom Sheet</span>
+      </div>
+
+      <!-- Management Bottom Sheet Specimen -->
+      <div class="bg-surface rounded-3xl border border-outline-variant/60 shadow-sm overflow-hidden p-5 space-y-4">
+        <!-- Sheet Handle & Title -->
+        <div class="text-center space-y-1 pb-2 border-b border-outline-variant/30">
+          <div class="w-10 h-1 bg-outline-variant rounded-full mx-auto mb-2"></div>
+          <h3 class="text-base font-bold text-on-surface">Device &amp; Session Options</h3>
+          <p class="text-xs text-on-surface/70">Bedroom AC (Master Bedroom)</p>
+        </div>
+
+        <!-- Management Menu Options -->
+        <div class="space-y-1.5">
+          <!-- Choose another AC -->
+          <div class="touch-target p-3 rounded-2xl bg-surface-container-low flex items-center justify-between cursor-pointer hover:bg-surface-container transition">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+                <span class="material-symbols-outlined text-lg">swap_horiz</span>
+              </div>
+              <div>
+                <p class="text-xs font-bold text-on-surface">Choose another AC</p>
+                <p class="text-[11px] text-on-surface/60">Switch to Living room AC</p>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-on-surface/40 text-base">chevron_right</span>
+          </div>
+
+          <!-- Refresh Capabilities -->
+          <div class="touch-target p-3 rounded-2xl bg-surface-container-low flex items-center justify-between cursor-pointer hover:bg-surface-container transition">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center">
+                <span class="material-symbols-outlined text-lg">sync</span>
+              </div>
+              <div>
+                <p class="text-xs font-bold text-on-surface">Refresh capabilities</p>
+                <p class="text-[11px] text-on-surface/60">Reload supported controls</p>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-on-surface/40 text-base">chevron_right</span>
+          </div>
+
+          <!-- Add home-screen widget -->
+          <div class="touch-target p-3 rounded-2xl bg-surface-container-low flex items-center justify-between cursor-pointer hover:bg-surface-container transition">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-primary-container text-on-primary-container flex items-center justify-center">
+                <span class="material-symbols-outlined text-lg">widgets</span>
+              </div>
+              <div>
+                <p class="text-xs font-bold text-on-surface">Add home-screen widget</p>
+                <p class="text-[11px] text-on-surface/60">Opens Android’s add-widget dialog</p>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-on-surface/40 text-base">chevron_right</span>
+          </div>
+
+          <!-- Sign out action -->
+          <div class="touch-target p-3 rounded-2xl bg-tertiary-container/40 border border-tertiary/20 flex items-center justify-between cursor-pointer hover:bg-tertiary-container/60 transition">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded-full bg-tertiary-container text-on-tertiary-container flex items-center justify-center">
+                <span class="material-symbols-outlined text-lg">logout</span>
+              </div>
+              <div>
+                <p class="text-xs font-bold text-on-tertiary-container">Sign out</p>
+                <p class="text-[11px] text-on-tertiary-container/80">Removes local session on this device</p>
+              </div>
+            </div>
+            <span class="material-symbols-outlined text-tertiary text-base">chevron_right</span>
+          </div>
+        </div>
+
+        <!-- Android Pin Widget & Sign Out Confirmation Callout -->
+        <div class="p-3 rounded-2xl bg-surface-container border border-outline-variant/60 space-y-2">
+          <div class="flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-primary text-sm">info</span>
+            <span class="text-xs font-bold text-on-surface">Native System Dialog Semantics</span>
+          </div>
+          <ul class="text-[11px] text-on-surface/75 space-y-1 list-disc list-inside">
+            <li><strong>Sign out:</strong> Clears the locally stored token and returns to Screen 1. Does not delete Panasonic credentials or unpair physical hardware.</li>
+            <li><strong>Widget Pinning:</strong> Prompts the Android OS <code class="bg-surface-container-high px-1 py-0.5 rounded text-[10px]">AppWidgetManager.requestPinAppWidget</code> system sheet without bespoke launcher permissions.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Operational Guardrails Summary -->
+    <footer class="p-4 rounded-3xl bg-surface-container border border-outline-variant/60 text-xs space-y-2 text-on-surface/80">
+      <div class="flex items-center gap-1.5 font-bold text-on-surface">
+        <span class="material-symbols-outlined text-primary text-base">verified</span>
+        <span>Operational Limits &amp; Architecture Checklist</span>
+      </div>
+      <p class="text-[11px] leading-relaxed">
+        • <strong>Modes:</strong> Exactly Auto, Cool, Dry, Fan (strictly no Heat).<br>
+        • <strong>Temperature Range:</strong> 16–30°C in 1°C steps with draft/commit boundary.<br>
+        • <strong>Fan Speeds:</strong> Auto, Quiet, Low, Medium, High; manual fan selection disabled in Dry.<br>
+        • <strong>Features:</strong> Eco (sets 26°C in Cool only); Powerful (Cool only, mutually exclusive with fixed capacity).<br>
+        • <strong>No Unsubstantiated Telemetry:</strong> No live RPM, no humidity, no periodic background polling, no automatic mutation without readback verification.
+      </p>
+    </footer>
+
+  </main>
+
+
+</body></html>

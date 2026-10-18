@@ -1,0 +1,14 @@
+[
+  {
+    "text": "I have updated the Room AC Controller design (Room AC Controller) with all requested content, state, and interaction corrections:\n\n1. **Explicit Draft / Commit for Temperature**:\n   - Removed all references to \"Auto sync\", dial synchronization, and automatic background transmission.\n   - Clarified the reported target temperature as **23\u00b0C** with `-` and `+` steppers.\n   - Added an explicit **\"Set 23\u00b0C\"** button that starts in a disabled state until an adjustment is drafted, accompanied by concise helper copy: *\"Adjust, then tap Set\"*.\n\n2. **Explicit Draft / Commit for Operating Mode**:\n   - Retained strictly **Auto**, **Cool**, **Dry**, and **Fan** (no Heat).\n   - Removed unsupported **Panasonic nanoe\u2122X** marketing branding.\n   - Introduced a dedicated **\"Apply Mode\"** commit action (disabled while no pending selection differs from the current active Cool mode) with the prompt *\"Tap a mode, then tap Apply\"*.\n\n3. **Discrete On States for Power & AC Display**:\n   - Replaced ambiguous checkmark / \"Device active\" states with explicit, high-contrast **\"On\"** badges and switches.\n   - Verified that AC Display is visually independent of unit power.\n\n4. **Refined Secondary Controls**:\n   - **Fan Speed**: Changed secondary text to **\"Auto\"** only (removed *\"Quiet flow\"*).\n   - **More Controls**: Removed *\"Swing\"* entirely; updated to strictly **\"Eco \u00b7 Powerful \u00b7 Capacity\"**.\n\n5. **Surface, Spacing & Viewport Ergonomics**:\n   - Replaced the hero's decorative gradient with a flat tonal design-system surface (`surface-container-low`).\n   - Cleaned the subheader banner to remove marketing copy while preserving **\"Updated 10:24\"** and manual **Refresh**.\n   - Tightened container heights and spacing so all primary controls remain naturally reachable within 390\u00d7844 while maintaining compliant 48dp touch targets."
+  },
+  {
+    "suggestion": "Show what the screen looks like when a new temperature draft (e.g. 21\u00b0C) has the Set action active"
+  },
+  {
+    "suggestion": "Create the matching Dark Theme version of this corrected controller screen"
+  },
+  {
+    "suggestion": "Design the 2\u00d72 and 4\u00d72 Android home screen companion widgets"
+  }
+]

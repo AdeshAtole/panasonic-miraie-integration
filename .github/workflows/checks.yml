@@ -1,0 +1,26 @@
+name: Repository checks
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  repository:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate layout, portable skill, documentation and prototype
+        run: python3 scripts/project.py check
+      - name: Test build orchestration
+        run: python3 -m unittest discover -s scripts/tests -v
+# Native app build jobs are added when real Gradle/Xcode projects are activated.
+# This workflow deliberately never logs in, controls appliances or accesses signing secrets.

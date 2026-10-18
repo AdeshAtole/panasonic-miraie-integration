@@ -1,0 +1,8 @@
+{
+  "idempotencyKey": "211322ea-ac00-43b7-8a0c-7e9bbb1862f4",
+  "source": "codex",
+  "projectId": "u5cQfWuWvBW",
+  "runId": "ZbypqtzJMQ6",
+  "status": "completed",
+  "statusUrl": "/api/v1/projects/u5cQfWuWvBW/chat/runs/ZbypqtzJMQ6"
+}

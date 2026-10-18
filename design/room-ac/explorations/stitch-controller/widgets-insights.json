@@ -1,0 +1,14 @@
+[
+  {
+    "text": "Here is the mobile design board for the **Room AC Widget Proposals** (Room AC Widget Proposals), created directly to match the Room AC Controller and the project\u2019s Playful Android Material 3 design system.\n\n### Key Highlights & Structure\n\n1. **Board Structure & Separation of Concerns**:\n   - The board presents pure launcher widget faces with all analytical callouts, target dimensions, and implementation notes placed outside the widget surfaces.\n   - Clean Android top header establishing it as a *Design proposals \u00b7 Bedroom AC* review artifact.\n\n2. **2\u00d72 Compact Specimen (`~170\u00d7170dp`)**:\n   - **Header**: Tappable \"Bedroom\" title with external app launch indicator and readable `10:24` observation time.\n   - **State & Telemetry**: Clear `On \u00b7 Cool` badge with bold read-only `23\u00b0C` target. Tapping the widget body opens the controller screen; no `+`/`-` steppers clutter this cell size.\n   - **Accessible Actions**: Two dedicated RemoteViews action targets adhering to \u226548dp bounds: an explicit power `Off` button and a manual `Refresh` button.\n\n3. **4\u00d72 Wide Specimen (`~320\u00d7160dp`)**:\n   - **Dual Telemetry**: Combines primary `Target 23\u00b0C` with subordinate `Room actual: 24.18\u00b0C` and `On \u00b7 Cool` chip.\n   - **Proposed Display Action**: Integrates an independent unit `LED / Display On` control toggle alongside `Turn Off` and `Refresh`.\n   - **Exterior Annotation**: Explicitly flags that the `Display` toggle is a proposal for RemoteViews, as the shipped launcher widget currently supports Power and Refresh only.\n\n4. **Implementation Specifications Callout**:\n   - **Manual Refresh Semantics**: Clarifies on-demand sync without continuous battery-draining polling.\n   - **Pending State Behavior**: Notes that `\"Updating...\"` temporarily replaces the timestamp while preserving last-known telemetry.\n   - **Failure & App Boundaries**: Outlines safe fallbacks without optimistic false switches and keeps temperature adjustments, modes, fan speed, and diagnostics safely inside the primary app."
+  },
+  {
+    "suggestion": "Generate the dark mode version of this widget board"
+  },
+  {
+    "suggestion": "Create an interactive state showing the 'Updating...' pending state on the 4x2 widget"
+  },
+  {
+    "suggestion": "Adjust 2x2 widget spacing or font hierarchy"
+  }
+]
