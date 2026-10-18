@@ -25,6 +25,16 @@ This public folder carries compact facts and extracted annotation/schema metadat
 
 A bounded search with no RPM field does not prove the server/firmware cannot supply RPM. A fixture test verifies parsing, not hardware. A command response/readback establishes cloud-reported state; where physical behavior matters, corroborate with the owner or observation.
 
+## Swing evidence added on 2026-10-19
+
+[swing.md](swing.md) combines shipped builder/guard Evidence IDs with separately
+identified owner observations and cloud readbacks on model 140013. Static artifact
+identity remains the one above; owner feedback is not a decompiler observation.
+Firmware and exact angles remain unknown. The horizontal 3=center interpretation
+was withdrawn after direct 1→3 comparison; the current tables preserve that
+correction and the unresolved relative order of 2/3. Use those tables rather than
+superseded intermediate labels.
+
 ## Extending to another model or family
 
 1. Obtain authorized discovery, exact model metadata, and a raw status sample. Record model, firmware if reported, app version, region, transport, and observation date. Sanitize before committing.

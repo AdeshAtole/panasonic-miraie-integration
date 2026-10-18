@@ -105,7 +105,7 @@ Writes are restricted to direct MirAIe AC model **140013 / CS-CU-NU18BKY5WX**, w
 - Power (`PowerStatus`, index 1) and display (`DisplayControl`, index 8) are independent. Power alone does not alter the target.
 - Modes: Auto/Cool/Dry/Fan; no Heat. Temperature uses advertised Celsius bounds/step within 16–30°C; fan choices are Auto/Quiet/Low/Medium/High.
 - Power must be on for settings. Send mode first, wait for a matching readback, then request dependent settings separately. Fan mode has no temperature setting; Dry never sends an extra Low-fan command.
-- Cleaning blocks temperature/fan/Powerful, including Eco's temperature side effect. Eco requires Cool, confirms Eco on, then requests 26°C. Powerful requires Cool and first disables fixed capacity. Nonzero capacity first disables Powerful. Values: 0 (Normal), 40/50/60/70/80/90/100/110.
+- Cleaning blocks temperature/fan/Powerful and both swing axes, including Eco's temperature side effect. Eco requires Cool, confirms Eco on, then requests 26°C. Powerful requires Cool and first disables fixed capacity. Nonzero capacity first disables Powerful. Values: 0 (Normal), 40/50/60/70/80/90/100/110.
 - Availability recognizes explicit `online`/`offline`, boolean `true`/`false`, numeric 1/0 and Panasonic's string `"true"`/`"false"`; raw reported values are preserved. Unknown/offline availability blocks writes. Active sleep-profile reset and JetStream cancellation are unsupported and gated; cleaning, schedules/timers, LAN/BLE/MQTT and other appliance writes are not exposed.
 
 Each mutation is sent **once**, followed by at most three status reads (3/1.2/1.8-second waits, with the first read at least three seconds after each change). Results distinguish server acceptance, matching cloud report, uncertain acceptance, remaining steps and physical confirmation (always false here). A dependent step stops after unconfirmed readback, an error, a changed session or incompatible reported state. No automatic mutation retry or queued replay after reconnect/login occurs. A timeout can mean the command reached Panasonic: inspect status before requesting anything again.
@@ -136,7 +136,8 @@ unit, the following mapping was established on 2026-10-19:
 Agents receive these observations through `capabilities.swing.vertical_swing`,
 the `capabilities` and `control_ac` tool descriptions, and `swing_guidance` in
 swing command results. Metadata is limited to positions advertised by the actual
-model. Horizontal observations use the perspective of an observer **facing the
+model. The [portable swing reference](../../skills/panasonic-miraie/references/swing.md)
+owns the consolidated evidence and correction history. Horizontal observations use the perspective of an observer **facing the
 AC** (observer left/right):
 
 | Horizontal code | Observed behavior |

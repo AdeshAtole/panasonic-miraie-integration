@@ -80,16 +80,17 @@ private account labels or full raw responses in fixtures or reports.
 | `daily_energy` | Request 7 days; verify Daily kWh and today's partial marker; do not label energy as instantaneous power | Pass, seven entries returned |
 | `begin_setup` | Open protected local page with bounded lifetime; no credentials in tool arguments/results | Pass, five-minute page opened; earlier live sign-in also completed |
 | `cancel_setup` | Cancel the opened page; confirm saved session/default remain usable | Pass, retained configured session |
-| `control_ac` | Follow the control matrix and restoration procedure below | Display/temperature passed; other six actions synthetic only |
-| `logout` | Run last when the user agrees to sign in again; confirm only server session/default removed and read tools fail safely | Pass; final state unconfigured/default absent |
+| `control_ac` | Follow the control matrix and restoration procedure below | Display/temperature and both swing axes have live readbacks; other six actions synthetic only |
+| `logout` | Run last when the user agrees to sign in again; confirm only server session/default removed and read tools fail safely | Pass; session/default removed during test; owner subsequently signed in again |
 
 The `miraie://onboarding` resource is additionally checked through the SDK and
 stdio tests. A separate live resource read was not performed in this run.
 
 ## Control test matrix
 
-The user authorized live display/temperature tests for this run and synthetic tests
-for all other actions. This is a scope record, not permission for later runs.
+Live display/temperature tests, later swing mapping tests, and logout were each
+authorized separately by the owner. The other six actions remained synthetic-only
+in this MCP session. This is recorded evidence, not permission for later runs.
 
 | Action | Synthetic coverage | Live evidence on model 140013 |
 |---|---|---|
@@ -101,6 +102,8 @@ for all other actions. This is a scope record, not permission for later runs.
 | `eco` | SDK enable plus 26°C sequence, preflight and stopped dependent steps | Not tested live in this run |
 | `powerful` | SDK enable, capacity exclusion, Cool/cleaning guards | Not tested live in this run |
 | `capacity` | SDK 80, Powerful exclusion and supported values | Not tested live in this run |
+| `vertical_swing` | SDK calls, range/type/availability/power/cleaning guards and send-once readback | Codes 0–5 cloud-reported/command-matched; 0 oscillates, 1→5 moves downward, 5 fixed per owner; exact angles unknown |
+| `horizontal_swing` | SDK calls, model-restricted observations and correction/perspective exposure | Codes 0–5 cloud-matched; 0 oscillates, 1 appeared centered, 2 left-facing, 3 slightly left of 1, 3→4→5 observer-right, 5 fixed; 2/3 ordering unknown |
 
 ### Live control and restoration procedure
 
@@ -119,159 +122,70 @@ for all other actions. This is a scope record, not permission for later runs.
 5. Read final status. If requested, test logout last, then `session_status` and
    `connection_test`. The owner signs back in through a fresh local page.
 
-Final cloud baseline was restored before logout: power on, Cool, 26°C, Low fan,
+During the initial display/temperature test, the cloud baseline was restored before logout: power on, Cool, 26°C, Low fan,
 display off, Eco off, Powerful off, normal capacity (0). No live fan/mode/power/
-Eco/Powerful/capacity command was sent during this run.
+Eco/Powerful/capacity command was sent during this session. Later swing tests and
+explicit requested settings are summarized below.
 
-## Initial complete-tool verification record
+## Current verification report — 2026-10-19
 
-Date: **2026-10-19 (Asia/Kolkata)**. Host: macOS, Python 3.12.
+Host: macOS, Python 3.12. **152 automated tests passed**, including enabled Chromium
+desktop/mobile checks and SDK/stdio verification of all 11 tools and ten control
+actions. The exact committed checkpoint also passed 9 root build-routing tests,
+repository checks, documentation links/whitespace, and offline wheel/source builds.
+These were local checks; remote CI is a separate result and may be pending on a
+new documentation revision.
 
-- **81 automated tests passed**, with Chromium browser checks enabled. Includes
-  ten new SDK tests covering the full tool surface, eight control actions and
-  safe input errors; the earlier 71 checks remain passing.
-- Wheel and source distribution built successfully offline; repository checks and
-  component documentation links/whitespace also passed. CI execution itself was
-  not verified in this local run.
-- All **11 MCP tools** were called live within the agreed scope. Error behavior
-  after logout was also checked. Tool coverage is not exhaustive value/hardware
-  coverage; only display and temperature were actuated live in this run.
-- Real local onboarding/session persistence worked on this macOS installation,
-  survived an MCP restart, and logout removed the session/default. Credential
-  material and native store contents were never inspected/exported.
-- Live refresh/expiry, credential-store locking/failure, offline hardware behavior,
-  other models/firmware and Windows/Linux native-store integration remain
-  unverified; synthetic checks do not close these gaps.
-- The capability result's evidence text must remain conservative and point to this
-  per-operation record; do not infer whole-model or cross-platform verification.
+All **11 tools** were exercised live within agreed scopes. Sign-in, discovery,
+explicit selection, capabilities, cloud snapshots, seven-day Daily kWh, setup
+cancellation and logout worked. Native session persistence survived an MCP restart
+on the tested macOS host. Credential contents were never inspected/exported.
+The onboarding resource was tested through SDK/stdio; a separate live resource
+read was not performed. Tests used synthetic accounts/transports/native-store
+backends and do not establish other platform or hardware behavior.
 
-When repeating tests, update the date, actual counts, environment failures/skips,
-per-tool/control outcomes and final restoration/session state. Never record a
-planned test as passed or copy private responses into this document.
+### Current swing evidence and correction
 
-### Subsequent requested operation
+The portable [swing reference](../../skills/panasonic-miraie/references/swing.md)
+owns the complete current position tables, static builder evidence and limitations.
+Scope is one model 140013 unit, date above; firmware and exact angles unknown.
 
-After the logout test, the owner signed in again through the local setup page.
-User-requested 21°C and display-on commands were accepted and cloud-matched.
-These were requested settings, not a test restoration; they supersede the earlier
-test baseline/session state. No swing command was sent.
+- Vertical: 0 oscillates; 2→3→4→5 moved progressively down from baseline 1; 5 stayed
+  fixed. Code 1 was later explicitly commanded and cloud-matched, but its absolute
+  angle/fixedness was not separately characterized.
+- Horizontal, **observer facing the AC**: 0 oscillates; 1 appeared centered on
+  retest; 2 was observed left-facing; 3 moved slightly left from 1; 4 moved right
+  from 3; 5 moved farther right from 4 and stayed fixed. Fixedness at 1/2, the
+  relative order of 2/3, full numeric ordering and exact angles remain unknown.
+- Correction provenance: an initial 3=center observation was superseded by the
+  direct 1→3 comparison. **Withdraw 3=center**. The initial unclear code 1 result
+  is also superseded by its retest appearing centered. Cloud readback is recorded
+  separately from the owner's observation; neither is erased or generalized.
 
-## Swing implementation verification — 2026-10-19
+MCP `capabilities` and `control_ac` descriptions, `capabilities.swing`, and
+`swing_guidance` in command results publish the model/date/scope, partial mappings,
+allowed codes and horizontal observer perspective. Positions not advertised by a
+selected model are omitted from its observations. `physical_confirmation` remains
+false for each new command; prior owner feedback does not confirm future movement.
 
-- **148 automated tests passed**, including real Chromium desktop/mobile checks,
-  SDK calls for all ten control actions and protocol discovery of both new actions.
-- Offline wheel/source build, repository checks, documentation links and diff
-  whitespace checks passed. CI execution and live swing remain unverified.
-- New actions: `vertical_swing` (`VerticalSwing`, index 5) and `horizontal_swing`
-  (`HorizontalSwing`, index 6), using the selected model's attribute keys.
-- Commands use integer JSON values, a model-advertised range/list within 0–5,
-  power-on/cleaning-off/online guards, send-once behavior and three-second first
-  readback. Invalid direction strings, floats, booleans, missing/ambiguous schemas
-  and unsafe states are rejected without a write.
-- `capabilities.swing` exposes allowed numeric positions with static-only evidence
-  and explicitly unverified physical directions. Malformed swing schemas are
-  omitted from `writes` while their metadata remains inspectable.
-- Basis: [static swing evidence](../../skills/panasonic-miraie/references/swing.md)
-  from MirAIe Android 01.4.32. No live swing command was sent during implementation.
-- The earlier eight-action live-test scope and results above remain historical;
-  power/mode/fan/Eco/Powerful/capacity and both swing axes have no new live test here.
+### Final requested settings and restoration
 
-For a future owner-authorized swing test, read the baseline code for the selected
-axis, choose one advertised code explicitly, send once, wait/read until confirmed
-within bounds, and ask the owner what position it produced. Restore the original
-code only after confirmation. Treat cloud readback and physical direction as
-separate evidence. Do not sweep codes or assume numeric order means down/up.
+The initial test restored its display/temperature baseline before the requested
+logout. The owner then signed in again, explicitly requested 21°C/display-on, and
+authorized swing exploration. The final explicit request was **horizontal 1 and
+vertical 1**; both cloud-matched. These requested settings supersede earlier test
+ending codes and were not automatically restored. The latest report preparation
+sent no appliance command and does not claim a fresh physical or status reading.
 
+### Remaining verification
 
-## Owner-observed vertical mapping and MCP guidance — 2026-10-19
+Live token expiry/refresh, Windows/Linux native stores, native-store failure/lock
+conditions, hardware-offline scenarios, other models/firmware and physical behavior
+of the remaining six AC controls remain unverified in this MCP session. The
+prototype's separate evidence does not establish those MCP paths. Humidity, RPM,
+LAN/MQTT control, timers and background recording are not silently inferred.
 
-The owner authorized sequential position changes and reported the physical result.
-Commands for vertical 2, 3, 4, 5 and 0 were each accepted and cloud-matched. From
-baseline 1, the owner observed 2 moving downward, 3 farther down, 4 farther down,
-and corrected/confirmed 5 moving farther down again and staying fixed. At 0 the
-owner observed continuous oscillation. No exact angles or firmware version were
-recorded. Horizontal swing was not changed or physically mapped.
-
-The MCP `capabilities` and `control_ac` descriptions now summarize this one-unit
-model 140013 mapping. Structured `capabilities.swing.vertical_swing` includes
-allowed positions, per-code observations, date and scope, with `direction_mapping`
-marked partially verified. Swing command results also include `swing_guidance`;
-`physical_confirmation` remains false for each new command until the owner observes
-it. Horizontal guidance stays static-only/unverified. Schema-restricted choices
-omit observations for values the selected model does not advertise.
-
-**150 automated tests passed**, including real Chromium checks, stdio-discovered
-mapping descriptions, SDK-delivered observations and command-result guidance.
-The earlier static-only swing record above describes implementation-time evidence;
-this owner-observed record supersedes its no-live-swing limit for vertical only.
-Last requested vertical position was 0 (oscillating); no baseline restoration was
-requested. The AC temperature/display settings were not changed in this sequence.
-
-
-## Owner-observed horizontal mapping and MCP guidance — 2026-10-19
-
-The owner authorized the horizontal sequence and reported movement while facing
-the AC. From initial reported horizontal 2, the 3 command cloud-matched but no
-physical direction was reported. The 3→4 transition cloud-matched and moved right
-from that observer perspective. The 4→5 transition cloud-matched and moved farther
-right; a subsequent status still reported 5, and the owner confirmed it stayed
-fixed. The 5→0 transition cloud-matched and the owner confirmed oscillation.
-Vertical was explicitly set to 5 to make the horizontal vanes visible.
-
-`capabilities.swing.horizontal_swing`, both relevant tool descriptions, and swing
-command results now expose: 0 oscillates; 3→4→5 moves observer-right while facing
-the AC; 5 is the rightmost tested fixed position. Structured guidance includes
-`observer_perspective`, date, one-unit/model scope and per-position observations
-filtered to actual advertised choices. Horizontal 1/2, the full 1–5 ordering,
-leftmost direction, other firmware and exact angles remain unverified. Prior
-observations never set `physical_confirmation` true on a new tool result.
-
-**152 automated tests passed**, including Chromium browser flows, stdio-discovered
-descriptions and SDK exposure of horizontal guidance, physical-confirmation
-separation and model-restricted observation filtering for both axes. These live
-results supersede the earlier horizontal static-only limit. Last requested state
-is horizontal 0 oscillating, vertical 5 fixed down; no restoration was requested.
-The documentation update itself sent no appliance command.
-
-
-### Center position confirmation — 2026-10-19
-
-A subsequent owner-requested horizontal 0→3 command was accepted and cloud-matched.
-The owner confirmed that 3 looks centered / straight ahead and fixed. MCP tool
-descriptions, structured observations and command guidance now publish that meaning
-within the same one-unit model scope. Exact angle remains unknown. The next test
-command, horizontal 3→1, was accepted and cloud-matched; its physical direction
-is pending owner observation. Position 2 also remains physically unverified.
-
-
-### Horizontal position 2 and ambiguous position 1 — 2026-10-19
-
-Code 1 cloud-matched, but the owner reported no clear movement from center.
-Following the owner's explicit request for another command, code 2 was sent once,
-accepted and cloud-matched. The owner confirmed leftward movement and a left-facing
-position while facing the AC. MCP guidance now labels 2 observer-left relative
-to centered 3; code 1 remains physically unconfirmed rather than labeled centered
-or leftmost. Fixedness at 2 has not been separately confirmed. This supersedes the
-previous 1/2 untested wording for 2 only. Last requested horizontal state is 2;
-vertical remains 5. No further appliance command accompanied this guidance update.
-
-
-### Mapping correction from direct horizontal 1→3 comparison — 2026-10-19
-
-The owner-requested 2→1 retest cloud-matched and the owner reported 1 appeared
-centered. The next requested 1→3 comparison cloud-matched and moved a little left
-according to the owner. This supersedes the earlier 3=center inference. MCP tool
-descriptions, structured capability observations and command guidance now use
-1=appeared centered, 3=slightly left of 1. Code 2 remains observed left-facing;
-its order relative to 3 is unknown. Fixedness at 1/2 and exact angles remain
-unverified. No new appliance command was sent to update this mapping; horizontal
-remains at the user-requested code 3, vertical at 5.
-
-
-### Final user-requested settings after mapping tests — 2026-10-19
-
-The owner subsequently requested horizontal 1 and vertical 1. Both commands were
-accepted and cloud-matched. These explicit requested settings supersede the earlier
-test-ending codes; they are not physical confirmation or baseline restoration.
-Publication preparation did not sign in, read credentials, or send further appliance
-commands.
+When tests or evidence change, update this current report and the README support
+tracker. Keep correction provenance concise; do not append conflicting current
+mappings or claim test counts from unexecuted checks. Preserve the skill's
+self-contained references and omit credentials, private identifiers and captures.

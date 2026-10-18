@@ -34,6 +34,12 @@ Treat absent, null, malformed, sentinel, and genuine zero readings separately. `
 
 `acfs` is a requested/reported fan setting. It is not a tachometer. Never turn `High` into an RPM estimate or derive watts from an energy total without a verified interval and meaning.
 
+For AC swing, numeric range metadata alone does not identify center, degrees or
+oscillation. Use the model-scoped [swing observations](swing.md), including the
+observer perspective and corrected horizontal labels. Preserve partial mappings
+and corrections with the data exposed to agents; do not infer numeric direction
+ordering or turn prior owner observations into new physical confirmation.
+
 ## Integrating into other platforms
 
 Map stable device identity to the target platform's device registry. Map capabilities to switches, selectors, numeric controls, climate entities, and sensors only where semantics are established. Keep command methods separate from state updates so widgets, web UIs, CLI tools, and automations share the same adapter. Use server-side credential storage for a web app rather than embedding account tokens in published JavaScript; direct browser CORS support has not been tested.

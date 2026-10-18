@@ -24,13 +24,15 @@ Keep JSON-RPC stdout clean; log only safe diagnostics to stderr. Derive controls
 from the selected model. Preserve raw reported values alongside normalized fields.
 Use one availability normalizer for status and every actuation guard. Swing actions
 accept only advertised integer positions; require power on and cleaning off.
-Expose the model-scoped owner-observed vertical mapping in MCP descriptions,
-capabilities and command results: 0 oscillates; 1–5 progress downward; 5 is the
-lowest tested fixed position on one model 140013 unit. For horizontal on that
-unit, 0 oscillates; 2 points observer-left; 1 appeared centered on retest; 3 moved slightly left from 1 (earlier center label withdrawn); 3→4→5 moves right while the observer faces the AC; 5 stays
-fixed and is the rightmost tested position. Always include the observer perspective.
-Keep the relative horizontal order of 2/3, exact angles and other firmware unverified. Never mark a new command physically
-confirmed just because prior observations exist.
+Expose model-scoped swing observations in tool descriptions, capabilities and
+command results. The current tables and corrected horizontal mapping are maintained
+in the portable skill's [swing reference](../../skills/panasonic-miraie/references/swing.md).
+Vertical 0 oscillates and 5 is the lowest tested fixed position. For horizontal,
+0 oscillates, 1 appeared centered and 3 moved slightly left from 1 (the earlier
+3=center label is withdrawn). Always state that horizontal left/right is from an
+observer facing the AC. Keep the relative order of 2/3, exact angles, fixedness at
+horizontal 1/2 and other firmware unverified. Prior observations must not mark a
+new command physically confirmed.
 Send a command once; wait at least three seconds before the first readback.
 Keep acceptance, reported matching and physical confirmation distinct. Stop
 coupled commands after unconfirmed results; never queue/replay appliance writes.
