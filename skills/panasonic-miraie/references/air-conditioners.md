@@ -11,13 +11,14 @@ Live-tested model: **CS-CU-NU18BKY5WX**, modelId **140013**. These are public mo
 | ACTemperature | `actmp` | 2 | Celsius numeric string; 16–30, step 1 |
 | PowerfulMode | `acpm` | 3 | `on`, `off` |
 | ACFanSpeed | `acfs` | 4 | `auto`, `quiet`, `low`, `medium`, `high` |
+| DisplayControl | `acdc` | 8 | `on`, `off`; independent of AC power |
 | ECOMode | `acem` | 10 | `on`, `off` |
 | Convertible | `cnv` | 28 | Integers 110/100/90/80/70/60/50/40/0 |
 | ACModeTemperature | model-dependent | 257 | Static registry alternative; not advertised on this model |
 
 The index comes from the native registry/deserializer, not the model attribute position. Resolve keys from the actual model even when using these indexes. Heat exists in the app's generic code but was not advertised on this unit. The registry includes capacity 55 for other models; this unit does not advertise it. Zero means normal/off capacity restriction, not power off.
 
-**Power is `ps`, not `acdc`.** This model's `acdc` capability is display control. The initial community-derived prototype got this wrong; the live model and native PowerStatus setter corrected it. Do not copy a generic short-key table without resolving capability semantics.
+**Power is `ps`, not `acdc`.** This model's `acdc` capability is display control. Display off/on was live-tested through Room AC 0.3 with cloud readback confirming both states while power, mode, and target remained unchanged; the original display state was restored. Physical LED observation was not separately captured. The initial community-derived prototype got this wrong; the live model and native PowerStatus setter corrected it. Do not copy a generic short-key table without resolving capability semantics.
 
 For example, request Low fan with `{"acfs":"low","ki":4}` or 21°C with `{"actmp":"21.0","ki":2}`, inside the platform control envelope. Verify actual readback. A command builder is not sufficient evidence of physical support in every mode.
 

@@ -1,4 +1,4 @@
-# Room AC 0.2
+# Room AC 0.3
 
 Lightweight native Android alternative for the connected Panasonic MirAIe AC. Package: `in.room.ac`. No third-party runtime libraries are bundled.
 
@@ -9,6 +9,8 @@ The app loads the actual model capability definition, caches it for one day, and
 Fan-only hides the temperature control. Dry disables manual fan speed and leaves its fan behavior to the AC. A separate forced fan command interfered with the live Dry transition, so it is not sent. A selected mode must be applied before its temperature/fan controls become active. Controls reflect the reported state after bounded command/readback checks.
 
 Additional modes are in a small dialog. Eco is available in Cool and sets 26°C, matching the native app. Powerful is available in Cool while cleaning is off; enabling it disables Convertible. A fixed Convertible setting disables Powerful. Native capability indexes are used: mode 0, power 1, temperature 2, powerful 3, fan 4, eco 10, convertible 28, and per-mode temperature 257 where advertised. The model metadata spells Celsius `celcius`; the parser supports that spelling and normal Celsius names.
+
+The main screen includes an AC display toggle when the model advertises both on/off values. It shows the last reported display state and waits for command readback. Display control uses `acdc` with native index 8 on the tested model. Live off/on readback passed, with power, mode and temperature unchanged; the original display state was restored.
 
 Power uses the actual `PowerStatus` capability (`ps` on this model), separate from display control (`acdc`). This corrects the initial prototype's binding in both app and widget.
 

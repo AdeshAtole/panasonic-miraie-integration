@@ -13,7 +13,7 @@ import java.util.concurrent.*;
 public class MainActivity extends Activity {
  final ExecutorService worker=Executors.newSingleThreadExecutor();
  LinearLayout box,tempPanel,fanPanel;ScrollView scroll;TextView message,tempLabel,modeNote,fanNote;
- Spinner modeSpinner,fanSpinner;Button modeButton,tempButton,fanButton;
+ Spinner modeSpinner,fanSpinner;Button modeButton,tempButton,fanButton,displayButton;
  DeviceProfile profile;JSONObject fields=new JSONObject();List<String> modes=new ArrayList<>(),fans=new ArrayList<>();
  String chosenMode="",chosenFan="";double chosenTemp=24;boolean busy=false,alive=true;
  interface Job{String run()throws Exception;}
@@ -42,6 +42,15 @@ public class MainActivity extends Activity {
   message.setText(getSharedPreferences("view",0).getString("status","Tap Refresh to read your AC status."));
   text(selected.optString("deviceName","Panasonic AC"),24,Color.WHITE);text(selected.optString("spaceName"),15,Color.LTGRAY);
   button("Refresh status",()->refresh(false));button("Power on",()->send(Api.powerKey(this),"on"));button("Power off",()->send(Api.powerKey(this),"off"));
+  displayButton=null;
+  List<String> displayValues=profile.values("DisplayControl");
+  if(profile.capability("DisplayControl")!=null&&displayValues.contains("on")&&displayValues.contains("off")){
+   String display=fields.optString(profile.key("DisplayControl","acdc"));
+   text("AC display: "+("on".equalsIgnoreCase(display)?"On":"off".equalsIgnoreCase(display)?"Off":"Not reported"),16,Color.LTGRAY);
+   boolean known="on".equalsIgnoreCase(display)||"off".equalsIgnoreCase(display);
+   displayButton=button("on".equalsIgnoreCase(display)?"Turn AC display off":"Turn AC display on",()->send(profile.key("DisplayControl","acdc"),"on".equalsIgnoreCase(display)?"off":"on"));
+   displayButton.setEnabled(known&&!busy);displayButton.setContentDescription("Toggle AC display");
+  }
   text("Operating mode",20,Color.WHITE);
   String currentMode=fields.optString(profile.key("ACMode","acmd"),"");modes=profile.modes();
   if(modes.isEmpty()){
@@ -85,7 +94,7 @@ public class MainActivity extends Activity {
  void enabled(View view,boolean value){if(view==null)return;view.setEnabled(value);if(view instanceof android.view.ViewGroup)for(int i=0;i<((android.view.ViewGroup)view).getChildCount();i++)enabled(((android.view.ViewGroup)view).getChildAt(i),value);view.setAlpha(value?1f:0.45f);}
  void updateTemperatureLabel(){if(tempLabel!=null)tempLabel.setText(format(chosenTemp)+"°C");}
  static String format(double n){return Math.rint(n)==n?Long.toString(Math.round(n)):java.math.BigDecimal.valueOf(n).stripTrailingZeros().toPlainString();}
- void updateModeControls(){if(modeNote==null||tempPanel==null||profile==null)return;
+ void updateModeControls(){if(displayButton!=null)displayButton.setEnabled(!busy&&("on".equalsIgnoreCase(fields.optString(profile.key("DisplayControl","acdc")))||"off".equalsIgnoreCase(fields.optString(profile.key("DisplayControl","acdc")))));if(modeNote==null||tempPanel==null||profile==null)return;
   String current=fields.optString(profile.key("ACMode","acmd"));boolean powered="on".equalsIgnoreCase(fields.optString(profile.key("PowerStatus","ps"))),pending=!chosenMode.equals(current),ready=powered&&!pending&&!busy&&!modes.isEmpty();boolean cleaning="on".equalsIgnoreCase(fields.optString(profile.key("EvaporatorClean","acec")));
   if(modeSpinner!=null){modeSpinner.setEnabled(powered&&!busy);modeButton.setEnabled(powered&&!busy);}
   double[] range=profile.temperatureRange(chosenMode);chosenTemp=Math.max(range[0],Math.min(range[1],chosenTemp));updateTemperatureLabel();

@@ -7,7 +7,7 @@ An unofficial, capability-driven MirAIe integration reference, reusable agent sk
 | Folder | Purpose |
 |---|---|
 | [skills/panasonic-miraie](skills/panasonic-miraie/SKILL.md) | Portable agent skill: authentication, discovery, model capabilities, control, telemetry, MQTT findings, and device-family coverage |
-| [room-ac](room-ac/README.md) | Native Android AC app with capability-driven modes, fan settings, Eco/Powerful/capacity, home-screen widget, local snapshots, and CSV exports |
+| [room-ac](room-ac/README.md) | Native Android AC app with capability-driven modes, fan settings, Eco/Powerful/capacity, AC display toggle, home-screen widget, local snapshots, and CSV exports |
 | [stay-awake](stay-awake/README.md) | Optional Android helper using a silent local looping video in picture-in-picture |
 
 The skill includes 209 static API declarations, 231 capability-registry records, and 359 serialized field schemas. It separates **live verified**, **static only**, **inferred**, and **unknown** behavior. Other appliance families are documented as extension leads, not end-to-end tested drivers. This project is not affiliated with or endorsed by Panasonic.
