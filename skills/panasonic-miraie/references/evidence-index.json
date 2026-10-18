@@ -1,0 +1,113 @@
+{
+  "scope": "Provenance identifiers for retained investigation records; records are not bundled or publicly resolvable",
+  "records": [
+    {
+      "file": "auth-endpoint-evidence.json",
+      "evidence_id": "ev_905fa7ba8f6262e63355bb5d1f32616c6c5d8c037113f8f733fd59c9cc238daa",
+      "operation": "inspect_android_method",
+      "artifact_sha256": "62a36f534b6e38802e9a1ff2138a6342d1328e0f0a4928ce37ba2299e2f867a1"
+    },
+    {
+      "file": "mqtt-connect-evidence.json",
+      "evidence_id": "ev_7adbfeaf9ddb00c7d086f0536f1732c22fef38e564af34eff3dfc8bc1aaacfc3",
+      "operation": "inspect_android_method",
+      "artifact_sha256": "62a36f534b6e38802e9a1ff2138a6342d1328e0f0a4928ce37ba2299e2f867a1"
+    },
+    {
+      "file": "mqtt-control-evidence.json",
+      "evidence_id": "ev_df2556f7977050b4342cb69e274dc72a040f4c621706ae5a89a4b40475cd16c7",
+      "operation": "inspect_android_method",
+      "artifact_sha256": "62a36f534b6e38802e9a1ff2138a6342d1328e0f0a4928ce37ba2299e2f867a1"
+    },
+    {
+      "file": "mqtt-username-evidence.json",
+      "evidence_id": "ev_c576f8266f785c290062b6c11091901341ffd7981f0cab5cafdfc68162e2b089",
+      "operation": "inspect_android_method",
+      "artifact_sha256": "62a36f534b6e38802e9a1ff2138a6342d1328e0f0a4928ce37ba2299e2f867a1"
+    },
+    {
+      "file": "package-evidence.json",
+      "evidence_id": "ev_870abce94a35da0255db35eb0444ef6921338fe607de71308dbc96b61cb9f72b",
+      "operation": "inspect_android_package",
+      "artifact_sha256": "62a36f534b6e38802e9a1ff2138a6342d1328e0f0a4928ce37ba2299e2f867a1"
+    },
+    {
+      "file": "modes-fan-ui.json",
+      "evidence_id": "ev_41d3f98e1d1412a53336e8657d18aa872ad075d2a18e50ee129f53fd123530c2",
+      "operation": "inspect_android_method",
+      "artifact_sha256": "62a36f534b6e38802e9a1ff2138a6342d1328e0f0a4928ce37ba2299e2f867a1"
+    },
+    {
+      "file": "modes-ui-rules.json",
+      "evidence_id": "ev_cbefeaf7aaca3062cc3cb57f969a20b52cfacbc975a9ad31f521ed54b37ef305",
+      "operation": "inspect_android_method",
+      "artifact_sha256": "62a36f534b6e38802e9a1ff2138a6342d1328e0f0a4928ce37ba2299e2f867a1"
+    },
+    {
+      "file": "telemetry-capability-keys.json",
+      "evidence_id": "ev_8afca330c2976c1b28c0b48c4a64b557da53a9bc7a63946625bc2d5f2903e071",
+      "operation": "inspect_android_method",
+      "artifact_sha256": "62a36f534b6e38802e9a1ff2138a6342d1328e0f0a4928ce37ba2299e2f867a1"
+    },
+    {
+      "file": "telemetry-command-deserializer.json",
+      "evidence_id": "ev_29a3128b4d69b23f6e52a9b07235013d72e38ff22ff48795d9f9599a6402eda5",
+      "operation": "inspect_android_method",
+      "artifact_sha256": "62a36f534b6e38802e9a1ff2138a6342d1328e0f0a4928ce37ba2299e2f867a1"
+    },
+    {
+      "file": "telemetry-command-fan-builder.json",
+      "evidence_id": "ev_9a819057d35db43bf7375b1b709af066d06df72bb3ba0b41c0374cc9ca474135",
+      "operation": "inspect_android_method",
+      "artifact_sha256": "62a36f534b6e38802e9a1ff2138a6342d1328e0f0a4928ce37ba2299e2f867a1"
+    },
+    {
+      "file": "telemetry-command-setACPowerfulMode.json",
+      "evidence_id": "ev_fd1065c96501ee9802d441e7b33bd03553686112e4d8d0714ffb21a562a3d6d1",
+      "operation": "inspect_android_method",
+      "artifact_sha256": "62a36f534b6e38802e9a1ff2138a6342d1328e0f0a4928ce37ba2299e2f867a1"
+    },
+    {
+      "file": "telemetry-command-setConvertibleMode.json",
+      "evidence_id": "ev_9eac83806ebaf3762c3943577af700c472915fe96ad27c042e19f0bb604ec6f1",
+      "operation": "inspect_android_method",
+      "artifact_sha256": "62a36f534b6e38802e9a1ff2138a6342d1328e0f0a4928ce37ba2299e2f867a1"
+    },
+    {
+      "file": "telemetry-command-setEcoMode.json",
+      "evidence_id": "ev_8a721ac469f260f990c48d441b21b5c69019ca69f060d19e52b288753a05ce91",
+      "operation": "inspect_android_method",
+      "artifact_sha256": "62a36f534b6e38802e9a1ff2138a6342d1328e0f0a4928ce37ba2299e2f867a1"
+    },
+    {
+      "file": "telemetry-command-setPowerStatus.json",
+      "evidence_id": "ev_c9b7cb5c92b80d790ee1c4d66fcd61a549611edd434b090cd6d5ca5de37edba8",
+      "operation": "inspect_android_method",
+      "artifact_sha256": "62a36f534b6e38802e9a1ff2138a6342d1328e0f0a4928ce37ba2299e2f867a1"
+    },
+    {
+      "file": "telemetry-model-method.json",
+      "evidence_id": "ev_c31a3673704ad50c81c8ed6ad42a98c3e9074ba6fbd8cdfd83ada3608aa16665",
+      "operation": "inspect_android_method",
+      "artifact_sha256": "62a36f534b6e38802e9a1ff2138a6342d1328e0f0a4928ce37ba2299e2f867a1"
+    },
+    {
+      "file": "telemetry-power-route.json",
+      "evidence_id": "ev_6a71f0194bdc3acb7fd5e918f98c7af52d9b8f99750afe96d8b66506331b88e3",
+      "operation": "inspect_android_method",
+      "artifact_sha256": "62a36f534b6e38802e9a1ff2138a6342d1328e0f0a4928ce37ba2299e2f867a1"
+    },
+    {
+      "file": "catalog-base-device.json",
+      "evidence_id": "ev_f6b4ae84f341a3d631637e8803490edafa3669301803ea054183e5b86bf2472b",
+      "operation": "inspect_android_class",
+      "artifact_sha256": "62a36f534b6e38802e9a1ff2138a6342d1328e0f0a4928ce37ba2299e2f867a1"
+    },
+    {
+      "file": "catalog-send-control.json",
+      "evidence_id": "ev_85b1ca1e706815c3bb77e21f3649efcd148c3310c735df8c83c7932b5338112d",
+      "operation": "inspect_android_method",
+      "artifact_sha256": "62a36f534b6e38802e9a1ff2138a6342d1328e0f0a4928ce37ba2299e2f867a1"
+    }
+  ]
+}

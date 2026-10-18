@@ -1,0 +1,8 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:padding="12dp" android:background="#111926" android:orientation="vertical">
+<TextView android:id="@+id/title" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Room AC" android:textColor="#FFFFFF" android:textSize="18sp"/>
+<TextView android:id="@+id/status" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Open Room AC to sign in" android:textColor="#9AD7CD" android:textSize="14sp"/>
+<LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal">
+<Button android:id="@+id/on" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="On"/>
+<Button android:id="@+id/off" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Off"/>
+<Button android:id="@+id/refresh" android:layout_width="0dp" android:layout_weight="1" android:layout_height="wrap_content" android:text="Refresh"/>
+</LinearLayout></LinearLayout>

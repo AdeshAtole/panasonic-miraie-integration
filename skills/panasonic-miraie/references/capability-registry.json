@@ -1,0 +1,1436 @@
+{
+  "schema_version": 1,
+  "scope": "Static registry declared by MirAIe Android 01.4.32, not a device support or wire-command guarantee.",
+  "provenance": {
+    "package": "com.panasonic.in.miraie",
+    "version": "01.4.32",
+    "apk_sha256": "62a36f534b6e38802e9a1ff2138a6342d1328e0f0a4928ce37ba2299e2f867a1",
+    "evidence_id": "ev_8afca330c2976c1b28c0b48c4a64b557da53a9bc7a63946625bc2d5f2903e071",
+    "class": "com.panasonic.in.miraiecore.entity.device.capabilities.BaseCapability.Type",
+    "method": "<clinit>",
+    "representation": "smali",
+    "extraction": "Tracked const-string, const-class, integer constants and move-object register assignments for each exact five-argument enum constructor; all constructor records covered, unique identifiers asserted.",
+    "record_count": 231
+  },
+  "warnings": [
+    "identifier is the Java enum identifier; capability is the model capability-name string; neither is the model-specific wire attribute key.",
+    "ki is a registry constructor argument, not enum ordinal or array position.",
+    "Names and ki values can collide; resolve with actual model, capability class, transport and native command builder.",
+    "A registry entry may describe status/config metadata, not a writable actuator.",
+    "No non-AC entry has been live verified in this project."
+  ],
+  "collisions": {
+    "capability": {
+      "TimeStamp": [
+        "TimeStamp",
+        "StatV2TimeStamp"
+      ]
+    },
+    "ki": {
+      "78": [
+        "WMTotalTime",
+        "WMDelayTime"
+      ],
+      "290": [
+        "SupportedDeviceCategories",
+        "FadeTime"
+      ],
+      "291": [
+        "IR_Command_Status",
+        "RiseTime"
+      ],
+      "292": [
+        "IR_Learning_Status",
+        "ColourTemperature"
+      ]
+    }
+  },
+  "entries": [
+    {
+      "identifier": "PowerStatus",
+      "capability": "PowerStatus",
+      "ki": 1,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ToggleStatusCapability"
+    },
+    {
+      "identifier": "RoomTemperature",
+      "capability": "RoomTemperature",
+      "ki": 101,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.RangeCapability"
+    },
+    {
+      "identifier": "RoomHumidity",
+      "capability": "RoomHumidity",
+      "ki": 102,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.RangeCapability"
+    },
+    {
+      "identifier": "TimeStamp",
+      "capability": "TimeStamp",
+      "ki": 103,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapability"
+    },
+    {
+      "identifier": "CurrentPowerConsumption",
+      "capability": "CurrentPowerConsumption",
+      "ki": 104,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapability"
+    },
+    {
+      "identifier": "StatV2TimeStamp",
+      "capability": "TimeStamp",
+      "ki": 105,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapability"
+    },
+    {
+      "identifier": "PowerConsumption",
+      "capability": "PowerConsumption",
+      "ki": 106,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.BaseCapability"
+    },
+    {
+      "identifier": "ACFault",
+      "capability": "ACFaults",
+      "ki": 107,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.BaseCapability"
+    },
+    {
+      "identifier": "StainGenius",
+      "capability": "StainGenius",
+      "ki": 108,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapability"
+    },
+    {
+      "identifier": "GroupCommand",
+      "capability": "groupCommand",
+      "ki": 109,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.switches.BaseConfigCapability"
+    },
+    {
+      "identifier": "UDPControl",
+      "capability": "udpControl",
+      "ki": 110,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.switches.BaseConfigCapability"
+    },
+    {
+      "identifier": "TwoWaySwitch",
+      "capability": "TwoWaySwitch",
+      "ki": 111,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.switches.BaseConfigCapability"
+    },
+    {
+      "identifier": "ProximityNotification",
+      "capability": "ProximityNotification",
+      "ki": 112,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.switches.BaseConfigCapability"
+    },
+    {
+      "identifier": "ACMode",
+      "capability": "ACMode",
+      "ki": 0,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ac.ACModeCapability"
+    },
+    {
+      "identifier": "TemperatureValue",
+      "capability": "ACTemperature",
+      "ki": 2,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.TemperatureValueCapability"
+    },
+    {
+      "identifier": "ACPowerfulMode",
+      "capability": "PowerfulMode",
+      "ki": 3,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ToggleStatusCapability"
+    },
+    {
+      "identifier": "ACFanSpeed",
+      "capability": "ACFanSpeed",
+      "ki": 4,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ac.ACFanSpeedCapability"
+    },
+    {
+      "identifier": "VerticalSwingControl",
+      "capability": "VerticalSwing",
+      "ki": 5,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.RangeCapability"
+    },
+    {
+      "identifier": "HorizontalSwingControl",
+      "capability": "HorizontalSwing",
+      "ki": 6,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.RangeCapability"
+    },
+    {
+      "identifier": "NanoeGStatus",
+      "capability": "NanoeG",
+      "ki": 7,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ToggleStatusCapability"
+    },
+    {
+      "identifier": "DisplayControl",
+      "capability": "DisplayControl",
+      "ki": 8,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ac.DisplayControlCapability"
+    },
+    {
+      "identifier": "EvaporatorClean",
+      "capability": "EvaporatorClean",
+      "ki": 9,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ToggleStatusCapability"
+    },
+    {
+      "identifier": "EcoMode",
+      "capability": "ECOMode",
+      "ki": 10,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ToggleStatusCapability"
+    },
+    {
+      "identifier": "SleepProfile",
+      "capability": "SleepProfile",
+      "ki": 12,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ac.ACProfileCapability"
+    },
+    {
+      "identifier": "JetStreamMode",
+      "capability": "JetStream",
+      "ki": 13,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ToggleStatusCapability"
+    },
+    {
+      "identifier": "ACTimer",
+      "capability": "ACTimer",
+      "ki": 14,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.TimerValueCapability"
+    },
+    {
+      "identifier": "FilterDustLevel",
+      "capability": "FilterDustLevel",
+      "ki": 15,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ac.FilterDustLevelCapability"
+    },
+    {
+      "identifier": "Ionizer",
+      "capability": "Ionizer",
+      "ki": 16,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ToggleStatusCapability"
+    },
+    {
+      "identifier": "MotionSensor",
+      "capability": "MotionSensor",
+      "ki": 17,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ToggleStatusCapability"
+    },
+    {
+      "identifier": "TurboMode",
+      "capability": "TurboMode",
+      "ki": 18,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ToggleStatusCapability"
+    },
+    {
+      "identifier": "GenMode",
+      "capability": "ACGenMode",
+      "ki": 19,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ac.ACGenModeCapability"
+    },
+    {
+      "identifier": "PM25Sensor",
+      "capability": "PM25Sensor",
+      "ki": 20,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.PM25ValueCapability"
+    },
+    {
+      "identifier": "EcoNavi",
+      "capability": "EcoNavi",
+      "ki": 21,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ToggleStatusCapability"
+    },
+    {
+      "identifier": "MOTIONSENSORSTATUS",
+      "capability": "MotionSensorStatus",
+      "ki": 22,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ac.MotionSensorStatusCapability"
+    },
+    {
+      "identifier": "NanoeXStatus",
+      "capability": "NanoeX",
+      "ki": 23,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ToggleStatusCapability"
+    },
+    {
+      "identifier": "NanoeGAStatus",
+      "capability": "NanoeGA",
+      "ki": 24,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapability"
+    },
+    {
+      "identifier": "TimeBasedFilterHealth",
+      "capability": "TimeBasedFilterHealth",
+      "ki": 25,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ac.FilterDustLevelCapability"
+    },
+    {
+      "identifier": "FilterCalibration",
+      "capability": "FilterCalibration",
+      "ki": 26,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ac.FilterCalibrationCapability"
+    },
+    {
+      "identifier": "EconomySensor",
+      "capability": "EconomySensor",
+      "ki": 27,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ToggleStatusCapability"
+    },
+    {
+      "identifier": "Convertible",
+      "capability": "Convertible",
+      "ki": 28,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ac.ACConvertibleModeCapability"
+    },
+    {
+      "identifier": "LaundryMode",
+      "capability": "LaundryMode",
+      "ki": 29,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ToggleStatusCapability"
+    },
+    {
+      "identifier": "BuzzerControlMode",
+      "capability": "BuzzerControl",
+      "ki": 30,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ToggleStatusCapability"
+    },
+    {
+      "identifier": "FanMode",
+      "capability": "FanMode",
+      "ki": 31,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.fan.FanModeCapability"
+    },
+    {
+      "identifier": "FanSpeed",
+      "capability": "FanSpeed",
+      "ki": 32,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.RangeCapability"
+    },
+    {
+      "identifier": "DeviceAssets",
+      "capability": "deviceAssets",
+      "ki": 33,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.DeviceAssetsCapability"
+    },
+    {
+      "identifier": "RFMode",
+      "capability": "RefMode",
+      "ki": 51,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.refrigerator.RFModeCapability"
+    },
+    {
+      "identifier": "Compartments",
+      "capability": "Compartments",
+      "ki": 52,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.refrigerator.CompartmentsCapability"
+    },
+    {
+      "identifier": "FridgeOff",
+      "capability": "FridgeOff",
+      "ki": 53,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ToggleStatusCapability"
+    },
+    {
+      "identifier": "FridgeTempRange",
+      "capability": "Fridge-Temperature",
+      "ki": 54,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.TemperatureValueCapability"
+    },
+    {
+      "identifier": "FreezerTempRange",
+      "capability": "Freezer-Temperature",
+      "ki": 55,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.TemperatureValueCapability"
+    },
+    {
+      "identifier": "AmbientTempRange",
+      "capability": "ambientTemperature",
+      "ki": 56,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.TemperatureValueCapability"
+    },
+    {
+      "identifier": "FreezerDoorStatus",
+      "capability": "FreezerDoorStatus",
+      "ki": 57,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.refrigerator.DoorStatusCapability"
+    },
+    {
+      "identifier": "FridgeDoorStatus",
+      "capability": "FridgeDoorStatus",
+      "ki": 58,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.refrigerator.DoorStatusCapability"
+    },
+    {
+      "identifier": "FaultStatus",
+      "capability": "FaultStatus",
+      "ki": 59,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.refrigerator.FaultStatusCapability"
+    },
+    {
+      "identifier": "ChildLock",
+      "capability": "ChildLock",
+      "ki": 60,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.refrigerator.ChildLockStatusCapability"
+    },
+    {
+      "identifier": "FridgeDoorThreshold",
+      "capability": "FridgeDoorThreshold",
+      "ki": 61,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.refrigerator.DoorThresholdCapability"
+    },
+    {
+      "identifier": "FreezerDoorThreshold",
+      "capability": "FreezerDoorThreshold",
+      "ki": 62,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.refrigerator.DoorThresholdCapability"
+    },
+    {
+      "identifier": "FridgeDoorNotification",
+      "capability": "FridgeDoorNotification",
+      "ki": 63,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapability"
+    },
+    {
+      "identifier": "FreezerDoorNotification",
+      "capability": "FreezerDoorNotification",
+      "ki": 64,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapability"
+    },
+    {
+      "identifier": "PrimeConvertibleCapability",
+      "capability": "ConvertPrimefreshModes",
+      "ki": 65,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.refrigerator.PrimeConvertibleCapability"
+    },
+    {
+      "identifier": "PrimeConvertActiveCapability",
+      "capability": "ConvertButtonActive",
+      "ki": 66,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.refrigerator.BMRPrimeConvertibleActiveAndModeCapability"
+    },
+    {
+      "identifier": "PrimeFreshCapability",
+      "capability": "PrimefreshModes",
+      "ki": 67,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.refrigerator.PrimeFreshCapability"
+    },
+    {
+      "identifier": "BMRQuickFreezeCapability",
+      "capability": "QuickFreeze",
+      "ki": 68,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapabilityIntValue"
+    },
+    {
+      "identifier": "BMRDoorThresholdCapability",
+      "capability": "RefDoorOpenThreshold",
+      "ki": 69,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.refrigerator.DoorThresholdCapability"
+    },
+    {
+      "identifier": "RefrigeratorEcoNaviCapability",
+      "capability": "RefEconavi",
+      "ki": 70,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapabilityIntValue"
+    },
+    {
+      "identifier": "WMWashAction",
+      "capability": "WashActions",
+      "ki": 71,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.wm.WMWashActionCapability"
+    },
+    {
+      "identifier": "WMWashActionTypes",
+      "capability": "WashActionTypes",
+      "ki": 72,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.wm.WMWashActionTypesCapability"
+    },
+    {
+      "identifier": "WMWashStatus",
+      "capability": "WashStatus",
+      "ki": 74,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.wm.WMWashStatusCapability"
+    },
+    {
+      "identifier": "WMWashId",
+      "capability": "WashId",
+      "ki": 75,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapability"
+    },
+    {
+      "identifier": "WMWashProgramId",
+      "capability": "WashProgramId",
+      "ki": 76,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapability"
+    },
+    {
+      "identifier": "WMRemainingTime",
+      "capability": "RemainingTime",
+      "ki": 77,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.wm.WMTimeStampCapability"
+    },
+    {
+      "identifier": "WMTotalTime",
+      "capability": "TotalTime",
+      "ki": 78,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.wm.WMTimeStampCapability"
+    },
+    {
+      "identifier": "WMDelayTime",
+      "capability": "DelayTime",
+      "ki": 78,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.wm.WMTimeStampCapability"
+    },
+    {
+      "identifier": "WMCurrentWashCycle",
+      "capability": "CurrentCycle",
+      "ki": 79,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.wm.WMWashCycleCapability"
+    },
+    {
+      "identifier": "WMExtraActions",
+      "capability": "ExtraActions",
+      "ki": 80,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.wm.WMExtraActionsCapability"
+    },
+    {
+      "identifier": "WMWaterTemperature",
+      "capability": "WaterTemperature",
+      "ki": 81,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapability"
+    },
+    {
+      "identifier": "WMSpinSpeed",
+      "capability": "SpinSpeed",
+      "ki": 82,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapability"
+    },
+    {
+      "identifier": "WMRinseCycle",
+      "capability": "RinseCycle",
+      "ki": 83,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.wm.WMRinseCycleCapability"
+    },
+    {
+      "identifier": "WMFaults",
+      "capability": "Faults",
+      "ki": 84,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.wm.WMFaultsCapability"
+    },
+    {
+      "identifier": "WMWashProgram",
+      "capability": "WashPrograms",
+      "ki": 85,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.wm.WMWashProgramCapability"
+    },
+    {
+      "identifier": "WMMemorizedProgram",
+      "capability": "MemorizedProgram",
+      "ki": 86,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.wm.WMMemorizedProgramCapability"
+    },
+    {
+      "identifier": "DiagnoseInstruction",
+      "capability": "DiagnoseInstructions",
+      "ki": 87,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.wm.DynamicInstructionCapability"
+    },
+    {
+      "identifier": "OnboardingInstruction",
+      "capability": "OnboardingInstructions",
+      "ki": 88,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.wm.DynamicInstructionCapability"
+    },
+    {
+      "identifier": "TVVolume",
+      "capability": "Volume",
+      "ki": 91,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.RangeCapability"
+    },
+    {
+      "identifier": "TVMute",
+      "capability": "Mute",
+      "ki": 92,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ToggleStatusCapability"
+    },
+    {
+      "identifier": "TVFaults",
+      "capability": "TVFaults",
+      "ki": 93,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.tv.TVFaultsCapability"
+    },
+    {
+      "identifier": "TVLaunchApps",
+      "capability": "LaunchApps",
+      "ki": 94,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.tv.TVExternalAppsCapability"
+    },
+    {
+      "identifier": "TVInputSource",
+      "capability": "TVInputSource",
+      "ki": 95,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapability"
+    },
+    {
+      "identifier": "ChannelPowerStatus",
+      "capability": "ChannelPowerStatus",
+      "ki": 122,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ToggleStatusCapability"
+    },
+    {
+      "identifier": "ChannelNumber",
+      "capability": "ChannelNumber",
+      "ki": 123,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.switches.ChannelNumberCapability"
+    },
+    {
+      "identifier": "DimmerState",
+      "capability": "DimmerState",
+      "ki": 124,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.RangeCapability"
+    },
+    {
+      "identifier": "CurtainControl",
+      "capability": "CurtainControl",
+      "ki": 125,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.switches.CurtainControlCapability"
+    },
+    {
+      "identifier": "FanTimer",
+      "capability": "FanTimer",
+      "ki": 126,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.TimerValueCapability"
+    },
+    {
+      "identifier": "TouchSeriesTimer",
+      "capability": "Timer",
+      "ki": 127,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.TimerValueCapability"
+    },
+    {
+      "identifier": "WaterHeaterMode",
+      "capability": "WHMode",
+      "ki": 150,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.waterheater.WaterHeaterModeCapability"
+    },
+    {
+      "identifier": "WaterTemperature",
+      "capability": "WHTargetTemperature",
+      "ki": 151,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.TemperatureValueCapability"
+    },
+    {
+      "identifier": "WaterHeaterFaults",
+      "capability": "WHHeaterFaultStatus",
+      "ki": 152,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.waterheater.WaterHeaterFaultStatusCapability"
+    },
+    {
+      "identifier": "WaterContainerTemperature",
+      "capability": "WHCurrentTemperature",
+      "ki": 153,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapability"
+    },
+    {
+      "identifier": "HeatingState",
+      "capability": "WHHeatingState",
+      "ki": 154,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.waterheater.WaterHeaterHeatingStateCapability"
+    },
+    {
+      "identifier": "HeaterTimerHour",
+      "capability": "WHHour",
+      "ki": 155,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapability"
+    },
+    {
+      "identifier": "HeaterTimerMin",
+      "capability": "WHMinute",
+      "ki": 156,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapability"
+    },
+    {
+      "identifier": "HeaterTimerId",
+      "capability": "WHTimerId",
+      "ki": 157,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapability"
+    },
+    {
+      "identifier": "HeaterTimerState",
+      "capability": "WHTimerState",
+      "ki": 158,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.waterheater.WaterHeaterTimerStateCapability"
+    },
+    {
+      "identifier": "HeaterTimer",
+      "capability": "WHTimers",
+      "ki": 159,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.waterheater.WaterHeaterTimerCapability"
+    },
+    {
+      "identifier": "HeaterAutoOff",
+      "capability": "WHAutoPowerOff",
+      "ki": 160,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapability"
+    },
+    {
+      "identifier": "RCCLevel",
+      "capability": "CurtainLevel",
+      "ki": 170,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.RangeCapability"
+    },
+    {
+      "identifier": "RCCCalibrationResponse",
+      "capability": "CalibrationResponse",
+      "ki": 171,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.switches.RCCCalibrationResponseCapability"
+    },
+    {
+      "identifier": "RCCCalibrationState",
+      "capability": "CalibrationState",
+      "ki": 172,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.BooleanStatusCapability"
+    },
+    {
+      "identifier": "RCCCalibrate",
+      "capability": "CalibrateCurtain",
+      "ki": 173,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.switches.RCCCalibrateCapability"
+    },
+    {
+      "identifier": "RCCTargetLevel",
+      "capability": "TargetCurtainLevel",
+      "ki": 174,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.RangeCapability"
+    },
+    {
+      "identifier": "SupportedResolution",
+      "capability": "Resolution",
+      "ki": 201,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.camera.SupportedResolutionCapability"
+    },
+    {
+      "identifier": "FrameRate",
+      "capability": "FrameRate",
+      "ki": 202,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.RangeCapability"
+    },
+    {
+      "identifier": "BitRate",
+      "capability": "BitRate",
+      "ki": 203,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.RangeCapability"
+    },
+    {
+      "identifier": "SupportsRecording",
+      "capability": "LocalRecordingStatus",
+      "ki": 204,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.BooleanStatusCapability"
+    },
+    {
+      "identifier": "MotionAlert",
+      "capability": "MotionAlert",
+      "ki": 205,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.BooleanStatusCapability"
+    },
+    {
+      "identifier": "TamperAlert",
+      "capability": "TamperAlert",
+      "ki": 206,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.BooleanStatusCapability"
+    },
+    {
+      "identifier": "RoomTemp",
+      "capability": "Room Temperature",
+      "ki": 221,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.FloatRangeCapability"
+    },
+    {
+      "identifier": "PM25",
+      "capability": "PM2.5",
+      "ki": 222,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.FloatRangeCapability"
+    },
+    {
+      "identifier": "HUMIDITY",
+      "capability": "Humidity",
+      "ki": 223,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.FloatRangeCapability"
+    },
+    {
+      "identifier": "TVOC",
+      "capability": "TVOC",
+      "ki": 224,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.FloatRangeCapability"
+    },
+    {
+      "identifier": "CO",
+      "capability": "Carbon Monoxide",
+      "ki": 225,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.FloatRangeCapability"
+    },
+    {
+      "identifier": "CO2",
+      "capability": "Carbon Dioxide",
+      "ki": 226,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.FloatRangeCapability"
+    },
+    {
+      "identifier": "NO2",
+      "capability": "Nitrogen Dioxide",
+      "ki": 227,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.FloatRangeCapability"
+    },
+    {
+      "identifier": "OZONE",
+      "capability": "Ozone",
+      "ki": 228,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.FloatRangeCapability"
+    },
+    {
+      "identifier": "AIR_PRESSURE",
+      "capability": "Air Pressure",
+      "ki": 229,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.FloatRangeCapability"
+    },
+    {
+      "identifier": "VIRUS_INDEX",
+      "capability": "Virus Index",
+      "ki": 230,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.FloatRangeCapability"
+    },
+    {
+      "identifier": "DetectionSensitivity",
+      "capability": "DetectionSensitivity",
+      "ki": 250,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.vdp.DetectionSensitivityCapability"
+    },
+    {
+      "identifier": "ImageFlip",
+      "capability": "ImageFlip",
+      "ki": 251,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.vdp.ImageFlipCapability"
+    },
+    {
+      "identifier": "ActiveTime",
+      "capability": "ActiveTime",
+      "ki": 252,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.vdp.ActiveTimeCapability"
+    },
+    {
+      "identifier": "SceneMode",
+      "capability": "SceneMode",
+      "ki": 253,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.vdp.SceneModeCapability"
+    },
+    {
+      "identifier": "CloudVideo",
+      "capability": "CloudVideo",
+      "ki": 254,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ToggleStatusCapability"
+    },
+    {
+      "identifier": "LEDIndicator",
+      "capability": "LEDIndicator",
+      "ki": 255,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ToggleStatusCapability"
+    },
+    {
+      "identifier": "VideoResolution",
+      "capability": "VideoResolution",
+      "ki": 256,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.vdp.VideoResolutionCapability"
+    },
+    {
+      "identifier": "ACModeTemperature",
+      "capability": "ACModeTemperature",
+      "ki": 257,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ac.ACModeTemperatureCapability"
+    },
+    {
+      "identifier": "Humidifier",
+      "capability": "Humidifier",
+      "ki": 258,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.ToggleStatusCapability"
+    },
+    {
+      "identifier": "WashTimeMinutes",
+      "capability": "WashDuration",
+      "ki": 270,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapability"
+    },
+    {
+      "identifier": "RinseCycleType",
+      "capability": "RinseCycleType",
+      "ki": 271,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapability"
+    },
+    {
+      "identifier": "SpinTimeMinutes",
+      "capability": "SpinDuration",
+      "ki": 272,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapability"
+    },
+    {
+      "identifier": "WaterLevel",
+      "capability": "WaterLevel",
+      "ki": 273,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapability"
+    },
+    {
+      "identifier": "WashAutoPauseStages",
+      "capability": "WashAutoPauseStages",
+      "ki": 274,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.wm.WMAutoPauseStagesCapability"
+    },
+    {
+      "identifier": "WashAutoPauseState",
+      "capability": "WashAutoPauseState",
+      "ki": 275,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.SingleValueCapability"
+    },
+    {
+      "identifier": "SupportedDeviceCategories",
+      "capability": "SupportedDeviceCategories",
+      "ki": 290,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.SupportedDeviceCategoriesCapability"
+    },
+    {
+      "identifier": "IR_Command_Status",
+      "capability": "IRBCommandStatus",
+      "ki": 291,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRACStatusCapability"
+    },
+    {
+      "identifier": "IR_Learning_Status",
+      "capability": "IRBLearningStatus",
+      "ki": 292,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRLearningStatusCapability"
+    },
+    {
+      "identifier": "IR_ACPowerStatus",
+      "capability": "IRB_PowerStatus",
+      "ki": 301,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRToggleStatusCapability"
+    },
+    {
+      "identifier": "IR_ACMode",
+      "capability": "IRB_ACMode",
+      "ki": 302,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRACModeCapability"
+    },
+    {
+      "identifier": "IR_ACTemperature",
+      "capability": "IRB_ACTemperature",
+      "ki": 303,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRACTemperatureValueCapability"
+    },
+    {
+      "identifier": "IR_ACFanSpeed",
+      "capability": "IRB_ACFanSpeed",
+      "ki": 304,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRACFanSpeedCapability"
+    },
+    {
+      "identifier": "IR_ACSwing",
+      "capability": "IRB_ACSwing",
+      "ki": 305,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRACSwingStatusCapability"
+    },
+    {
+      "identifier": "IRB_ACSwingHorizontal",
+      "capability": "IRB_ACSwingHorizontal",
+      "ki": 306,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRACSwingStatusCapability"
+    },
+    {
+      "identifier": "IR_TV_ChannelController",
+      "capability": "IRB_ChannelController",
+      "ki": 401,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRTVChannelControllerCapability"
+    },
+    {
+      "identifier": "IR_TV_Digits",
+      "capability": "IRB_Digits",
+      "ki": 402,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRTVDigitCapability"
+    },
+    {
+      "identifier": "IR_TV_Volume_Controller",
+      "capability": "IRB_VolumeController",
+      "ki": 403,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRTVVolumeControllerCapability"
+    },
+    {
+      "identifier": "IR_TV_Playback_Controller",
+      "capability": "IRB_PlaybackController",
+      "ki": 404,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRTVPlaybackControllerCapability"
+    },
+    {
+      "identifier": "IR_TV_Input_Controller",
+      "capability": "IRB_InputController",
+      "ki": 405,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRTVInputControllerCapability"
+    },
+    {
+      "identifier": "IR_TV_Keypad_Controller",
+      "capability": "IRB_KeypadController",
+      "ki": 406,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRTVKeypadControllerCapability"
+    },
+    {
+      "identifier": "IR_TV_LaunchApps",
+      "capability": "IRB_LaunchApps",
+      "ki": 407,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRTVLaunchAppsCapability"
+    },
+    {
+      "identifier": "IR_Custom_Key_Capability",
+      "capability": "IRB_CustomCapability",
+      "ki": 408,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRLearningCapability"
+    },
+    {
+      "identifier": "IR_TV_Channel_Number",
+      "capability": "IRB_ChannelNumber",
+      "ki": 409,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.RangeCapability"
+    },
+    {
+      "identifier": "FadeTime",
+      "capability": "FadeTime",
+      "ki": 290,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.RangeCapability"
+    },
+    {
+      "identifier": "RiseTime",
+      "capability": "RiseTime",
+      "ki": 291,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.RangeCapability"
+    },
+    {
+      "identifier": "ColourTemperature",
+      "capability": "ColourTemperature",
+      "ki": 292,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.RangeCapability"
+    },
+    {
+      "identifier": "Brightness",
+      "capability": "Brightness",
+      "ki": 293,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.RangeCapability"
+    },
+    {
+      "identifier": "RGBColors",
+      "capability": "RGBColors",
+      "ki": 294,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.RangeCapability"
+    },
+    {
+      "identifier": "LEDMode",
+      "capability": "mode",
+      "ki": 295,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.led.LedModeCapability"
+    },
+    {
+      "identifier": "LEDScenes",
+      "capability": "PresetScenes",
+      "ki": 296,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.led.LedScenesCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_POWER",
+      "capability": "IRB_501",
+      "ki": 501,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_SWITCH_ON",
+      "capability": "IRB_502",
+      "ki": 502,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_SWITCH_OFF",
+      "capability": "IRB_503",
+      "ki": 503,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_NUMB_0",
+      "capability": "IRB_504",
+      "ki": 504,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_NUMB_1",
+      "capability": "IRB_505",
+      "ki": 505,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_NUMB_2",
+      "capability": "IRB_506",
+      "ki": 506,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_NUMB_3",
+      "capability": "IRB_507",
+      "ki": 507,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_NUMB_4",
+      "capability": "IRB_508",
+      "ki": 508,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_NUMB_5",
+      "capability": "IRB_509",
+      "ki": 509,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_NUMB_6",
+      "capability": "IRB_510",
+      "ki": 510,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_NUMB_7",
+      "capability": "IRB_511",
+      "ki": 511,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_NUMB_8",
+      "capability": "IRB_512",
+      "ki": 512,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_NUMB_9",
+      "capability": "IRB_513",
+      "ki": 513,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_VERTICAL_UP",
+      "capability": "IRB_514",
+      "ki": 514,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_VERTICAL_DOWN",
+      "capability": "IRB_515",
+      "ki": 515,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_HORIZONTAL_LEFT",
+      "capability": "IRB_516",
+      "ki": 516,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_HORIZONTAL_OK",
+      "capability": "IRB_517",
+      "ki": 517,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_HORIZONTAL_RIGHT",
+      "capability": "IRB_518",
+      "ki": 518,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_VOLUME_PLUS",
+      "capability": "IRB_519",
+      "ki": 519,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_VOLUME_MINUS",
+      "capability": "IRB_520",
+      "ki": 520,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_VOLUME_MUTE",
+      "capability": "IRB_555",
+      "ki": 555,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_GENERAL_CNTRL_BACK",
+      "capability": "IRB_521",
+      "ki": 521,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_GENERAL_CNTRL_MENU",
+      "capability": "IRB_523",
+      "ki": 523,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_GENERAL_CNTRL_SLEEP",
+      "capability": "IRB_524",
+      "ki": 524,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_GENERAL_CNTRL_HOME",
+      "capability": "IRB_525",
+      "ki": 525,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_GENERAL_CNTRL_EXIT",
+      "capability": "IRB_526",
+      "ki": 526,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_GENERAL_CNTRL_INPUT",
+      "capability": "IRB_527",
+      "ki": 527,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_GENERAL_CNTRL_SWAP",
+      "capability": "IRB_528",
+      "ki": 528,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_SETTING_INCREASE",
+      "capability": "IRB_529",
+      "ki": 529,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_SETTING_DECREASE",
+      "capability": "IRB_530",
+      "ki": 530,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_DIRECTION_UP",
+      "capability": "IRB_531",
+      "ki": 531,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_DIRECTION_RIGHT",
+      "capability": "IRB_532",
+      "ki": 532,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_DIRECTION_DOWN",
+      "capability": "IRB_533",
+      "ki": 533,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_DIRECTION_LEFT",
+      "capability": "IRB_534",
+      "ki": 534,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_DIRECTION_ENTER",
+      "capability": "IRB_535",
+      "ki": 535,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_INTERACTION_BACK",
+      "capability": "IRB_536",
+      "ki": 536,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_INTERACTION_HOME",
+      "capability": "IRB_537",
+      "ki": 537,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_INTERACTION_DELETE",
+      "capability": "IRB_538",
+      "ki": 538,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_INTERACTION_SEARCH",
+      "capability": "IRB_539",
+      "ki": 539,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_INTERACTION_OVERFLOW",
+      "capability": "IRB_540",
+      "ki": 540,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_MEDIA_RECORD",
+      "capability": "IRB_541",
+      "ki": 541,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_MEDIA_FB",
+      "capability": "IRB_542",
+      "ki": 542,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_MEDIA_PLAY",
+      "capability": "IRB_543",
+      "ki": 543,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_MEDIA_FF",
+      "capability": "IRB_544",
+      "ki": 544,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_MEDIA_PAUSE",
+      "capability": "IRB_545",
+      "ki": 545,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_COLOR_LIGHT_TEAL",
+      "capability": "IRB_546",
+      "ki": 546,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_COLOR_PURPLE",
+      "capability": "IRB_547",
+      "ki": 547,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_COLOR_PINK",
+      "capability": "IRB_548",
+      "ki": 548,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_COLOR_BROWN",
+      "capability": "IRB_549",
+      "ki": 549,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_COLOR_LIME_YELLOW",
+      "capability": "IRB_550",
+      "ki": 550,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_COLOR_RED",
+      "capability": "IRB_551",
+      "ki": 551,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_COLOR_GREEN",
+      "capability": "IRB_552",
+      "ki": 552,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_COLOR_BLUE",
+      "capability": "IRB_553",
+      "ki": 553,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_COLOR_YELLOW",
+      "capability": "IRB_554",
+      "ki": 554,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_BUTTON1",
+      "capability": "IRB_601",
+      "ki": 601,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_BUTTON2",
+      "capability": "IRB_602",
+      "ki": 602,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_BUTTON3",
+      "capability": "IRB_603",
+      "ki": 603,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_BUTTON4",
+      "capability": "IRB_604",
+      "ki": 604,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_BUTTON5",
+      "capability": "IRB_605",
+      "ki": 605,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_BUTTON6",
+      "capability": "IRB_606",
+      "ki": 606,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_BUTTON7",
+      "capability": "IRB_607",
+      "ki": 607,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_BUTTON8",
+      "capability": "IRB_608",
+      "ki": 608,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_BUTTON9",
+      "capability": "IRB_609",
+      "ki": 609,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IR_CUSTOM_BUTTON10",
+      "capability": "IRB_610",
+      "ki": 610,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRBCustomCapability"
+    },
+    {
+      "identifier": "IRB_FAN_SPEED",
+      "capability": "IRB_FanSpeed",
+      "ki": 611,
+      "implementing_class": "com.panasonic.in.miraiecore.entity.device.capabilities.irremote.IRFANSpeedCapability"
+    }
+  ]
+}

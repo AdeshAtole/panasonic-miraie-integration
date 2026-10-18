@@ -1,0 +1,322 @@
+{
+  "controlCapabilities": [
+    {
+      "capability": "ACFanSpeed",
+      "attributes": [
+        {
+          "key": "acfs",
+          "values": [
+            "auto",
+            "quiet",
+            "low",
+            "medium",
+            "high"
+          ]
+        }
+      ]
+    },
+    {
+      "capability": "ACMode",
+      "attributes": [
+        {
+          "key": "acmd",
+          "values": [
+            "auto",
+            "cool",
+            "dry",
+            "fan"
+          ]
+        }
+      ]
+    },
+    {
+      "capability": "ACTemperature",
+      "attributes": [
+        {
+          "key": "actmp",
+          "range": {
+            "min": [
+              {
+                "unit": "celcius",
+                "value": 16
+              },
+              {
+                "unit": "fahrenheit",
+                "value": 61
+              }
+            ],
+            "max": [
+              {
+                "unit": "celcius",
+                "value": 30
+              },
+              {
+                "unit": "fahrenheit",
+                "value": 86
+              }
+            ],
+            "increment": [
+              {
+                "unit": "celcius",
+                "value": 1
+              },
+              {
+                "unit": "fahrenheit",
+                "value": 1
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "capability": "ACTimer",
+      "attributes": [
+        {
+          "key": "actm",
+          "range": {
+            "min": [
+              {
+                "value": 10
+              }
+            ],
+            "max": [
+              {
+                "value": 1440
+              }
+            ],
+            "increment": [
+              {
+                "value": 10
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "capability": "DisplayControl",
+      "attributes": [
+        {
+          "key": "acdc",
+          "values": [
+            "on",
+            "off"
+          ]
+        }
+      ]
+    },
+    {
+      "capability": "ECOMode",
+      "attributes": [
+        {
+          "key": "acem",
+          "values": [
+            "on",
+            "off"
+          ]
+        }
+      ]
+    },
+    {
+      "capability": "HorizontalSwing",
+      "attributes": [
+        {
+          "key": "achs",
+          "range": {
+            "min": [
+              {
+                "value": 0
+              }
+            ],
+            "max": [
+              {
+                "value": 5
+              }
+            ],
+            "increment": [
+              {
+                "value": 1
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "capability": "PowerStatus",
+      "attributes": [
+        {
+          "key": "ps"
+        }
+      ]
+    },
+    {
+      "capability": "SleepProfile",
+      "attributes": [
+        {
+          "key": "acsp"
+        },
+        {
+          "key": "duration",
+          "range": {
+            "min": [
+              {
+                "unit": "hours",
+                "value": 2
+              }
+            ],
+            "max": [
+              {
+                "unit": "hours",
+                "value": 8
+              }
+            ],
+            "increment": [
+              {
+                "unit": "hours",
+                "value": 1
+              }
+            ]
+          }
+        },
+        {
+          "key": "temps",
+          "range": {
+            "min": [
+              {
+                "unit": "celcius",
+                "value": 16
+              },
+              {
+                "unit": "fahrenheit",
+                "value": 61
+              }
+            ],
+            "max": [
+              {
+                "unit": "celcius",
+                "value": 30
+              },
+              {
+                "unit": "fahrenheit",
+                "value": 86
+              }
+            ],
+            "increment": [
+              {
+                "unit": "celcius",
+                "value": 1
+              },
+              {
+                "unit": "fahrenheit",
+                "value": 1
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "capability": "TimeBasedFilterHealth",
+      "attributes": [
+        {
+          "key": "acfh",
+          "range": {
+            "reminder": [
+              {
+                "unit": "hours",
+                "value": 100
+              }
+            ],
+            "warning": [
+              {
+                "unit": "hours",
+                "value": 200
+              }
+            ],
+            "alert": [
+              {
+                "unit": "hours",
+                "value": 500
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "capability": "VerticalSwing",
+      "attributes": [
+        {
+          "key": "acvs",
+          "range": {
+            "min": [
+              {
+                "value": 0
+              }
+            ],
+            "max": [
+              {
+                "value": 5
+              }
+            ],
+            "increment": [
+              {
+                "value": 1
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "capability": "Convertible",
+      "attributes": [
+        {
+          "key": "cnv",
+          "intValues": [
+            110,
+            100,
+            90,
+            80,
+            70,
+            60,
+            50,
+            40,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "capability": "EvaporatorClean",
+      "attributes": [
+        {
+          "key": "acec"
+        }
+      ]
+    },
+    {
+      "capability": "PowerfulMode",
+      "attributes": [
+        {
+          "key": "acpm"
+        }
+      ]
+    }
+  ],
+  "statusCapabilitiesV2": [
+    {
+      "capability": "PowerConsumption"
+    },
+    {
+      "capability": "ACFaults"
+    }
+  ],
+  "configCapabilities": [
+    {
+      "capability": "ProximityNotification"
+    }
+  ]
+}

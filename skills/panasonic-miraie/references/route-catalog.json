@@ -1,0 +1,3297 @@
+{
+  "artifact": {
+    "package": "com.panasonic.in.miraie",
+    "version": "01.4.32",
+    "sha256": "62a36f534b6e38802e9a1ff2138a6342d1328e0f0a4928ce37ba2299e2f867a1"
+  },
+  "evidence_type": "static DEX annotation extraction",
+  "limitations": "Declarations and types only; no account data, runtime success, host binding or complete parameter annotations. See evidence-and-extension.md.",
+  "records": [
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/analytics/IAnalyticsService;",
+      "method": "detectedStainFeedback",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/device/PhotoStainFeedbackRequestBody;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "analytics/wm/detectstain/feedback/{requestId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/analytics/IAnalyticsService;",
+      "method": "predictiveFeedback",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "analytics/pm/device/feedback/{nid}/{wfid}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/analytics/IAnalyticsService;",
+      "method": "stainDetection",
+      "parameters": [
+        "Lokhttp3/MultipartBody$Part;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/Multipart;"
+        },
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "analytics/wm/detectstain"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/anchor/IAnchorService;",
+      "method": "getAnchorRefreshToken",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "tokenRefresh"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/anchor/IAnchorService;",
+      "method": "login",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/anchor/AnchorLoginRequestBody;"
+      ],
+      "return_type": "Lio/reactivex/Observable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "auth"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/anchor/IAnchorService;",
+      "method": "setPowerState",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "DeviceControl3"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "addUhooDevice",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/appsupport/AddUhooPayload;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "deviceManagement/services/addUhooDevice"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "fetchAccountLinkDetails",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/appsupport/FetchAccountLinkDetailsRequestPayload;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "appsupport/linkAccountDetails"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "getAccountLinkStatus",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "appsupport/services/serviceLinkStatus"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "getAssetUrl",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "appsupport/assets/{assetId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "getEulaDetails",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "userProfile/eula/brands/{brandName}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "getNotificationList",
+      "parameters": [
+        "Ljava/lang/String;",
+        "I",
+        "I"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "notificationmanager/log"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "getOhmPowerConsumptionDetails",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "/simplifi/v1/powerConsumption/homes/{homeId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "getUnExpiredNotificationCount",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "notificationmanager/unexpired/count"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "getUserSupportedFeatures",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "appsupport/features"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "getYogifiSessions",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/Boolean;",
+        "Ljava/lang/Long;",
+        "Ljava/lang/Long;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "/simplifi/v1/appsupport/services/{accountId}/yogasessions"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "linkAccount",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/appsupport/LinkAccountRequestPayload;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "deviceManagement/services/linkService"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "linkOhmAccount",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/appsupport/LinkAccountRequestPayload;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "/simplifi/v1/appsupport/services/linkService"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "linkVetaarAccount",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/device/LinkAnchorAccountRequestBody;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "deviceManagement/services/linkService"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "linkYogifiAccount",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/appsupport/LinkAccountRequestPayload;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "/simplifi/v1/appsupport/services/linkService"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "registerForPushNotification",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/appsupport/PNRegistrationRequest;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "notification/register-device"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "relinkOhmAccount",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/appsupport/RelinkOhmAccountRequestPayload;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "/simplifi/v1/appsupport/services/relinkService"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "relinkYogifiAccount",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/appsupport/RelinkYogifiRequestPayload;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "/simplifi/v1/appsupport/services/relinkService"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "sendNotificationFeedback",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/appsupport/NotificationFeedbackRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "notificationmanager/feedback"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "sendUserFeedback",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/appsupport/UserFeedbackRequest;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "appsupport/userFeedback"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "syncAccount",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/appsupport/UnLinkAccountRequestPayload;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "deviceManagement/services/syncService"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "syncOhmAccount",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/appsupport/SyncAccountRequestPayload;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "/simplifi/v1/appsupport/services/syncService"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "syncYogifiAccount",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/appsupport/SyncAccountRequestPayload;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "/simplifi/v1/appsupport/services/syncService"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "unLinkAccount",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/appsupport/UnLinkAccountRequestPayload;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "deviceManagement/services/unlinkService"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "unLinkOhmAccount",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/appsupport/UnLinkAccountRequestPayload;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "/simplifi/v1/appsupport/services/unlinkService"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "unLinkYogifiAccount",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/appsupport/UnLinkAccountRequestPayload;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "/simplifi/v1/appsupport/services/unlinkService"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "unregisterFromPushNotification",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/appsupport/PNRegistrationRequest;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "notification/deregister-device"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appsupport/IAppSupportService;",
+      "method": "updateEula",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/appsupport/EulaRequest;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/PUT;",
+          "value": "userProfile/eula/brands/{brandName}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/appupdate/IAppUpdateService;",
+      "method": "getAppUpdateDetails",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "userManagement/appVersion?type=ANDROID"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/authentication/IAuthenticationService;",
+      "method": "forgotPassword",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/authentication/ResetPasswordRequestBody;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "userManagement/forgotPassword"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/authentication/IAuthenticationService;",
+      "method": "generateOTP",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/authentication/OTPRequestBody;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "otpManagement/otpGeneration"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/authentication/IAuthenticationService;",
+      "method": "loginDevice",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/authentication/DeviceLoginRequestBody;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "userManagement/login"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/authentication/IAuthenticationService;",
+      "method": "loginUser",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/authentication/LoginRequestBody;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "userManagement/login"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/authentication/IAuthenticationService;",
+      "method": "logoutUser",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/authentication/LogoutRequestBody;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "userManagement/logout"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/authentication/IAuthenticationService;",
+      "method": "refreshToken",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/authentication/RefreshTokenBody;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "userManagement/tokenRefresh"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/authentication/IAuthenticationService;",
+      "method": "registerUser",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/authentication/CreateUserRequestBody;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "userManagement/users"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/authentication/IAuthenticationService;",
+      "method": "verifyOTP",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/authentication/OTPVerifyBody;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "otpManagement/otpValidation"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/authentication/IIdentityAuthenticationService;",
+      "method": "getPgoWebAuthToken",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/authentication/PgoFetchWebAuthTokenRequestBody;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "oauth2/tokenexchange"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "addDeviceConfig",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/device/DeviceConfigRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/PUT;",
+          "value": "deviceservices/device/{deviceId}/config"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "addVDPDevice",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/device/VDPDevicePayload;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "deviceManagement/vdp/deviceRegister"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "createSleepProfile",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/device/SleepProfileEntity;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "homeManagement/homes/{homeId}/spaces/{spaceId}/devices/{deviceId}/sleepProfile"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "deleteSleepProfiles",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/DELETE;",
+          "value": "homeManagement/homes/{homeId}/spaces/{spaceId}/devices/{deviceId}/sleepProfile/{profileId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "deleteVideo",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/device/DeleteVideoRequestPayload;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "deviceManagement/vdp/{deviceId}/vdpFileDelete"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getAnchorToken",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "deviceManagement/anchor/token"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getControllerNOC",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/device/NOCControllerRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "admservices/fabric/controller"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getDeviceConfig",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "deviceservices/device/{deviceId}/config"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getDeviceInfoFromDeviceID",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "deviceManagement/devices/{deviceIdentifier}/{deviceId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getDeviceInfoFromMACAddress",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "deviceManagement/devices/{deviceIdentifier}/{macAddress}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getDeviceInfoFromSerialNumber",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "deviceManagement/devices/{deviceIdentifier}/{deviceSerialNumber}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getDeviceModelDetails",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "deviceManagement/deviceModels/modelNumber/{modelNumber}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getDeviceModelDetailsByModelId",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "deviceManagement/deviceModels/modelId/{modelId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getDeviceNOC",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/device/NOCDeviceRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "admservices/fabric/node"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getDeviceStatus",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "deviceManagement/devices/{deviceIdentifier}/mobile/status"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getEwarrantyToken",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "deviceManagement/ewarranty/token"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getPanasonicQRCodeBitmap",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "certificateManager/qrcode/device/{deviceId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getPanasonicQRCodeBitmapV2",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "I",
+        "I",
+        "I",
+        "Z"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "certificateManager/qrcode"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getPanasonicQRCodeInfo",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "certificateManager/qrcode"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getPowerConsumption",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "powerConsumption/devices/{deviceId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getPreSignedURL",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/device/SignedURLRequestPayload;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "deviceManagement/devices/preSignedURL"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getPreWashInstructions",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "deviceManagement/devices/washPretreatment"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getProgramRecommendation",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "deviceManagement/devices/{deviceId}/washWizard"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getSDKSecretKey",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "userProfile/appServerData"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getSleepProfileRecommendation",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "recommendations/devices/{deviceId}/sleepProfile"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getSleepProfiles",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "homeManagement/homes/{homeId}/spaces/{spaceId}/devices/{deviceId}/sleepProfile"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getSupportedStains",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "deviceManagement/devices/washPretreatment/stainSubstainList"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getVideoList",
+      "parameters": [
+        "Ljava/lang/String;",
+        "J",
+        "J",
+        "I",
+        "I"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "deviceManagement/vdp/{deviceId}/vdpFiles"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getWashHistory",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "deviceManagement/devices/{deviceId}/washHistory"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "getWaterConsumption",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "waterConsumption/devices/{deviceId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "mapVirtualAppliance",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/device/MappedApplianceRequestBody;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/PUT;",
+          "value": "homeManagement/homes/{homeId}/spaces/{spaceId}/devices/{deviceId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "offBoardDevice",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "deviceManagement/devices/{deviceId}/deviceOffboard"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "offBoardIRRemote",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/device/OffBoardIRRemotePayload;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "deviceManagement/devices/{deviceId}/deviceOffboard"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "offBoardVDP",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/device/OffBoardVDPPayload;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "deviceManagement/vdp/deviceOffboard"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "onboardThirdPartyMatterDevice",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/device/ThirdPartyDeviceOnboardingRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "deviceManagement/devices/matterdevice"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "registerANewDevice",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/device/RegisterDeviceRequestPayload;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "deviceManagement/deviceRegistration/tv"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "resetFilterDustLevelInfo",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/PUT;",
+          "value": "deviceManagement/devices/{deviceId}/filterDustLevelInfo"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "saveCustomRemote",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/device/AddIRVirtualDeviceRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "deviceManagement/{parentDeviceId}/remote"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "saveIRCustomRemote",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/device/CustomRemoteCreateRequestPayload;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "deviceservices/device/{parentDeviceId}/remote"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "saveRemote",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/device/AddIRVirtualDeviceRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "deviceManagement/irblaster/addVirtualDevice"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "sendAppLogs",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Lokhttp3/MultipartBody$Part;",
+        "Lokhttp3/RequestBody;",
+        "Lokhttp3/RequestBody;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/Multipart;"
+        },
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "deviceManagement/devices/{deviceId}/mobileLog"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "updateDeviceLocation",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/device/DeviceLocationPayload;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "deviceManagement/devices/{deviceId}/location"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "updateDeviceName",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/home/UpdateDeviceNameBody;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/PUT;",
+          "value": "homeManagement/homes/{homeId}/spaces/{spaceId}/devices/{deviceId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "updateIRDataToRemote",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/util/List;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "deviceservices/device/{deviceId}/customKeys"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "updateSleepProfileRecommendationFeedback",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/device/SleepProfileRecommendationEntity;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/PUT;",
+          "value": "recommendations/devices/{deviceId}/sleepProfile"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/device/IDeviceService;",
+      "method": "updateSleepProfiles",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/device/SleepProfileRequestEntity;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/PUT;",
+          "value": "homeManagement/homes/{homeId}/spaces/{spaceId}/devices/{deviceId}/sleepProfile/{profileId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/devicesupport/IDeviceSupportService;",
+      "method": "getBrands",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "devicesupport/irblaster/{deviceId}/brands?"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/devicesupport/IDeviceSupportService;",
+      "method": "getChannelIcons",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "devicesupport/irblaster/channelIcons?"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/devicesupport/IDeviceSupportService;",
+      "method": "getChannelList",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "devicesupport/irblaster/{deviceId}/stbChannelList?"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/devicesupport/IDeviceSupportService;",
+      "method": "getIRVirtualDeviceCapability",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "devicesupport/irblaster/{deviceId}/capability/{modelNumber}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/devicesupport/IDeviceSupportService;",
+      "method": "getModels",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "devicesupport/irblaster/{deviceId}/models?"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/devicesupport/IDeviceSupportService;",
+      "method": "getRemotes",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "devicesupport/irblaster/{deviceId}/remotes?"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/devicesupport/IDeviceSupportService;",
+      "method": "saveIRLearningCustomKey",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/devicesupport/IRSaveCustomKeyRequestBody;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "devicesupport/irblaster/{virtualDeviceId}/customKey"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/devicesupport/IDeviceSupportService;",
+      "method": "updateCustomIRRemote",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/util/List;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "devicesupport/irblaster/{deviceId}/customKeyList"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "acceptRejectWarranties",
+      "parameters": [
+        "Ljava/util/Map;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/FormUrlEncoded;"
+        },
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "ewarrantyapiv9/customerFinalProduct"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "addAddressDetails",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/ewarranty/serviceRequest/AddAddressRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "ewarrantyapiv9/addCustomerAddress"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "addAddressDetailsAnchor",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/ewarranty/serviceRequest/AddAddressRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "ewarrantyapiv9/addCustomerAddressAnchor"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "addProductOfCustomer",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/ewarranty/addWarranty/addProductOfCustomer/AddProductOfCustomerRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "ewarrantyapiv9/addProductOfCustomer"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "addProductWarranty",
+      "parameters": [
+        "Lokhttp3/RequestBody;",
+        "Lokhttp3/RequestBody;",
+        "Lokhttp3/RequestBody;",
+        "Lokhttp3/RequestBody;",
+        "Lokhttp3/RequestBody;",
+        "Lokhttp3/RequestBody;",
+        "Lokhttp3/RequestBody;",
+        "Lokhttp3/RequestBody;",
+        "Lokhttp3/RequestBody;",
+        "Lokhttp3/RequestBody;",
+        "Lokhttp3/RequestBody;",
+        "Lokhttp3/RequestBody;",
+        "Lokhttp3/RequestBody;",
+        "Lokhttp3/RequestBody;",
+        "Lokhttp3/RequestBody;",
+        "Lokhttp3/RequestBody;",
+        "Lokhttp3/RequestBody;",
+        "Lokhttp3/RequestBody;",
+        "Lokhttp3/RequestBody;",
+        "Lokhttp3/RequestBody;",
+        "Lokhttp3/RequestBody;",
+        "Lokhttp3/MultipartBody$Part;",
+        "Lokhttp3/MultipartBody$Part;",
+        "Lokhttp3/MultipartBody$Part;",
+        "Lokhttp3/MultipartBody$Part;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/Multipart;"
+        },
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "ewarrantyapiv9/addProductOfCustomer"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "addToCart",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/ewarranty/payment/AddToCartRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "ewarrantyapiv9/addToCart"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "checkPaymentStatus",
+      "parameters": [
+        "Ljava/lang/Integer;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/payment_status"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "createAnchorServiceRequest",
+      "parameters": [
+        "Ljava/lang/String;",
+        "I",
+        "I",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/FormUrlEncoded;"
+        },
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "ewarrantyapiv9/serviceRequestAnchor"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "createServiceRequest",
+      "parameters": [
+        "I",
+        "I",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/FormUrlEncoded;"
+        },
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "ewarrantyapiv9/serviceRequest"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "deleteAddress",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/ewarranty/AddressDeleteData;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "ewarrantyapiv9/deleteCustomerAddress"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "deleteAnchorAddress",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/ewarranty/AddressDeleteData;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "ewarrantyapiv9/deleteCustomerAddressAnchor"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "deleteCart",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/ewarranty/payment/DeleteCartRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "ewarrantyapiv9/deleteCart"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "deleteProductOfCustomer",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/ewarranty/addWarranty/addProductOfCustomer/DeleteProductOfCustomerRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "ewarrantyapiv9/deleteProductOfCustomer"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "deleteUser",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/deleteUser"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "fetchAMCPlans",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getCustomerAmcPlans"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "fetchAllServiceRequests",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/trackServiceRequestWithMobile"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "fetchFreshWarrantiesFromCRM",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/refetchUserAppliance"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "fetchServiceRequestTypes",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getJobWarranty"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getAnchorBrands",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getAnchorBrand"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getAnchorCustomerAddresses",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getAnchorCustomerAddresses"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getAnchorModel",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getAnchorModel"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getAnchorPinCodeBasedData",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/pincodeAnchorBasedData"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getAnchorRequestTypes",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getAnchorCallType"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getApplianceData",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getApplianceData"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getArea",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getArea"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getBrands",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getBrand"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getBrandsForService",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getBrand?is_service_request=1"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getCartCount",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getCartCount"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getCertificate",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getCertificate"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getCity",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getCity"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getCoupons",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getCoupons"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getCustomerAddresses",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getCustomerAddresses"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getCustomerCart",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getCustomercart"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getCustomerOrder",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getCustomerOrder"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getDashboardData",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getDashboardData"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getModelByName",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getModelByName"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getModels",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getModels"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getPinCodeBasedData",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/pincodeBasedData"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getProductDetail",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/productDetail"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getProductGroup",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getProductGroup"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getProductGroupAnchor",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getAnchorProductGroup"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getProductGroupForServiceRequest",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getProductGroupService"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getProductSubGroupAnchor",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getAnchorSubProductGroup"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getRSA",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/ewarranty/payment/GetRSARequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "ewarrantyapiv9/getRSA"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getReaddProduct",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getreaddProduct"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getServiceCount",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/trackServiceRequestCount"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getState",
+      "parameters": [
+        "I"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getState"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getSubProductGroup",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getSubProductGroup"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getUserAppliances",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/getUserAppliance"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "getUserProfileECareWiz",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/customer_profile"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "orderCalculation",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/ewarranty/payment/OrderCalculationRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "ewarrantyapiv9/orderCalculation"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "outOfWarrantyRenewal",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/ewarranty/addWarranty/renewal/OutOfWarrantyRenewalRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "ewarrantyapiv9/outOfWarrantyRenewal"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "readdProduct",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/ewarranty/payment/ReAddProductRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "ewarrantyapiv9/readdProduct"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "refetchUserAppliance",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/refetchUserAppliance"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "saveOrder",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/ewarranty/payment/SaveOrderRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "ewarrantyapiv9/save_order"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "updatePurchasedEwcSeen",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/updatePurchasedEwcSeen"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "updateUserAppliance",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "ewarrantyapiv9/updateUserAppliance"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "updateUserProfileECareWiz",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/ewarranty/UpdateUserProfileRequestPayloadECareWiz;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "ewarrantyapiv9/update_profile"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "validateSerialNo",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/ewarranty/addWarranty/serialNoValidation/SerialNoValidationRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "ewarrantyapiv9/validateSerialNo"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/ewarranty/IEWarrantyService;",
+      "method": "validateTechnician",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/ewarranty/payment/ValidateTechnicianRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "ewarrantyapiv9/validateTechnician"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/external/IExternalService;",
+      "method": "downloadLargeFile",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/external/IExternalService;",
+      "method": "getAllApprovedDCLCertificate",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/external/IExternalService;",
+      "method": "getFotaInformation",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "fota/firmware/deviceId/{deviceId}/download"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/external/IExternalService;",
+      "method": "getFotaModelIdInformation",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "fota/firmware/model/{modelId}/download"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/external/IExternalService;",
+      "method": "getWeatherInfo",
+      "parameters": [
+        "D",
+        "D"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "services/weather/current"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "activateProfile",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "homeManagement/homes/{homeId}/actionGroups/{profileId}/activate"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "createHome",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/home/CreateHomeRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "homeManagement/homes"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "createProfile",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/home/ProfilePayload;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "homeManagement/homes/{homeId}/actionGroups"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "createSpace",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/home/CreateSpaceRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "homeManagement/homes/{homeId}/spaces"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "createWashProgram",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/home/WashProgramRequestBody;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "homeManagement/homes/{homeId}/spaces/{spaceId}/devices/{deviceId}/washProgram"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "deleteProfile",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/DELETE;",
+          "value": "homeManagement/homes/{homeId}/actionGroups/{profileId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "deleteSpace",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/DELETE;",
+          "value": "homeManagement/homes/{homeId}/spaces/{spaceId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "deleteWashProgram",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/DELETE;",
+          "value": "homeManagement/homes/{homeId}/spaces/{spaceId}/devices/{deviceId}/washProgram/{programId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "getAllWashProgram",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "homeManagement/homes/{homeId}/spaces/{spaceId}/devices/{deviceId}/washProgram"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "getHomes",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "homeManagement/homes"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "getInAppNotificationItem",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "notification/inapp"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "getProfileByHomeId",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "homeManagement/homes/{homeId}/actionGroups"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "getProfileByProfileId",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "homeManagement/homes/{homeId}/actionGroups/{profileId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "getRecommendedProgram",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "homeManagement/homes/{homeId}/spaces/{spaceId}/devices/{deviceId}/washWizard/{clotheTypes}/{soilLevel}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "getWashHistory",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "homeManagement/homes/{homeId}/spaces/{spaceId}/devices/{deviceId}/washHistory/{startTime}/{endTime}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "getWashProgramByType",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "homeManagement/homes/{homeId}/spaces/{spaceId}/devices/{deviceId}/washProgram/programType/{programType}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "moveDeviceBetweenSpaces",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/home/MoveDeviceRequestBody;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "homeManagement/homes/{homeId}/spaces/{spaceId}/devices/{deviceId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "toggleFavourites",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/home/FavouriteProgramRequestBody;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/PUT;",
+          "value": "homeManagement/homes/{homeId}/spaces/{spaceId}/devices/{deviceId}/washProgram/{programId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "updateHome",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/home/CreateHomeRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/PUT;",
+          "value": "homeManagement/homes/{homeId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "updateProfile",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/home/ProfilePayload;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/PUT;",
+          "value": "homeManagement/homes/{homeId}/actionGroups/{profileId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "updateSpace",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/home/CreateSpaceRequest;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/PUT;",
+          "value": "homeManagement/homes/{homeId}/spaces/{spaceId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "updateSpaceName",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/home/UpdateSpaceNameBody;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/PUT;",
+          "value": "homeManagement/homes/{homeId}/spaces/{spaceId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/home/IHomeService;",
+      "method": "updateWashProgram",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/home/WashProgramRequestBody;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/PUT;",
+          "value": "homeManagement/homes/{homeId}/spaces/{spaceId}/devices/{deviceId}/washProgram/{programId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/payment/IPaymentService;",
+      "method": "cancelOrder",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "appsupport/ordermanagement/orders/{orderId}/cancel"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/payment/IPaymentService;",
+      "method": "completePayment",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/payment/CompletePaymentRequest;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "appsupport/payment/complete"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/payment/IPaymentService;",
+      "method": "createOrder",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/payment/OrderRequest;",
+        "Z"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "appsupport/ordermanagement/orders"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/payment/IPaymentService;",
+      "method": "getOrderStatus",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "appsupport/ordermanagement/orders/{orderId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/payment/IPaymentService;",
+      "method": "getOrdersList",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "appsupport/ordermanagement/orders"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/payment/IPaymentService;",
+      "method": "getPaymentHistoryBySubscriptionId",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "appsupport/ordermanagement/subscriptions/{subscriptionId}/payments"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/payment/IPaymentService;",
+      "method": "getPaymentInvoice",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "appsupport/ordermanagement/subscriptions/{transactionId}/invoice"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/payment/IPaymentService;",
+      "method": "getSubscriptionsList",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "appsupport/ordermanagement/subscriptions"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/payment/IPaymentService;",
+      "method": "updateOrder",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/PUT;",
+          "value": "appsupport/ordermanagement/orders/{orderId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/rule/IRuleService;",
+      "method": "createNewRule",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/rule/RulePayload;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "rms/homes/{homeId}/rules"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/rule/IRuleService;",
+      "method": "deleteRuleById",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/DELETE;",
+          "value": "rms/homes/{homeId}/rules/{ruleId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/rule/IRuleService;",
+      "method": "fetchAllRulesByHomeId",
+      "parameters": [
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "rms/homes/{homeId}/rules"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/rule/IRuleService;",
+      "method": "fetchRuleById",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "rms/homes/{homeId}/rules/{ruleId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/rule/IRuleService;",
+      "method": "pauseRule",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/util/List;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/PUT;",
+          "value": "rms/homes/{homeId}/rules/pause"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/rule/IRuleService;",
+      "method": "resumeRule",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/util/List;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/PUT;",
+          "value": "rms/homes/{homeId}/rules/resume"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/rule/IRuleService;",
+      "method": "updateRuleById",
+      "parameters": [
+        "Ljava/lang/String;",
+        "Ljava/lang/String;",
+        "Lcom/panasonic/in/miraiecore/apis/rule/RulePayload;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/PUT;",
+          "value": "rms/homes/{homeId}/rules/{ruleId}"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/user/IUserService;",
+      "method": "addAlternateMobileNumber",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/user/LinkAlternateMobileBody;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/PUT;",
+          "value": "userManagement/alternateContact"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/user/IUserService;",
+      "method": "deleteUser",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/user/DeleteUserRequestBody;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/HTTP;",
+          "hasBody": true,
+          "method": "DELETE",
+          "path": "userManagement/deleteUserAccount"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/user/IUserService;",
+      "method": "generateOTPForSecondaryIdValidation",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/authentication/OTPRequestBody;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "otpManagement/secondaryOtpGeneration"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/user/IUserService;",
+      "method": "getUserDetails",
+      "parameters": [],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/GET;",
+          "value": "userManagement/users"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/user/IUserService;",
+      "method": "logout",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/authentication/LogoutRequestBody;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "userManagement/logout"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/user/IUserService;",
+      "method": "updatePassword",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/user/UpdateUserPassword;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "userManagement/changePassword"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/user/IUserService;",
+      "method": "updateUser",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/user/UpdateUserBody;"
+      ],
+      "return_type": "Lio/reactivex/Completable;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "userManagement/updateUserDetails"
+        }
+      ]
+    },
+    {
+      "dex": "classes2.dex",
+      "class": "Lcom/panasonic/in/miraiecore/apis/user/IUserService;",
+      "method": "verifyOTPForSecondaryIdValidation",
+      "parameters": [
+        "Lcom/panasonic/in/miraiecore/apis/authentication/OTPVerifyBody;"
+      ],
+      "return_type": "Lio/reactivex/Single;",
+      "annotations": [
+        {
+          "type": "Lretrofit2/http/POST;",
+          "value": "otpManagement/secondaryOtpValidation"
+        }
+      ]
+    }
+  ]
+}

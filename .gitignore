@@ -1,0 +1,20 @@
+# Private investigation material and synced project references
+/analysis/
+/sources/
+/AGENTS.md
+
+# Generated Android output and developer signing material
+**/build/
+*.apk
+*.apk.idsig
+*.p12
+*.jks
+*.keystore
+
+# Local credentials and caches
+.env
+.env.*
+!.env.example
+__pycache__/
+*.pyc
+.DS_Store
