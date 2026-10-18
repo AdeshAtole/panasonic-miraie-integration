@@ -13,6 +13,8 @@ This is one Git monorepo for MirAIe knowledge, product design and native applica
 - `tools/android/build.py`: development builder shared only by the legacy PoC/helper. Its Android35/build-tools35 pins never become production defaults accidentally.
 - `scripts/project.py` + `projects.json`: common entry point and explicit target lifecycle, delegating to each project-owned toolchain.
 
+- `servers/miraie-mcp/`: independent Python stdio MCP server with OS credential storage, local browser setup and model-scoped control policy. It imports no PoC or native-app runtime.
+
 ## Dependency rules
 
 Production apps do not import PoC source, build output, private captures or the design runtime. The skill has no runtime dependency on apps or repository-root documentation. Unknown and unverified protocol behavior remains labeled; an API schema does not establish appliance support.

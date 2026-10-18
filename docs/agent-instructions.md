@@ -27,6 +27,8 @@ Use projects.json and scripts/project.py for target lifecycle/build/test routing
 
 Never substitute the PoC when a production target is unimplemented or claim a build passed without a real project. Distinguish model/source checks, actual builds, browser review, native accessibility/device tests and live appliance verification. Use configurable SDK/JDK locations rather than private absolute paths or required global configuration changes.
 
+MCP uses Python 3.11+, uv and the official MCP SDK. Install dependencies explicitly with `uv sync --frozen` in `servers/miraie-mcp`; root `doctor/build/test miraie-mcp` route to its own environment. Automated tests are synthetic; the component testing guide records scoped live results and remaining native-store/platform verification gaps.
+
 ## Integration behavior and onboarding
 
 Read the portable skill and relevant protocol references. Preserve live-verified/static-only/inferred/unknown evidence levels and model-specific support boundaries. MirAIe India is distinct from Comfort Cloud; schemas alone do not prove device support.
