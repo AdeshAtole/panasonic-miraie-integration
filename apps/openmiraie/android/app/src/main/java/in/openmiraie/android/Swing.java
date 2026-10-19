@@ -41,6 +41,11 @@ final class Swing {
         if(reportedCode(profile,state,cap)==null)return "Current swing code is not reported or supported. Refresh first.";
         return "";
     }
+    static Integer stopPosition(List<Integer> choices,Integer previous){
+        if(previous!=null&&previous>0&&choices.contains(previous))return previous;
+        if(choices.contains(1))return 1;
+        return choices.stream().filter(code->code>0).min(Integer::compareTo).orElse(null);
+    }
     static String description(String cap,int code){
         if(code==0)return "Oscillate";
         if(VERTICAL.equals(cap))return switch(code){case 1->"Position 1 · angle unverified";case 2->"Lower than 1";case 3->"Lower than 2";case 4->"Lower than 3";case 5->"Lowest tested · fixed";default->"Unverified position";};

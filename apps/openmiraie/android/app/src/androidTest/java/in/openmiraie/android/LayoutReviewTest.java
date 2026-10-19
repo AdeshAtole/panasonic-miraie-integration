@@ -26,7 +26,7 @@ public final class LayoutReviewTest extends Instrumentation {
         assertEquals("in.openmiraie.android.review",getInstrumentation().getTargetContext().getPackageName());
         assertEquals(android.content.pm.PackageManager.PERMISSION_DENIED,getInstrumentation().getTargetContext().checkSelfPermission("android.permission.INTERNET"));
         activity=(MainActivity)startActivitySync(new Intent().setClassName("in.openmiraie.android.review","in.openmiraie.android.MainActivity").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
-        horizontalOrderRegression();if(airflowOnly)return;
+        swingStopRegression();horizontalOrderRegression();if(airflowOnly)return;
         scrollRegression();pullRefreshRegression();if(scrollOnly)return;
         geometry.append(activity.getResources().getConfiguration().toString()).append("\n");
         capture("controller");bottom("controller");controllerInteractions();ui(()->activity.scroll.scrollTo(0,0));
@@ -51,6 +51,14 @@ public final class LayoutReviewTest extends Instrumentation {
         try(FileWriter writer=new FileWriter(new File(out,"findings.txt"))){for(String f:findings)writer.write(f+"\n");}
         ui(()->{activity.repo.load();activity.navigate("controller");});
         assertTrue(String.join("\n",findings),findings.isEmpty());
+    }
+    private void swingStopRegression()throws Exception{
+        for(String axis:new String[]{Swing.VERTICAL,Swing.HORIZONTAL})for(Integer previous:new Integer[]{null,5}){
+            ui(()->{activity.repo.load();activity.lastFixed.clear();if(previous!=null)activity.lastFixed.put(axis,previous);activity.repo.observed.put(activity.repo.profile.key(axis),0);activity.openControl="airflow";activity.render();});Thread.sleep(100);
+            ui(()->activity.body.findViewWithTag("swing-"+axis).performClick());assertTrue("Swing off must not open a picker",activity.modal==null||!activity.modal.isShowing());settle();
+            assertEquals(previous==null?"1":"5",activity.reported(axis));assertEquals("1",activity.reported(axis.equals(Swing.VERTICAL)?Swing.HORIZONTAL:Swing.VERTICAL));
+        }
+        ui(()->{activity.repo.load();activity.lastFixed.clear();activity.render();});
     }
     private void horizontalOrderRegression()throws Exception{
         ui(()->{activity.openControl="airflow";activity.render();});Thread.sleep(150);

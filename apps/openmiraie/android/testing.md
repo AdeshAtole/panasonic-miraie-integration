@@ -131,3 +131,5 @@ adb -s <emulator-serial> shell am instrument -w -e suite scroll in.openmiraie.an
 The complete audit also runs these regressions. Pending-refresh screenshots are recorded alongside layout captures.
 
 Horizontal order regression: native instrumentation follows center → inner left (3) → far left (2), checks the left end stop, then follows 3 → 1 → 4 → 5. Drag hit mapping is checked at the two left preset locations. Run with `-e suite airflow` for the focused offline check.
+
+Swing-off regression: both axes are tested starting already in oscillation with no remembered fixed preset. One tap submits preset 1 with no modal and leaves the opposite axis unchanged. Remembered preset 5 is also restored directly. Unit coverage verifies restricted advertised choices and the absence of any fixed choice.

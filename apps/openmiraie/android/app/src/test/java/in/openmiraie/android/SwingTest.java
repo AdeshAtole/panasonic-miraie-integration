@@ -60,4 +60,10 @@ public class SwingTest {
     @Test public void currentMatchingSelectionAndStaleUnsupportedDraftCannotApply()throws Exception{Profile p=profile();assertFalse(Swing.uiState(p,state(),Swing.HORIZONTAL,1,false,false).canApply());assertFalse(Swing.uiState(p,state(),Swing.HORIZONTAL,6,false,false).canApply());p.attribute(Swing.HORIZONTAL).put("intValues",new JSONArray("[0,1]"));assertFalse(Swing.uiState(p,state(),Swing.HORIZONTAL,3,false,false).canApply());}
     @Test public void missingAndUnavailableUiStatesAreHonest()throws Exception{Profile p=profile();JSONObject s=state();s.remove("achs");Swing.UiState ui=Swing.uiState(p,s,Swing.HORIZONTAL,3,false,false);assertNull(ui.observedCode());assertFalse(ui.canApply());assertTrue(ui.observedLabel().contains("Not reported"));p.attribute(Swing.HORIZONTAL).remove("range");ui=Swing.uiState(p,state(),Swing.HORIZONTAL,null,false,false);assertTrue(ui.choices().isEmpty());assertFalse(ui.reason().isEmpty());}
     @Test public void correctedLabelsRetainPerspectiveAndUnknowns()throws Exception{assertTrue(Swing.description(Swing.HORIZONTAL,1).contains("centered"));assertFalse(Swing.description(Swing.HORIZONTAL,3).contains("center"));assertTrue(Swing.description(Swing.HORIZONTAL,3).contains("left of 1"));assertEquals("Leftmost observed",Swing.description(Swing.HORIZONTAL,2));assertTrue(Swing.guidance(Swing.HORIZONTAL).contains("facing the AC"));assertTrue(Swing.guidance(Swing.HORIZONTAL).contains("2, 3, 1, 4, 5"));assertTrue(Swing.guidance(Swing.HORIZONTAL).contains("do not confirm"));assertTrue(Swing.description(Swing.VERTICAL,5).contains("Lowest tested"));}
+    @Test public void stoppingSwingUsesOnlyAdvertisedFixedPreset(){
+        assertEquals(Integer.valueOf(1),Swing.stopPosition(Arrays.asList(0,1,2,3,4,5),null));
+        assertEquals(Integer.valueOf(5),Swing.stopPosition(Arrays.asList(0,1,2,3,4,5),5));
+        assertEquals(Integer.valueOf(3),Swing.stopPosition(Arrays.asList(0,3,4),5));
+        assertNull(Swing.stopPosition(Arrays.asList(0),null));
+    }
 }

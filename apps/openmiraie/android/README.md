@@ -80,7 +80,7 @@ account-backed; never use a real phone/account for synthetic layout automation.
 
 ## Inline controller refinement — 19 October 2026
 
-The approved [airflow scene](../../../design/openmiraie/quiet-control/fan-explorations/airflow-scene.html) is implemented natively. See [implementation and emulator evidence](../../../design/openmiraie/quiet-control/native-inline-review.md). The photograph and animated stream are illustrative, not a camera feed or measured vane angles. Exact-position sheets retain reviewed model descriptions. Stopping swing restores the last known fixed preset; when none is known, the position picker opens instead of inventing a physical freeze command. Pending airflow/capacity targets are drawn separately from reported state.
+The approved [airflow scene](../../../design/openmiraie/quiet-control/fan-explorations/airflow-scene.html) is implemented natively. See [implementation and emulator evidence](../../../design/openmiraie/quiet-control/native-inline-review.md). The photograph and animated stream are illustrative, not a camera feed or measured vane angles. Exact-position sheets retain reviewed model descriptions. Stopping either swing axis applies its last known supported fixed preset directly, without a picker. With no usable history, it selects position 1 when supported, otherwise the first advertised fixed preset. This does not claim to freeze at a measured physical angle. Pending airflow/capacity targets are drawn separately from reported state.
 
 ## Scroll stability and pull to refresh
 
