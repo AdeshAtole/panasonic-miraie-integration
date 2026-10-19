@@ -12,7 +12,8 @@ import java.util.*;
 /** Runs only against the offline review build; saves actual emulator captures and geometry. */
 @SuppressWarnings("deprecation")
 public final class LayoutReviewTest extends Instrumentation {
-    @Override public void onCreate(Bundle arguments){super.onCreate(arguments);start();}
+    private boolean scrollOnly;
+    @Override public void onCreate(Bundle arguments){super.onCreate(arguments);scrollOnly=arguments!=null&&"scroll".equals(arguments.getString("suite"));start();}
     @Override public void onStart(){Bundle result=new Bundle();try{testScreens();result.putString("stream","Layout audit passed\n");finish(-1,result);}catch(Throwable error){result.putString("stream",android.util.Log.getStackTraceString(error));finish(0,result);}}
     private Instrumentation getInstrumentation(){return this;}
     private void assertEquals(Object expected,Object actual){if(!expected.equals(actual))throw new AssertionError(expected+" != "+actual);}
@@ -25,6 +26,7 @@ public final class LayoutReviewTest extends Instrumentation {
         assertEquals("in.openmiraie.android.review",getInstrumentation().getTargetContext().getPackageName());
         assertEquals(android.content.pm.PackageManager.PERMISSION_DENIED,getInstrumentation().getTargetContext().checkSelfPermission("android.permission.INTERNET"));
         activity=(MainActivity)startActivitySync(new Intent().setClassName("in.openmiraie.android.review","in.openmiraie.android.MainActivity").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        scrollRegression();pullRefreshRegression();if(scrollOnly)return;
         geometry.append(activity.getResources().getConfiguration().toString()).append("\n");
         capture("controller");bottom("controller");controllerInteractions();ui(()->activity.scroll.scrollTo(0,0));
         sheet("mode",()->activity.modeChoice());
@@ -48,6 +50,29 @@ public final class LayoutReviewTest extends Instrumentation {
         try(FileWriter writer=new FileWriter(new File(out,"findings.txt"))){for(String f:findings)writer.write(f+"\n");}
         ui(()->{activity.repo.load();activity.navigate("controller");});
         assertTrue(String.join("\n",findings),findings.isEmpty());
+    }
+    private void scrollRegression()throws Exception{
+        ui(()->{activity.openControl="airflow";activity.render();});Thread.sleep(150);
+        ui(()->activity.scroll.scrollTo(0,activity.dp(100)));int before=activity.scroll.getScrollY();assertTrue("Fixture must be scrolled",before>0);
+        ui(()->{activity.render();activity.render();activity.render();});Thread.sleep(150);
+        assertEquals(before,activity.scroll.getScrollY());
+        ui(()->activity.repo.command("DisplayControl","off"));Thread.sleep(150);assertEquals(before,activity.scroll.getScrollY());settle();assertEquals(before,activity.scroll.getScrollY());
+        ui(()->{activity.repo.load();activity.openControl="";activity.render();});
+    }
+    private void pullRefreshRegression()throws Exception{
+        ReviewRepository repo=(ReviewRepository)activity.repo;
+        ui(()->{activity.navigate("controller");activity.scroll.scrollTo(0,0);});Thread.sleep(150);
+        int initial=repo.refreshCalls;
+        gesture(activity.scroll,activity.dp(4),activity.dp(8),activity.dp(4),activity.dp(36),false);assertEquals(initial,repo.refreshCalls);
+        gesture(activity.scroll,activity.dp(4),activity.dp(8),activity.dp(160),activity.dp(12),false);assertEquals(initial,repo.refreshCalls);
+        gesture(activity.scroll,activity.dp(4),activity.dp(8),activity.dp(4),activity.dp(150),true);assertEquals(initial,repo.refreshCalls);
+        ui(()->activity.scroll.scrollTo(0,activity.dp(100)));gesture(activity.scroll,activity.dp(4),activity.dp(8),activity.dp(4),activity.dp(150),false);assertEquals(initial,repo.refreshCalls);
+        ui(()->{activity.repo.busy=true;activity.render();});Thread.sleep(100);gesture(activity.scroll,activity.dp(4),activity.dp(8),activity.dp(4),activity.dp(150),false);assertEquals(initial,repo.refreshCalls);
+        ui(()->{activity.repo.busy=false;activity.render();});Thread.sleep(100);ui(()->activity.scroll.scrollTo(0,0));
+        gesture(activity.scroll,activity.dp(4),activity.dp(8),activity.dp(4),activity.dp(150),false);assertEquals(initial+1,repo.refreshCalls);capture("pull-refresh-pending");assertTrue("Pull refresh is in flight",repo.busy);settle();assertTrue("Refresh completed",!repo.busy);assertEquals(0,activity.scroll.getScrollY());
+        ui(()->assertTrue("Accessible refresh action",activity.scroll.performAccessibilityAction(RefreshScrollView.REFRESH_ACTION,null)));assertEquals(initial+2,repo.refreshCalls);settle();
+        ui(()->activity.navigate("settings"));gesture(activity.scroll,activity.dp(4),activity.dp(8),activity.dp(4),activity.dp(150),false);assertEquals(initial+2,repo.refreshCalls);
+        ui(()->{activity.navigate("controller");activity.scroll.scrollTo(0,0);});
     }
     private void settle()throws Exception{Thread.sleep(1600);getInstrumentation().waitForIdleSync();}
     private void gesture(View view,float fromX,float fromY,float toX,float toY,boolean cancel)throws Exception{ui(()->{long t=android.os.SystemClock.uptimeMillis();for(int i=0;i<3;i++){int action=i==0?MotionEvent.ACTION_DOWN:i==1?MotionEvent.ACTION_MOVE:cancel?MotionEvent.ACTION_CANCEL:MotionEvent.ACTION_UP;MotionEvent e=MotionEvent.obtain(t,t+i*50,action,i==0?fromX:toX,i==0?fromY:toY,0);view.dispatchTouchEvent(e);e.recycle();}});}

@@ -81,3 +81,7 @@ account-backed; never use a real phone/account for synthetic layout automation.
 ## Inline controller refinement — 19 October 2026
 
 The approved [airflow scene](../../../design/openmiraie/quiet-control/fan-explorations/airflow-scene.html) is implemented natively. See [implementation and emulator evidence](../../../design/openmiraie/quiet-control/native-inline-review.md). The photograph and animated stream are illustrative, not a camera feed or measured vane angles. Exact-position sheets retain reviewed model descriptions. Stopping swing restores the last known fixed preset; when none is known, the position picker opens instead of inventing a physical freeze command. Pending airflow/capacity targets are drawn separately from reported state.
+
+## Scroll stability and pull to refresh
+
+Repository updates preserve each page’s scroll offset after layout, including rapid pending/readback renders. Pull down at the top of Control, Readings or Energy to refresh that page’s data; short, cancelled and horizontal gestures do not refresh. An active request blocks another refresh. The gesture respects child controls that own dragging, and an accessibility Refresh action provides an alternative. Refresh reads data only; it does not resend a setting.

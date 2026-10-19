@@ -117,3 +117,15 @@ for inspected configurations, corrected defects and remaining acceptance gaps.
 Debug/review builds, all **85 JVM tests**, and lint pass (zero errors; four existing tooling/localization warnings). Fourteen new tests cover discrete selection, no-op/cancelled commits, supported fixed-axis targets, swing exclusion, stale state, offline restrictions and validating both targets before any send.
 
 The emulator instrumentation also exercises Auto-to-manual fan selection, aiming while the other axis swings, restoration of a known fixed preset, cancelled airflow drag, blocking manual aiming when both axes swing, and Converti8 Off/expanded/filled transitions including Powerful coupling confirmations. It audits native layout and 48 dp touch targets. See [the scoped results](../../../design/openmiraie/quiet-control/native-inline-review.md). No live appliance command is included in this pass.
+
+## Scroll and refresh regression — 19 October 2026
+
+The offline emulator reproduced a 100 dp scrolled position resetting to zero during three immediate screen rebuilds. The fix restores the requested offset after layout and keeps that offset available during intervening rebuilds. Native instrumentation now checks position through successive renders, a pending Display change and its completion. Pull-to-refresh checks cover threshold, horizontal drag, cancellation, starting below the top, busy-state blocking, one refresh per completed gesture and the accessibility action. The review repository delays refresh and counts calls so these assertions do not use the network.
+
+Run the focused regression after installing the review/test APKs:
+
+```sh
+adb -s <emulator-serial> shell am instrument -w -e suite scroll in.openmiraie.android.review.test/in.openmiraie.android.LayoutReviewTest
+```
+
+The complete audit also runs these regressions. Pending-refresh screenshots are recorded alongside layout captures.

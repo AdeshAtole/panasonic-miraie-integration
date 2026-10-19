@@ -17,21 +17,21 @@ import java.io.*;
 
 /** Native platform Views; no embedded prototype or runtime web content. */
 public final class MainActivity extends Activity {
-    Repository repo; LinearLayout root,body;ScrollView scroll;String page="controller",identity="",exportKind="",exportDevice="";
+    Repository repo; LinearLayout root,body;RefreshScrollView scroll;boolean pullRefreshing;String page="controller",identity="",exportKind="",exportDevice="";
     ControllerControls controlsUI;String openControl="";boolean capacityExpanded;final Map<String,Integer> lastFixed=new HashMap<>();
     TemperatureDialView temperatureDial;String displayedDevice="";final Map<String,Integer> scrollOffsets=new HashMap<>();boolean rendering=false;
     AlertDialog modal;View modalLauncher;Runnable swingChanged;String swingAxis="",swingDevice="";Integer swingDraft;final Runnable changed=()->{render();if(swingChanged!=null&&modal!=null&&modal.isShowing())swingChanged.run();};
     @Override public void onCreate(Bundle state){super.onCreate(state);if(Build.VERSION.SDK_INT>=30)getWindow().setDecorFitsSystemWindows(false);repo=((MiraieApp)getApplication()).repository;
-        if(state!=null){openControl=state.getString("openControl","");capacityExpanded=state.getBoolean("capacityExpanded",false);for(String axis:new String[]{Swing.VERTICAL,Swing.HORIZONTAL})if(state.containsKey(axis))lastFixed.put(axis,state.getInt(axis));page=state.getString("page","controller");identity=state.getString("identity","");displayedDevice=state.getString("device","");Bundle positions=state.getBundle("scrollOffsets");if(positions!=null)for(String key:positions.keySet())scrollOffsets.put(key,positions.getInt(key));exportKind=state.getString("exportKind","");exportDevice=state.getString("exportDevice","");}
+        if(state!=null){pullRefreshing=state.getBoolean("pullRefreshing",false);openControl=state.getString("openControl","");capacityExpanded=state.getBoolean("capacityExpanded",false);for(String axis:new String[]{Swing.VERTICAL,Swing.HORIZONTAL})if(state.containsKey(axis))lastFixed.put(axis,state.getInt(axis));page=state.getString("page","controller");identity=state.getString("identity","");displayedDevice=state.getString("device","");Bundle positions=state.getBundle("scrollOffsets");if(positions!=null)for(String key:positions.keySet())scrollOffsets.put(key,positions.getInt(key));exportKind=state.getString("exportKind","");exportDevice=state.getString("exportDevice","");}
         boolean openedFromWidget="in.openmiraie.android.OPEN_CONTROLLER".equals(getIntent().getAction());
         if(openedFromWidget){page="controller";getIntent().setAction(null);}
         repo.listen(changed);render();
         if(state!=null&&!openedFromWidget&&Swing.axis(state.getString("swingAxis",""))&&repo.device!=null&&repo.signed&&repo.device.optString("deviceId").equals(state.getString("swingDevice",""))){Integer savedDraft=state.containsKey("swingDraft")?state.getInt("swingDraft"):null;swingChoice(state.getString("swingAxis"),savedDraft);}
     }
     @Override protected void onNewIntent(Intent intent){super.onNewIntent(intent);setIntent(intent);if("in.openmiraie.android.OPEN_CONTROLLER".equals(intent.getAction())){intent.setAction(null);navigate("controller");}}
-    @Override protected void onPause(){if(controlsUI!=null)controlsUI.cancel();if(temperatureDial!=null)temperatureDial.cancelInteraction();super.onPause();}
+    @Override protected void onPause(){if(scroll!=null)scroll.cancelPull();if(controlsUI!=null)controlsUI.cancel();if(temperatureDial!=null)temperatureDial.cancelInteraction();super.onPause();}
     @Override protected void onDestroy(){repo.unlisten(changed);if(modal!=null)modal.dismiss();super.onDestroy();}
-    @Override protected void onSaveInstanceState(Bundle out){rememberScroll();out.putString("openControl",openControl);out.putBoolean("capacityExpanded",capacityExpanded);for(Map.Entry<String,Integer> entry:lastFixed.entrySet())out.putInt(entry.getKey(),entry.getValue());out.putString("swingAxis",swingAxis);out.putString("swingDevice",swingDevice);if(swingDraft!=null)out.putInt("swingDraft",swingDraft);out.putString("page",page);out.putString("identity",identity);out.putString("device",displayedDevice);Bundle positions=new Bundle();for(Map.Entry<String,Integer> entry:scrollOffsets.entrySet())positions.putInt(entry.getKey(),entry.getValue());out.putBundle("scrollOffsets",positions);out.putString("exportKind",exportKind);out.putString("exportDevice",exportDevice);super.onSaveInstanceState(out);}
+    @Override protected void onSaveInstanceState(Bundle out){rememberScroll();out.putBoolean("pullRefreshing",pullRefreshing);out.putString("openControl",openControl);out.putBoolean("capacityExpanded",capacityExpanded);for(Map.Entry<String,Integer> entry:lastFixed.entrySet())out.putInt(entry.getKey(),entry.getValue());out.putString("swingAxis",swingAxis);out.putString("swingDevice",swingDevice);if(swingDraft!=null)out.putInt("swingDraft",swingDraft);out.putString("page",page);out.putString("identity",identity);out.putString("device",displayedDevice);Bundle positions=new Bundle();for(Map.Entry<String,Integer> entry:scrollOffsets.entrySet())positions.putInt(entry.getKey(),entry.getValue());out.putBundle("scrollOffsets",positions);out.putString("exportKind",exportKind);out.putString("exportDevice",exportDevice);super.onSaveInstanceState(out);}
     @Override public void onBackPressed(){if(modal!=null&&modal.isShowing()){modal.dismiss();return;}if(!page.equals("controller")&&repo.device!=null){navigate("controller");return;}moveTaskToBack(true);}
     int dp(float n){return Math.round(n*getResources().getDisplayMetrics().density);}
     int color(int id){return getColor(id);}
@@ -73,19 +73,31 @@ public final class MainActivity extends Activity {
     void listrow(LinearLayout p,String glyph,String title,String subtitle,boolean enabled,Runnable action){LinearLayout r=new LinearLayout(this);r.setGravity(Gravity.CENTER_VERTICAL);r.setBaselineAligned(false);r.setMinimumHeight(dp(72));r.setPadding(dp(20),dp(12),dp(20),dp(12));r.setBackground(ripple(R.color.panel,12));r.setEnabled(enabled);r.setAlpha(enabled?1f:.45f);r.setFocusable(true);r.setContentDescription(title+(subtitle.isEmpty()?"":", "+subtitle));r.setOnClickListener(v->{if(enabled)action.run();});p.addView(r,new LinearLayout.LayoutParams(-1,-2));ImageView glyphView=icon(glyph,R.color.primary,20);r.addView(glyphView);LinearLayout labels=column();LinearLayout.LayoutParams lp=new LinearLayout.LayoutParams(0,-2,1);lp.setMargins(dp(12),0,dp(12),0);r.addView(labels,lp);TextView label=text(labels,title,16);strong(label);if(!subtitle.isEmpty())muted(labels,subtitle,13);r.addView(icon("right",R.color.muted,18));line(p);}
     void dataRow(LinearLayout p,String label,String value){LinearLayout r=row(p);r.setPadding(0,dp(8),0,dp(8));TextView l=muted(r,label,12);weighted(l);TextView v=text(r,value,12);v.setGravity(Gravity.END);strong(v);weighted(v);line(p);}
 
-    void rememberScroll(){if(scroll!=null)scrollOffsets.put(page,scroll.getScrollY());}
+    void rememberScroll(){if(scroll!=null)scrollOffsets.put(page,scroll.savedPosition());}
     void navigate(String next){if(controlsUI!=null)controlsUI.cancel();if(temperatureDial!=null)temperatureDial.cancelInteraction();rememberScroll();page=next;scroll=null;render();}
-    void render(){if(isFinishing()||rendering)return;rendering=true;if(controlsUI!=null)controlsUI.cancel();rememberScroll();
+    void render(){if(isFinishing()||rendering)return;rendering=true;if(!repo.busy)pullRefreshing=false;if(controlsUI!=null)controlsUI.cancel();rememberScroll();
         String id=repo.device==null?"":repo.device.optString("deviceId");
         if(!id.equals(displayedDevice)||!repo.signed){scrollOffsets.clear();openControl="";capacityExpanded=false;lastFixed.clear();displayedDevice=id;if(modal!=null)modal.dismiss();}
         temperatureDial=null;if(root==null){root=column();root.setBackgroundColor(color(R.color.surface));
         root.setOnApplyWindowInsetsListener((v,insets)->{if(Build.VERSION.SDK_INT>=30){android.graphics.Insets i=insets.getInsets(WindowInsets.Type.systemBars()|WindowInsets.Type.ime());v.setPadding(i.left,i.top,i.right,i.bottom);}else v.setPadding(insets.getSystemWindowInsetLeft(),insets.getSystemWindowInsetTop(),insets.getSystemWindowInsetRight(),insets.getSystemWindowInsetBottom());return insets;});setContentView(root);root.requestApplyInsets();root.post(root::requestApplyInsets);}else root.removeAllViews();
-        topbar();scroll=new ScrollView(this);scroll.setFillViewport(true);scroll.setVerticalScrollBarEnabled(false);body=column();body.setPadding(pageMargin(),dp(4),pageMargin(),dp(24));scroll.addView(body);root.addView(scroll,new LinearLayout.LayoutParams(-1,0,1));if(!page.equals("controller"))notice();if(!repo.recordingWarning.isEmpty())muted(body,repo.recordingWarning,12);
+        topbar();scroll=new RefreshScrollView(this);scroll.setFillViewport(true);scroll.setVerticalScrollBarEnabled(false);body=column();body.setPadding(pageMargin(),dp(4),pageMargin(),dp(24));scroll.addView(body);addRefreshContainer();if(!page.equals("controller"))notice();if(!repo.recordingWarning.isEmpty())muted(body,repo.recordingWarning,12);
         if(!repo.signed)signin();else if(page.equals("devices")||repo.device==null)devices();else{
             switch(page){case "settings":settings();break;case "readings":statusline();readings();break;case "energy":energy();break;case "snapshots":snapshots();break;default:controller();}
             if(page.equals("controller")||page.equals("readings")||page.equals("settings"))bottomnav();
         }
-        int y=scrollOffsets.getOrDefault(page,0);ScrollView renderedScroll=scroll;renderedScroll.post(()->renderedScroll.scrollTo(0,y));rendering=false;
+        scroll.restorePosition(scrollOffsets.getOrDefault(page,0));rendering=false;
+    }
+
+    boolean canPullRefresh(){return repo.signed&&repo.device!=null&&!repo.busy&&(page.equals("controller")||page.equals("readings")||page.equals("energy"));}
+    void refreshPage(){if(!canPullRefresh())return;pullRefreshing=true;if(page.equals("energy"))repo.loadEnergy();else repo.refresh(false);}
+    void addRefreshContainer(){
+        FrameLayout frame=new FrameLayout(this);frame.addView(scroll,new FrameLayout.LayoutParams(-1,-1));root.addView(frame,new LinearLayout.LayoutParams(-1,0,1));
+        ImageView arrow=icon("refresh",R.color.primary,24);arrow.setPadding(dp(10),dp(10),dp(10),dp(10));arrow.setBackground(rounded(R.color.panel,22));arrow.setElevation(dp(3));arrow.setVisibility(View.GONE);
+        FrameLayout.LayoutParams ap=new FrameLayout.LayoutParams(dp(44),dp(44),Gravity.TOP|Gravity.CENTER_HORIZONTAL);ap.topMargin=dp(8);frame.addView(arrow,ap);
+        ProgressBar progress=new ProgressBar(this);progress.setIndeterminateTintList(ColorStateList.valueOf(color(R.color.primary)));progress.setPadding(dp(8),dp(8),dp(8),dp(8));progress.setBackground(rounded(R.color.panel,22));progress.setElevation(dp(3));progress.setContentDescription("Refreshing");progress.setAccessibilityLiveRegion(View.ACCESSIBILITY_LIVE_REGION_POLITE);progress.setVisibility(pullRefreshing&&repo.busy?View.VISIBLE:View.GONE);
+        FrameLayout.LayoutParams pp=new FrameLayout.LayoutParams(dp(44),dp(44),Gravity.TOP|Gravity.CENTER_HORIZONTAL);pp.topMargin=dp(8);frame.addView(progress,pp);
+        scroll.refreshAllowed=this::canPullRefresh;scroll.refresh=this::refreshPage;
+        scroll.pullProgress=value->{arrow.setVisibility(value>0?View.VISIBLE:View.GONE);arrow.setAlpha((float)Math.min(1,value*2));arrow.setRotation((float)value*180);};
     }
 
     void signin(){space(body,24);TextView welcome=text(body,"Your room. Your way.",27);strong(welcome);muted(body,"Sign in with your Panasonic MirAIe account.",14);space(body,24);

@@ -10,6 +10,7 @@ public final class ReviewApp extends MiraieApp {
 }
 
 final class ReviewRepository extends Repository {
+    int refreshCalls;
     ReviewRepository(Context context){super(context,false);load();}
     @Override void load(){
         try {
@@ -36,8 +37,8 @@ final class ReviewRepository extends Repository {
     @Override void discover(){publish();}
     @Override void discoverNow(){}
     @Override void select(JSONObject selected){device=selected;publish();}
-    @Override void refresh(boolean capabilities){refreshNow(capabilities);publish();}
-    @Override void refreshNow(boolean capabilities){readAt=System.currentTimeMillis();notice="Sample data refreshed.";}
+    @Override void refresh(boolean capabilities){if(busy)return;refreshCalls++;busy=true;notice="Refreshing sample readings…";publish();main.postDelayed(()->{refreshNow(capabilities);busy=false;publish();},900);}
+    @Override void refreshNow(boolean capabilities){readAt=System.currentTimeMillis();notice="Updated reported state.";}
     @Override synchronized void command(String name,Object value){
         if(busy)return;
         final List<Map.Entry<String,Object>> plan;

@@ -36,3 +36,9 @@ Local synthetic captures and geometry findings are saved under `artifacts/quiet-
 Physical-phone feel, TalkBack/switch-access announcements and focus retention across repository-driven view rebuilds still need hands-on review. Animation frame timing and reduced-motion behavior need a recording-based device pass. Broader API/OEM, rotation/process recreation and real readback/error transitions are not certified by this emulator run.
 
 Horizontal preset geometry is uncalibrated. The scene uses the approved illustrative layout but does not establish the physical ordering of codes 2 and 3, vane angles or fixedness of previously unverified positions. The reviewed model adapter and position descriptions remain authoritative. Cloud readback is not physical confirmation.
+
+## Scroll and refresh follow-up
+
+Setting updates now retain the viewport through rapid pending/readback renders. Position is restored after layout, avoiding the reproduced reset-to-zero race. Pull down at the top of Control, Readings or Energy for a read-only refresh. A compact native indicator overlays the content without changing its layout. Short/cancelled/horizontal pulls and attempts during another request do not refresh. The accessible Refresh action invokes the same guarded operation. Native regression checks reproduce the original failure and cover both pending and completed setting changes.
+
+Follow-up validation: debug/review builds, 85 JVM tests, lint (zero errors), repository checks, focused native scroll/refresh regressions and the complete offline emulator layout/interaction audit passed. The pending-refresh indicator was inspected in an emulator screenshot.
