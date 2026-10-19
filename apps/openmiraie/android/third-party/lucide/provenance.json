@@ -1,0 +1,108 @@
+{
+  "package": "lucide-static",
+  "version": "0.468.0",
+  "source": "https://registry.npmjs.org/lucide-static/-/lucide-static-0.468.0.tgz",
+  "conversion": "Unmodified geometry converted to Android VectorDrawable paths; theme tint replaces currentColor.",
+  "icons": {
+    "ic_down": {
+      "source": "icons/chevron-down.svg",
+      "sha256": "04458777b8a99214cd167dc9a8c8a1e35dcc9373b7577f74d5b5da6418ffcf67"
+    },
+    "ic_bulb": {
+      "source": "icons/lightbulb.svg",
+      "sha256": "31124a7d64a9f2639dbfa0441aeae845717d2fcc3e259fa6feab4b2562c969f8"
+    },
+    "ic_refresh": {
+      "source": "icons/refresh-cw.svg",
+      "sha256": "d63b359b0fe05e03cff8aaa7acf82f9569733e83f7fb4742d583a086972c4bb0"
+    },
+    "ic_snow": {
+      "source": "icons/snowflake.svg",
+      "sha256": "3a6d758e3302a0f706660bbd9d9ada7c6bbb364e57aca7311797fce9536f02ee"
+    },
+    "ic_right": {
+      "source": "icons/chevron-right.svg",
+      "sha256": "fea488a3b60fd7738bbbf8ca98826ef5c0381347c5fd1048d45ee70a75a51cfe"
+    },
+    "ic_close": {
+      "source": "icons/x.svg",
+      "sha256": "0f38855d9d5775c10960ae53e46b745f77914b43f78c43bf8abc39f4d5e06de1"
+    },
+    "ic_home": {
+      "source": "icons/house.svg",
+      "sha256": "2c13f570d9b9727c9b6c23400c95acfa9737e91884ed926332edb18fd47a2a76"
+    },
+    "ic_fan": {
+      "source": "icons/fan.svg",
+      "sha256": "ff9267380bcd723628e329f85f2e1dd289824e8b4ce43886bc25ec687443a7c7"
+    },
+    "ic_breeze": {
+      "source": "icons/wind.svg",
+      "sha256": "c87104b69ec0d0e5a740496485cd87ed9277c67c28d46aaba46a7e8d68678bcb"
+    },
+    "ic_minus": {
+      "source": "icons/minus.svg",
+      "sha256": "116a64e7f95fe2c31490f084d4abbf49dc15af8e7fab4a29ed5b84bb3c26c00b"
+    },
+    "ic_plus": {
+      "source": "icons/plus.svg",
+      "sha256": "b29207ee8f5cc0e829c0bab2e5b223fc88687599c6bd40b94ba35f52327615d6"
+    },
+    "ic_wifi": {
+      "source": "icons/wifi.svg",
+      "sha256": "133817fce3f8f7decbf6a38965242c35a372445c8afd8f10e30c75a913520347"
+    },
+    "ic_thermo": {
+      "source": "icons/thermometer.svg",
+      "sha256": "4615c5bc7f526820f66c78d1f678f3ebd4bbf7926a2f84157c190a666837b755"
+    },
+    "ic_more": {
+      "source": "icons/ellipsis.svg",
+      "sha256": "c223eec545dc86e0de4c672e621550b391198ca97b8eabbe043613c3332d48b1"
+    },
+    "ic_external": {
+      "source": "icons/arrow-up-right.svg",
+      "sha256": "7a58fb69deddd385b9bd47b406d3e9f3ccfbe11b319efcd5071cbd5b19c1bd4f"
+    },
+    "ic_sliders": {
+      "source": "icons/sliders-horizontal.svg",
+      "sha256": "995507595c7c24deffef382bacc452a24b40a2efc4aa54908563a0f09b6a75aa"
+    },
+    "ic_power": {
+      "source": "icons/power.svg",
+      "sha256": "0fe9fe8cc5ffa3bc81da60b80af8c4ceff557aa8b87e913b1a86aa8f4bc01382"
+    },
+    "ic_signal": {
+      "source": "icons/signal.svg",
+      "sha256": "ca35f898f0af940ab34a8431e3465f506165067bc8332858a6571f25c5cfd5d3"
+    },
+    "ic_spark": {
+      "source": "icons/sparkles.svg",
+      "sha256": "40a7c96d3ad44a83803c7dc2f449653b972602763cda2adfea7f72f3925c375e"
+    },
+    "ic_settings": {
+      "source": "icons/settings.svg",
+      "sha256": "ceea1a72d04b112291222ba9ad0779a12d47d816079fe4174900c724f360b55c"
+    },
+    "ic_chart": {
+      "source": "icons/chart-no-axes-combined.svg",
+      "sha256": "2a614a5c049576984707237266e260757951e92663a272550e109b06b9da7a2b"
+    },
+    "ic_eye": {
+      "source": "icons/eye.svg",
+      "sha256": "7a23c549710b70c9eb1324540260943190190ef309e9f3604726a42c85f9b552"
+    },
+    "ic_back": {
+      "source": "icons/arrow-left.svg",
+      "sha256": "e31ed0af85ffbed2b54f78f37af197c3b84b24e776cba1d27613d6a9ad555a16"
+    },
+    "ic_check": {
+      "source": "icons/check.svg",
+      "sha256": "538432eec072ceeccf5a7aacf347a2ad2bff9937d203dbd0b4f4245d7accd93c"
+    },
+    "ic_battery": {
+      "source": "icons/battery.svg",
+      "sha256": "2181f60641e5f6a0fea0f4e4a83244379a688d134c13cf2bb50a768aec35dfe1"
+    }
+  }
+}

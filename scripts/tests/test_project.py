@@ -16,12 +16,21 @@ spec2.loader.exec_module(builder)
 
 
 class ProjectTests(unittest.TestCase):
-    def test_production_targets_are_explicitly_unbuildable_and_never_fall_back(self):
-        for name in ['android', 'ios', 'macos']:
+    def test_planned_targets_are_explicitly_unbuildable_and_never_fall_back(self):
+        for name in ['ios', 'macos']:
             with self.subTest(target=name), mock.patch.object(project, 'run') as run:
                 with self.assertRaisesRegex(ValueError, 'No PoC fallback'):
                     project.operate(project.target(name), 'build')
                 run.assert_not_called()
+
+    def test_android_is_active_and_uses_native_gradle(self):
+        entry = project.target('android')
+        self.assertEqual(entry['status'], 'active')
+        self.assertEqual(entry['path'], 'apps/openmiraie/android')
+        for operation in ['build', 'test']:
+            with mock.patch.object(project, 'inspect', return_value=[]), mock.patch.object(project, 'run') as run, mock.patch.object(Path, 'exists', return_value=True):
+                project.operate(entry, operation)
+                run.assert_called_once_with(entry[operation], ROOT / entry['path'])
 
     def test_mcp_is_active_and_uses_its_own_python_environment(self):
         entry = project.target('miraie-mcp')
@@ -52,7 +61,7 @@ class ProjectTests(unittest.TestCase):
     def test_future_active_native_targets_use_their_own_commands(self):
         for name in ['android', 'ios', 'macos']:
             entry = dict(project.target(name), status='active')
-            with self.subTest(target=name), mock.patch.object(project, 'inspect', return_value=[]), mock.patch.object(project, 'run') as run:
+            with self.subTest(target=name), mock.patch.object(project, 'inspect', return_value=[]), mock.patch.object(project, 'run') as run, mock.patch.object(Path, 'exists', return_value=True):
                 project.operate(entry, 'build')
                 run.assert_called_once_with(entry['build'], ROOT / entry['path'])
 

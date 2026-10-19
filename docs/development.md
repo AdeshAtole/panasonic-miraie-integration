@@ -30,7 +30,9 @@ PoC JVM tests need the test-only `com.vaadin.external.google:android-json:0.0.20
 
 ## New native apps
 
-`build android`, `build ios` and `build macos` currently exit2 and explain the missing project. Their folders intentionally contain implementation guidance rather than pretend native scaffolds.
+`android` is active. Set `JAVA_HOME` to JDK 17 and `ANDROID_SDK_ROOT` to an SDK with platform 35/build-tools 35.0.0. Run `python3 scripts/project.py build android` and `python3 scripts/project.py test android`; the project-owned Gradle wrapper resolves pinned dependencies on first use. Run `./gradlew --no-daemon :app:lintDebug` inside `apps/openmiraie/android` for native static analysis. See the [Android README](../apps/openmiraie/android/README.md) for artifact paths, architecture and native/live verification gaps. Builds do not install or control devices.
+
+`build ios` and `build macos` still exit2 with missing-project guidance.
 
 When a platform starts:
 
@@ -43,7 +45,7 @@ Android adapter: Gradle wrapper, default debug assemble and local JVM tests. App
 
 ## Design workflow
 
-Open `design/openmiraie/prototype/index.html` locally, or the journey map/gallery beside it. No packages or network are needed. The old `.stitch/flow/index.html` redirects locally for existing tabs. Browser automation may restrict local files; source/model checks do not substitute for visual walkthrough or native-device QA.
+Start with `design/openmiraie/quiet-control/README.md` and the approved connected `quiet-app.html` preview. The earlier `design/openmiraie/prototype/index.html`, journey map and gallery remain historical/supporting references. No packages or network are needed. The old `.stitch/flow/index.html` redirects locally for existing tabs. Browser automation may restrict local files; source/model checks do not substitute for visual walkthrough or native-device QA.
 
 Curated assets and interaction specs belong under `design/openmiraie/`. Raw tool exchanges remain in ignored `.stitch/`. Historical exports may have old labels/paths; maintained prototype/spec take precedence.
 

@@ -1,0 +1,83 @@
+{
+  "date": "2026-10-19",
+  "status": "partial_native_device_review",
+  "build": "passed",
+  "unitTests": [
+    {
+      "name": "in.openmiraie.android.ProtocolTest",
+      "tests": "37",
+      "failures": "0",
+      "errors": "0"
+    },
+    {
+      "name": "in.openmiraie.android.SwingTest",
+      "tests": "22",
+      "failures": "0",
+      "errors": "0"
+    },
+    {
+      "name": "in.openmiraie.android.TemperatureSelectionTest",
+      "tests": "12",
+      "failures": "0",
+      "errors": "0"
+    }
+  ],
+  "totalTests": 71,
+  "lint": {
+    "errors": 0,
+    "warnings": [
+      {
+        "id": "OldTargetApi",
+        "message": "Not targeting the latest versions of Android; compatibility modes apply. Consider testing and updating this version. Consult the `android.os.Build.VERSION_CODES` javadoc for details."
+      },
+      {
+        "id": "AndroidGradlePluginVersion",
+        "message": "A newer version of Gradle than 8.13 is available: 8.14.6"
+      },
+      {
+        "id": "SetTextI18n",
+        "message": "Do not concatenate text displayed with `setText`. Use resource string with placeholders."
+      },
+      {
+        "id": "SetTextI18n",
+        "message": "String literal in `setText` can not be translated. Use Android resources instead."
+      }
+    ]
+  },
+  "repositoryCheck": "passed (18 historical prototype checks plus layout/reference checks; not redesigned native UI coverage)",
+  "diffWhitespaceCheck": "passed",
+  "apk": {
+    "path": "apps/openmiraie/android/app/build/outputs/apk/debug/app-debug.apk",
+    "sha256": "c51d18d7b21d29806c26870ced935d8c541ca9fb38197cb503b2d6d943fae358"
+  },
+  "nativeVisualReview": "partial connected Android 16 review; see device-review.md",
+  "deviceInstallation": "corrected debug build installed with user authorization, preserving data",
+  "liveCommands": "none",
+  "referenceManifest": "reference-manifest.json",
+  "remaining": "implementation-status.md",
+  "controllerRefinement": {
+    "date": "2026-10-19",
+    "changes": [
+      "stock mode chevron",
+      "mode applies on tap; same mode is a no-op",
+      "no idle or drag instructional labels",
+      "room temperature above dial; Applying retained"
+    ],
+    "build": "passed",
+    "unitTests": 71,
+    "lint": "passed",
+    "previewScriptSyntax": "passed",
+    "phone": "updated APK installed; controller visually inspected; mode sheet has choices and no Set; actual different-mode actuation not tested"
+  },
+  "emulatorLayoutReview": {
+    "date": "2026-10-19",
+    "api": 35,
+    "report": "emulator-review.md",
+    "matrix": "../../../artifacts/quiet-controller/emulator-review/matrix.json",
+    "capturesPerConfiguration": 33,
+    "allGeometryChecksPassed": true,
+    "fixtures": "Separate review package, INTERNET removed",
+    "liveCommands": "none",
+    "phoneUpdated": false
+  }
+}

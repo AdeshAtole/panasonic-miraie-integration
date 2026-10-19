@@ -1,0 +1,29 @@
+name: Native Android
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  android:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: android-actions/setup-android@v3
+      - name: Provision pinned Android SDK
+        run: sdkmanager 'platforms;android-35' 'build-tools;35.0.0'
+      - uses: gradle/actions/setup-gradle@v4
+      - name: Build native app
+        run: python3 scripts/project.py build android
+      - name: Run synthetic protocol tests
+        run: python3 scripts/project.py test android
+      - name: Android static checks
+        working-directory: apps/openmiraie/android
+        run: ./gradlew --no-daemon :app:lintDebug

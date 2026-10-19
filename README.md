@@ -1,8 +1,10 @@
 # Panasonic MirAIe integration
 
-A monorepo for an unofficial, portable Panasonic MirAIe integration skill and native apps built around verified protocol behavior. The existing Room AC Android implementation is a **proof of concept**. The new **openMirAIe** native Android app is being designed; native iOS and macOS apps are planned.
+A monorepo for an unofficial, portable Panasonic MirAIe integration skill and native apps built around verified protocol behavior. The existing Room AC Android implementation is a **proof of concept**. The new **openMirAIe** native Android app has a buildable first iteration; native iOS and macOS apps are planned.
 
 The protocol snapshot comes from MirAIe India Android 01.4.32 and live testing one AC model, CS-CU-NU18BKY5WX. This project is not affiliated with or endorsed by Panasonic. Other device families are research leads rather than tested integrations.
+
+Read our [philosophy](philosophy.md): reusable integration skills, lightweight open implementations, customization, and user-controlled device-data recording and observability.
 
 ## Repository map
 
@@ -33,9 +35,9 @@ python3 scripts/project.py test android-poc
 python3 scripts/project.py build stay-awake
 ```
 
-`check` needs Node.js 22+ for prototype checks, but no Android SDK, Xcode, account or phone. PoC/helper builds need a JDK and Android SDK; see [development setup](docs/development.md). Build commands never install on a phone, log in, download dependencies implicitly or deploy.
+`check` needs Node.js 22+ for prototype checks, but no Android SDK, Xcode, account or phone. PoC/helper builds need a JDK and Android SDK; see [development setup](docs/development.md). Build commands never install on a phone, log in or deploy. Production Gradle builds resolve pinned dependencies on the first run.
 
-Production target IDs are `android`, `ios` and `macos`. They currently report **not buildable yet**, with the appropriate project setup instructions. They never fall back to building the PoC. Platform build configuration is owned by the eventual Gradle/Xcode projects, not inherited from PoC pins.
+Production target `android` is active: `python3 scripts/project.py build android` builds the independent native app and `test android` runs its synthetic JVM tests. Targets `ios` and `macos` remain **not buildable yet**. No target falls back to the PoC. See the [Android implementation and verification gaps](apps/openmiraie/android/README.md).
 
 ## Design and implementation
 
@@ -45,6 +47,6 @@ The PoC demonstrates capability-driven modes, fan, Eco/Powerful/capacity, indepe
 
 ## Validation and publication
 
-The CI workflow checks repository structure, the portable skill, documentation links, prototype behavior and build orchestration. Native app CI is activated when real native projects exist. Local PoC tests and live device verification are distinct from CI; see [development](docs/development.md) and [evidence/extension guidance](skills/panasonic-miraie/references/evidence-and-extension.md).
+The CI workflow checks repository structure, the portable skill, documentation links, prototype behavior and build orchestration. Android CI now builds, tests and lints the native project; Apple CI remains deferred. Local PoC tests and live device verification are distinct from CI; see [development](docs/development.md) and [evidence/extension guidance](skills/panasonic-miraie/references/evidence-and-extension.md).
 
 Private captures, account/device identifiers, sensor-history exports, synced references, APKs, credentials and signing material stay excluded. `analysis/`, `sources/` and `.stitch/` are local working/reference areas, not public source. Sanitized skill catalogs contain protocol declarations, not account responses. Preserve actual reported state and verify each new model before claiming support.

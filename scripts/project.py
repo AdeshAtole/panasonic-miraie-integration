@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Repository entry point. No implicit downloads, installs, deployment or live AC calls."""
+"""Repository entry point. No installs, deployment or live AC calls. Gradle may resolve pinned build dependencies."""
 from pathlib import Path
 import argparse
 import ast

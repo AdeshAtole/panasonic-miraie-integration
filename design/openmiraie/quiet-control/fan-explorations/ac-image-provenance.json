@@ -1,0 +1,6 @@
+{
+  "tool": "Built-in image_gen",
+  "prompt": "Use case: product-mockup. Asset type: transparent product image for an interactive air-conditioner controller. Primary request: photorealistic premium white wall-mounted split indoor air conditioner, front view, slight view of the underside, outlet open with dark internal vent visible. Entire device isolated on genuinely transparent background. Wide horizontal subject, centered, compact tight framing around the product, with small transparent margin. Soft neutral studio light, realistic white plastic, understated thin seams, no brand, no text, no numbers, no airflow trails, no wall, no other objects. A clean catalog product photograph, not a UI screenshot.",
+  "asset": "ac-scene-product.png",
+  "kind": "Generated representative AC product photo; not user's appliance or camera feed"
+}

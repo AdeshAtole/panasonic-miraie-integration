@@ -34,7 +34,7 @@
     {
       "id": "android",
       "path": "apps/openmiraie/android",
-      "status": "design",
+      "status": "active",
       "toolchain": "gradle",
       "build": [
         "./gradlew",
@@ -50,10 +50,18 @@
         "gradlew",
         "gradle/wrapper/gradle-wrapper.jar",
         "gradle/wrapper/gradle-wrapper.properties",
-        "settings.gradle.kts"
+        "settings.gradle.kts",
+        "build.gradle.kts",
+        "app/build.gradle.kts",
+        "app/gradle.lockfile",
+        "gradle/verification-metadata.xml",
+        "app/src/main/AndroidManifest.xml",
+        "app/src/test/java/in/openmiraie/android/ProtocolTest.java"
       ],
-      "reason": "Production native Android project is not scaffolded; the current implementation is a separate PoC.",
-      "displayName": "openMirAIe"
+      "displayName": "openMirAIe",
+      "artifacts": [
+        "app/build/outputs/apk/debug/app-debug.apk"
+      ]
     },
     {
       "id": "ios",

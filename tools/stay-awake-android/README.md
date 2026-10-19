@@ -1,10 +1,10 @@
-# Stay Awake 1.2
+# Stay Awake 1.3
 
 Native Android helper installed as `in.room.stayawake`.
 
 ## Silent video in picture-in-picture
 
-Tap **Start silent video in PiP**. A bundled four-second silent video loops in a small movable window. You can open MirAIe or another app behind it. Close the PiP window to stop playback. It uses Android's normal video playback and keep-screen-on behavior. It needs no internet or settings-changing permission. The video stops when its activity is no longer visible.
+Tap **Start silent video in PiP**. A bundled four-second silent video loops in a small movable window. You can open MirAIe or another app behind it. Close the PiP window to stop playback. It uses Android's normal video playback and keep-screen-on behavior. It needs no internet or settings-changing permission. The video stops when its activity is no longer visible. The video activity handles font-scale and light/dark configuration changes in place, so appearance/accessibility checks do not recreate it and trigger the stop-on-hide lifecycle. It still stops normally when closed or no longer visible.
 
 ## Foreground service
 
@@ -21,3 +21,5 @@ PiP test: Android reported the VideoActivity in pinned mode, a local looping med
 The temporary USB Stay Awake setting used during investigation was restored to its original value, 0. System screen timeout remains its original 15,000 ms.
 
 Build with `python3 build.py` using the installed Android SDK and OpenJDK. Output: `stay-awake.apk`. Development-signed for this device; no network, accessibility, device-admin, overlay, or secure-settings permission.
+
+Version 1.3 device check: the VideoActivity remained pinned and held the screen-awake window after switching to light appearance, setting font scale to 2.0, and restoring dark appearance and font scale 1.0. No timeout or device-admin policy was changed.

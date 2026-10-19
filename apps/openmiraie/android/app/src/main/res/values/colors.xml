@@ -1,0 +1,17 @@
+<resources>
+    <color name="surface">#F7F7F2</color>
+    <color name="ink">#202423</color>
+    <color name="primary">#2459D3</color>
+    <color name="violet">#E8EEFC</color>
+    <color name="panel">#FFFFFF</color>
+    <color name="yellow">#E8EEFC</color>
+    <color name="muted">#656B68</color>
+    <color name="container">#EDEEE8</color>
+    <color name="on_primary">#FFFFFF</color>
+    <color name="on_violet">#2459D3</color>
+    <color name="on_yellow">#2459D3</color>
+    <color name="line">#E3E5DF</color>
+    <color name="coral">#F7E9E4</color>
+    <color name="on_coral">#813D2B</color>
+    <color name="success">#416D56</color>
+</resources>

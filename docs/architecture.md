@@ -27,6 +27,10 @@ Registry stages are `planned`, `design`, `prototype`, `helper` and `active`. Pla
 
 Android production builds use a Gradle wrapper and project-pinned toolchain. Apple builds use Xcode project/workspace, committed shared schemes and platform-specific destinations. Unsigned development builds, simulator tests, device tests and signed distribution are distinct tasks. Version/release identities and signing keys are platform-specific; do not reuse the PoC package identity or development key for production by default.
 
+## Android first iteration
+
+Android owns `SessionStore` (Keystore), `Api` (bounded HTTPS/read refresh), `Profile` and `CommandRunner` (capabilities, guards, send-once verification), `Repository` (serialized application lifetime state), `SnapshotStore`/`Data` (SQLite, redaction and CSV), and native Activity/RemoteViews adapters. No PoC code or HTML runtime is imported. Native Views keep the runtime dependency footprint small; platform-device acceptance remains separate from JVM tests and build/lint checks.
+
 ## Migration notes
 
 `room-ac/` moved to `prototypes/room-ac-android/`; `stay-awake/` to `tools/stay-awake-android/`. Entire directories moved, preserving ignored local APKs, build outputs and development signing files. Maintained designs moved out of `.stitch/`; prior design explorations are preserved. Existing app/phone state is unchanged. Build outputs and keys remain ignored.
