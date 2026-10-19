@@ -12,8 +12,8 @@ import java.util.*;
 /** Runs only against the offline review build; saves actual emulator captures and geometry. */
 @SuppressWarnings("deprecation")
 public final class LayoutReviewTest extends Instrumentation {
-    private boolean scrollOnly;
-    @Override public void onCreate(Bundle arguments){super.onCreate(arguments);scrollOnly=arguments!=null&&"scroll".equals(arguments.getString("suite"));start();}
+    private boolean scrollOnly,airflowOnly;
+    @Override public void onCreate(Bundle arguments){super.onCreate(arguments);airflowOnly=arguments!=null&&"airflow".equals(arguments.getString("suite"));scrollOnly=arguments!=null&&"scroll".equals(arguments.getString("suite"));start();}
     @Override public void onStart(){Bundle result=new Bundle();try{testScreens();result.putString("stream","Layout audit passed\n");finish(-1,result);}catch(Throwable error){result.putString("stream",android.util.Log.getStackTraceString(error));finish(0,result);}}
     private Instrumentation getInstrumentation(){return this;}
     private void assertEquals(Object expected,Object actual){if(!expected.equals(actual))throw new AssertionError(expected+" != "+actual);}
@@ -26,6 +26,7 @@ public final class LayoutReviewTest extends Instrumentation {
         assertEquals("in.openmiraie.android.review",getInstrumentation().getTargetContext().getPackageName());
         assertEquals(android.content.pm.PackageManager.PERMISSION_DENIED,getInstrumentation().getTargetContext().checkSelfPermission("android.permission.INTERNET"));
         activity=(MainActivity)startActivitySync(new Intent().setClassName("in.openmiraie.android.review","in.openmiraie.android.MainActivity").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
+        horizontalOrderRegression();if(airflowOnly)return;
         scrollRegression();pullRefreshRegression();if(scrollOnly)return;
         geometry.append(activity.getResources().getConfiguration().toString()).append("\n");
         capture("controller");bottom("controller");controllerInteractions();ui(()->activity.scroll.scrollTo(0,0));
@@ -50,6 +51,13 @@ public final class LayoutReviewTest extends Instrumentation {
         try(FileWriter writer=new FileWriter(new File(out,"findings.txt"))){for(String f:findings)writer.write(f+"\n");}
         ui(()->{activity.repo.load();activity.navigate("controller");});
         assertTrue(String.join("\n",findings),findings.isEmpty());
+    }
+    private void horizontalOrderRegression()throws Exception{
+        ui(()->{activity.openControl="airflow";activity.render();});Thread.sleep(150);
+        for(int expected:new int[]{3,2}){ui(()->activity.controlsUI.airflow.adjust(false,-1));settle();assertEquals(String.valueOf(expected),activity.reported(Swing.HORIZONTAL));assertEquals("1",activity.reported(Swing.VERTICAL));}
+        ui(()->activity.controlsUI.airflow.adjust(false,-1));settle();assertEquals("2",activity.reported(Swing.HORIZONTAL));
+        for(int expected:new int[]{3,1,4,5}){ui(()->activity.controlsUI.airflow.adjust(false,1));settle();assertEquals(String.valueOf(expected),activity.reported(Swing.HORIZONTAL));}
+        ui(()->{AirflowSceneView scene=activity.controlsUI.airflow;assertEquals(2,scene.nearest(48,false));assertEquals(3,scene.nearest(99,false));activity.repo.load();activity.openControl="";activity.render();});
     }
     private void scrollRegression()throws Exception{
         ui(()->{activity.openControl="airflow";activity.render();});Thread.sleep(150);

@@ -32,7 +32,7 @@ identified owner observations and cloud readbacks on model 140013. Static artifa
 identity remains the one above; owner feedback is not a decompiler observation.
 Firmware and exact angles remain unknown. The horizontal 3=center interpretation
 was withdrawn after direct 1→3 comparison; the current tables preserve that
-correction and the unresolved relative order of 2/3. Use those tables rather than
+correction and the later owner-confirmed left-to-right order 2, 3, 1, 4, 5. Use those tables rather than
 superseded intermediate labels.
 
 ## Extending to another model or family

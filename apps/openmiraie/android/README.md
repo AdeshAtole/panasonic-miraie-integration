@@ -61,8 +61,8 @@ there is no MCP runtime dependency or reconnect command queue.
 Use the [corrected swing reference](../../../skills/panasonic-miraie/references/swing.md)
 for evidence: both axes code 0 oscillates; vertical 5 was the lowest tested fixed
 position. Horizontal 1 appeared centered; 3 moved slightly left of 1. Left/right
-is while facing the AC. Code 2 versus 3 ordering, fixedness at 1/2, calibrated
-angles and other firmware remain unknown. A successful app command means a
+is while facing the AC. The owner later confirmed the left-to-right order 2, 3, 1, 4, 5. Fixedness at 1/2,
+calibrated angles and other firmware remain unknown. A successful app command means a
 matching cloud code, with physical movement explicitly unconfirmed.
 
 See [Android testing and support status](testing.md) for synthetic coverage,

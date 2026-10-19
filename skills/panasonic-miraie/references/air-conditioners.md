@@ -28,8 +28,8 @@ For swing command builders, guards and current position meanings, use
 [swing.md](swing.md). Both axes' codes 0–5 have cloud readback evidence on one
 unit; physical observations are recorded per code. Horizontal 1 appeared centered,
 2 was left-facing and 3 moved slightly left from 1, withdrawing the earlier
-3=center label. The relative order of 2/3, exact angles and other firmware remain
-unverified. Horizontal left/right is from an observer facing the AC.
+3=center label. The owner subsequently confirmed the left-to-right order
+2, 3, 1, 4, 5 on this unit. Exact angles and other firmware remain unverified. Horizontal left/right is from an observer facing the AC.
 
 ## UI and command dependencies
 

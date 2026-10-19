@@ -35,7 +35,7 @@ Local synthetic captures and geometry findings are saved under `artifacts/quiet-
 
 Physical-phone feel, TalkBack/switch-access announcements and focus retention across repository-driven view rebuilds still need hands-on review. Animation frame timing and reduced-motion behavior need a recording-based device pass. Broader API/OEM, rotation/process recreation and real readback/error transitions are not certified by this emulator run.
 
-Horizontal preset geometry is uncalibrated. The scene uses the approved illustrative layout but does not establish the physical ordering of codes 2 and 3, vane angles or fixedness of previously unverified positions. The reviewed model adapter and position descriptions remain authoritative. Cloud readback is not physical confirmation.
+Horizontal preset geometry is uncalibrated. The owner subsequently confirmed the left-to-right order 2, 3, 1, 4, 5; the native scene and current HTML reference now use that order. Vane angles and fixedness of previously unverified positions remain unverified. The reviewed model adapter and position descriptions remain authoritative. Cloud readback is not physical confirmation.
 
 ## Scroll and refresh follow-up
 

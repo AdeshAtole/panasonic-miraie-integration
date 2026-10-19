@@ -44,7 +44,7 @@ Left/right means **the observer's left/right while facing the AC**.
 |---|---|---|
 | 0 | Accepted and matched | Continuous horizontal oscillation |
 | 1 | Accepted and matched, including retest from 2 | Appeared centered / straight ahead; exact angle/fixedness not separately established |
-| 2 | Accepted and matched | Observed left-facing; relative ordering versus 3 is unverified |
+| 2 | Accepted and matched | Farther left than 3; leftmost observed preset, per later owner clarification |
 | 3 | Accepted and matched, including direct comparison from 1 | Moved slightly left from 1; earlier center label withdrawn |
 | 4 | Accepted and matched | Moved observer-right from 3 |
 | 5 | Accepted and matched; later status still 5 | Moved farther observer-right from 4 and stayed fixed; rightmost tested code |
@@ -53,8 +53,11 @@ Left/right means **the observer's left/right while facing the AC**.
 centered, an authorized 2→1 retest again looked centered, and the direct 1→3
 comparison moved slightly left. The current mapping therefore uses 1 as
 owner-observed apparent center and 3 as slightly left of 1. Code 2 was separately
-observed left-facing; its relative order versus 3 remains unknown. Neither 2 nor
-3 should be called leftmost, and 5 should not be called a universal physical
+observed left-facing. Later on 19 October 2026, the owner explicitly confirmed
+that the two left positions should be swapped in the controller: the left-to-right
+order is **2, 3, 1, 4, 5**. Code 2 is the far-left observed preset and code 3 is
+inner-left. This clarification is owner-reported evidence, not a new automated
+actuation/readback session. Neither endpoint should be called a universal physical
 end stop. Prior observations never automatically confirm a new command.
 
 ## Model binding and payloads

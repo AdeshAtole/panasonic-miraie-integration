@@ -15,7 +15,7 @@ final class AirflowSceneView extends View {
     final Integer vertical,horizontal;final List<Integer> vs,hs;final boolean vAllowed,hAllowed;final Commit commit;
     final RectF photoBounds=new RectF();
     final Paint paint=new Paint(Paint.ANTI_ALIAS_FLAG);final Path path=new Path();final Bitmap photo;
-    final int[] hOrder={3,2,1,4,5};Integer dv,dh;boolean dragging;int pointer=-1;float startX,startY;final Runnable settle=this::finish;
+    final int[] hOrder={2,3,1,4,5};Integer dv,dh;boolean dragging;int pointer=-1;float startX,startY;final Runnable settle=this::finish;
     AirflowSceneView(Context c,Integer v,Integer h,List<Integer> vs,List<Integer> hs,boolean vAllowed,boolean hAllowed,Commit commit){super(c);vertical=v;horizontal=h;this.vs=vs;this.hs=hs;this.vAllowed=vAllowed;this.hAllowed=hAllowed;this.commit=commit;photo=BitmapFactory.decodeResource(getResources(),R.drawable.ac_scene);setFocusable(true);setImportantForAccessibility(IMPORTANT_FOR_ACCESSIBILITY_YES);describe();}
     float d(float x){return x*getResources().getDisplayMetrics().density;}int color(int id){return getContext().getColor(id);}boolean canV(){return vAllowed&&vertical!=null&&vertical!=0&&!vs.isEmpty();}boolean canH(){return hAllowed&&horizontal!=null&&horizontal!=0&&!hs.isEmpty();}
     @Override protected void onMeasure(int w,int h){setMeasuredDimension(MeasureSpec.getSize(w),Math.round(d(300)));}

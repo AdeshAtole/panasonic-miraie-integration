@@ -30,7 +30,7 @@ The swing tests exercise:
   or invalid selections cannot apply, pending mode/request states disable Set,
   and unknown/missing readings remain unavailable.
 - Corrected labels and observer perspective. Horizontal 3 is not labeled
-  center; code 2 is not labeled leftmost. Position meanings remain scoped.
+  center; code 2 is now labeled leftmost observed after the owner’s later clarification. Position meanings remain scoped.
 
 Run from this directory with the documented JDK/SDK:
 
@@ -70,8 +70,8 @@ readback is reported confirmation. Historical owner descriptions in the sheet
 are context, never new physical confirmation. Code 0 oscillates on both axes.
 Vertical 5 is the lowest tested fixed code. Horizontal left/right is while
 facing the AC: 1 appeared centered; 2 was left-facing; 3 moved slightly left
-from 1; 4 moved right from 3; 5 moved farther right and stayed fixed. Ordering
-of 2 versus 3, exact angles, fixedness at 1/2 and other firmware remain unknown.
+from 1; 4 moved right from 3; 5 moved farther right and stayed fixed. The owner later confirmed the left-to-right order 2, 3, 1, 4, 5. Exact angles,
+fixedness at 1/2 and other firmware remain unknown.
 
 ## Quiet Control phone review — 19 October 2026
 
@@ -129,3 +129,5 @@ adb -s <emulator-serial> shell am instrument -w -e suite scroll in.openmiraie.an
 ```
 
 The complete audit also runs these regressions. Pending-refresh screenshots are recorded alongside layout captures.
+
+Horizontal order regression: native instrumentation follows center → inner left (3) → far left (2), checks the left end stop, then follows 3 → 1 → 4 → 5. Drag hit mapping is checked at the two left preset locations. Run with `-e suite airflow` for the focused offline check.
