@@ -29,7 +29,7 @@ APK: `app/build/outputs/apk/debug/app-debug.apk` (ignored). Reports: `app/build/
 ## Implemented flows
 
 - Email/mobile sign-in, transient password, show/hide, autofill, inline validation, discovery across all homes/spaces, automatic selection of one supported AC, and a cancellable picker for multiple ACs. Unsupported categories/partner transports remain visible but cannot be controlled. Password reset is handed back to MirAIe.
-- Quiet Control controller with native 270-degree rotary temperature input, capability-derived increments and one submission on release. Keyboard/accessibility adjustments coalesce for 450ms; cancellation, focus loss, navigation and backgrounding discard unsent edits. Pending temperature is separate from observed state and survives activity recreation through the repository. Direct power/display buttons remain independent. Mode applies immediately on tap; fan/airflow/capacity choices retain explicit Set; Eco/Powerful coupled-effect confirmations remain. Control, Readings and Settings form the bottom navigation; Energy and Saved Readings have separate destinations.
+- Quiet Control controller with native 270-degree rotary temperature input, capability-derived increments and one submission on release. Keyboard/accessibility adjustments coalesce for 450ms; cancellation, focus loss, navigation and backgrounding discard unsent edits. Pending temperature is separate from observed state and survives activity recreation through the repository. Direct power/display buttons remain independent. Mode applies immediately on tap. Fan expands inline with Auto and a release-to-apply speed slider. Illustrated airflow supports fixed-axis drag-to-snap while the other axis swings. Display/Powerful/Eco are equal-width compact buttons; Converti8 is a filled capacity surface, collapsed when Off. Fan, aiming and capacity submit once on release; Eco/Powerful coupled-effect confirmations remain. Control, Readings and Settings form the bottom navigation; Energy and Saved Readings have separate destinations.
 - Capability-derived wire keys, ranges and choices. AC builders bind reviewed capability names to registry indexes. Dry never forces Low; Fan hides target; power/cleaning/mode gates apply. No invented timer, cleaning or sensor controls. Swing follows the separately reviewed model-scoped adapter below.
 - Independent vertical/horizontal swing sheets for direct model 140013, advertised integer codes only, separate observed/draft values and explicit per-axis Set. Descriptions preserve the corrected owner observations, facing-the-AC perspective and unverified angles; they never imply a new physical confirmation.
 - Send-once mutations, five bounded readback waits (swing waits three seconds before the first read, then 1.2/1.8/2.4/3 seconds), no network retry of a mutation, step-by-step coupled verification and partial/unconfirmed messages. A fresh read before writing rechecks guards. If mode or coupled state changed since confirmation, the action stops for review.
@@ -55,14 +55,14 @@ attribute; integer lists/ranges/steps may narrow the reviewed 0–5 codes. Missi
 conflicting, duplicate, unit-bearing or unsupported metadata disables writes.
 Online state, power On, cleaning explicitly Off, a known current code and no
 pending mode/request are required. Partner/child routes and other models cannot
-write swing. Each axis is applied alone through the existing native repository;
+write swing. Each axis is sent independently through the existing native repository. A two-axis gesture validates both targets first, then verifies each sequentially, stopping on partial/unconfirmed outcomes;
 there is no MCP runtime dependency or reconnect command queue.
 
 Use the [corrected swing reference](../../../skills/panasonic-miraie/references/swing.md)
 for evidence: both axes code 0 oscillates; vertical 5 was the lowest tested fixed
 position. Horizontal 1 appeared centered; 3 moved slightly left of 1. Left/right
-is while facing the AC. Code 2 versus 3 ordering, fixedness at 1/2, calibrated
-angles and other firmware remain unknown. A successful app command means a
+is while facing the AC. The owner later confirmed the left-to-right order 2, 3, 1, 4, 5. Fixedness at 1/2,
+calibrated angles and other firmware remain unknown. A successful app command means a
 matching cloud code, with physical movement explicitly unconfirmed.
 
 See [Android testing and support status](testing.md) for synthetic coverage,
@@ -77,3 +77,11 @@ See [testing.md](testing.md#offline-emulator-layout-review) for installation,
 layout-bounds inspection and the platform-only geometry audit. Review fixtures
 and instrumentation do not ship in debug/release. The production app remains
 account-backed; never use a real phone/account for synthetic layout automation.
+
+## Inline controller refinement — 19 October 2026
+
+The approved [airflow scene](../../../design/openmiraie/quiet-control/fan-explorations/airflow-scene.html) is implemented natively. See [implementation and emulator evidence](../../../design/openmiraie/quiet-control/native-inline-review.md). The photograph and animated stream are illustrative, not a camera feed or measured vane angles. Exact-position sheets retain reviewed model descriptions. Stopping either swing axis applies its last known supported fixed preset directly, without a picker. With no usable history, it selects position 1 when supported, otherwise the first advertised fixed preset. This does not claim to freeze at a measured physical angle. Pending airflow/capacity targets are drawn separately from reported state.
+
+## Scroll stability and pull to refresh
+
+Repository updates preserve each page’s scroll offset after layout, including rapid pending/readback renders. Pull down at the top of Control, Readings or Energy to refresh that page’s data; short, cancelled and horizontal gestures do not refresh. An active request blocks another refresh. The gesture respects child controls that own dragging, and an accessibility Refresh action provides an alternative. Refresh reads data only; it does not resend a setting.

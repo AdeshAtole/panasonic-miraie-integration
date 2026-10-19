@@ -6,7 +6,7 @@ The approved direction is warm white, charcoal and small blue accents, using sto
 
 The user approved [the latest controller](fan-explorations/airflow-scene.html) for native implementation. It supersedes the fan, airflow and utility controls in the older full-app preview: expanding Fan with Auto and a release-to-apply speed slider; illustrated airflow with independent swing buttons and fixed-axis aiming; equal-width Display/Powerful/Eco buttons; and Converti8 as a filled capacity control that collapses when Off. Preserve native capability restrictions, reported/draft/pending separation and coupled-effect confirmations. Horizontal ordering in the scene is illustrative and must not replace the reviewed model adapter.
 
-[Controller interaction notes](fan-explorations/README.md) and [reference hashes](reference-manifest.json) preserve the accepted state. This checkpoint precedes native implementation of these refinements.
+[Controller interaction notes](fan-explorations/README.md) and [reference hashes](reference-manifest.json) preserve the accepted state. The checkpoint preserves the approved input; [native implementation and emulator verification](native-inline-review.md) now cover these refinements.
 
 ## Review files
 
@@ -57,8 +57,8 @@ Keep observed, selected and pending values separate. During drag, show only the 
 ## Other control contracts
 
 - Power and display are independent direct toggles. Preserve their reported state while pending. Unknown display state disables its toggle. Power off still allows display when the actual capability permits it.
-- Mode applies immediately on tap; fan and each airflow axis retain explicit Set within their sheets. Fan mode has no target temperature. Dry manages fan. Cleaning blocks temperature, fan, airflow and Powerful as specified by the native guards. Missing/ambiguous capabilities and offline state fail closed.
-- Airflow uses the reviewed model 140013 mapping only. Codes are positions, never degrees. Horizontal directions are while facing the AC. Position 1 appeared centered; 2 was left-facing; 3 was slightly left of 1; 4 was right of 3; 5 was the rightmost tested fixed position. Do not infer ordering between 2 and 3 or fixedness for 1/2. Vertical 5 was the lowest tested fixed position. Historical observations do not confirm a new physical movement.
+- Mode applies immediately on tap. Inline fan, fixed-axis airflow aiming and capacity apply once on release; exact-position fallback sheets retain per-axis Set. Fan mode has no target temperature. Dry manages fan. Cleaning blocks temperature, fan, airflow and Powerful as specified by the native guards. Missing/ambiguous capabilities and offline state fail closed.
+- Airflow uses the reviewed model 140013 mapping only. Codes are positions, never degrees. Horizontal directions are while facing the AC. Position 1 appeared centered; 2 was left-facing; 3 was slightly left of 1; 4 was right of 3; 5 was the rightmost tested fixed position. The owner later confirmed the left-to-right order 2, 3, 1, 4, 5. Fixedness for 1/2 remains unverified. Vertical 5 was the lowest tested fixed position. Historical observations do not confirm a new physical movement.
 - Eco requires Cool. Enabling Eco verifies Eco first, then the 26 °C target. Disabling does not restore the prior target.
 - Powerful from fixed capacity verifies Normal capacity first. Fixed capacity with Powerful verifies Powerful off first. Partial completion retains the first confirmed effect. The example capacity choices are Normal, 40/50/60/70/80/90/100/110%; filter against capabilities. JetStream capacity changes remain unavailable until separately verified cancellation via MirAIe.
 - Room switching clears the previous device presentation before loading the newly selected device. Device-specific state stays separate. Never show a previous room's report under the new name. Do not carry an unsent gesture across rooms.
@@ -85,20 +85,19 @@ Use this directory as the source of truth for implementation, before older proto
 
 ## Controller refinement — 19 October 2026
 
-The latest user feedback replaces the textual mode arrow with the stock Lucide chevron, removes mode confirmation/Set, removes idle and drag instructional copy, and moves room temperature above the ring. Pending temperature still shows Applying and the prior cloud-reported target. Native code and the connected HTML preview reflect this decision; saved reference PNGs predate it. Fan/airflow/capacity behavior is unchanged.
+The latest user feedback replaces the textual mode arrow with the stock Lucide chevron, removes mode confirmation/Set, removes idle and drag instructional copy, and moves room temperature above the ring. Pending temperature still shows Applying and the prior cloud-reported target. Native code and the connected HTML preview reflect this decision; saved reference PNGs predate it. The later approved inline refinement below supersedes the earlier fan/airflow/capacity sheets.
 
 Native margin/alignment refinements and emulator evidence: [19 October layout review](emulator-review.md). These spacing fixes supersede the older reference PNG geometry.
 
 Fan speed alternatives are available in the [interactive HTML exploration](fan-explorations/index.html).
-These compare immediate selection patterns for review; the native fan's existing
-Set behavior has not changed. See [exploration notes](fan-explorations/README.md).
+These preserve the alternatives considered before the approved inline implementation. See [exploration notes](fan-explorations/README.md).
 
 
 ### Expanding Fan + Airflow design review
 
 The selected Fan interaction is now extended to Airflow in
 [the combined HTML prototype](fan-explorations/expanding-controls.html).
-This is awaiting user confirmation before Android implementation. Interaction,
+The later airflow scene was approved and implemented natively. Interaction,
 readback and capability details are in
 [the exploration notes](fan-explorations/README.md#selected-direction-combined-expanding-controls-19-october-2026).
 
@@ -106,6 +105,5 @@ readback and capability details are in
 ### Photo and draggable airflow concept
 
 [The photo-based scene](fan-explorations/airflow-scene.html) explores a two-axis
-drag-to-snap interaction with independent swing switches. It is an alternative
-awaiting user approval, not an implementation specification or measured airflow
+drag-to-snap interaction with independent swing switches. It is the approved interaction reference and has been implemented natively; it is not a measured airflow
 view. See [its interaction and limitation notes](fan-explorations/README.md#new-concept-photo--two-dimensional-airflow-scene-awaiting-approval).

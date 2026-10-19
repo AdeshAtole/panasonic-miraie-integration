@@ -12,7 +12,7 @@ Updated 19 October 2026. The user approved the connected design, asked to preser
 - [Native Android project and build instructions](../../../apps/openmiraie/android/README.md)
 - [Durable agent instructions](../../../docs/agent-instructions.md)
 
-The root AGENTS.md is a read-only, regenerated project-mirror file. The durable guide and design index point here; the root entry could not be updated. These artifacts are saved in the working repository, not committed or published. The existing native app and other work were already uncommitted; do not stage unrelated work when continuing.
+The root AGENTS.md is a read-only, regenerated project-mirror file. The durable guide and design index point here; the root entry could not be updated. The approved design and prior native baseline were committed and pushed in checkpoint `70faeaa`. The inline refinement is documented separately below; do not stage unrelated working files.
 
 ## Implemented in the first pass
 
@@ -23,7 +23,7 @@ The root AGENTS.md is a read-only, regenerated project-mirror file. The durable 
 - Native 270-degree relative dial, no touch-down jump, capability-derived bounds/increments, end stops and no inertia. One temperature submission on release; no temperature Set button or ordinary confirmation.
 - Keyboard arrows and Android adjustable-range accessibility actions coalesce for 450ms. Cancellation, extra pointers, focus loss, navigation, backgrounding and detach discard unsent edits. Unlike the web preview's blur-commit, native focus loss deliberately cancels to avoid an interrupted edit issuing a command.
 - Application-scoped pending target and prior reported target remain separate from observed state. Existing send-once, bounded readback, coupling, model-specific airflow and offline/cleaning restrictions remain in the protocol layer.
-- Mode applies immediately on tap; fan/airflow/capacity keep explicit Set in sheets; Eco/Powerful/capacity confirmations are preserved. Sheets enter over 240ms only when Android animators are enabled; haptics use system-respecting detents.
+- Mode applies immediately on tap; the later inline refinement replaces the main fan/airflow/capacity Set interactions (exact-position fallback sheets remain); Eco/Powerful/capacity confirmations are preserved. Sheets enter over 240ms only when Android animators are enabled; haptics use system-respecting detents.
 
 The native app retains Java Views/RemoteViews and has no web runtime. It follows Material interaction conventions but does not depend on the Material 3 component library. The rotary dial is custom; the icons are stock.
 
@@ -43,3 +43,7 @@ The redesigned app has now been installed and reviewed on the connected Android 
 6. Editable Figma screen assembly remains blocked by the previously reported Starter MCP quota. The new Figma file has foundations and a blank main frame only; the local preview/handoff is authoritative.
 
 Installation, live actuation, publication and messaging another implementation agent remain separate actions. Do not resume the superseded lilac visual design, add a temperature Set button, queue commands, or replace model-specific restrictions with preview fixtures.
+
+## Approved inline refinement implemented — 19 October 2026
+
+Expanding fan/airflow, draggable illustrated airflow with independent swinging axes, compact equal-width utility buttons, and filled/collapsing Converti8 now run in the native app. [The implementation report](native-inline-review.md) records 85 passing JVM tests, the emulator interaction/layout checks, adaptive behavior, pending state and remaining device/accessibility limitations. This supersedes the first-pass sheet interaction description above.

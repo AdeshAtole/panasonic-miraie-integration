@@ -30,7 +30,7 @@ The swing tests exercise:
   or invalid selections cannot apply, pending mode/request states disable Set,
   and unknown/missing readings remain unavailable.
 - Corrected labels and observer perspective. Horizontal 3 is not labeled
-  center; code 2 is not labeled leftmost. Position meanings remain scoped.
+  center; code 2 is now labeled leftmost observed after the owner’s later clarification. Position meanings remain scoped.
 
 Run from this directory with the documented JDK/SDK:
 
@@ -70,8 +70,8 @@ readback is reported confirmation. Historical owner descriptions in the sheet
 are context, never new physical confirmation. Code 0 oscillates on both axes.
 Vertical 5 is the lowest tested fixed code. Horizontal left/right is while
 facing the AC: 1 appeared centered; 2 was left-facing; 3 moved slightly left
-from 1; 4 moved right from 3; 5 moved farther right and stayed fixed. Ordering
-of 2 versus 3, exact angles, fixedness at 1/2 and other firmware remain unknown.
+from 1; 4 moved right from 3; 5 moved farther right and stayed fixed. The owner later confirmed the left-to-right order 2, 3, 1, 4, 5. Exact angles,
+fixedness at 1/2 and other firmware remain unknown.
 
 ## Quiet Control phone review — 19 October 2026
 
@@ -111,3 +111,25 @@ run it directly as above, not through a JUnit/AndroidX connected-test reporter.
 
 See the [layout review](../../../design/openmiraie/quiet-control/emulator-review.md)
 for inspected configurations, corrected defects and remaining acceptance gaps.
+
+## Inline controller — 19 October 2026
+
+Debug/review builds, all **85 JVM tests**, and lint pass (zero errors; four existing tooling/localization warnings). Fourteen new tests cover discrete selection, no-op/cancelled commits, supported fixed-axis targets, swing exclusion, stale state, offline restrictions and validating both targets before any send.
+
+The emulator instrumentation also exercises Auto-to-manual fan selection, aiming while the other axis swings, restoration of a known fixed preset, cancelled airflow drag, blocking manual aiming when both axes swing, and Converti8 Off/expanded/filled transitions including Powerful coupling confirmations. It audits native layout and 48 dp touch targets. See [the scoped results](../../../design/openmiraie/quiet-control/native-inline-review.md). No live appliance command is included in this pass.
+
+## Scroll and refresh regression — 19 October 2026
+
+The offline emulator reproduced a 100 dp scrolled position resetting to zero during three immediate screen rebuilds. The fix restores the requested offset after layout and keeps that offset available during intervening rebuilds. Native instrumentation now checks position through successive renders, a pending Display change and its completion. Pull-to-refresh checks cover threshold, horizontal drag, cancellation, starting below the top, busy-state blocking, one refresh per completed gesture and the accessibility action. The review repository delays refresh and counts calls so these assertions do not use the network.
+
+Run the focused regression after installing the review/test APKs:
+
+```sh
+adb -s <emulator-serial> shell am instrument -w -e suite scroll in.openmiraie.android.review.test/in.openmiraie.android.LayoutReviewTest
+```
+
+The complete audit also runs these regressions. Pending-refresh screenshots are recorded alongside layout captures.
+
+Horizontal order regression: native instrumentation follows center → inner left (3) → far left (2), checks the left end stop, then follows 3 → 1 → 4 → 5. Drag hit mapping is checked at the two left preset locations. Run with `-e suite airflow` for the focused offline check.
+
+Swing-off regression: both axes are tested starting already in oscillation with no remembered fixed preset. One tap submits preset 1 with no modal and leaves the opposite axis unchanged. Remembered preset 5 is also restored directly. Unit coverage verifies restricted advertised choices and the absence of any fixed choice.

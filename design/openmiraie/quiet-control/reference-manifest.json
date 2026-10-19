@@ -7,11 +7,12 @@
     "app-extension.js": "9d035eebf1d34c6b139e7569ebca3a0e77f6f82523745e013bbd938c4b24b1dc",
     "reference/controller.png": "20980908ce938fc5910d04f129947d65eec86b3bf6d11aafdbd3d7e84df1315c",
     "reference/app-overview.png": "8cc9fade4665453e106f6ad060c3edf7a44946e06de541602bb824b9a0f9b8eb",
-    "fan-explorations/airflow-scene.html": "8504a1d435b4b2dda588dc2c01550df01c36f6cdb53264cf6234611a0cace3d2",
+    "fan-explorations/airflow-scene.html": "c7146ffd9954156ecb480792726641582b673d8d4499f6d8b1a25873379655fb",
     "fan-explorations/ac-scene-product.png": "321757a71b6a224fda96132c58e3503c5622fd25c676413506539b1d591a6277",
     "fan-explorations/converti8-collapsed-preview.png": "6efe6a4aad31fe42061e2a002ed24602ce8a7d565f4aa2635ac347bd70bde3e8"
   },
   "refinement": "2026-10-19: immediate mode selection, clean dial, room reading above ring; reference PNGs show preceding design",
   "controller_refinement_approved": "2026-10-19",
-  "controller_authority": "fan-explorations/airflow-scene.html"
+  "controller_authority": "fan-explorations/airflow-scene.html",
+  "horizontal_order_correction": "2026-10-19: owner confirmed left-to-right order 2, 3, 1, 4, 5"
 }
