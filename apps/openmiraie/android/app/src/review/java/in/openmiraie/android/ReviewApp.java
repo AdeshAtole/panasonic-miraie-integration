@@ -43,8 +43,15 @@ final class ReviewRepository extends Repository {
         final List<Map.Entry<String,Object>> plan;
         try{plan=CommandRunner.plan(profile,observed,name,value);}catch(Exception e){notice=e.getMessage();publish();return;}
         if(name.equals("ACTemperature")){pendingTemperature=MainActivity.parse(String.valueOf(value));previousTemperature=MainActivity.parse(profile.value(observed,name));}
-        busy=true;notice="Applying sample setting…";publish();
-        main.postDelayed(()->{try{for(Map.Entry<String,Object> step:plan){Profile.Command c=profile.command(step.getKey(),step.getValue(),observed);observed.put(c.key(),c.value());}notice="Sample setting updated.";}catch(Exception e){notice=e.getMessage();}finally{busy=false;pendingTemperature=previousTemperature=null;readAt=System.currentTimeMillis();publish();}},900);
+        pendingControl=name;requestedControlValue=String.valueOf(value);busy=true;notice="Applying sample setting…";publish();
+        main.postDelayed(()->{try{for(Map.Entry<String,Object> step:plan){Profile.Command c=profile.command(step.getKey(),step.getValue(),observed);observed.put(c.key(),c.value());}notice="";}catch(Exception e){notice=e.getMessage();}finally{busy=false;pendingControl=requestedControlValue="";pendingTemperature=previousTemperature=null;readAt=System.currentTimeMillis();publish();}},900);
+    }
+    @Override synchronized void commandAirflow(Integer vertical,Integer horizontal,Integer expectedV,Integer expectedH){
+        if(busy)return;
+        final List<Map.Entry<String,Object>> steps;
+        try{steps=AirflowPlan.plan(profile,observed,vertical,horizontal,expectedV,expectedH);}catch(Exception e){notice=e.getMessage();publish();return;}
+        pendingAirflowV=vertical;pendingAirflowH=horizontal;busy=true;notice="Applying sample airflow…";publish();
+        main.postDelayed(()->{try{for(Map.Entry<String,Object> step:steps){Profile.Command c=profile.command(step.getKey(),step.getValue(),observed);observed.put(c.key(),c.value());}notice="";}catch(Exception e){notice=e.getMessage();}finally{busy=false;pendingAirflowV=pendingAirflowH=null;publish();}},900);
     }
     @Override void loadEnergy(){try{energy=new JSONArray();for(int i=6;i>=0;i--)energy.put(new JSONObject().put("day",java.time.LocalDate.now().minusDays(i).format(java.time.format.DateTimeFormatter.ofPattern("ddMMyyyy"))).put("power",String.format(Locale.ROOT,"%.2f",1.3+i*.24)));energyAt=System.currentTimeMillis();publish();}catch(JSONException e){throw new IllegalStateException(e);}}
     @Override void diagnostic(){notice="Sample diagnostic; no network request.";publish();}

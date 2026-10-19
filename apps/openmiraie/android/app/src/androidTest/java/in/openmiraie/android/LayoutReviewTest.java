@@ -26,7 +26,7 @@ public final class LayoutReviewTest extends Instrumentation {
         assertEquals(android.content.pm.PackageManager.PERMISSION_DENIED,getInstrumentation().getTargetContext().checkSelfPermission("android.permission.INTERNET"));
         activity=(MainActivity)startActivitySync(new Intent().setClassName("in.openmiraie.android.review","in.openmiraie.android.MainActivity").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK));
         geometry.append(activity.getResources().getConfiguration().toString()).append("\n");
-        capture("controller");bottom("controller");ui(()->activity.scroll.scrollTo(0,0));
+        capture("controller");bottom("controller");controllerInteractions();ui(()->activity.scroll.scrollTo(0,0));
         sheet("mode",()->activity.modeChoice());
         sheet("fan",()->activity.choice("Fan speed","ACFanSpeed",activity.repo.profile.choices("ACFanSpeed")));
         sheet("airflow",()->activity.swingOverview());
@@ -48,6 +48,29 @@ public final class LayoutReviewTest extends Instrumentation {
         try(FileWriter writer=new FileWriter(new File(out,"findings.txt"))){for(String f:findings)writer.write(f+"\n");}
         ui(()->{activity.repo.load();activity.navigate("controller");});
         assertTrue(String.join("\n",findings),findings.isEmpty());
+    }
+    private void settle()throws Exception{Thread.sleep(1600);getInstrumentation().waitForIdleSync();}
+    private void gesture(View view,float fromX,float fromY,float toX,float toY,boolean cancel)throws Exception{ui(()->{long t=android.os.SystemClock.uptimeMillis();for(int i=0;i<3;i++){int action=i==0?MotionEvent.ACTION_DOWN:i==1?MotionEvent.ACTION_MOVE:cancel?MotionEvent.ACTION_CANCEL:MotionEvent.ACTION_UP;MotionEvent e=MotionEvent.obtain(t,t+i*50,action,i==0?fromX:toX,i==0?fromY:toY,0);view.dispatchTouchEvent(e);e.recycle();}});}
+    private void controllerInteractions()throws Exception{
+        ui(()->{activity.openControl="fan";activity.render();});bottom("inline-fan");
+        ui(()->{ReleaseSeekBar slider=activity.controlsUI.fan;slider.requestFocus();slider.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_DOWN,KeyEvent.KEYCODE_DPAD_RIGHT));slider.dispatchKeyEvent(new KeyEvent(KeyEvent.ACTION_UP,KeyEvent.KEYCODE_DPAD_RIGHT));});settle();assertEquals("low",activity.reported("ACFanSpeed"));
+        ui(()->{activity.openControl="airflow";activity.render();});bottom("inline-airflow");
+        ui(()->{activity.repo.busy=true;activity.repo.pendingAirflowV=5;activity.repo.pendingAirflowH=4;activity.render();});bottom("airflow-pending");assertEquals("1",activity.reported(Swing.VERTICAL));assertEquals("1",activity.reported(Swing.HORIZONTAL));ui(()->{activity.repo.busy=false;activity.repo.pendingAirflowV=activity.repo.pendingAirflowH=null;activity.render();});
+        ui(()->activity.body.findViewWithTag("swing-"+Swing.VERTICAL).performClick());settle();assertEquals("0",activity.reported(Swing.VERTICAL));
+        ui(()->activity.controlsUI.airflow.adjust(false,1));settle();assertEquals("0",activity.reported(Swing.VERTICAL));assertEquals("4",activity.reported(Swing.HORIZONTAL));capture("vertical-swing-horizontal-aim");
+        ui(()->activity.body.findViewWithTag("swing-"+Swing.VERTICAL).performClick());settle();assertEquals("1",activity.reported(Swing.VERTICAL));
+        ui(()->activity.body.findViewWithTag("swing-"+Swing.HORIZONTAL).performClick());settle();
+        ui(()->activity.controlsUI.airflow.adjust(true,1));settle();assertEquals("2",activity.reported(Swing.VERTICAL));assertEquals("0",activity.reported(Swing.HORIZONTAL));
+        AirflowSceneView scene=activity.controlsUI.airflow;gesture(scene,scene.getWidth()/2f,scene.getHeight()*.5f,scene.getWidth()*.9f,scene.getHeight()*.85f,true);settle();assertEquals("2",activity.reported(Swing.VERTICAL));
+        ui(()->activity.body.findViewWithTag("swing-"+Swing.VERTICAL).performClick());settle();ui(()->assertTrue("Both swing disables aiming",!activity.controlsUI.airflow.adjust(true,1)&&!activity.controlsUI.airflow.adjust(false,1)));
+        ui(()->{activity.openControl="";activity.render();});bottom("converti8-off");assertTrue("Capacity starts collapsed",activity.controlsUI.capacity.collapsed());
+        ui(()->activity.controlsUI.capacity.performClick());bottom("converti8-options");
+        ui(()->{activity.repo.busy=true;activity.repo.pendingControl="Convertible";activity.repo.requestedControlValue="80";activity.render();});bottom("converti8-pending");assertEquals("0",activity.reported("Convertible"));assertTrue("Pending capacity stays expanded",!activity.controlsUI.capacity.collapsed());ui(()->{activity.repo.busy=false;activity.repo.pendingControl=activity.repo.requestedControlValue="";activity.render();});
+        CapacityControlView capacity=activity.controlsUI.capacity;gesture(capacity,capacity.getWidth()*.1f,capacity.getHeight()/2f,capacity.getWidth()*.63f,capacity.getHeight()/2f,false);settle();assertEquals("80",activity.reported("Convertible"));bottom("converti8-filled");
+        ui(()->activity.controlsUI.utility("PowerfulMode"));assertTrue("Powerful coupling dialog",activity.modal.isShowing());capture("powerful-inline-confirm");ui(()->activity.modal.getButton(android.app.AlertDialog.BUTTON_POSITIVE).performClick());settle();assertEquals("0",activity.reported("Convertible"));assertEquals("on",activity.reported("PowerfulMode"));assertTrue("Off collapses after coupling",activity.controlsUI.capacity.collapsed());
+        ui(()->{activity.controlsUI.capacity.performClick();activity.controlsUI.capacity.adjust(5);});settle();assertTrue("Capacity coupling dialog",activity.modal.isShowing());ui(()->activity.modal.getButton(android.app.AlertDialog.BUTTON_POSITIVE).performClick());settle();assertEquals("off",activity.reported("PowerfulMode"));assertEquals("80",activity.reported("Convertible"));
+        ui(()->activity.controlsUI.capacity.adjust(-5));settle();assertEquals("0",activity.reported("Convertible"));assertTrue("Off collapses",activity.controlsUI.capacity.collapsed());
+        ui(()->{activity.repo.load();activity.openControl="";activity.render();});
     }
     interface Action{void run()throws Exception;}
     private void ui(Action action)throws Exception {final Throwable[] error={null};getInstrumentation().runOnMainSync(()->{try{action.run();}catch(Throwable e){error[0]=e;}});getInstrumentation().waitForIdleSync();if(error[0]!=null)throw new RuntimeException(error[0]);}

@@ -111,3 +111,9 @@ run it directly as above, not through a JUnit/AndroidX connected-test reporter.
 
 See the [layout review](../../../design/openmiraie/quiet-control/emulator-review.md)
 for inspected configurations, corrected defects and remaining acceptance gaps.
+
+## Inline controller — 19 October 2026
+
+Debug/review builds, all **85 JVM tests**, and lint pass (zero errors; four existing tooling/localization warnings). Fourteen new tests cover discrete selection, no-op/cancelled commits, supported fixed-axis targets, swing exclusion, stale state, offline restrictions and validating both targets before any send.
+
+The emulator instrumentation also exercises Auto-to-manual fan selection, aiming while the other axis swings, restoration of a known fixed preset, cancelled airflow drag, blocking manual aiming when both axes swing, and Converti8 Off/expanded/filled transitions including Powerful coupling confirmations. It audits native layout and 48 dp touch targets. See [the scoped results](../../../design/openmiraie/quiet-control/native-inline-review.md). No live appliance command is included in this pass.
