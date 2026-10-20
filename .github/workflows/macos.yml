@@ -1,0 +1,36 @@
+name: macOS menu bar app
+on:
+  push:
+    paths:
+      - 'apps/openmiraie/macos/**'
+      - 'skills/panasonic-miraie/**'
+      - 'projects.json'
+      - '.github/workflows/macos.yml'
+  pull_request:
+    paths:
+      - 'apps/openmiraie/macos/**'
+      - 'skills/panasonic-miraie/**'
+      - 'projects.json'
+      - '.github/workflows/macos.yml'
+permissions:
+  contents: read
+jobs:
+  build-test:
+    runs-on: macos-15
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build native app
+        run: python3 scripts/project.py build macos
+      - name: Offline native tests
+        run: python3 scripts/project.py test macos
+      - name: Preserve test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-test-results
+          path: apps/openmiraie/macos/build/Tests/Logs/Test/*.xcresult
+          if-no-files-found: ignore

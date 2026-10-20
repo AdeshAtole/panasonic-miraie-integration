@@ -1,6 +1,6 @@
 # Panasonic MirAIe integration
 
-A monorepo for an unofficial, portable Panasonic MirAIe integration skill and native apps built around verified protocol behavior. The existing Room AC Android implementation is a **proof of concept**. The new **openMirAIe** native Android app is being designed; native iOS and macOS apps are planned.
+A monorepo for an unofficial, portable Panasonic MirAIe integration skill and native apps built around verified protocol behavior. The existing Room AC Android implementation is a **proof of concept**. The new **openMirAIe** native macOS menu bar app has a buildable first iteration; native Android is being designed and iOS is planned.
 
 The protocol snapshot comes from MirAIe India Android 01.4.32 and live testing one AC model, CS-CU-NU18BKY5WX. This project is not affiliated with or endorsed by Panasonic. Other device families are research leads rather than tested integrations.
 
@@ -35,7 +35,7 @@ python3 scripts/project.py build stay-awake
 
 `check` needs Node.js 22+ for prototype checks, but no Android SDK, Xcode, account or phone. PoC/helper builds need a JDK and Android SDK; see [development setup](docs/development.md). Build commands never install on a phone, log in, download dependencies implicitly or deploy.
 
-Production target IDs are `android`, `ios` and `macos`. They currently report **not buildable yet**, with the appropriate project setup instructions. They never fall back to building the PoC. Platform build configuration is owned by the eventual Gradle/Xcode projects, not inherited from PoC pins.
+Production target `macos` is active: `python3 scripts/project.py build macos` builds the menu bar app and `test macos` runs offline native tests. See the [macOS guide](apps/openmiraie/macos/README.md). Targets `android` and `ios` report **not buildable yet**, with their project setup instructions. They never fall back to building the PoC. Platform build configuration is owned by the eventual Gradle/Xcode projects, not inherited from PoC pins.
 
 ## Design and implementation
 
@@ -45,6 +45,6 @@ The PoC demonstrates capability-driven modes, fan, Eco/Powerful/capacity, indepe
 
 ## Validation and publication
 
-The CI workflow checks repository structure, the portable skill, documentation links, prototype behavior and build orchestration. Native app CI is activated when real native projects exist. Local PoC tests and live device verification are distinct from CI; see [development](docs/development.md) and [evidence/extension guidance](skills/panasonic-miraie/references/evidence-and-extension.md).
+The CI workflow checks repository structure, the portable skill, documentation links, prototype behavior and build orchestration. macOS CI builds the native menu bar app and runs offline tests. Local PoC tests and live device verification are distinct from CI; see [development](docs/development.md) and [evidence/extension guidance](skills/panasonic-miraie/references/evidence-and-extension.md).
 
 Private captures, account/device identifiers, sensor-history exports, synced references, APKs, credentials and signing material stay excluded. `analysis/`, `sources/` and `.stitch/` are local working/reference areas, not public source. Sanitized skill catalogs contain protocol declarations, not account responses. Preserve actual reported state and verify each new model before claiming support.

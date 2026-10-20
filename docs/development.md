@@ -30,7 +30,9 @@ PoC JVM tests need the test-only `com.vaadin.external.google:android-json:0.0.20
 
 ## New native apps
 
-`build android`, `build ios` and `build macos` currently exit2 and explain the missing project. Their folders intentionally contain implementation guidance rather than pretend native scaffolds.
+`macos` is active on macOS 14+. Run `python3 scripts/project.py build macos` and `python3 scripts/project.py test macos`; the project-owned helper builds an ad hoc signed app and runs offline XCTest on this Mac. No simulator or external package is needed. The test host blocks cloud networking and uses an isolated Keychain entry. See the [macOS guide](../apps/openmiraie/macos/README.md).
+
+`build android` and `build ios` still exit2 and explain their missing projects.
 
 When a platform starts:
 
@@ -39,7 +41,7 @@ When a platform starts:
 3. Add platform CI with its actual SDK/Xcode environment. Root repository checks remain cross-platform and independent of native SDK availability.
 4. Keep build outputs in ignored `build/`, `.build/` or DerivedData. Configure release signing/distribution separately; never commit credentials or signing assets.
 
-Android adapter: Gradle wrapper, default debug assemble and local JVM tests. Apple adapters: `xcodebuild`, shared schemes, unsigned development builds. iOS tests require a concrete available simulator destination selected by the project's test/CI configuration; generic build destinations do not mean tests ran. Apple test tasks are intentionally absent until real test targets exist. If Apple apps share a workspace/package, change registry argument arrays/required paths to the actual layout instead of keeping stale assumptions.
+Android adapter: Gradle wrapper, default debug assemble and local JVM tests. Apple adapters: `xcodebuild`, shared schemes, unsigned development builds. iOS tests require a concrete available simulator destination selected by the project's test/CI configuration; generic build destinations do not mean tests ran. macOS has a native offline XCTest target; iOS test tasks remain absent until a real test target exists. If Apple apps share a workspace/package, change registry argument arrays/required paths to the actual layout instead of keeping stale assumptions.
 
 ## Design workflow
 
