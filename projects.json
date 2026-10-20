@@ -83,27 +83,30 @@
     {
       "id": "macos",
       "path": "apps/openmiraie/macos",
-      "status": "planned",
+      "status": "active",
       "toolchain": "xcode",
       "build": [
-        "xcodebuild",
-        "-project",
-        "OpenMirAIe.xcodeproj",
-        "-scheme",
-        "OpenMirAIeMac",
-        "-destination",
-        "platform=macOS",
-        "-derivedDataPath",
-        "build/DerivedData",
-        "CODE_SIGNING_ALLOWED=NO",
+        "{python}",
+        "manage.py",
         "build"
       ],
       "requiredFiles": [
+        "manage.py",
         "OpenMirAIe.xcodeproj/project.pbxproj",
-        "OpenMirAIe.xcodeproj/xcshareddata/xcschemes/OpenMirAIeMac.xcscheme"
+        "OpenMirAIe.xcodeproj/xcshareddata/xcschemes/OpenMirAIeMac.xcscheme",
+        "OpenMirAIeMac/OpenMirAIeMac.entitlements",
+        "CoreTests/ProtocolTests.swift",
+        "CoreTests/MenuBarTests.swift"
       ],
-      "reason": "Native macOS Xcode project and shared scheme will be added when development starts.",
-      "displayName": "openMirAIe"
+      "displayName": "openMirAIe",
+      "test": [
+        "{python}",
+        "manage.py",
+        "test"
+      ],
+      "artifacts": [
+        "build/DerivedData/Build/Products/Debug/OpenMirAIeMac.app"
+      ]
     },
     {
       "id": "miraie-mcp",

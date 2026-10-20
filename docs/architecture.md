@@ -27,6 +27,10 @@ Registry stages are `planned`, `design`, `prototype`, `helper` and `active`. Pla
 
 Android production builds use a Gradle wrapper and project-pinned toolchain. Apple builds use Xcode project/workspace, committed shared schemes and platform-specific destinations. Unsigned development builds, simulator tests, device tests and signed distribution are distinct tasks. Version/release identities and signing keys are platform-specific; do not reuse the PoC package identity or development key for production by default.
 
+## macOS menu bar app
+
+macOS owns an AppKit status item/popover with native SwiftUI controls, a Keychain session store, bounded HTTPS client and reviewed-model command executor. There is no web runtime, MCP dependency or background cloud polling. Each command gets fresh preflight and bounded readback; unsent temperature drafts cancel on dismissal. Sources stay platform-owned pending a deliberate shared-package extraction. Offline tests cover protocol behavior, menu state, temperature input and native light/dark rendering. See the [macOS guide](../apps/openmiraie/macos/README.md) for build and acceptance boundaries.
+
 ## Migration notes
 
 `room-ac/` moved to `prototypes/room-ac-android/`; `stay-awake/` to `tools/stay-awake-android/`. Entire directories moved, preserving ignored local APKs, build outputs and development signing files. Maintained designs moved out of `.stitch/`; prior design explorations are preserved. Existing app/phone state is unchanged. Build outputs and keys remain ignored.
