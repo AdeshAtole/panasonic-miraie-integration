@@ -16,6 +16,15 @@ spec2.loader.exec_module(builder)
 
 
 class ProjectTests(unittest.TestCase):
+    def test_alexa_display_build_and_test_are_offline_component_commands(self):
+        entry = project.target('alexa-display')
+        self.assertEqual(entry['toolchain'], 'python-stdlib')
+        self.assertEqual(entry['status'], 'active')
+        for operation in ('build', 'test'):
+            with mock.patch.object(project, 'inspect', return_value=[]), mock.patch.object(project, 'run') as run, mock.patch.object(Path, 'exists', return_value=True):
+                project.operate(entry, operation)
+                run.assert_called_once_with(['{python}', 'manage.py', operation], ROOT / 'servers/alexa-display')
+
     def test_production_targets_are_explicitly_unbuildable_and_never_fall_back(self):
         for name in ['android', 'ios', 'macos']:
             with self.subTest(target=name), mock.patch.object(project, 'run') as run:

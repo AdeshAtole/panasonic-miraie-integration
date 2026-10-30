@@ -2,6 +2,12 @@
 
 ## Common entry point
 
+Alexa display target: `python3 scripts/project.py build alexa-display` packages the
+Python sources; `python3 scripts/project.py test alexa-display` runs synthetic unittest
+cases. Neither requires AWS access or sends appliance commands. See the
+[Alexa setup guide](../servers/alexa-display/README.md) for explicit account setup,
+AWS prerequisites, deployment and remaining Echo acceptance checks.
+
 Use Python3.10+ from the repository root. Paths resolve relative to the script, so commands also work when invoked by absolute path from another directory.
 
 ```sh

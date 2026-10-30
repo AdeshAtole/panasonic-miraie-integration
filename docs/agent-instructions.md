@@ -31,6 +31,13 @@ MCP uses Python 3.11+, uv and the official MCP SDK. Install dependencies explici
 
 ## Integration behavior and onboarding
 
+`servers/alexa-display/` is the private, single-owner Alexa display adapter. Read its
+README/testing guide before changes. `build/test alexa-display` are offline Python
+tasks. Preserve the display-only `acdc`/model-140013 boundary, LWA owner/audience
+validation, skill-ID invocation restriction, single Lambda concurrency and durable
+request/uncertainty records. Setup uses a dedicated cloud session, never exports the
+local MCP session; deployment/account-linking/live voice tests remain separate.
+
 Read the portable skill and relevant protocol references. Preserve live-verified/static-only/inferred/unknown evidence levels and model-specific support boundaries. MirAIe India is distinct from Comfort Cloud; schemas alone do not prove device support.
 
 Separate observed, draft and pending state. Send writes once and verify bounded reported readback; acceptance is not physical confirmation. Retain observed values on error/unconfirmed results, verify coupled effects separately and expose partial completion. Never blindly retry or queue commands for reconnect/login replay. Derive controls/ranges from actual capabilities; do not invent sensors or commands.

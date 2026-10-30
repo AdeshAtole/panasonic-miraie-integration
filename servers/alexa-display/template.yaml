@@ -1,0 +1,58 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Private single-owner MirAIe AC display switch for Alexa
+Parameters:
+  SkillId:
+    Type: String
+    AllowedPattern: 'amzn1\.ask\.skill\.[a-zA-Z0-9-]+'
+  ConfigSecretArn:
+    Type: String
+    Description: ARN of the dedicated Secrets Manager secret populated by setup.py
+Resources:
+  Journal:
+    Type: AWS::DynamoDB::Table
+    DeletionPolicy: Retain
+    UpdateReplacePolicy: Retain
+    Properties:
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: id
+          KeyType: HASH
+      SSESpecification:
+        SSEEnabled: true
+  DisplayFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: src/
+      Handler: skill.lambda_handler
+      Runtime: python3.12
+      Timeout: 8
+      MemorySize: 512
+      ReservedConcurrentExecutions: 1
+      Environment:
+        Variables:
+          CONFIG_SECRET: !Ref ConfigSecretArn
+          JOURNAL_TABLE: !Ref Journal
+      Policies:
+        - Statement:
+            - Effect: Allow
+              Action: [secretsmanager:GetSecretValue, secretsmanager:PutSecretValue]
+              Resource: !Ref ConfigSecretArn
+            - Effect: Allow
+              Action: [dynamodb:GetItem, dynamodb:PutItem, dynamodb:DeleteItem]
+              Resource: !GetAtt Journal.Arn
+  AlexaPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref DisplayFunction
+      Principal: alexa-connectedhome.amazon.com
+      EventSourceToken: !Ref SkillId
+Outputs:
+  FunctionArn:
+    Value: !GetAtt DisplayFunction.Arn
+  JournalTable:
+    Value: !Ref Journal

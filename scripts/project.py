@@ -76,7 +76,7 @@ def check():
             raise ValueError('Invalid project path or missing README: ' + entry['path'])
         if entry['status'] not in ['prototype', 'helper', 'design', 'planned', 'active']:
             raise ValueError('Invalid lifecycle: ' + entry['id'])
-        if entry['toolchain'] not in ['android-poc', 'gradle', 'xcode', 'python-uv']:
+        if entry['toolchain'] not in ['android-poc', 'gradle', 'xcode', 'python-uv', 'python-stdlib']:
             raise ValueError('Invalid toolchain: ' + entry['id'])
         for operation in ['build', 'test']:
             if operation in entry and (not isinstance(entry[operation], list) or not all(isinstance(arg, str) for arg in entry[operation])):
@@ -89,6 +89,9 @@ def check():
     python_files = [ROOT / 'scripts/project.py', *ROOT.glob('scripts/tests/*.py'), *ROOT.glob('tools/android/*.py'), *ROOT.glob('tools/stay-awake-android/*.py'), *ROOT.glob('prototypes/room-ac-android/*.py'), *ROOT.glob('prototypes/room-ac-android/tests/*.py')]
     python_files.extend((ROOT / 'servers/miraie-mcp/src').rglob('*.py'))
     python_files.extend((ROOT / 'servers/miraie-mcp/tests').glob('*.py'))
+    python_files.extend((ROOT / 'servers/alexa-display').glob('*.py'))
+    python_files.extend((ROOT / 'servers/alexa-display/src').glob('*.py'))
+    python_files.extend((ROOT / 'servers/alexa-display/tests').glob('*.py'))
     for path in python_files:
         ast.parse(path.read_text(), filename=str(path.relative_to(ROOT)))
     for path in (ROOT / 'skills').rglob('*.json'):
