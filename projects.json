@@ -2,6 +2,35 @@
   "schemaVersion": 1,
   "projects": [
     {
+      "id": "alexa-display",
+      "path": "servers/alexa-display",
+      "status": "active",
+      "toolchain": "python-stdlib",
+      "displayName": "Alexa AC display switch (offline implementation; deployment pending)",
+      "build": [
+        "{python}",
+        "manage.py",
+        "build"
+      ],
+      "test": [
+        "{python}",
+        "manage.py",
+        "test"
+      ],
+      "requiredFiles": [
+        "manage.py",
+        "template.yaml",
+        "setup.py",
+        "owner_login.py",
+        "src/skill.py",
+        "src/protocol.py",
+        "tests/test_skill.py"
+      ],
+      "artifacts": [
+        "build/display-skill.zip"
+      ]
+    },
+    {
       "id": "android-poc",
       "path": "prototypes/room-ac-android",
       "status": "prototype",

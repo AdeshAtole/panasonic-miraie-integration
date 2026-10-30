@@ -17,6 +17,12 @@ This is one Git monorepo for MirAIe knowledge, product design and native applica
 
 ## Dependency rules
 
+`servers/alexa-display/` owns a private single-owner Alexa Smart Home v3 adapter,
+independent of the MCP/native runtimes. It exposes only a display switch for reviewed
+model 140013, using Secrets Manager for a dedicated session and DynamoDB for persistent
+request deduplication/uncertainty blocking. Lambda concurrency must stay one. Root
+build/test are offline; AWS deployment, account linking and Echo acceptance are separate.
+
 Production apps do not import PoC source, build output, private captures or the design runtime. The skill has no runtime dependency on apps or repository-root documentation. Unknown and unverified protocol behavior remains labeled; an API schema does not establish appliance support.
 
 Shared code may depend on a tested protocol model; it must not depend on a particular app's navigation, credential store or UI toolkit. When protocol facts change, update the skill, affected implementation tests and product behavior guidance together. Keep sanitized/synthetic fixtures close to their actual consumers until there is more than one consumer, then extract a canonical shared fixture location deliberately.
